@@ -1,0 +1,114 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html{
+    font-size: 100%;
+}
+
+body
+{
+    background-image: url("../content/background_base.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	color: white;
+}
+
+h1{
+    border-bottom: 5px ridge rgb(100,100,100);
+    font-size: 3rem;
+    text-align: center;
+    padding: 1rem;
+    font-family: "Comic Sans Ms";
+}
+
+a{
+    border: 3px ridge white;
+    border-radius: 10px;
+    padding: 0.25rem;
+}
+a:visited, a:link
+{
+	color: white;
+}
+a:hover{
+    border-color: red;
+}
+
+input, button
+{
+    border-width: 2px;
+	border-style: ridge;
+	border-radius: 10px 10px 10px 10px;
+	outline: none;
+    background-color: transparent;
+    color: white;
+    padding: 0.25rem;
+}
+
+input[type='number']
+{
+    text-align: right;
+}
+
+input:focus, button:hover
+{
+    border-color: red;
+}
+
+select
+{
+    color: white;
+    background-color: black;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    text-align: center;
+}

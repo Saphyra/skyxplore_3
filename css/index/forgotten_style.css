@@ -1,0 +1,46 @@
+﻿main{
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    bottom: 5rem;
+    right: 5rem;
+    background-color: rgba(0,0,0,0.8);
+    border: 5px ridge rgb(100,100,100);
+    text-align: center;
+    overflow: auto;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+label{
+    font-size: 2rem;
+    display: block;
+    margin: 1rem;
+}
+
+input{
+    font-size: 1.4rem;
+}
+
+button{
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+}
+
+form{
+    margin-bottom: 3rem;
+}
+
+a{
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 500px){
+    main{
+        position: static;
+        height: 100%;
+    }
+}
