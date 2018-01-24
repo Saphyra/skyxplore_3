@@ -22,7 +22,7 @@ function validateRegistrationData(event){
             document.getElementById("regpassword1").value = "";
             document.getElementById("regpassword2").value = "";
             event.preventDefault();
-        } else if(!emailValidCheck(email)){
+        } else if(!isEmailValid(email)){
             alert("Érvénytelen e-mail cím!");
             document.getElementById("regemail").value = "";
             event.preventDefault();
@@ -37,8 +37,7 @@ function validateRegistrationData(event){
     }
 }
 
-function emailValidCheck(email)
-//ellenőrzi az email címet
+function isEmailValid(email)
 {
     try
     {

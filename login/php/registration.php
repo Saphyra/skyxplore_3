@@ -1,5 +1,5 @@
 <?php
-    include("../../content/connection.php");
+    include("../../content/php/connection.php");
     
     $username = $_POST["regusername"];
     $email = $_POST["regemail"];

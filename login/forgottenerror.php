@@ -1,5 +1,5 @@
 <?php
-    include("../content/connection.php");
+    include("../content/php/session.php");
     if(!isset($_SESSION["forgottenerrormessage"])){
         header("location:../index.php");
     }

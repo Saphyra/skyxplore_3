@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <HTML>
 <HEAD>
     <TITLE>Elfelejtett belépési adatok</TITLE>

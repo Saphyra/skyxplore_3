@@ -1,5 +1,5 @@
 <?php
-    include("../content/connection.php");
+    include("../content/php/session.php");
     if(!isset($_SESSION["loginerrormessage"])){
         header("location:../index.php");
     }
