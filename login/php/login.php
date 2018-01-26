@@ -23,10 +23,12 @@
     
     function login($authenticationQuery){
         $userData = mysqli_fetch_assoc($authenticationQuery);
-        if(!isRegistrationValidated($userData)){
+        
+        if(!isRegistrationValidated($userData["requestdata"])){
             header("location:../validateregistration.php");
         }else{
             $_SESSION["user"] = $userData;
+            
             header("location:../../mainmenu/mainmenu.php");
         }
     }

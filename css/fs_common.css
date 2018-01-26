@@ -33,6 +33,20 @@ header{
             border-color: red;
         }
         
+main{
+    margin-bottom: 2rem;
+}
+        
+footer{
+    border-top: 5px ridge rgb(100,100,100);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 0.25rem;
+}
+        
 .window{
     position: absolute;
     top: 0;
@@ -49,6 +63,7 @@ header{
         border: 5px ridge rgb(100,100,100);
         margin: 10%;
         position: relative;
+        background-color: #000;
     }
     
         .menu h3{
@@ -75,11 +90,3 @@ header{
             .menubar button{
                 font-size: 1rem;
             }
-
-footer{
-    border-top: 5px ridge rgb(100,100,100);
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}

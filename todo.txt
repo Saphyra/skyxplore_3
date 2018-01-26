@@ -1,0 +1,5 @@
+Caching
+
+Cookie login / remember me
+
+changeemail validating old email -> set new email, set validateregistration, write page to validate new email address
