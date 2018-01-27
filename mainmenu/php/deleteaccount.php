@@ -1,6 +1,12 @@
 <?php
     include("../../content/php/authorization.php");
     
+    if(!isset($_POST["password"])){
+        $_SESSION["changeerrormessage"] = "Adja meg jelszavát!";
+        header("location:../changeerror.php");
+        exit;
+    }
+    
     $password = $_POST["deleteaccountpassword"];
     if($password != $_SESSION["user"]["password"]){
         $_SESSION["changeerrormessage"] = "Hibás jelszó.";

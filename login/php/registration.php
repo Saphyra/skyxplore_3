@@ -1,6 +1,12 @@
 <?php
     include("../../content/php/connection.php");
     
+    if(!isset($_POST["regusername"]) || !isset($_POST["regemail"]) || !isset("$regpassword1")){
+        $_SESSION["loginerrormessage"] = "Adja meg a regisztrációhoz szükséges adatokat!";
+        header("location:../loginerror.php");
+        exit;
+    }
+    
     $username = $_POST["regusername"];
     $email = $_POST["regemail"];
     $password = $_POST["regpassword1"];

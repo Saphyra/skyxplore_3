@@ -1,6 +1,12 @@
 <?php
     include("../../content/php/authorization.php");
 
+    if(!isset($_POST["newemail"]) || !isset($_POST["newemailpassword"])){
+        $_SESSION["changeerrormessage"] = "Adja meg új e-mail címét, és jelszavát!";
+        header("location:../changeerror.php");
+        exit;
+    }
+    
     $newEmail = $_POST["newemail"];
     $password = $_POST["newemailpassword"];
     

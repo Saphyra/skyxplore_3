@@ -1,13 +1,18 @@
 <?php
     include("../../content/php/connection.php");
     
-    $authenticationQuery = getQuery();
-    
-    if(isUserFound($authenticationQuery)){
-        login($authenticationQuery);
-    }else{
-        $_SESSION["loginerrormessage"] = "Felhasználónév és jelszó kombinációja ismeretlen.";
+    if(!isset($_POST["loginusername"]) || !isset("loginpassword")){
+        $_SESSION["loginerrormessage"] = "Adja meg flehasználónevét és jelszavát!";
         header("location:../loginerror.php");
+    }else{
+        $authenticationQuery = getQuery();
+    
+        if(isUserFound($authenticationQuery)){
+            login($authenticationQuery);
+        }else{
+            $_SESSION["loginerrormessage"] = "Felhasználónév és jelszó kombinációja ismeretlen.";
+            header("location:../loginerror.php");
+        }
     }
     
     function getQuery(){

@@ -1,6 +1,12 @@
 <?php
     include("../../content/php/authorization.php");
     
+    if(!isset($_POST["newusername"]) || !isset($_POST["newusernamepassword"])){
+        $_SESSION["changeerrormessage"] = "Adja meg új felhasználónevét és jelszavát!";
+        header("location:../changeerror.php");
+        exit;
+    }
+    
     $username = $_POST["newusername"];
     $password = $_POST["newusernamepassword"];
     if(!isInputValid($username, $password)){

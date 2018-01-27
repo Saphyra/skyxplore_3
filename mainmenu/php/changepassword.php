@@ -1,5 +1,11 @@
 <?php
     include("../../content/php/authorization.php");
+    if(!isset($_POST["changepassword"]) || !isset($_POST["newpassword1"]) || !isset($_POST["newpassword2"])){
+        $_SESSION["changeerrormessage"] = "Adja meg a jelszavakat!";
+        header("location:../changeerror.php");
+        exit;
+    }
+    
     $oldPassword = $_POST["changepassword"];
     $newPassword1 = $_POST["newpassword1"];
     $newPassword2 = $_POST["newpassword2"];
