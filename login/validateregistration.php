@@ -1,10 +1,10 @@
 <?php
     include("../content/php/connection.php");
-    if(!isset($_SESSION["id"])){
+    if(!isset($_SESSION["user"]["id"])){
         header("location:../index.php");
     }
     
-    $message = "";
+    $GLOBALS["message"] = "";
     
     if(isset($_POST["validationcode"])){
         validate();
@@ -21,7 +21,7 @@
 <BODY>
     <MAIN>
         <H1>Regisztráció megerősítése</H1>
-        <H2><?php print $message; ?></H2>
+        <H2><?php print $GLOBALS["message"]; ?></H2>
         <FORM method="POST">
             <LABEL>Írja be a megadott e-mail címére küldött megerősítő kódot:</LABEL>
             <INPUT type="text" name="validationcode" placeholder="Megerősítő kód" required><BR>
@@ -34,7 +34,7 @@
 
 <?php
     function validate(){
-        $id = $_SESSION["id"];
+        $id = $_SESSION["user"]["id"];
         
         $requestData = getRequestData($id);
         
@@ -44,10 +44,10 @@
             if($code == $_POST["validationcode"]){
                 validateRegistration($requestData, $id);
             }else{
-                $message = "Érvénytelen megerősítő kód!";
+                $GLOBALS["message"] = "Érvénytelen megerősítő kód!";
             }
         } else{
-            $message = "Regisztráció már meg lett erősítve.";
+            $GLOBALS["message"] = "Regisztráció már meg lett erősítve.";
         }
     }
     
@@ -60,8 +60,7 @@
     function validateRegistration($requestData, $id){
         unset($requestData["validateregistration"]);
         update($requestData, $id);
-        $_SESSION["loginerrormessage"] = "Regisztráció megerősítve!";
-        header("location:loginerror.php");
+        header("location:../mainmenu/mainmenu.php");
     }
     
     function update($requestData, $id){

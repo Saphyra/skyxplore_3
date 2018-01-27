@@ -7,12 +7,11 @@
     $id = createId();
     $requestData = createRequestData();
     
-    $_SESSION["id"] = $id;
-    
     mysqli_query($_SESSION["conn"], "INSERT INTO users(id, username, password, email, requestdata) VALUES('$id', '$username', '$password', '$email', '$requestData')");
     
     //Email elküldése az e-mail címre
     
+    $_SESSION["user"] = mysqli_fetch_assoc(mysqli_query($_SESSION["conn"], "SELECT * FROM users WHERE id='$id'"));
     header("location:../validateregistration.php");
     
     function createId(){

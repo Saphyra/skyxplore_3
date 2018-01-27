@@ -46,7 +46,7 @@
             <DIV class='menubar'><BUTTON onclick='showChangeUsernameMenu()'>Felhasználónév megváltoztatása</BUTTON></DIV>
             <DIV class='menubar'><BUTTON onclick='showChangePasswordMenu()'>Jelszó megváltoztatása</BUTTON></DIV>
             <DIV class='menubar'><BUTTON onclick='showChangeEmailMenu()'>E-mail cím megváltoztatása</BUTTON></DIV>
-            <DIV class='menubar'><BUTTON>Account törlése</BUTTON></DIV>
+            <DIV class='menubar'><BUTTON onclick='showDeleteAccountMenu()'>Account törlése</BUTTON></DIV>
         </ARTICLE>
     </SECTION>
     
@@ -83,6 +83,17 @@
                 <LABEL>Új e-mail cím: <INPUT type='text' name='newemail' id='newemail' required placeholder='Új e-mail cím'></LABEL>
                 <LABEL>Jelszó: <INPUT type='password' name='newemailpassword' id='newemailpassword' required placeholder='Jelszó'></LABEL>
                 <BUTTON>Küldés</LABEL>
+            </FORM>
+        </ARTICLE>
+    </SECTION>
+    
+    <SECTION class='window' id='deleteaccountmenu'>
+        <ARTICLE class='menu'>
+            <H3>Account törlése</H3>
+            <BUTTON class='closebutton' onclick='closeDeleteAccountMenu()'>X</BUTTON>
+            <FORM method='POST' action='php/deleteaccount.php' onsubmit='deleteAccount(event)'>
+                <LABEL>Jelszó: <INPUT type='password' name='deleteaccountpassword' id='deleteaccountpassword' required placeholder='Jelszó'></LABEL>
+                <BUTTON>Account törlése</BUTTON>
             </FORM>
         </ARTICLE>
     </SECTION>

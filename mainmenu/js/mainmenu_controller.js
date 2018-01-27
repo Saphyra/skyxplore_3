@@ -104,3 +104,18 @@ function validateNewEmail(event){
             return result;
         }
     }
+    
+function showDeleteAccountMenu(){
+    document.getElementById("deleteaccountmenu").style.display = "block";
+}
+
+function closeDeleteAccountMenu(){
+    document.getElementById("deleteaccountmenu").style.display = "none";
+}
+
+function deleteAccount(event){
+    if(!confirm("Biztosan törölni szeretné accountját?\nA kitörölt account visszaállítása nem lehetséges.")){
+        document.getElementById("deleteaccountpassword").value = "";
+        event.preventDefault();
+    }
+}

@@ -23,18 +23,23 @@
     
     function login($authenticationQuery){
         $userData = mysqli_fetch_assoc($authenticationQuery);
-        
+        $_SESSION["user"] = $userData;
         if(!isRegistrationValidated($userData["requestdata"])){
             header("location:../validateregistration.php");
+        }else if(!isNewEmailValidated($userData["requestdata"])){
+            header("location:../validatenewemail.php");
         }else{
-            $_SESSION["user"] = $userData;
-            
             header("location:../../mainmenu/mainmenu.php");
         }
     }
     
-    function isRegistrationValidated($userData){
-        $requestData = json_decode($userData["requestdata"], 1);
+    function isRegistrationValidated($rdata){
+        $requestData = json_decode($rdata, 1);
         return !isset($requestData["validateregistration"]);
+    }
+    
+    function isNewEmailValidated($rdata){
+        $requestData = json_decode($rdata, 1);
+        return !isset($requestData["newemailcode"]);
     }
 ?>
