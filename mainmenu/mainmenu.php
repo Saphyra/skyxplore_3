@@ -31,10 +31,20 @@
         <MAIN>
             <H1>Főmenü</H1>
             <H2>Játékok</H2>
+            <DIV id='tablecontainer'>
+                <TABLE>
+                    <TR>
+                        <TH>Id</TH>
+                        <TH>Név</TH>
+                        <TH><BUTTON onclick='showNewGameMenu()'>Új játék</BUTTON></TH>
+                    </TR>
+                    <?php printGames(); ?>
+                </TABLE>
+            </DIV>
         </MAIN>
         
         <FOOTER>
-            <BUTTON onclick='logout()'>Kijelentkezés</BUTTON>
+            <BUTTON onclick='window.location.href="../login/logout.php"'>Kijelentkezés</BUTTON>
         </FOOTER>
         
     </SECTION>
@@ -98,6 +108,53 @@
         </ARTICLE>
     </SECTION>
     
+    <SECTION class='window' id='newgamemenu'>
+        <ARTICLE class='menu'>
+            <H3>Új játék</H3>
+            <BUTTON class='closebutton' onclick='closeNewGameMenu()'>X</BUTTON>
+            <FORM method='POST' action='php/createnewgame.php'>
+                <LABEL>Játék neve: <INPUT type='text' name='gamename' id='gamename' required placeholder='Játék neve'></LABEL>
+                <BUTTON>Játék létrehozása</BUTTON>
+            </FORM>
+        </ARTICLE>
+    </SECTION>
+    
     <SCRIPT src='js/mainmenu_controller.js'></SCRIPT>
 </BODY>
 </HTML>
+
+<?php
+    function printGames(){
+        $id = $_SESSION["user"]["id"];
+        $query = mysqli_query($_SESSION["conn"], "SELECT * FROM games WHERE userid='$id'");
+        
+        if(!mysqli_num_rows($query)){
+            printNoGames();
+        }else{
+            while($game = mysqli_fetch_assoc($query)){
+                $gameid = $game["gameid"];
+                $gamename = $game["gamename"];
+                $operations = createOperations($gameid);
+                
+                print "
+                    <TR>
+                        <TD>$gameid</TD>
+                        <TD>$gamename</TD>
+                        <TD>$operations</TD>
+                    </TR>
+                ";
+            }
+        }
+    }
+    
+    function printNoGames(){
+        print "<TR><TD colspan='3' id='nogamecell'>Nincs játék.</TD></TR>";
+    }
+    
+    function createOperations($gameid){
+        return "
+            <FORM method='POST' action='../game/startgame.php'><BUTTON>Indítás</BUTTON><INPUT type='hidden' name='gameid' value='$gameid'></FORM>
+            <FORM method='POST' action='php/deletegame.php' onsubmit='deleteGame(event)'><BUTTON>Törlés</BUTTON><INPUT type='hidden' name='gameid' value='$gameid'></FORM>
+        ";
+    }
+?>

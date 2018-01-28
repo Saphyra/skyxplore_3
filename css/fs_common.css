@@ -3,12 +3,14 @@
     min-height: 100vh;
     background-color: rgba(0,0,0,0.8);
     position: relative;
+    overflow: auto;
 }
 
 header{
     border-bottom: 5px ridge rgb(100,100,100);
     padding: 0px;
     position: relative;
+    padding-right: 2.5rem;
 }
 
     .headeritem{

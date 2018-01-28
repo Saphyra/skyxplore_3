@@ -1,3 +1,10 @@
 Caching
 
 Cookie login / remember me
+
+Delete game
+
+Start game
+
+Új tábla létrehozásakor:
+Delete game - Játékhoz tartozó elemek törlése

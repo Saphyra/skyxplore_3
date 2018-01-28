@@ -11,10 +11,6 @@ function closeAllWindows(){
     $(".autoclosable").css("display", "none");
 }
 
-function logout(){
-    window.location.href = "../login/logout.php";
-}
-
 function showChangeUsernameMenu(){
     document.getElementById("changeusernamemenu").style.display = "block";
 }
@@ -31,27 +27,27 @@ function closeChangePasswordMenu(){
     document.getElementById("changepasswordmenu").style.display = "none";
 }
 
-function validateNewPassword(event){
-    const oldPassword = document.getElementById("changepassword").value;
-    const newPassword1 = document.getElementById("newpassword1").value;
-    const newPassword2 = document.getElementById("newpassword2").value;
-    
-    if(newPassword1 !== newPassword2){
-        alert("A jelszavak nem egyeznek!");
-        emptyPasswordFields();
-        event.preventDefault();
-    } else if(oldPassword === newPassword1){
-        alert("Ez az aktuális jelszó.");
-        emptyPasswordFields();
-        event.preventDefault();
+    function validateNewPassword(event){
+        const oldPassword = document.getElementById("changepassword").value;
+        const newPassword1 = document.getElementById("newpassword1").value;
+        const newPassword2 = document.getElementById("newpassword2").value;
+        
+        if(newPassword1 !== newPassword2){
+            alert("A jelszavak nem egyeznek!");
+            emptyPasswordFields();
+            event.preventDefault();
+        } else if(oldPassword === newPassword1){
+            alert("Ez az aktuális jelszó.");
+            emptyPasswordFields();
+            event.preventDefault();
+        }
     }
-}
 
-    function emptyPasswordFields(){
-        document.getElementById("changepassword").value = "";
-        document.getElementById("newpassword1").value = "";
-        document.getElementById("newpassword2").value = "";
-    }
+        function emptyPasswordFields(){
+            document.getElementById("changepassword").value = "";
+            document.getElementById("newpassword1").value = "";
+            document.getElementById("newpassword2").value = "";
+        }
     
 function showChangeEmailMenu(){
     document.getElementById("changeemailmenu").style.display = "block";
@@ -113,9 +109,23 @@ function closeDeleteAccountMenu(){
     document.getElementById("deleteaccountmenu").style.display = "none";
 }
 
-function deleteAccount(event){
-    if(!confirm("Biztosan törölni szeretné accountját?\nA kitörölt account visszaállítása nem lehetséges.")){
-        document.getElementById("deleteaccountpassword").value = "";
+    function deleteAccount(event){
+        if(!confirm("Biztosan törölni szeretné accountját?\nA kitörölt account visszaállítása nem lehetséges.")){
+            document.getElementById("deleteaccountpassword").value = "";
+            event.preventDefault();
+        }
+    }
+
+function showNewGameMenu(){
+    document.getElementById("newgamemenu").style.display = "block";
+}
+
+function closeNewGameMenu(){
+    document.getElementById("newgamemenu").style.display = "none";
+}
+
+function deleteGame(event){
+    if(!confirm("Biztosan törölni szeretné a játékot?\nA kitörölt játék visszaállítása nem lehetséges.")){
         event.preventDefault();
     }
 }

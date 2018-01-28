@@ -1,7 +1,7 @@
 <?php
     include("../../content/php/connection.php");
     
-    if(!isset($_POST["loginusername"]) || !isset("loginpassword")){
+    if(!isset($_POST["loginusername"]) || !isset($_POST["loginpassword"])){
         $_SESSION["loginerrormessage"] = "Adja meg flehasználónevét és jelszavát!";
         header("location:../loginerror.php");
     }else{
