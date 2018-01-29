@@ -2,6 +2,7 @@
 <BODY>
 
 <?php
+    include("../../content/php/connection.php");
     include("gamecreator.php");
     $game = gameCreator("game");
     
@@ -53,7 +54,7 @@
     }
     
     foreach($stars as $star){
-        print "<TEXT x='" . $star->xcord . "' y='" . ($star->ycord - 40) . "' text-anchor='middle' fill='red' style='font-size: 24px;'>$star->starname</TEXT>\n";
+        print "<TEXT x='" . $star->xcord . "' y='" . ($star->ycord - 40) . "' text-anchor='middle' fill='red' style='font-size: 24px;'>$star->starname ($star->planetnum)</TEXT>\n";
     }
     
 ?>

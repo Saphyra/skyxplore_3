@@ -2,9 +2,66 @@ Caching
 
 Cookie login / remember me
 
-Delete game
-
 Start game
 
 Új tábla létrehozásakor:
 Delete game - Játékhoz tartozó elemek törlése
+
+Bolygó
+    pkey    planetid    gameid  starid  size    planetname    slots[]
+    
+Buildings
+    pkey    buildingid  gameid  planetid    type    name    data[level, stats, queue]
+    
+Fleet
+    pkey    feleetid    gameid  xcord   ycord   shipids[]   data[duty]
+    
+ship
+    pkey    shipid  gameid  fleetid equipment[] stats[]
+    
+Bolygók
+    - Típus
+        - Terran
+            - Élelmiszer termelés
+        - Desert
+            - Ipar
+        - Lava
+            - Bányászat
+        
+    
+Épületek
+    Gyár
+        - alkatrészek gyártása
+    Összeszerelő üzem
+        - alkatrészek -> felszerelések
+        - Szint -> Gyártható felszerelések szintje
+    Raktár
+        - Nyersanyagok, alkatrészek tárolása
+        - Hombár -> Étel, Depó -> Nyersanyag, Raktár -> Alkatrészek
+        - Szint -> Kapacitás
+    Hajógyár
+        - Alkatrészek -> Hajók
+        - Szint -> Hajó szintje
+    Bánya
+        - Nyersanyagok termelése
+        - Szint -> Termelés növekedése
+    Farm
+        - Ételtermelés
+        - Szint -> Termelés növekedése
+    Lakóház
+        - Lakosok szállásolása
+        - Szint -> Több lakos
+    Védelmi épületek
+        
+Hajók
+    Csatahajó
+        - Képességek
+        - Energia
+        - Szint
+        - Slotok
+    Fregatt
+        - Fix értékek
+        - Támogató szerep
+    Civil
+        - Szállító hajó
+        - Kolonizáló hajó
