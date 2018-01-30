@@ -1,15 +1,15 @@
 <?php
-    include("../../content/php/authorization.php");
-    include("../../game/gamecreator/gamecreator.php");
+    include("../content/php/authorization.php");
+    include("gamecreator/gamecreator.php");
     
     if(!isset($_POST["gamename"])){
         $_SESSION["changeerrormessage"] = "Adja meg a játék nevét!";
-        header("location:../changeerror.php");
+        header("location:../mainmenu/changeerror.php");
     }else{
         $gameid = createNewGame($_SESSION["user"]["id"], $_POST["gamename"]);
         gameCreator($gameid);
         $_SESSION["changeerrormessage"] = "Játék létrehozva.";
-        header("location:../changeerror.php");
+        header("location:../mainmenu/changeerror.php");
     }
     
     function createNewGame($id, $gamename){

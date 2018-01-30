@@ -3,35 +3,28 @@ Caching
 Cookie login / remember me
 
 Start game
+Add starting planets + buildings
+
 
 Új tábla létrehozásakor:
-Delete game - Játékhoz tartozó elemek törlése
+Delete game - Játékhoz tartozó elemek törlés
 
-Bolygó
-    pkey    planetid    gameid  starid  size    planetname    slots[]
-    
-Buildings
-    pkey    buildingid  gameid  planetid    type    name    data[level, stats, queue]
-    
+Star -> resources
+
+
 Fleet
     pkey    feleetid    gameid  xcord   ycord   shipids[]   data[duty]
     
 ship
     pkey    shipid  gameid  fleetid equipment[] stats[]
     
-Bolygók
-    - Típus
-        - Terran
-            - Élelmiszer termelés
-        - Desert
-            - Ipar
-        - Lava
-            - Bányászat
-        
+Player
+    pkey    playername  gameid  money
     
 Épületek
     Gyár
         - alkatrészek gyártása
+        -  Szint -> Gyorsabb gyártás
     Összeszerelő üzem
         - alkatrészek -> felszerelések
         - Szint -> Gyártható felszerelések szintje
@@ -51,7 +44,17 @@ Bolygók
     Lakóház
         - Lakosok szállásolása
         - Szint -> Több lakos
+    Akadémia
+        - Fejlesztések
+        - Szint -> Több fejlesztés, magasabb szint
+        - Fejlesztések:
+            - Védelmi épületek erősítése
+            - Termelés gyorsítása
+            - Raktárkapacitás növelés
+            - Extra slotok
+Védelem
     Védelmi épületek
+        - Szint -> Stat +
         
 Hajók
     Csatahajó
@@ -65,3 +68,13 @@ Hajók
     Civil
         - Szállító hajó
         - Kolonizáló hajó
+        - Felderítő hajó
+        
+        
+Nyersanyagok
+    - Nyersanyag (resource) -> bánya
+    - Deszka (board) -> Gyár
+    - Tégla (brick) -> Gyár
+    - Vezeték (wire) -> Összeszerelő üzem (fém)
+    - Fém (metal) -> Gyár
+    - Elektronika (electronics) -> Összeszerelő üzem (fém)

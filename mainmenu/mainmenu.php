@@ -112,7 +112,7 @@
         <ARTICLE class='menu'>
             <H3>Új játék</H3>
             <BUTTON class='closebutton' onclick='closeNewGameMenu()'>X</BUTTON>
-            <FORM method='POST' action='php/createnewgame.php'>
+            <FORM method='POST' action='../game/createnewgame.php'>
                 <LABEL>Játék neve: <INPUT type='text' name='gamename' id='gamename' required placeholder='Játék neve'></LABEL>
                 <BUTTON>Játék létrehozása</BUTTON>
             </FORM>

@@ -63,14 +63,11 @@
         
         function generateSlots(){
             $slots["food"] = $this->size * rand(2, 4) * ($this->type == "terran" ? 2 : 1);
-            $slots["resource"] = $this->size * rand(2, 6) * ($this->type == "lava" ? 2 : 1);
+            $slots["minefield"] = $this->size * rand(2, 6) * ($this->type == "lava" ? 2 : 1);
             $slots["building"] = $this->size * rand(5, 15) * ($this->type == "desert" ? 2 : 1);
+            $slots["defense"] = $this->size * rand(0, 3);
             
             return $slots;
         }
-    }
-    
-    class ArrayList{
-        public $array = [];
     }
 ?>

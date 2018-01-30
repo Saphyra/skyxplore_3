@@ -29,11 +29,9 @@
             print $element;
         }
     }
-    
-    write($game);
 ?>
 <DIV style='width: 100%; height: 100%; overflow: auto;'>
-<SVG width='2000' height='2000' style='border: 5px solid black; padding: 30px; padding-top: 60px; background-color: blue;'>
+<SVG width='2000' height='2000' style='border: 5px solid black; padding: 60px; background-color: blue;'>
 <?php
     $stars = $game["stars"];
     $connections = [];
@@ -61,3 +59,6 @@
 </SVG></DIV>
 </BODY>
 </HTML>
+<?php
+    write($game);
+?>

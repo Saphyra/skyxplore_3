@@ -1,0 +1,116 @@
+Csak hogy értsd a játékom lényegét:
+
+Körökre osztott stratégia.
+Van x csillag, egymással összekötve.
+Minden csillagnak lehet 0-6 bolygója.
+Egy csillag bolygói egy  egységnek számítanak (tehát A csillag B bolygólya közvetlenül eléri A csillag C bolygójának nyersanyagait, építményeit, stb)
+
+3 féle bolygó van, mindegyik különböző bónuszt ad.
+Terran: Kajatermelés bónusz -> Több farm hely
+Lava: Nyersanyagtermelés bónusz -> Több bánya hely
+Desert: Ipari bónusz. -> Több épület hely
+
+A bónuszokat a következőképpen értsd:
+Minden bolygón 3 féle terület van.
+Mező, ahol kaját tudsz termelni.
+Bánya, ahol nyersanyagot tudsz termelni.
+Ipari terület, ahova épületeket tudsz rakni.
+Ezeknek a területeknek a méretét a következő képpen lehet kiszámolni:
+Véletlenszerű alap érték * bolygó mérete (1-3) * bónusz (1 vagy 2, attól függően, hogy milyen típusú a bolygó).
+Tehát például egy Terran mezeje 2x akkora lehet, mint egy lavaé vagy deserté.
+
+Épületek a következőek:
+Mezőre rakhatsz farmot, körönként termel x kaját.
+Bányára rakhatsz bányatelepet, körönként termel x nyersanyagot.
+Ipari területre rakhatsz:
+    - Lakóház, x fővel növeli a bolygó max lakosságát.
+    - Különböző típusú raktárak
+        - Hombár (vagy valami hasonló neve lesz), ami a kaját tárolja.
+        - Depó, ami a nyersanyagokat tárolja.
+        - Raktár, ami a legyártott alkatrészeket és felszereléseket tárolja.
+    - Gyár, nyersanyagból különféle alkatrészeket állít elő. (pl. deszka, csavar, stb.)
+    - Összeszerelő üzem, különböző alkatrészekből felszereléseket állít elő. (pl. űrhajók fegyverzete)
+    - Hajógyár, alkatrészekből és felszerelésekből űrhajókat állít elő.
+Egész csillagrendszerre vonatkozó védelmi épületek, melyek részt vesznek a harcban
+
+Épületek fejleszthetőek, így ha az összes hely elfogyott, akkor fejlesztéssel tovább lehet növelni a bolygó erejét.
+
+Űrhajók a következő csoportokba oszthatóak:
+    Csatahajók
+        - Nagy tűzerő (Értsd: több célpontot is tud támadni)
+        - Nagy páncélzat és pajzs
+        - Különböző képességek
+        - Fejleszthetőek (Több slot, magasabb szintű fegyverek, stb.)
+    Fregattok
+        - Kis tűzerő (Egy célpontos támadás, vagy nincs is fegyver)
+        - Kisebb páncélzat és pajzs
+        - Támogató képességek
+    Civil hajók
+        - Teherhajó (Csillagok közötti anyagszállítás)
+        - Kolonizáló hajó (Új csillagok elfoglalásához)
+        - Felderítő hajó
+        
+Gyártás sablonok alapján történik. Minden hajó típusnak megvan a kapacitása, és hogy milyen típusú felszerelésekre kap bónuszt.
+Innentől kezdve a játékos olyan hajókat csinál, amilyet akar.
+pl. Vagyük Csatahajó1 típusú hajót. Legyen ennek a kapacitása mondjuk 10. Legyen bónusza a fegyverekre.
+Ebbe a játékos belerak 10 fegyvert, ami 10 helyet foglalna, de a bónusz miatt csak 5-öt foglal. Marad 5 hely.
+Játékos belerak 2 páncélt. Marad 3 hely.
+Játékos belerak 1 pajzstot. Marad 2 hely.
+Játékos belerak 1 generátort. Marad 1 hely.
+Utolsó helyre nem rak semmit.
+
+Ez a sablon mentésre kerül, és ha a játékos gyártani akar egy hajót, akkor ez a sablon jelenik meg, erre tud rákattintani.
+A játékos kiadja az építési parancsot a hajógyárnak.
+A hajógyár összeszámolja, mikre van szüksége a sablon alapján.
+(Kell neki 1 hajótörzs, 10 fegyver, 2 páncél, 1 pajzs, 1 generátor.)
+A hajótörzset maga tudja legyártani, 10 vasból. 
+A fegyvereket, a páncélokat, a pajzsot és a generátort az összeszerelő üzem tudja előállítani, ezért a hajógyár megrendeli a gyártól a szükséges felszereléseket.
+Az összeszerelő üzem megnézi, mire van szüksége a rendelés elkészítéséhez:
+10 fegyver kijön 100 vasból, 2 páncél 20 vas, 1 pajzs, 1 generátor összesen 30 vas.
+Minden egyben 160 vas.
+Leadják a rendelést a gyárnak, hogy gyártson 160 vasat. Ehhez a gyárnak szüksége van 320 vasércre.
+A gyár szól a munkásoknak, hogy kezdjenek vasércet bányászni.
+Ahogy összejön elég vasérc (2) egy vas legyártásához, a gyár hív egy munkást (ha van aki ráér... Ha nincs, akkor vár, amíg valaki végez a munkával), aki legyártja a vasércből a vasat.
+Ha összejön elég vas, akkor az összeszerelő üzem hív egy munkást (ha van...), aki elkészíti a felszerelést.
+Ugyanígy a hajógyár is legyártja a hajótörzset, majd vár, amíg készen lesz a többi felszerelés is (pontosabban: Amíg lesz elég belőlük a raktárban)
+Ha minden összetevő kész, a hajógyár összeszereli a hajót, és berakja a kész hajók közé, valamint ültet bele az üzemeltetéshez szükséges embert (ha van...))
+A kész hajókból pedig a játékos bármikor csinálhat flottát, és elkezdhet vele repülni.
+
+Ugyanez lesz a módszer minden legyártásához. (Csak győzzem lekódolni :D)
+        
+Űrhajókat flottába kell sorolni (Ha egyedül van, akkor is)
+A flottákat lehet irányítani, küldözgetni a csillagok között
+
+Tervezem a pénz bevezetését, ami a következőképpen működik:
+Minden bolygón van x számú ember.
+Minden ember 1 pénzt termel körönként.
+Minden dolgozó ember 1 pénzt "használ fel" körönként.
+Minden űrhajós 2 pénzt használ fel körönként.
+Magyarán ahhoz, hogy tudj valamit dolgozni, legyen egy egy fős űrhajód, és ne fogyjod a pénzed, 3 embernek kell "adóznia".
+(Ezen majd lehet változtatni, attól függően, hogy hogyan jönnek ki az arányok)
+Aztán ha a pénz elfogy, akkor a manus egyszerűen nem áll neki dolgozni, és kész, mivel nem dolgozik, termel egy pénzt, amit a következő munkás fel tud használni, és az nekiáll dolgozni...
+És annak biztosítása érdekében, hogy a fontos munkákra jusson elég pénz/erőforrás, priorizálni lehet majd a munkákat.
+
+Valamint az étel, és lakhely:
+Egy csillagrendszernek nem lehet több lakója, mint a csillag bolygóin épült házak kapacitásának összege.
+Egy csillagrendszeen annyi lakó élhet, amennyinek étel jut. (Ez lehet helyben termett, és importált is akár.)
+Azt majd még ki kell számolni, hogy milyen algoritmus alapján jöjjenek az új emberek.
+(Valami olyasmin gondolkodok, hogy a kajatermelésből levonjuk a lakosság ételfogyasztását, hozzáadjuk a hombárokban tárolt kaja mennyiségét, és az összeget elosztjuk a körönként felhasznált kajával
+Például:
+Kajatermelés körönként: K = 100
+Lakosság: L = 50
+Tárolt kaja: T = 20
+((K - L) + T) / L
+((100-50) + 20) / 50 = +1,4 lakos körönként.
+
+Ha:
+Kajatermelés körönként: K = 50
+Lakosság: L = 100
+Tárolt kaja: T = 20
+((50-100) + 20) / 100 = -0,3 lakos körönként
+
+Ha elfogy a tárolt kaja:
+K = 50
+L = 100
+T = 0
+((50-100) + 0) / 100 = -0,5 lakos körönként

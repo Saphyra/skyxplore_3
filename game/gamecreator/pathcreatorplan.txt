@@ -1,0 +1,18 @@
+1. Kell egy új útvonal A és B között.
+Van a gyorsítótárban ilyen út?
+- Igen: -> 4. lépés
+- Nem:
+2. Van az adatbázisban ilyen út?
+- Igen: Betölteni a gyorsítótárba, -> 4. lépés
+- Nem:
+3. Új út létrehozása, betölteni gyorsítótárba, feltölteni adatbázisba.
+4. Betöltött út ellenőrzése
+4.1. Régebbi az út 10 térkép változásnál (Új bolygó felderítése, bolygó gazdát cserél)?
+- Igen: -> 5. lépés
+- Nem:
+4.2. Cserélt bolygó gazdát az útvonalon?
+- Igen: -> 5. lépés
+- Nem: Visszatérés az útvonallal. Boldogság!
+5. Betöltött útvonal költségének újraszámolása
+6. Rövidebb utak keresése a betöltött útvonal alapján
+7. Visszatérés a legrövidebb úttal

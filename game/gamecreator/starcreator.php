@@ -8,7 +8,7 @@
         function getStarCoordinates(){
             $stars = [];
             $starnamesUsed = [];
-            $starnames = getStarNames();
+            $starnames = getGameData("starnames");
             for($starnum = 0; $starnum < 300; $starnum++){
                 $xcord = rand(0, 1999);
                 $ycord = rand(0, 1999);
@@ -20,11 +20,6 @@
             }
             return $stars;
         }
-        
-            function getStarNames(){
-                $content = file_get_contents("../../game/gamecreator/starnames.json");
-                return json_decode($content, 1);
-            }
         
             function isStarPlaceable($stars, $xcord, $ycord){
                 $result = true;
@@ -175,6 +170,7 @@
         public $starid;
         public $xcord;
         public $ycord;
+        public $owner = "neutral";
         public $starname;
         public $planetnum;
         public $connections = [];
