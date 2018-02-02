@@ -3,7 +3,7 @@ Caching
 Cookie login / remember me
 
 Start game
-Add starting planets + buildings
+Add neutral fleets
 
 
 Új tábla létrehozásakor:
@@ -15,6 +15,9 @@ Star -> resources
 Fleet
     pkey    feleetid    gameid  xcord   ycord   shipids[]   data[duty]
     
+schema
+    pkey    schemaid    gameid  ownerid shiptype    equipment[]
+    
 ship
     pkey    shipid  gameid  fleetid equipment[] stats[]
     
@@ -22,28 +25,9 @@ Player
     pkey    playername  gameid  money
     
 Épületek
-    Gyár
-        - alkatrészek gyártása
-        -  Szint -> Gyorsabb gyártás
-    Összeszerelő üzem
-        - alkatrészek -> felszerelések
-        - Szint -> Gyártható felszerelések szintje
-    Raktár
-        - Nyersanyagok, alkatrészek tárolása
-        - Hombár -> Étel, Depó -> Nyersanyag, Raktár -> Alkatrészek
-        - Szint -> Kapacitás
     Hajógyár
         - Alkatrészek -> Hajók
         - Szint -> Hajó szintje
-    Bánya
-        - Nyersanyagok termelése
-        - Szint -> Termelés növekedése
-    Farm
-        - Ételtermelés
-        - Szint -> Termelés növekedése
-    Lakóház
-        - Lakosok szállásolása
-        - Szint -> Több lakos
     Akadémia
         - Fejlesztések
         - Szint -> Több fejlesztés, magasabb szint
@@ -52,29 +36,16 @@ Player
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
-Védelem
-    Védelmi épületek
-        - Szint -> Stat +
-        
-Hajók
-    Csatahajó
-        - Képességek
-        - Energia
-        - Szint
-        - Slotok
-    Fregatt
-        - Fix értékek
-        - Támogató szerep
-    Civil
-        - Szállító hajó
-        - Kolonizáló hajó
-        - Felderítő hajó
-        
-        
-Nyersanyagok
-    - Nyersanyag (resource) -> bánya
-    - Deszka (board) -> Gyár
-    - Tégla (brick) -> Gyár
-    - Vezeték (wire) -> Összeszerelő üzem (fém)
-    - Fém (metal) -> Gyár
-    - Elektronika (electronics) -> Összeszerelő üzem (fém)
+    
+Harcászat
+    Védelmi épület
+        - Lövegtorony (Sebzés biztosítása)
+            - Bónusz: Rakétakilövő, Lézer, Pulzuságyú
+        - Javító állomás (Támogató képességek)
+            - Bónusz: Regeneráció, Energiatöltés, Pajzstöltés, Generátor
+        - Deflektor (Védelem)
+            - Bónusz: Páncél, Pajzs, Életmentő manőver, Kinetikus pajzs
+        - Csillagbázis (Nagy és drága)
+            - Bónusz: Pajzslopás, Energiamező, Mágneses köd, Akkumulátor
+        - Aknamező (Ellenség bénítása)
+            - Bónusz: Szabotázs képességek

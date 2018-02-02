@@ -1,7 +1,7 @@
 <?php
     function writeData($filename, $arr){
         $data = json_encode($arr);
-        $fileName = "../" . $filename . ".json";
+        $fileName = "data/" . $filename . ".json";
         
         $file = fopen($fileName, "w");
         fwrite($file, $data);

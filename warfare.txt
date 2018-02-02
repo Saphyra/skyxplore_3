@@ -1,0 +1,93 @@
+Minden egység (Legyen az védelmi épület, csatahajó, vagy civil hajó) alapvetően két dologból épül fel:
+- Hajótest: Ez határozza meg a sablon (korábban írtam, mi az) fő karakterisztikáját.
+- Felszerelések: Nagy része bármilyen hajótestbe szerelhető
+
+Beszéljünk először a felszerelésekről.
+Azon belül is kezdjük azokkal, melyek csak bizonyos típusú hajótestekbe szerelhető:
+    - Kabin: Utasok szállítására alkalmas kabinok lehetővé teszik lakosok szállítását csillagrendszerek között. Csak a teherhajóba szerelhető.
+    - Konténer: Teherszállító konténerek lehetővé teszik a nyersanyagok és felszerelések szállítását a csillagrendszerek között. Csak teherhajóba szerelhető.
+    - Ideiglenes bázis: Mobil egység, mely tartamaz mindent, ami egy új kolónia létrehozásához kell. Csak kolonizáló hajóba szerelhető.
+És akkor jöjjenek azok a felszerelések, amik gyakorlatilag bármibe belerakhatóak, ha van nekik elég hely...
+    - Fegyverek: Amik nélkül nincs háború.
+        - Rakétakilövő: Ritkán lő, de nagyot.
+        - Lézer: Közepes sebzés. Legáltalánosabb fegyver.
+        - Pulzuságyú: Nagy sebzés, de csak pajzs ellen.
+    - Páncél, ami a hajó életerejét növeli.
+    - Pajzs, ami annyiban különbözik a páncéltól, hogy magától is regenerálódik, valamint energiát használ a regeneráció.
+    - Energiaellátás: Ami energiát használ, ebből él.
+        - Akkumulátor: Nagy mennyiségű energiát tárol.
+        - Generátor: Kis mennyiségű, de folyamatos energiát biztosít.
+        (Amelyik hajó használ energiát, abba nem árt egy akkumulátor. Amibe akku van, nem árt egy generátor...)
+    - Meghajtók: Csillagközi utazásokat gyorsítják.
+    - Képességek: Olyan felszerelések, amelyek valamilyen képesség használatát teszik lehetővé a velük felszerelt hajónak.
+        - Regeneráció: X körön keresztül folyamatosan javítja a kiválasztott szövetséges páncélját.
+        - Pajzstöltés: Ugyanaz, csak pajzzsal.
+        - Energiatöltés: Ugyanaz, csak energiával.
+        - Életmentő manőver: A kiválasztott hajó helyett az aktiváló szenvedi el a sebzést.
+        - Kinetikus pajzs: Csökkenti a páncélon okozott sebzést.
+        - Pajzslopás: Az okozott sebzés egy része pajzsenergiává alakul.
+        - Energiamező: X körre sebezhetetlenné teszi a képességet használó hajót.
+        - Mágneses köd: Növeli az aktiváló hajó kitérési esélyét.
+        - Szabotázs képességek: Olyan képességek, melyek az ellenséget hátráltatják.
+            - Energiaelszívás: X körön keresztül folyamatosan csökkenti a kiválasztott ellenség energiáját.
+            - Kibervírus: X körre leállítja a kiválasztott ellenséges hajó generátorait.
+            - Ionágyú: X körre megakadályozza az ellenséges hajót a képességek használatában.
+            - Plazma zavaró egység: Csökkenti a kiválasztott hajó fegyvereinek találati pontosságát.
+            
+Burkolatokról néhány szót elöljáróban:
+Mint fentebb említettem, a burkolat meghatározza a hajó karakterisztikáját. Ezt különböző bónuszokkal érjük el.
+Minden felszerelésnek van bizonyos kapacitásigénye, és minden burkolatnak van egy fix kapacitása. Ha az adott burkolatnak bónusza van a kiválasztott felszerelésre, akkor az a felszerelés az eredeti kapacitásigényének csak a felét foglalja el.
+Például: A burkolatnak bónusza van B felszerelésre. B felszerelés kapacitásigénye 50, de mivel A burkolatnak bónusza van rá, beszereléskor csak 25 kapacitást fog elfoglalni.
+A burkolatoknak is két fajtája van:
+- Űrhajó burkolatok:
+    - Tenacity
+        - Bónuszok: Pajzs, Páncél, Akkumulátor, Életmentő manőver, Kinetikus pajzs.
+        - Tank típusú csatahajó, magas páncéllal, pajzzsal, energiával a pajzsok ellátására, és képesség a sebezhetőbb hajók védelmére.
+    - Colossus
+        - Felszerelhető: Kabin, Konténer (Persze a többi dolog is, de alapvetően nem harcáaszatra szánt hajó.)
+        - Teherszállító hajó.
+    - Salvation
+        - Bónuszok: Regeneráció, Pajzstöltés
+        - Támogató hajó, alapvető feladata a többi szövetséges gyógyítása.
+    - Conqueror
+        - Felszerelhető: Ideiglenes bázis (Persze a többi dolog is, de alapvetően nem harcáaszatra szánt hajó.)
+        - Kolonizáló hajó. Alkalmas új csillagrendszerek elfoglalására
+    - Striker
+        - Bónuszok: Rakétakilövő, Energiamező
+        - Sebző hajó, alkalmas az első csapásmérésre.
+    - Executor
+        - Bónuszok: Lézer, Mágneses köd
+        - Általános sebző hajó.
+    - Specter
+        - Bónuszok: Pulzuságyú, Pajzslopás
+        - Alkalmas az ellenség pajzsának megsemmisítésére.
+    - Siren
+        - Bónuszok: Generátor, Energiatöltés
+        - A szövetséges hajók energiautánpótlását biztosítja.
+    - Nightmare
+        - Bónuszok: Szabotázs képességek
+        - Az ellenség hajóit bénítja, kiszolgáltatva őket a szövetséges tűznek.
+    - Revanant
+        - Bónuszok: Meghajtó
+        - Gyors, olcsó, gyenge.
+- Csillagrendszer védelmi épületek:
+    - Lövegtorony:
+        - Bónuszok: Rakétakilövő, Lézer, Pulzuságyú
+        - Biztosítja a védelmmi rendszer pusztító erejét.
+    - Javító állomás:
+        - Bónuszok: Regeneráció, Energiatöltés, Pajzstöltés, Generátor
+        - Támogatja a védelmi rendszer egységeit
+    - Deflektor:
+        - Bónuszok: Páncél, Pajzs, Életmentő manőver, Kinetikus Pajzs
+        - A védelmi rendszer védelmét szolgálja. Várfal a vár körül.
+    Csillagbázis:
+        - Bónuszok: Pajzslopás, Energiamező, Mágneses köd, Generátor
+        - Nagy és drága űrállomás, erőteljes védelmi képességekkel
+    - Aknamező:
+        - Bónuszok: Szabotázs képességek
+        - Az ellenség hajóit bénítja, kiszolgáltatva őket a szövetséges tűznek.
+        
+Sablon és flottaösszeállítási tippek:
+- Minden csatamezőn betöltött szerepre megvan a szerepkör betöltésére leginkább alkalmas burkolattípus. Érdemes mindet a céljának megfelelően használni!
+- Az, hogy a kiválasztott burkolatnak bónusza van valamire, nem jelenti azt, hogy csak bónuszoknak megfelelő felszereléseket kell bele rakni. Minden burkolatba érdemes legalább egy kevés páncélt, pajzsot, akkumulátort, és generátort rakni. Nagy kapacitásköltsége csak a képességeknek van.
+- A megsemmisült egységeket érdemes mielőbb pótolni, mert a hiányzó szerepkörök csak további pusztulást eredményeznek.

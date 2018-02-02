@@ -5,7 +5,7 @@
             return $GLOBALS["cache"][$resource];
         }
         
-        $path = __DIR__ . "/" . $resource . ".json";
+        $path = __DIR__ . "/data/" . $resource . ".json";
         $content = file_get_contents($path);
         $data = json_decode($content, 1);
         

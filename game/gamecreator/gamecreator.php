@@ -10,7 +10,7 @@
         $game["planets"] = createPlanets($gameid, $game["stars"]);
         $game["buildings"] = setCapitals($game);
         
-        persist($game);
+        //persist($game);
         return $game;
     }
     
