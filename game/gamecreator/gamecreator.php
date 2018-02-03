@@ -1,14 +1,16 @@
 <?php
+    include("/../gamedata/dataloader.php");
     include("starcreator.php");
     include("planetcreator.php");
     include("capitalcreator.php");
-    include("/../gamedata/dataloader.php");
+    include("fleetcreator.php");
     
     function gameCreator($gameid){
         $game["gameid"] = $gameid;
         $game["stars"] = createStars();
         $game["planets"] = createPlanets($gameid, $game["stars"]);
         $game["buildings"] = setCapitals($game);
+        $game = createNeutralFleets($game);
         
         //persist($game);
         return $game;

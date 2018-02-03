@@ -10,7 +10,6 @@
         $data = json_decode($content, 1);
         
         $GLOBALS["cache"][$resource] = $data;
-        
         return $data;
     }
     
@@ -18,6 +17,9 @@
         $resources = getGameData($resource);
         if(isset($resources[$index])){
             return $resources[$index];
-        }else return null;
+        }else{
+            //die("Undefined resource: $resource - $index");
+            return null;
+        }
     }
 ?>

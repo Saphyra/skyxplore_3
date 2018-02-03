@@ -13,13 +13,13 @@ Star -> resources
 
 
 Fleet
-    pkey    feleetid    gameid  xcord   ycord   shipids[]   data[duty]
+    pkey    feleetid    gameid  owner   xcord   ycord   shipids[]   data[duty]
     
 schema
     pkey    schemaid    gameid  ownerid shiptype    equipment[]
     
 ship
-    pkey    shipid  gameid  fleetid equipment[] stats[]
+    pkey    shipid  gameid  owner   fleetid details[] stats[]
     
 Player
     pkey    playername  gameid  money
@@ -36,16 +36,3 @@ Player
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
-    
-Harcászat
-    Védelmi épület
-        - Lövegtorony (Sebzés biztosítása)
-            - Bónusz: Rakétakilövő, Lézer, Pulzuságyú
-        - Javító állomás (Támogató képességek)
-            - Bónusz: Regeneráció, Energiatöltés, Pajzstöltés, Generátor
-        - Deflektor (Védelem)
-            - Bónusz: Páncél, Pajzs, Életmentő manőver, Kinetikus pajzs
-        - Csillagbázis (Nagy és drága)
-            - Bónusz: Pajzslopás, Energiamező, Mágneses köd, Akkumulátor
-        - Aknamező (Ellenség bénítása)
-            - Bónusz: Szabotázs képességek
