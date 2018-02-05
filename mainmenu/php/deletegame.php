@@ -7,11 +7,7 @@
     }else{
         $gameid = $_POST["gameid"];
         mysqli_query($_SESSION["conn"], "DELETE FROM games WHERE gameid='$gameid'");
-        mysqli_query($_SESSION["conn"], "DELETE FROM stars WHERE gameid='$gameid'");
-        mysqli_query($_SESSION["conn"], "DELETE FROM planets WHERE gameid='$gameid'");
-        mysqli_query($_SESSION["conn"], "DELETE FROM buildings WHERE gameid='$gameid'");
-        mysqli_query($_SESSION["conn"], "DELETE FROM fleets WHERE gameid='$gameid'");
-        mysqli_query($_SESSION["conn"], "DELETE FROM ships WHERE gameid='$gameid'");
+        unlink("../../game/saves/$gameid.json");
         $_SESSION["changeerrormessage"] = "Játék törölve.";
         header("location:../changeerror.php");
     }

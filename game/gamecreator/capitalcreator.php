@@ -4,6 +4,7 @@
         $capitalCoordinates = getCapitalCoordinates($game["stars"]);
         foreach($capitalCoordinates as $player=>$starId){
             setCapital($game["stars"][$starId], $game["planets"], $buildings, $player);
+            setConnectedStars($game["stars"], $starId);
         }
         
         return $buildings->array;
@@ -30,7 +31,12 @@
             
         function setCapital($star, $planets, $buildings, $player){
             $star->owner = $player;
-            $star->visibility[$player]["visibility"] = "shown";
+            $star->data["resources"]["food"] = 200;
+            $star->data["resources"]["depot"]["resource"] = 250;
+            $star->data["resources"]["depot"]["board"] = 100;
+            $star->data["resources"]["depot"]["brick"] = 100;
+            $star->data["resources"]["depot"]["metal"] = 50;
+            $star->visibility[$player]["visibility"] = "owned";
             $planetId = getCapitalPlanetId($planets, $star->starid);
             createBuildings($planetId, $buildings);
         }
@@ -82,6 +88,16 @@
                         }while(in_array($buildingId, $buildingIds));
                         return $buildingId;
                     }
+                    
+        function setConnectedStars($stars, $starid){
+            $star = $stars[$starid];
+            $owner = $star->owner;
+            foreach($star->connections as $connection){
+                $connecteds = explode("-", $connection);
+                $otherStarId = $connecteds[0] == $starid ? $connecteds[1] : $connecteds[0];
+                $stars[$otherStarId]->visibility[$owner]["visibility"] = "connected";
+            }
+        }
             
     class Building{
         public $buildingid;

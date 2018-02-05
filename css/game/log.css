@@ -1,0 +1,16 @@
+#logcontainer{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+    text-align: center;
+    display: none;
+    overflow: auto;
+}
+
+    #log{
+        text-align: left;
+        color: white;
+    }

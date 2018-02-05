@@ -1,21 +1,14 @@
-Caching
-
 Cookie login / remember me
 
-Start game
-Add neutral fleets
-
-
-Új tábla létrehozásakor:
-Delete game - Játékhoz tartozó elemek törlés
-
-Star -> resources
+visibility
+    - owned = Saját birtkban (Zöld)
+    - enemy = Ellenségé (Piros)
+    - visible = Látható (Flotta hatókörében) (Sárga)
+    - connected = Kapcsolódik (Saját csilalghoz, vagy flotta által kontrollált csllaghoz)
+    - hidden - Ismeretlen
     
 schema
     pkey    schemaid    gameid  ownerid shiptype    equipment[]
-    
-Player
-    pkey    playername  gameid  money
     
 Épületek
     Hajógyár

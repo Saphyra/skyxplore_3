@@ -1,18 +1,18 @@
 <?php
-    function createPlanets($gameid, $stars){
+    function createPlanets($stars){
         $planetids = new ArrayList();
         $planets = new ArrayList();
         foreach($stars as $starid=>$star){
-            createPlanetsOfStar($gameid, $star, $planetids, $planets);
+            createPlanetsOfStar($star, $planetids, $planets);
         }
         return $planets->array;
     }
     
-        function createPlanetsOfStar($gameid, $star, $planetids, $planets){
+        function createPlanetsOfStar($star, $planetids, $planets){
             for($x = 1; $x <= $star->planetnum; $x++){
                 $planetid = generatePlanetId($planetids);
                 $planetName = $star->starname . " " . $x;
-                $planets->array[$planetid] = new Planet($planetid, $gameid, $star->starid, $planetName);
+                $planets->array[$planetid] = new Planet($planetid, $star->starid, $planetName);
             }
         }
         
@@ -29,16 +29,14 @@
     
     class Planet{
         public $planetid;
-        public $gameid;
         public $starid;
         public $planetname;
         public $size;
         public $type;
         public $slots = [];
         
-        function Planet($planetid, $gameid, $starid, $planetName){
+        function Planet($planetid, $starid, $planetName){
             $this->planetid = $planetid;
-            $this->gameid = $gameid;
             $this->starid = $starid;
             $this->planetname = $planetName;
             $this->size = rand(1, 3);

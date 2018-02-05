@@ -175,6 +175,7 @@
         public $planetnum;
         public $connections = [];
         public $visibility;
+        public $data;
         
         function Star($starid, $xcord, $ycord, $starname){
             $this->starid = $starid;
@@ -183,6 +184,7 @@
             $this->starname = $starname;
             $this->planetnum = rand(0, 6);
             $this->visibility = $this->setVisibility();
+            $this->data = $this->createStarData();
         }
         
         private function setVisibility(){
@@ -193,6 +195,17 @@
             $visibility["enemy"] = $defaultVisibility;
             
             return $visibility;
+        }
+        
+        private function createStarData(){
+            $starData = [];
+            
+            $starData["resources"] = [];
+            $starData["resources"]["food"] = 0;
+            $starData["resources"]["depot"] = [];
+            $starData["resources"]["storage"] = [];
+            
+            return $starData;
         }
     }
 ?>

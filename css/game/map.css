@@ -1,10 +1,9 @@
 #mapmain{
     position: absolute;
     top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
     #mapcontainer{
@@ -20,5 +19,37 @@
             width: 2000;
             height: 2000;
             padding: 50;
-            background-color: red;
         }
+        
+            .starmapelement:hover{
+            }
+            
+                .starnamemapelement{
+                    fill: cyan !important;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+                
+            .connectionmapelement{
+                
+            }
+            
+            .ownedmapelement{
+                fill: green;
+            }
+            
+            .connectedmapelement{
+                fill: rgb(150,150,150);
+            }
+            
+            .enemymapelement{
+                fill: red;
+            }
+            
+            .visiblemapelement{
+                fill: white;
+            }
+            
+            .hiddenmapelement{
+                display: none;
+            }

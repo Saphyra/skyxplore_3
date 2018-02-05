@@ -7,7 +7,8 @@
         header("location:../mainmenu/changeerror.php");
     }else{
         $gameid = createNewGame($_SESSION["user"]["id"], $_POST["gamename"]);
-        gameCreator($gameid);
+        $game = gameCreator($gameid);
+        persist($game);
         $_SESSION["changeerrormessage"] = "Játék létrehozva.";
         header("location:../mainmenu/changeerror.php");
     }
@@ -30,5 +31,12 @@
     
     function isGameIdExists($gameid){
         return mysqli_num_rows(mysqli_query($_SESSION["conn"], "SELECT gameid FROM games WHERE gameid='$gameid'")) != 0;
+    }
+    
+    function persist($game){
+        $filename = "saves/" . $game["gameid"] . ".json";
+        $file = fopen($filename, "w");
+        fwrite($file, json_encode($game));
+        fclose($file);
     }
 ?>
