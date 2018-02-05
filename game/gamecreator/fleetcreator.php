@@ -1,6 +1,21 @@
 <?php
     $GLOBALS["maxfleetsize"] = getElementData("constants", "maxfleetsize");
     
+    cacheData();
+    
+    function cacheData(){
+        $ships = getGameData("ship");
+        $shipTypes = array_keys($ships);
+        putToCache("shiptypes", $shipTypes);
+        
+        $choosableEquipments = getGameData("randomequipment");
+        putToCache("choosableequipments", $choosableEquipments);
+        
+        $choosableEquipmentTypes = array_keys($choosableEquipments);
+        putToCache("choosableequipmenttypes", $choosableEquipmentTypes);
+    }
+    
+    
     function createNeutralFleets($game){
         $gameid = $game["gameid"];
         $game["fleets"] = createFleets($game["stars"], $gameid);
@@ -119,8 +134,7 @@
         }
         
             private function getShipType(){
-                $ships = getGameData("ship");
-                $shipTypes = array_keys($ships);
+                $shipTypes = getFromCache("shiptypes");
                 return $shipTypes[rand(0, count($shipTypes) - 1)];
             }
             
@@ -130,21 +144,18 @@
                     
                 for($x = 0; $x < 20 && $actualCapacity < $capacity; $x++){
                     $equipment = $this->getEquipment($bonuses);
-                    
-                    if($equipment["weight"] <= $capacity - $actualCapacity){
-                        $actualCapacity += $equipment["weight"];
+                    $equipmentData = getElementData($equipment->source, $equipment->key);
+                    if($equipmentData["weight"] <= $capacity - $actualCapacity){
+                        $actualCapacity += $equipmentData["weight"];
                         
-                        if(isset($equipment["maxequipped"])){
+                        if(isset($equipmentData["maxequipped"])){
                             $count = 0;
                             foreach($equipments as $eq){
-                                if(!isset($equipment["type"])){
-                                    write($equipment);
-                                }
-                                if($eq["type"] == $equipment["type"]){
+                                if($eq->bonusType == $equipmentData["type"]){
                                     $count++;
                                 }
                             }
-                            if($count >= $equipment["maxequipped"]){
+                            if($count >= $equipmentData["maxequipped"]){
                                 continue;
                             }
                         }
@@ -163,15 +174,17 @@
                         $equipment = $this->getRandomEquipment();
                     }
                     
-                    $equipmentData = getElementData($equipment->source, $equipment->key);
-                    
-                    return $equipmentData;
+                    return $equipment;
                 }
                 
                     private function getRandomEquipment(){
-                        $choosableEquipments = getGameData("randomequipment");
-                        $types = array_keys($choosableEquipments);
+                        
+                        
+                        
+                        $choosableEquipments = getFromCache("choosableequipments");
+                        $types = getFromCache("choosableequipmenttypes");
                         $type = $types[rand(0, count($types) - 1)];
+                        
                         $key = $choosableEquipments[$type]["select"][rand(0, count($choosableEquipments[$type]["select"]) - 1)];
                         if($type == "equipment"){
                             $equipment = new Equipment($choosableEquipments[$type]["source"], $key, $key);
@@ -192,29 +205,30 @@
             $stats["equipments"] = [];
             
             foreach($this->details["equipment"] as $equipment){
-                switch($equipment["type"]){
+                $equipmentData = getElementData($equipment->source, $equipment->key);
+                switch($equipmentData["type"]){
                     case "armor":
-                        $stats["maxarmor"] += $equipment["hull"];
+                        $stats["maxarmor"] += $equipmentData["hull"];
                     break;
                     case "battery":
-                        $stats["maxenergy"] += $equipment["capacity"];
+                        $stats["maxenergy"] += $equipmentData["capacity"];
                     break;
                     case "engine":
-                        $stats["speed"] += $equipment["speed"];
+                        $stats["speed"] += $equipmentData["speed"];
                     break;
                     case "generator":
-                        $stats["energyregen"] += $equipment["power"];
+                        $stats["energyregen"] += $equipmentData["power"];
                     break;
                     case "laser":
                     case "ionpulse":
                     case "rocketlauncher":
-                        $stats["weapons"][] = new Weapon($equipment);
+                        $stats["weapons"][] = new Weapon($equipmentData);
                     break;
                     case "shield":
-                        $stats["shields"][] = new Shield($equipment);
+                        $stats["shields"][] = new Shield($equipmentData);
                     break;
                     default:
-                        $stats["equipments"][] = new ShipEquipment($equipment);
+                        $stats["equipments"][] = new ShipEquipment($equipmentData);
                     break;
                 }
             }
@@ -291,6 +305,7 @@
             $this->type = $equipment["type"];
             $this->name = $equipment["name"];
             $this->energyusage = $equipment["energyusage"];
+            $this->reload = $equipment["reload"];
         }
     }
 ?>

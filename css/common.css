@@ -95,6 +95,9 @@ input, button
     background-color: transparent;
     color: white;
     padding: 0.25rem;
+}
+
+button, input[type='submit']{
     cursor: pointer;
 }
 

@@ -12,8 +12,8 @@
     <SCRIPT src='../content/js/jquery.js'></SCRIPT>
 </HEAD>
 <BODY>
-    <SECTION id='maincontainer'>
-    
+
+    <SECTION class='maincontainer'>
         <HEADER>
             <SPAN class='headeritem'
                 <EM>ID:</EM>
@@ -46,7 +46,6 @@
         <FOOTER>
             <BUTTON onclick='window.location.href="../login/logout.php"'>Kijelentkezés</BUTTON>
         </FOOTER>
-        
     </SECTION>
     
     <SECTION class='window' id='mainmenu'>

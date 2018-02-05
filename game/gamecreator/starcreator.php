@@ -174,6 +174,7 @@
         public $starname;
         public $planetnum;
         public $connections = [];
+        public $visibility;
         
         function Star($starid, $xcord, $ycord, $starname){
             $this->starid = $starid;
@@ -181,6 +182,17 @@
             $this->ycord = $ycord;
             $this->starname = $starname;
             $this->planetnum = rand(0, 6);
+            $this->visibility = $this->setVisibility();
+        }
+        
+        private function setVisibility(){
+            $defaultVisibility["visibility"] = "hidden";
+            $defaultVisibility["snapshot"] = [];
+            
+            $visibility["player"] = $defaultVisibility;
+            $visibility["enemy"] = $defaultVisibility;
+            
+            return $visibility;
         }
     }
 ?>

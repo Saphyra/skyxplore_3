@@ -10,6 +10,8 @@
         mysqli_query($_SESSION["conn"], "DELETE FROM stars WHERE gameid='$gameid'");
         mysqli_query($_SESSION["conn"], "DELETE FROM planets WHERE gameid='$gameid'");
         mysqli_query($_SESSION["conn"], "DELETE FROM buildings WHERE gameid='$gameid'");
+        mysqli_query($_SESSION["conn"], "DELETE FROM fleets WHERE gameid='$gameid'");
+        mysqli_query($_SESSION["conn"], "DELETE FROM ships WHERE gameid='$gameid'");
         $_SESSION["changeerrormessage"] = "Játék törölve.";
         header("location:../changeerror.php");
     }

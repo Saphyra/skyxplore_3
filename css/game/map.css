@@ -1,0 +1,24 @@
+#mapmain{
+    position: absolute;
+    top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    
+}
+
+    #mapcontainer{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
+    }
+
+        #map{
+            width: 2000;
+            height: 2000;
+            padding: 50;
+            background-color: red;
+        }

@@ -21,6 +21,7 @@
 <BODY>
 
 <?php
+    $startTime = microtime(true);
     include("../../content/php/connection.php");
     include("gamecreator.php");
     $game = gameCreator("game");
@@ -89,6 +90,9 @@
             print $element;
         }
     }
+    
+    $endTime = microtime(true);
+    print "<BR>Time: " . ($endTime - $startTime);
 ?>
 </BODY>
 </HTML>

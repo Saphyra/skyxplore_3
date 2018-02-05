@@ -2,14 +2,14 @@
     $GLOBALS["cache"] = [];
     function getGameData($resource){
         if(isset($GLOBALS["cache"][$resource])){
-            return $GLOBALS["cache"][$resource];
+            return getFromCache($resource);
         }
         
         $path = __DIR__ . "/data/" . $resource . ".json";
         $content = file_get_contents($path);
         $data = json_decode($content, 1);
         
-        $GLOBALS["cache"][$resource] = $data;
+        putToCache($resource, $data);
         return $data;
     }
     
@@ -19,6 +19,18 @@
             return $resources[$index];
         }else{
             //die("Undefined resource: $resource - $index");
+            return null;
+        }
+    }
+    
+    function putToCache($key, $data){
+        $GLOBALS["cache"][$key] = $data;
+    }
+    
+    function getFromCache($key){
+        if(isset($GLOBALS["cache"][$key])){
+            return $GLOBALS["cache"][$key];
+        }else{
             return null;
         }
     }

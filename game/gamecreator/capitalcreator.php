@@ -30,6 +30,7 @@
             
         function setCapital($star, $planets, $buildings, $player){
             $star->owner = $player;
+            $star->visibility[$player]["visibility"] = "shown";
             $planetId = getCapitalPlanetId($planets, $star->starid);
             createBuildings($planetId, $buildings);
         }

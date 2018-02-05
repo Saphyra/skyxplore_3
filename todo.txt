@@ -10,16 +10,9 @@ Add neutral fleets
 Delete game - Játékhoz tartozó elemek törlés
 
 Star -> resources
-
-
-Fleet
-    pkey    feleetid    gameid  owner   xcord   ycord   shipids[]   data[duty]
     
 schema
     pkey    schemaid    gameid  ownerid shiptype    equipment[]
-    
-ship
-    pkey    shipid  gameid  owner   fleetid details[] stats[]
     
 Player
     pkey    playername  gameid  money
