@@ -16,9 +16,9 @@
     }
 
         #map{
-            width: 2000;
-            height: 2000;
-            padding: 50;
+            width: 2140;
+            height: 2140;
+            padding: 70;
         }
         
             .starmapelement:hover{
@@ -28,6 +28,13 @@
                     fill: cyan !important;
                     font-size: 1.5rem;
                     font-weight: 700;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+                .starnamemapelement::selection {
+                    background: none;
                 }
                 
             .connectionmapelement{

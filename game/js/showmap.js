@@ -109,7 +109,7 @@ function showElements(){
                         element.setAttribute("cx", star.xcord);
                         element.setAttribute("cy", star.ycord);
                         
-                        element.onclick = function(){showStar(star)};
+                        element.onclick = function(event){showStar(star);};
                         element.onmouseenter = function(){starMapElementMouseEnter(element)};
                         element.onmouseout = function(){starMapElementMouseOut(element)};
                         
@@ -130,6 +130,7 @@ function showElements(){
                         element.setAttribute("x", star.xcord);
                         element.setAttribute("y", star.ycord - 40);
                         element.setAttribute("text-anchor", "middle");
+                        element.setAttribute("pointer-events", "none");
                         
                     return element;
                 }catch(err){
@@ -161,7 +162,7 @@ function showElements(){
                 this.star2 = star2;
                 this.connectionMapElement = createConnectionMapElement(star1, star2, connection);
                 
-                if(star1.visibility.player.visibility === "hidden" || star2.visibility.player.visibility === "hidden"){
+                if(isConnectionHidden(star1.visibility.player.visibility, star2.visibility.player.visibility)){
                     this.connectionMapElement.classList.add("hiddenmapelement");
                 }
                 
@@ -183,6 +184,25 @@ function showElements(){
                         element.setAttribute("stroke", "white");
                         element.setAttribute("stroke-width", 1);
                     return element;
+                }catch(err){
+                    log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                }
+            }
+            
+            function isConnectionHidden(visibility1, visibility2){
+                try{
+                    let result = false;
+                    
+                    if(visibility1 == "hidden" && visibility2 == "hidden"){
+                        result = true;
+                    }else if((visibility1 == "connected" && visibility2 == "connected")){
+                        result = true;
+                    }else if((visibility1 == "connected" || visibility2 == "connected") && (visibility1 == "hidden" || visibility2 == "hidden")){
+                        result = true;
+                    }
+                    
+                    return result;
+                    
                 }catch(err){
                     log(arguments.callee.name + " - " + err.name + ": " + err.message);
                 }
