@@ -1,4 +1,5 @@
 <?php
+    $rocketlauncher["typename"] = "Rakétakilövő";
     $defaultRocketlauncher["type"] = "rocketlauncher";
     $defaultRocketlauncher["storage"] = "storage";
     $defaultRocketlauncher["name"] = "Rakétakilövő";

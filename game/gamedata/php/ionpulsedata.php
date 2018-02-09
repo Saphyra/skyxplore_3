@@ -1,4 +1,5 @@
 <?php
+    $ionpulse["typename"] = "Pulzuságyú";
     $defaultIonpulse["type"] = "ionpulse";
     $defaultIonpulse["storage"] = "storage";
     $defaultIonpulse["name"] = "Pulzuságyú";

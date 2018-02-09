@@ -1,4 +1,5 @@
 <?php
+    $storage["typename"] = "Raktár";
     $defaultStorage["type"] = "storage";
     $defaultStorage["name"] = "Raktár";
     $defaultStorage["slot"] = "building";

@@ -1,4 +1,5 @@
 <?php
+    $generator["typename"] = "Generátor";
     $defaultGenerator["type"] = "generator";
     $defaultGenerator["name"] = "Generátor";
     $defaultGenerator["storage"] = "storage";

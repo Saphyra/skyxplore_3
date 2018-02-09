@@ -1,4 +1,5 @@
 <?php
+    $shield["typename"] = "Pajzs";
     $defaultShield["type"] = "shield";
     $defaultShield["name"] = "Pajzs";
     $defaultShield["storage"] = "storage";

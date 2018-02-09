@@ -1,4 +1,5 @@
 <?php
+    $engine["typename"] = "Meghajtó";
     $defaultEngine["type"] = "engine";
     $defaultEngine["name"] = "Meghajtó";
     $defaultEngine["storage"] = "storage";

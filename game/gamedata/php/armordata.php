@@ -1,4 +1,6 @@
 <?php
+    $armor["typename"] = "Páncél";
+
     $defaultArmor["type"] = "armor";
     $defaultArmor["storage"] = "storage";
     $defaultArmor["name"] = "Páncél";

@@ -1,3 +1,7 @@
+#galaxyviewcontainer{
+    background-color: rgba(0,0,0,0.2);
+}
+
 #mapmain{
     position: absolute;
     top: 0;
@@ -19,26 +23,21 @@
             width: 2140;
             height: 2140;
             padding: 70;
+            border: 5px inset rgb(150,150,150);
         }
         
-            .starmapelement:hover{
+            .starmapelement{
             }
             
                 .starnamemapelement{
                     fill: cyan !important;
                     font-size: 1.5rem;
                     font-weight: 700;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    -ms-user-select: none;
-                    user-select: none;
-                }
-                .starnamemapelement::selection {
-                    background: none;
+                    stroke: #0073e6;
+                    stroke-width: 1px;
                 }
                 
             .connectionmapelement{
-                
             }
             
             .ownedmapelement{

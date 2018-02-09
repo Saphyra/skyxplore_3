@@ -1,4 +1,5 @@
 <?php
+    $house["typename"] = "Lakóház";
     $defaultHouse["type"] = "house";
     $defaultHouse["name"] = "Lakóház";
     $defaultHouse["slot"] = "building";

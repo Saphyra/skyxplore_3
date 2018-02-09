@@ -31,11 +31,14 @@
             
         function setCapital($star, $planets, $buildings, $player){
             $star->owner = $player;
+            
+            $star->data["citizennum"] = 10;
             $star->data["resources"]["food"] = 200;
             $star->data["resources"]["depot"]["resource"] = 250;
             $star->data["resources"]["depot"]["board"] = 100;
             $star->data["resources"]["depot"]["brick"] = 100;
             $star->data["resources"]["depot"]["metal"] = 50;
+            
             $star->visibility[$player]["visibility"] = "owned";
             $planetId = getCapitalPlanetId($planets, $star->starid);
             createBuildings($planetId, $buildings);
@@ -75,6 +78,8 @@
                 function createBuilding($planetId, $buildings, $type){
                     $buildingId = generateBuildingId($buildings);
                     $data["status"] = 0;
+                    $data["resource"]["source"] = $type;
+                    $data["resource"]["key"] = 1;
                     return new Building($buildingId, $planetId, $type, $data);
                 }
             

@@ -16,7 +16,9 @@ function showMap(){
 }
 function createSVGElement(type){
     try{
-        return document.createElementNS("http://www.w3.org/2000/svg", type);
+        const element =  document.createElementNS("http://www.w3.org/2000/svg", type);
+        element.classList.add("svgelement");
+        return element;
     }catch(err){
         log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }
@@ -126,7 +128,12 @@ function showElements(){
                         element.classList.add("mapelement" + star.starid);
                         element.id = "starnamemapelement" + star.starid;
                         
-                        element.innerHTML = star.starname + " (" + star.planetnum + ")";
+                        if(star.visibility.player.visibility == "connected"){
+                            element.innerHTML = "Ismeretlen";
+                        }else{
+                            element.innerHTML = star.starname + " (" + star.planetnum + ")";
+                        }
+                        
                         element.setAttribute("x", star.xcord);
                         element.setAttribute("y", star.ycord - 40);
                         element.setAttribute("text-anchor", "middle");

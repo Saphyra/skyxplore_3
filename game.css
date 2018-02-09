@@ -1,0 +1,16 @@
+header{
+    padding: 0.125rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 3px;
+}
+
+main{
+    margin-bottom: 3rem;
+}
+
+.viewcontainer{
+    display: none;
+}

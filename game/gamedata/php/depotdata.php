@@ -1,4 +1,5 @@
 <?php
+    $depot["typename"] = "Depó";
     $defaultDepot["type"] = "depot";
     $defaultDepot["name"] = "Depó";
     $defaultDepot["slot"] = "building";

@@ -1,4 +1,6 @@
 <?php
+    $battery["typename"] = "Akkumulátor";
+
     $defaultBattery["type"] = "battery";
     $defaultBattery["name"] = "Akkumulátor";
     $defaultBattery["storage"] = "storage";

@@ -1,0 +1,68 @@
+#starviewcontainer header{
+    text-align: center;
+}
+
+#starviewmain{
+    padding: 0 0.5rem;
+}
+#starviewmain:after{
+    content: "";
+    clear: left;
+    display: block;
+}
+
+#starviewstarname{
+    padding: 0.125rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 3px;
+}
+
+    .starviewlistcontainer{
+        width: 25%;
+        border-bottom: 5px ridge rgb(100,100,100);
+        margin-bottom: 0.125rem;
+        min-height: 75%;
+    }
+        #starviewleftcontainer{
+            float: left;
+            border-right: 5px ridge rgb(100,100,100);
+            position: relative;
+            left: -0.5rem;
+        }
+        #starviewrightcontainer{
+            float: right;
+            border-left: 5px ridge rgb(100,100,100);
+            position: relative;
+            right: -0.5rem;
+        }
+        
+        .starviewlistcontainertitle{
+            text-align: center;
+            font-size: 1.5rem;
+            border-bottom: 5px ridge rgb(100,100,100);
+            padding: 0.25rem;
+        }
+        
+.list{
+    border: 3px ridge rgb(50,50,50);
+    border-bottom-width: 5px;
+    margin: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+    .listitem{
+        border: 2px ridge rgb(150,150,150);
+        margin: 0.25rem;
+        padding: 0.25rem;
+    }
+    .listitem:hover{
+        border-color: rgb(200,200,200);
+    }
+    
+        .listtitle{
+            text-align: center;
+            font-size: 1.5rem;
+        }

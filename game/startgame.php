@@ -9,32 +9,35 @@
 <HEAD>
     <TITLE>SkyXplore</TITLE>
     <META charset='utf-8'>
+    
     <LINK rel='stylesheet' href='../css/common.css'>
     <LINK rel='stylesheet' href='../css/fs_common.css'>
-    <LINK rel='stylesheet' href='../css/game/game.css'>
-    <LINK rel='stylesheet' href='../css/game/map.css'>
-    <LINK rel='stylesheet' href='../css/game/log.css'>
-    
-    <SCRIPT>window.startGameid = "<?php print $_POST["gameid"]; ?>";</SCRIPT>
+    <?php
+        $files = scandir("../css/game/");
+        foreach($files as $file){
+            if(strstr($file, ".css")){
+                print "<LINK rel='stylesheet' href='../css/game/$file'>";
+            }
+        }
+    ?>
+    <SCRIPT>
+        window.startGameid = "<?php print $_POST["gameid"]; ?>";
+    </SCRIPT>
     <SCRIPT src='../content/js/jquery.js'></SCRIPT>
     
-    <SCRIPT src='js/loadgame.js'></SCRIPT>
-    <SCRIPT src='js/showmap.js'></SCRIPT>
-    <SCRIPT src='js/logger.js'></SCRIPT>
-    <SCRIPT src='js/starview.js'></SCRIPT>
-    <SCRIPT src='js/animation.js'></SCRIPT>
+    <?php
+        $files = scandir("js/");
+        foreach($files as $file){
+            if(strstr($file, ".js")){
+                print "<SCRIPT src='js/$file'></SCRIPT>";
+            }
+        }
+    ?>
 </HEAD>
 <BODY>
-    <DIV class='maincontainer'>
-        <MAIN id='mapmain'>
-            <DIV id='mapcontainer'>
-                <SVG id='map'></SVG>
-            </DIV>
-        </MAIN>
-        <FOOTER><BUTTON onclick='window.location.href = "../mainmenu/mainmenu.php"'>Vissza</BUTTON></FOOTER>
-    </DIV>
-
-    <DIV id='logcontainer'>
+    <DIV id='content'></DIV>
+    
+    <DIV id='logcontainer' oncontextmenu='document.getElementById("logcontainer").style.display="none"'>
         <BUTTON onclick='document.getElementById("logcontainer").style.display="none"'>Bezárás</BUTTON>
         <DIV id='log'></DIV>
     </DIV>

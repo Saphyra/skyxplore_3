@@ -1,4 +1,5 @@
 <?php
+    $fridge["typename"] = "Hűtőház";
     $defaultFridge["type"] = "fridge";
     $defaultFridge["name"] = "Hűtőház";
     $defaultFridge["slot"] = "building";

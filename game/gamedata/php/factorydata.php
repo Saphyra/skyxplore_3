@@ -1,7 +1,9 @@
 <?php
+    $factory["typename"] = "Gyár";
     $defaultFactory["type"] = "factory";
     $defaultFactory["name"] = "Gyár";
     $defaultFactory["slot"] = "building";
+    $defaultFactory["role"] = "industry";
     
     $level = 1;
     $factory[$level] = $defaultFactory;

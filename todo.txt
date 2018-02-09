@@ -1,5 +1,7 @@
 Cookie login / remember me
 
+Maincontainerek külön fájlba, ajax húzza be őket
+
 visibility
     - owned = Saját birtkban (Zöld)
     - enemy = Ellenségé (Piros)
