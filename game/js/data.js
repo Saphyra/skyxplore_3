@@ -1,10 +1,14 @@
 function getElementData(resource){
     try{
         //log(resource.source + " - " + resource.key);
-        if(!window.elementData[resource.source]){
-            loadElementData(resource.source);
+        let result = getFromCache(resource.source);
+        
+        if(result === null){
+            result = loadElementData(resource.source);
+            putToCache(resource.source, result);
         }
-        return window.elementData[resource.source][resource.key];
+        
+        return result[resource.key];
     }catch(err){
         log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }
@@ -15,8 +19,24 @@ function getElementData(resource){
             const request = new XMLHttpRequest();
                 request.open("GET", "gamedata/data/" + source + ".json", 0);
                 request.send();
-                window.elementData[source] = JSON.parse(request.responseText);
+            return JSON.parse(request.responseText);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
+    
+function putToCache(key, data){
+    try{
+        window.cache[key] = data;
+    }catch(err){
+        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+    }
+}
+
+function getFromCache(key){
+    try{
+        return window.cache[key] || null;
+    }catch(err){
+        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+    }
+}

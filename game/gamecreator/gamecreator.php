@@ -11,6 +11,7 @@
         $game["stars"] = createStars();
         $game["planets"] = createPlanets($game["stars"]);
         $game["buildings"] = setCapitals($game);
+        $game["defenses"] = [];
         $game = createNeutralFleets($game);
         
         return $game;

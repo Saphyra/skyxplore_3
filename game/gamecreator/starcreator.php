@@ -200,6 +200,8 @@
         private function createStarData(){
             $starData = [];
             
+            $starData["queue"] = [];
+            
             $starData["resources"] = [];
             $starData["resources"]["food"] = 0;
             $starData["resources"]["depot"] = [];

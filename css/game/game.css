@@ -8,3 +8,31 @@
 .viewcontainer{
     display: none;
 }
+
+.list{
+    border: 3px ridge rgb(50,50,50);
+    border-bottom-width: 5px;
+    margin: 0.25rem;
+    margin-top: 0.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+    .listitem, .planetlistitem{
+        border: 2px ridge rgb(150,150,150);
+        margin: 0.25rem;
+        padding: 0.25rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .listitem:hover, .planetlistitem:hover{
+        border-color: rgb(200,200,200);
+    }
+    
+        .listtitle{
+            text-align: center;
+            font-size: 1.5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }

@@ -16,7 +16,7 @@ function initializeLazy(){
 function initializeEager(){
     try{
         window.viewStack = ["#galaxyviewcontainer"];
-        window.elementData = {};
+        window.cache = {};
     }catch(err){
         alert(arguments.callee.name + " - " + err.name + ": " + err.message);
     }
