@@ -3,6 +3,7 @@
     $defaultStorage["type"] = "storage";
     $defaultStorage["name"] = "Raktár";
     $defaultStorage["slot"] = "building";
+    $defaultStorage["role"] = "economy";
     
     $level = 1;
     $storage[$level] = $defaultStorage;

@@ -3,6 +3,7 @@
     $defaultDepot["type"] = "depot";
     $defaultDepot["name"] = "Depó";
     $defaultDepot["slot"] = "building";
+    $defaultDepot["role"] = "economy";
     
     $level = 1;
     $depot[$level] = $defaultDepot;

@@ -117,7 +117,7 @@ function StarElement(star){
                 element.setAttribute("cx", star.xcord);
                 element.setAttribute("cy", star.ycord);
                 
-                element.onclick = function(event){showStar(star);};
+                element.onclick = function(event){starView.showStar(star);};
                 element.onmouseenter = function(){animation.starMapElementMouseEnter(element)};
                 element.onmouseout = function(){animation.starMapElementMouseOut(element)};
                 

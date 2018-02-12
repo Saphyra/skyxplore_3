@@ -3,6 +3,7 @@
     $defaultHouse["type"] = "house";
     $defaultHouse["name"] = "Lakóház";
     $defaultHouse["slot"] = "building";
+    $defaultHouse["role"] = "economy";
     
     $level = 1;
     $house[$level] = $defaultHouse;

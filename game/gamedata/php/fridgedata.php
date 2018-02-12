@@ -3,6 +3,7 @@
     $defaultFridge["type"] = "fridge";
     $defaultFridge["name"] = "Hűtőház";
     $defaultFridge["slot"] = "building";
+    $defaultFridge["role"] = "economy";
     
     $level = 1;
     $fridge[$level] = $defaultFridge;

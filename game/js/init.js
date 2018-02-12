@@ -21,6 +21,8 @@ function Initializer(){
         window.nameConverter = new NameConverter();
         window.planetView = new PlanetView();
         window.map = new Map();
+        window.starView = new StarView();
+        window.counter = new Counter();
         
         
         this.loadGame();
