@@ -112,8 +112,8 @@ function showElements(){
                         element.setAttribute("cy", star.ycord);
                         
                         element.onclick = function(event){showStar(star);};
-                        element.onmouseenter = function(){starMapElementMouseEnter(element)};
-                        element.onmouseout = function(){starMapElementMouseOut(element)};
+                        element.onmouseenter = function(){animation.starMapElementMouseEnter(element)};
+                        element.onmouseout = function(){animation.starMapElementMouseOut(element)};
                         
                     return element;
                 }catch(err){

@@ -30,15 +30,15 @@ function countNetFoodIncome(star){
 
     function countFoodIncome(starid){
         try{
-            const planets = getPlanetsOfStar(starid);
+            const planets = filters.getPlanetsOfStar(starid);
             let result = 0;
                 
             for(let planetid in planets){
-                const buildings = getBuildingsOfPlanet(planetid);
+                const buildings = filters.getBuildingsOfPlanet(planetid);
                 
                 for(let buildingid in buildings){
                     const building = buildings[buildingid];
-                    const buildingData = getElementData(building.data.resource);
+                    const buildingData = data.getElementData(building.data.resource);
                     if(buildingData.slot === "food"){
                         result += buildingData.income * buildingData.workplace;
                     }
@@ -53,14 +53,14 @@ function countNetFoodIncome(star){
     
 function countStorageCapacity(starid, type){
     try{
-        const planetids = Object.keys(getPlanetsOfStar(starid));
+        const planetids = Object.keys(filters.getPlanetsOfStar(starid));
         const buildings = gameData.buildings;
         let capacity = 0;
         
         for(let buildingid in buildings){
             const building = buildings[buildingid];
             if(building.type == type && planetids.indexOf(building.planetid) > -1){
-                const buildingData = getElementData(building.data.resource);
+                const buildingData = data.getElementData(building.data.resource);
                 capacity += buildingData.capacity;
             }
         }
@@ -71,51 +71,15 @@ function countStorageCapacity(starid, type){
     }
 }
 
-function countFarms(planetid){
+function countBuildingsOfSlot(planetid, slot){
     try{
         let result = 0;
-        const buildings = getBuildingsOfPlanet(planetid);
+        const buildings = filters.getBuildingsOfPlanet(planetid);
                     
         for(let buildingid in buildings){
             const building = buildings[buildingid];
-            const buildingData = getElementData(building.data.resource);
-            if(buildingData.slot === "food"){
-                result++;
-            }
-        }
-        return result;
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
-    }
-}
-
-function countMinefields(planetid){
-    try{
-        let result = 0;
-        const buildings = getBuildingsOfPlanet(planetid);
-                    
-        for(let buildingid in buildings){
-            const building = buildings[buildingid];
-            const buildingData = getElementData(building.data.resource);
-            if(buildingData.slot === "minefield"){
-                result++;
-            }
-        }
-        return result;
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
-    }
-}
-
-function countBuildings(planetid){
-    try{
-        let result = 0;
-        const buildings = getBuildingsOfPlanet(planetid);
-                    
-        for(let buildingid in buildings){
-            const building = buildings[buildingid];
-            const buildingData = getElementData(building.data.resource);
-            if(buildingData.slot === "building"){
+            const buildingData = data.getElementData(building.data.resource);
+            if(buildingData.slot === slot){
                 result++;
             }
         }
@@ -147,15 +111,15 @@ function countDefense(planetid){
 
 function countResourceIncome(starid){
     try{
-        const planets = getPlanetsOfStar(starid);
+        const planets = filters.getPlanetsOfStar(starid);
         let result = 0;
             
         for(let planetid in planets){
-            const buildings = getBuildingsOfPlanet(planetid);
+            const buildings = filters.getBuildingsOfPlanet(planetid);
             
             for(let buildingid in buildings){
                 const building = buildings[buildingid];
-                const buildingData = getElementData(building.data.resource);
+                const buildingData = data.getElementData(building.data.resource);
                 if(buildingData.slot === "minefield"){
                     result += buildingData.income * buildingData.workplace;
                 }
@@ -170,16 +134,16 @@ function countResourceIncome(starid){
 
 function countProductivity(starid){
     try{
-        const planets = getPlanetsOfStar(starid);
+        const planets = filters.getPlanetsOfStar(starid);
         let result = 0;
             
         for(let planetid in planets){
-            const buildings = getBuildingsOfPlanet(planetid);
+            const buildings = filters.getBuildingsOfPlanet(planetid);
             
             for(let buildingid in buildings){
                 const building = buildings[buildingid];
                 if(building.type === "factory"){
-                    const buildingData = getElementData(building.data.resource);
+                    const buildingData = data.getElementData(building.data.resource);
                     result += buildingData.productivity * buildingData.workplace;
                 }
             }

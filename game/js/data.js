@@ -1,20 +1,23 @@
-function getElementData(resource){
-    try{
-        //log(resource.source + " - " + resource.key);
-        let result = getFromCache(resource.source);
-        
-        if(result === null){
-            result = loadElementData(resource.source);
-            putToCache(resource.source, result);
+function Data(){
+    this.cache = {};
+    
+    this.getElementData = function getElementData(resource){
+        try{
+            //log(resource.source + " - " + resource.key);
+            let result = this.getFromCache(resource.source);
+            
+            if(result === null){
+                result = this.loadElementData(resource.source);
+                this.putToCache(resource.source, result);
+            }
+            
+            return result[resource.key];
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
-        
-        return result[resource.key];
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }
-}
-
-    function loadElementData(source){
+    
+    this.loadElementData = function loadElementData(source){
         try{
             const request = new XMLHttpRequest();
                 request.open("GET", "gamedata/data/" + source + ".json", 0);
@@ -25,18 +28,19 @@ function getElementData(resource){
         }
     }
     
-function putToCache(key, data){
-    try{
-        window.cache[key] = data;
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+    this.putToCache = function putToCache(key, data){
+        try{
+            this.cache[key] = data;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
     }
-}
-
-function getFromCache(key){
-    try{
-        return window.cache[key] || null;
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+    
+    this.getFromCache = function getFromCache(key){
+        try{
+            return this.cache[key] || null;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
     }
 }

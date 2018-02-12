@@ -1,8 +1,12 @@
 function Back(){
-    try{
-        this.viewStack = ["#galaxyviewcontainer"];
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+    this.viewStack = ["#galaxyviewcontainer"];
+    
+    this.addBackListeners = function addBackListeners(){
+        try{
+            $(".viewcontainer").contextmenu(function(){back.backOneWindow()});
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
     }
     
     this.switchWindow = function switchWindow(windowid){
@@ -15,20 +19,12 @@ function Back(){
         }
     }
 
-    this.addBackListeners = function addBackListeners(){
+    this.backOneWindow = function backOneWindow(){
         try{
-            $(".viewcontainer").contextmenu(this.backOneWindow);
+            this.viewStack.pop();
+            this.switchWindow(this.viewStack.pop());
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
-
-        this.backOneWindow = function backOneWindow(){
-            try{
-                this.viewStack.pop();
-                this.switchWindow(this.viewStack.pop());
-            }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
-            }
-        }
 }

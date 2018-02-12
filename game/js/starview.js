@@ -1,10 +1,10 @@
 function showStar(star){
     try{
         if(star.visibility.player.visibility == "connected"){
-            switchWindow("#connectedstarviewcontainer");
+            back.switchWindow("#connectedstarviewcontainer");
         }else{
             displayStarData(star);
-            switchWindow("#starviewcontainer");
+            back.switchWindow("#starviewcontainer");
         }
         
     }catch(err){
@@ -55,7 +55,7 @@ function showStar(star){
                 const foodListItem = document.createElement("DIV");
                     foodListItem.className = "listitem";
                     foodListItem.innerHTML = 
-                        getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
+                        data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
                         + " (" + foodIncome + "/kör)";
                 container.appendChild(foodListItem);
                 
@@ -75,13 +75,13 @@ function showStar(star){
                         for(let resourceKey in storage){
                             const resourceItem = document.createElement("DIV");
                                 resourceItem.className = "listitem";
-                                resourceItem.innerHTML = getElementData({source: "resource", key: resourceKey}).name
+                                resourceItem.innerHTML = data.getElementData({source: "resource", key: resourceKey}).name
                                 + ": " + storage[resourceKey];
                             list.appendChild(resourceItem);
                             actualCapacity += storage[resourceKey];
                         }
                         
-                            listTitle.innerHTML = getElementData({source: storageKey, key: "typename"})
+                            listTitle.innerHTML = data.getElementData({source: storageKey, key: "typename"})
                             + " (" + actualCapacity + "/" + capacity + ")";
                         container.appendChild(list);
                     }
@@ -100,7 +100,7 @@ function showStar(star){
                 for(let buildingid in buildings){
                     const building = gameData.buildings[buildingid]
                     if(gameData.planets[building.planetid].starid === star.starid){
-                        const buildingData = getElementData(building.data.resource);
+                        const buildingData = data.getElementData(building.data.resource);
                         switch(buildingData.role){
                             case "industry":
                                 grouped.industry[buildingid] = {building: building, buildingData: buildingData};
@@ -151,7 +151,7 @@ function showStar(star){
                     }
                     
                     arr.sort(function(a, b){
-                        return getElementData({source: a.type, key: "typename"}).localeCompare(getElementData({source: b.type, key: "typename"}))
+                        return data.getElementData({source: a.type, key: "typename"}).localeCompare(data.getElementData({source: b.type, key: "typename"}))
                     });
                     
                     for(let index in arr){
@@ -177,17 +177,17 @@ function showStar(star){
                     
                     switch(type){
                         case "farm":
-                            listItem.innerHTML = getElementData({source: type, key: "typename"}) + " (+" + countFoodIncome(starid) + " étel/kör)";
+                            listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " (+" + countFoodIncome(starid) + " étel/kör)";
                         break;
                         case "mine":
-                            listItem.innerHTML = getElementData({source: type, key: "typename"}) + " (+" + countResourceIncome(starid) + " nyersanyag/kör)";
+                            listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " (+" + countResourceIncome(starid) + " nyersanyag/kör)";
                         break;
                         case "factory":
-                            listItem.innerHTML = getElementData({source: type, key: "typename"}) + " (Termelés: +" + countProductivity(starid) + "/kör)";
+                            listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " (Termelés: +" + countProductivity(starid) + "/kör)";
                         break;
                         default:
                             const buildingNum = buildings.length;
-                            listItem.innerHTML = getElementData({source: type, key: "typename"}) + " - " + buildingNum;
+                            listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
                         break;
                     }
                     
@@ -213,16 +213,16 @@ function showStar(star){
                         case "depot":
                         case "fridge":
                             const capacity = countStorageCapacity(star.starid, type);
-                            listItem.innerHTML = getElementData({source: type, key: "typename"})
+                            listItem.innerHTML = data.getElementData({source: type, key: "typename"})
                                 + " (Kapacitás: " + capacity + ")";
                         break;
                         case "house":
-                            listItem.innerHTML = getElementData({source: type, key: "typename"})
+                            listItem.innerHTML = data.getElementData({source: type, key: "typename"})
                                 + " (Lakóhely: " + countHouseNum(star) + ")";
                         break;
                         default:
                             const buildingNum = buildings.length;
-                            listItem.innerHTML = getElementData({source: type, key: "typename"}) + " - " + buildingNum;
+                            listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
                         break;
                     }
                     container.appendChild(listItem);
@@ -260,7 +260,7 @@ function showStar(star){
             const container = document.getElementById("starviewplanetlist");
                 container.innerHTML = "";
                 
-            const planets = getPlanetsOfStar(starid);
+            const planets = filters.getPlanetsOfStar(starid);
             
             for(let planetid in planets){
                 const planet = planets[planetid];
@@ -275,6 +275,7 @@ function showStar(star){
         function displayPlanet(planet){
             try{
                 const element = document.createElement("DIV");
+                    element.onclick = function(){planetView.showPlanet(planet)};
                     element.classList.add("starviewplanet");
                     element.classList.add("starviewplanet" + planet.type);
                     
@@ -287,7 +288,8 @@ function showStar(star){
                             
                             const description = document.createElement("DIV");
                                 description.className = "starviewplanetdescription";
-                                description.innerHTML = convertPlanetSize(planet.size) + " " + convertPlanetType(planet.type);
+                                description.innerHTML = nameConverter.convertPlanetSize(planet.size)
+                                    + " " + nameConverter.convertPlanetType(planet.type);
                         planetName.appendChild(description);
                     cover.appendChild(planetName);
                     
@@ -295,7 +297,7 @@ function showStar(star){
                     
                 element.appendChild(cover);
                     
-                    return element;
+                return element;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message);
             }
@@ -305,7 +307,7 @@ function showStar(star){
                 try{
                     const list = document.createElement("DIV");
                         
-                        const farmNum = countFarms(planet.planetid);
+                        const farmNum = countBuildingsOfSlot(planet.planetid, "food");
                         const foodSlots = planet.slots.food;
                         const farmSlotListItem = document.createElement("DIV");
                             farmSlotListItem.className = "planetlistitem";
@@ -318,7 +320,7 @@ function showStar(star){
                     list.appendChild(farmSlotListItem);
                     
                         const minefieldSlots = planet.slots.minefield
-                        const minefieldNum = countMinefields(planet.planetid);
+                        const minefieldNum = countBuildingsOfSlot(planet.planetid, "minefield");
                         const mineSlotListItem = document.createElement("DIV");
                             mineSlotListItem.className = "planetlistitem";
                             if(minefieldNum == minefieldSlots){
@@ -329,7 +331,7 @@ function showStar(star){
                             mineSlotListItem.innerHTML = "Bánya hely: " + minefieldNum + " / " + minefieldSlots;
                     list.appendChild(mineSlotListItem);
                     
-                        const buildingNum = countBuildings(planet.planetid);
+                        const buildingNum = countBuildingsOfSlot(planet.planetid, "building")
                         const buildingSlots = planet.slots.building;
                         const buildingSlotListItem = document.createElement("DIV");
                             buildingSlotListItem.className = "planetlistitem";
