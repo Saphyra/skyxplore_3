@@ -1,8 +1,3 @@
-#starviewcontainer header{
-    text-align: center;
-    padding: 0;
-}
-
 #starviewmain{
     padding: 0 0.5rem;
 }
@@ -12,42 +7,6 @@
     display: block;
 }
 
-#starviewstarname{
-    padding: 0.125rem;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    font-style: italic;
-    letter-spacing: 3px;
-}
-
-    .starviewlistcontainer{
-        width: 25vw;
-        border-bottom: 5px ridge rgb(100,100,100);
-        min-height: 75%;
-        overflow-x: auto;
-        min-width: 12.5rem;
-    }
-        #starviewleftcontainer{
-            float: left;
-            border-right: 5px ridge rgb(100,100,100);
-            position: relative;
-            left: -0.5rem;
-        }
-        #starviewrightcontainer{
-            float: right;
-            border-left: 5px ridge rgb(100,100,100);
-            position: relative;
-            right: -0.5rem;
-        }
-        
-        .starviewlistcontainertitle{
-            text-align: center;
-            font-size: 1.5rem;
-            border-bottom: 5px ridge rgb(100,100,100);
-            padding: 0.25rem;
-        }
-    
     #starviewplanetlist{
         text-align: center;
         position: relative;
@@ -85,15 +44,6 @@
         .starviewplanetterran{
             background-image: url("../../content/img/terran_background.jpg");
         }
-        .starviewplanetcover{
-            background-color: rgba(0,0,0,0.5);
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            overflow: auto;
-        }
         .planetlistitem{
             padding: 0;
             display: inline-block;
@@ -125,7 +75,7 @@
         border-bottom: 5px ridge rgb(100,100,100);
     }
     
-    .starviewlistcontainer{
+    .listcontainer{
         min-height: 0;
     }
     

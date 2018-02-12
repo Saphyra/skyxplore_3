@@ -5,11 +5,14 @@ function StarView(){
     
     this.showStar = function showStar(star){
         try{
-            if(star.visibility.player.visibility == "connected"){
-                back.switchWindow("#connectedstarviewcontainer");
-            }else{
-                this.displayStarData(star);
-                back.switchWindow("#starviewcontainer");
+            switch(star.visibility.player.visibility){
+                case "connected":
+                    back.switchWindow("#connectedstarviewcontainer");
+                break;
+                default:
+                    this.displayStarData(star);
+                    back.switchWindow("#starviewcontainer");
+                break;
             }
             
         }catch(err){

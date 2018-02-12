@@ -24,7 +24,7 @@ function StarViewPlanetDisplayer(){
                 element.classList.add("starviewplanet" + planet.type);
                 
                 const cover = document.createElement("DIV");
-                    cover.className = "starviewplanetcover";
+                    cover.className = "cover";
                     
                     const planetName = document.createElement("DIV");
                         planetName.className = "starviewplanetname";
