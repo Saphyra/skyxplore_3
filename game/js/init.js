@@ -20,8 +20,11 @@ function Initializer(){
         window.filters = new Filters();
         window.nameConverter = new NameConverter();
         window.planetView = new PlanetView();
+        window.map = new Map();
+        
         
         this.loadGame();
+        map.showMap();
         
         back.addBackListeners();
         animation.addMapListener();
@@ -31,14 +34,9 @@ function Initializer(){
         try{
             const path = "saves/" + window.startGameid + ".json";
             const request = new XMLHttpRequest();
-                request.open("GET", path, 1);
+                request.open("GET", path, 0);
                 request.send();
-                request.onreadystatechange = function(){
-                    if(request.readyState === 4 && request.status === 200){
-                        window.gameData = JSON.parse(request.responseText);
-                        showMap();
-                    }
-                }
+                window.gameData = JSON.parse(request.responseText);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

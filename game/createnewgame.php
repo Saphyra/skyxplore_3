@@ -34,9 +34,16 @@
     }
     
     function persist($game){
+        checkFolder();
         $filename = "saves/" . $game["gameid"] . ".json";
         $file = fopen($filename, "w");
         fwrite($file, json_encode($game));
         fclose($file);
+    }
+    
+    function checkFolder(){
+        if(!file_exists("saves")){
+            mkdir("saves");
+        }
     }
 ?>
