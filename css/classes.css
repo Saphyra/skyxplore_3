@@ -1,0 +1,119 @@
+.absolute50{
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    bottom: 5rem;
+    right: 5rem;
+}
+
+.absolute20{
+    position: absolute;
+    left: 2rem;
+    right: 2rem;
+    top: 2rem;
+    bottom: 2rem;
+}
+
+.backgroundblack8{
+    background-color: rgba(0,0,0,0.8);
+}
+
+.block{
+    display: block;
+}
+
+.border5px{
+    border-width: 5px;
+}
+
+.borderridge{
+    border-style: ridge;
+}
+
+.borderbottomridge{
+    border-bottom-style: ridge;
+}
+
+.borderleftridge{
+    border-left-style: ridge;
+}
+
+.borderrightridge{
+    border-right-style: ridge;
+}
+
+.bordercolor100{
+    border-color: rgb(100,100,100);
+}
+
+.centertext{
+    text-align: center;
+}
+
+.floatleft{
+    float: left;
+}
+
+.floatright{
+    float: right;
+}
+
+.fontsize0875rem{
+    font-size: 0.875rem;
+}
+
+.fontsize15rem{
+    font-size: 1.5rem;
+}
+
+.fontsize20rem{
+    font-size: 2rem;
+}
+
+.justifytext{
+    text-align: justify;
+}
+
+.margin10rem{
+    margin: 1rem;
+}
+
+.marginbottom025rem{
+    margin-bottom: 0.25rem;
+}
+
+.marginbottom30rem{
+    margin-bottom: 3rem;
+}
+
+.marginleft025rem{
+    margin-left: 0.25rem;
+}
+
+.marginright025rem{
+    margin-right: 0.25rem;
+}
+
+.margintop15rem{
+    margin-top: 1.5rem;
+}
+
+.margintop20rem{
+    margin-top: 2rem;
+}
+
+.overflowauto{
+    overflow: auto;
+}
+
+.padding025rem{
+    padding: 0.25rem;
+}
+
+.righttext{
+    text-align: right;
+}
+
+.width230rem{
+    width: 23rem;
+}

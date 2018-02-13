@@ -1,6 +1,6 @@
 Cookie login / remember me
 
-Maincontainerek külön fájlba, ajax húzza be őket
+Planet background higher quality (400-600)
 
 visibility
     - owned = Saját birtkban (Zöld)
