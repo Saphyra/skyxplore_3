@@ -82,6 +82,14 @@
     margin-bottom: 0.25rem;
 }
 
+.marginbottom5rem{
+    margin-bottom: 0.5rem;
+}
+
+.marginbottom10rem{
+    margin-bottom: 1rem;
+}
+
 .marginbottom30rem{
     margin-bottom: 3rem;
 }
@@ -92,6 +100,10 @@
 
 .marginright025rem{
     margin-right: 0.25rem;
+}
+
+.margintop5rem{
+    margin-top: 0.5rem;
 }
 
 .margintop15rem{
@@ -112,6 +124,10 @@
 
 .righttext{
     text-align: right;
+}
+
+.underline{
+    text-decoration: underline;
 }
 
 .width230rem{

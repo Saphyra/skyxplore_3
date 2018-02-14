@@ -17,23 +17,33 @@
 <HEAD>
     <TITLE>Új e-mail cím megerősítése</TITLE>
     <META charset="utf-8">
+    <LINK rel="stylesheet" href="../css/reset.css">
     <LINK rel="stylesheet" href="../css/common.css">
-    <LINK rel="stylesheet" href="../css/index/validateregistration_style.css">
+    <LINK rel="stylesheet" href="../css/classes.css">
+    
+    <STYLE>
+        @media screen and (max-width: 500px){
+            main{
+                position: static !important;
+                height: 100%;
+            }
+        }
+    </STYLE>
 </HEAD>
 <BODY>
-    <MAIN>
-        <H1>Új e-mail cím megerősítése</H1>
-        <H2><?php print $message; ?></H2>
-        <FORM method="POST">
-            <LABEL>Írja be az új e-mail címére küldött megerősítő kódot:</LABEL>
-            <INPUT type="text" name="validationcode" placeholder="Megerősítő kód" required><BR>
-            <BUTTON>Új e-mail cím megerősítése</BUTTON>
+    <MAIN class='absolute50rem backgroundblack8 border5px borderridge bordercolor100 centertext overflowauto'>
+        <H1 class='marginbottom5rem'>Új e-mail cím megerősítése</H1>
+        <H2 class='fontsize20rem marginbottom10rem underline'><?php print $message; ?></H2>
+        <FORM class='marginbottom30rem' method="POST">
+            <LABEL class='fontsize20rem'>Írja be az új e-mail címére küldött megerősítő kódot:</LABEL>
+            <INPUT class='fontsize15rem' type="text" name="validationcode" placeholder="Megerősítő kód" required><BR>
+            <BUTTON class='margintop5rem fontsize15rem'>Új e-mail cím megerősítése</BUTTON>
         </FORM>
-        <FORM method='POST'>
-            <BUTTON>Változtatás visszavonása</BUTTON>
+        <FORM class='marginbottom30rem' method='POST'>
+            <BUTTON class='margintop5rem fontsize15rem'>Változtatás visszavonása</BUTTON>
             <INPUT type='hidden' name='cancel'>
         </FORM>
-        <A href="../index.php">Kezdőlap</A>
+        <A class='fontsize20rem' href="../index.php">Kezdőlap</A>
     </MAIN>
 </BODY>
 </HTML>
