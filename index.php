@@ -26,7 +26,7 @@
     </STYLE>
 </HEAD>
 <BODY>
-    <MAIN class='absolute20 backgroundblack8 border5px borderridge bordercolor100 overflowauto'>
+    <MAIN class='absolute20rem backgroundblack8 border5px borderridge bordercolor100 overflowauto'>
         <H1>SkyXplore</H1>
         <SECTION class='border5px borderbottomridge borderrightridge bordercolor100 centertext floatleft marginleft025rem marginright025rem padding025rem width230rem' id="logincontainer">
             <H2 class='centertext fontsize20rem'>Bejelentkezés</H2>

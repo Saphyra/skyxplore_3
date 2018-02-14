@@ -15,7 +15,7 @@
     </STYLE>
 </HEAD>
 <BODY>
-    <MAIN class='absolute50 backgroundblack8 border5px borderridge bordercolor100 centertext overflowauto'>
+    <MAIN class='absolute50rem backgroundblack8 border5px borderridge bordercolor100 centertext overflowauto'>
         <H1>Elfelejtett belépési adatok</H1>
         <H2 class='fontsize20rem'>A belépési adatok pótlásához adja meg felhasználónevét és/vagy e-mail címét!</H2>
         <FORM class='marginbottom30rem' method="POST" action="php/sendforgottendata.php">

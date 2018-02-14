@@ -1,4 +1,4 @@
-.absolute50{
+.absolute50rem{
     position: absolute;
     top: 5rem;
     left: 5rem;
@@ -6,7 +6,7 @@
     right: 5rem;
 }
 
-.absolute20{
+.absolute20rem{
     position: absolute;
     left: 2rem;
     right: 2rem;
