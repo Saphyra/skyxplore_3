@@ -30,15 +30,3 @@ function StarView(){
         }
     }
 }
-        
-        
-        
-        
-        
-    
-    
-    
-    
-        
-        
-            

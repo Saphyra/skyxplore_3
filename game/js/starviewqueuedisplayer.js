@@ -16,7 +16,6 @@ function StarViewQueueDisplayer(){
                     container.appendChild(item);
                 }
             }
-            
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

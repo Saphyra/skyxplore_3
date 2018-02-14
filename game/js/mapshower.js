@@ -1,25 +1,25 @@
-function MapShower(mapElements){
-    this.mapElements = mapElements;
+function MapShower(elements){
+    const mapElements = elements;
     
     this.showMap = function showMap(){
         try{
-            const connections = this.createStarMapElements();
-            this.createConnectionMapElements(connections);
+            const connections = createStarMapElements();
+            createConnectionMapElements(connections);
             
-            this.showElements();
+            showElements();
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
     
-    this.createStarMapElements = function createStarMapElements(){
+    function createStarMapElements(){
         try{
             const connections = [];
             for(let starid in gameData.stars){
                 const star = gameData.stars[starid];
                 
                 const starElement = new StarElement(star);
-                this.mapElements.starElements[star.starid] = starElement;
+                mapElements.starElements[star.starid] = starElement;
                 
                 for(let connectionIndex in star.connections){
                     if(connections.indexOf(star.connections[connectionIndex]) === -1){
@@ -34,7 +34,7 @@ function MapShower(mapElements){
         }
     }
     
-    this.createConnectionMapElements = function createConnectionMapElements(connections){
+    function createConnectionMapElements(connections){
         try{
             const stars = gameData.stars;
             
@@ -44,27 +44,27 @@ function MapShower(mapElements){
                 const starids = connection.split("-");
                 
                 const connectionElement = new ConnectionElement(stars[starids[0]], stars[starids[1]], connection);
-                this.mapElements.connectionElements[connection] = connectionElement;
+                mapElements.connectionElements[connection] = connectionElement;
             }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
     
-    this.showElements = function showElements(){
+    function showElements(){
         try{
             const map = document.getElementById("map");
             
-            for(let connectionElementIndex in this.mapElements.connectionElements){
-                map.appendChild(this.mapElements.connectionElements[connectionElementIndex].connectionMapElement);
+            for(let connectionElementIndex in mapElements.connectionElements){
+                map.appendChild(mapElements.connectionElements[connectionElementIndex].connectionMapElement);
             }
             
-            for(let starElementIndex in this.mapElements.starElements){
-                map.appendChild(this.mapElements.starElements[starElementIndex].starMapElement);
+            for(let starElementIndex in mapElements.starElements){
+                map.appendChild(mapElements.starElements[starElementIndex].starMapElement);
             }
             
-            for(let starElementIndex in this.mapElements.starElements){
-                map.appendChild(this.mapElements.starElements[starElementIndex].starNameMapElement);
+            for(let starElementIndex in mapElements.starElements){
+                map.appendChild(mapElements.starElements[starElementIndex].starNameMapElement);
             }
             
         }catch(err){

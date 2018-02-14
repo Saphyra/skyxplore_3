@@ -8,7 +8,7 @@ function StarViewPlanetDisplayer(){
             
             for(let planetid in planets){
                 const planet = planets[planetid];
-                container.appendChild(this.displayPlanet(planet));
+                container.appendChild(displayPlanet(planet));
             }
             
         }catch(err){
@@ -16,7 +16,7 @@ function StarViewPlanetDisplayer(){
         }
     }
     
-    this.displayPlanet = function displayPlanet(planet){
+    function displayPlanet(planet){
         try{
             const element = document.createElement("DIV");
                 element.onclick = function(){planetView.showPlanet(planet)};
@@ -37,7 +37,7 @@ function StarViewPlanetDisplayer(){
                     planetName.appendChild(description);
                 cover.appendChild(planetName);
                 
-                cover.appendChild(this.displayPlanetSlots(planet));
+                cover.appendChild(displayPlanetSlots(planet));
                 
             element.appendChild(cover);
                 
@@ -47,7 +47,7 @@ function StarViewPlanetDisplayer(){
         }
     }
     
-    this.displayPlanetSlots = function displayPlanetSlots(planet){
+    function displayPlanetSlots(planet){
         try{
             const list = document.createElement("DIV");
                 

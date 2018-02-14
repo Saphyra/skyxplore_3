@@ -11,7 +11,7 @@ function initializeLazy(){
 
 function Initializer(){
     this.initialize = function(){
-        this.loadContent();
+        loadContent();
         document.addEventListener('contextmenu', event => event.preventDefault());
         
         window.animation = new Animation();
@@ -25,14 +25,14 @@ function Initializer(){
         window.counter = new Counter();
         
         
-        this.loadGame();
+        loadGame();
         map.showMap();
         
         back.addBackListeners();
         animation.addMapListener();
     }
     
-    this.loadGame = function loadGame(){
+    function loadGame(){
         try{
             const path = "saves/" + window.startGameid + ".json";
             const request = new XMLHttpRequest();
@@ -44,7 +44,7 @@ function Initializer(){
         }
     }
     
-    this.loadContent = function loadContent(){
+    function loadContent(){
         try{
             const request = new XMLHttpRequest();
                 request.open("GET", "content/contentloader.php", 0);

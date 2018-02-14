@@ -1,12 +1,12 @@
 function Map(){
-    this.mapElements = {
+    const mapElements = {
         starElements:{},
         connectionElements:{},
     };
     
-    this.mapShower = new MapShower(this.mapElements);
+    const mapShower = new MapShower(mapElements);
     
-    this.showMap = function(){this.mapShower.showMap()};
+    this.showMap = function(){mapShower.showMap()};
 }
 
 function createSVGElement(type){

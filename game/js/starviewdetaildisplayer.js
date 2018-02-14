@@ -1,17 +1,17 @@
 function StarViewDetailsDisplayer(){
-    this.buildingGrouper = new BuildingGrouper();
+    const buildingGrouper = new BuildingGrouper();
     
     this.displayDetails = function(star){
         $("#starviewstarname").text(star.starname);
-        this.displayCitizens(star);
-        this.displayResources(star);
+        displayCitizens(star);
+        displayResources(star);
         
-        const buildings = this.buildingGrouper.groupBuildingsByRole(star);
-        this.displayIndustry(buildings.industry, star.starid);
-        this.displayEconomy(buildings.economy, star);
+        const buildings = buildingGrouper.groupBuildingsByRole(star);
+        displayIndustry(buildings.industry, star.starid);
+        displayEconomy(buildings.economy, star);
     }
     
-    this.displayCitizens = function displayCitizens(star){
+    function displayCitizens(star){
         try{
             const houseNum = counter.countHouseNum(star);
             const populationGrowth = counter.countPopulationGrowth(star, houseNum);
@@ -25,7 +25,7 @@ function StarViewDetailsDisplayer(){
         }
     }
     
-    this.displayResources = function displayResources(star){
+    function displayResources(star){
         try{
             const resources = star.data.resources;
             const container = document.getElementById("starviewresourcelist");
@@ -73,7 +73,7 @@ function StarViewDetailsDisplayer(){
         }
     }
     
-    this.displayIndustry = function displayIndustry(types, starid){
+    function displayIndustry(types, starid){
         try{
             const container = document.getElementById("starviewindustry");
             container.innerHTML = "";
@@ -106,7 +106,7 @@ function StarViewDetailsDisplayer(){
         }
     }
     
-    this.displayEconomy = function displayEconomy(types, star){
+    function displayEconomy(types, star){
         try{
             const container = document.getElementById("starvieweconomy");
             container.innerHTML = "";

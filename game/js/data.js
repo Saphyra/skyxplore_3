@@ -1,5 +1,5 @@
 function Data(){
-    this.cache = {};
+    cache = {};
     
     this.getElementData = function getElementData(resource){
         try{
@@ -30,7 +30,7 @@ function Data(){
     
     this.putToCache = function putToCache(key, data){
         try{
-            this.cache[key] = data;
+            cache[key] = data;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
@@ -38,7 +38,7 @@ function Data(){
     
     this.getFromCache = function getFromCache(key){
         try{
-            return this.cache[key] || null;
+            return cache[key] || null;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

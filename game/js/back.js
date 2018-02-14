@@ -1,5 +1,5 @@
 function Back(){
-    this.viewStack = ["#galaxyviewcontainer"];
+    viewStack = ["#galaxyviewcontainer"];
     
     this.addBackListeners = function addBackListeners(){
         try{
@@ -12,7 +12,7 @@ function Back(){
     this.switchWindow = function switchWindow(windowid){
         try{
             $(".maincontainer").css("display", "none");
-            this.viewStack.push(windowid);
+            viewStack.push(windowid);
             $(windowid).toggle();
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
@@ -21,8 +21,8 @@ function Back(){
 
     this.backOneWindow = function backOneWindow(){
         try{
-            this.viewStack.pop();
-            this.switchWindow(this.viewStack.pop());
+            viewStack.pop();
+            this.switchWindow(viewStack.pop());
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
