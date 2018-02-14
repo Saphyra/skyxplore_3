@@ -18,6 +18,10 @@
     background-color: rgba(0,0,0,0.8);
 }
 
+.backgroundblack10{
+    background-color: rgb(0,0,0);
+}
+
 .block{
     display: block;
 }
@@ -66,6 +70,18 @@
     text-align: center;
 }
 
+.displaynone{
+    display: none;
+}
+
+.fixed0{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
 .floatleft{
     float: left;
 }
@@ -96,6 +112,10 @@
 
 .justifytext{
     text-align: justify;
+}
+
+.lefttext{
+    text-align: left;
 }
 
 .marginauto{
