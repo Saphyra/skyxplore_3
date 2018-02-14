@@ -24,3 +24,7 @@ schema
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
+            
+            
+starviewplanet (starview.css)
+cover (game.css)

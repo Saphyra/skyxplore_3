@@ -44,7 +44,7 @@
 </HEAD>
 <BODY>
 
-    <SECTION class='maincontainer'>
+    <SECTION class='absolute0 backgroundblack8 border5px bordercolor100 borderinset overflowauto'>
         <HEADER>
             <SPAN class='headeritem'
                 <EM>ID:</EM>

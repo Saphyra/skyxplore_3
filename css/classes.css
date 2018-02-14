@@ -1,9 +1,9 @@
-.absolute50rem{
+.absolute0{
     position: absolute;
-    top: 5rem;
-    left: 5rem;
-    bottom: 5rem;
-    right: 5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .absolute20rem{
@@ -14,6 +14,22 @@
     bottom: 2rem;
 }
 
+.absolute50rem{
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    bottom: 5rem;
+    right: 5rem;
+}
+
+.backgroundattachmentfixed{
+    background-attachment: fixed;
+}
+
+.backgroundblack2{
+    background-color: rgba(0,0,0,0.2);
+}
+
 .backgroundblack8{
     background-color: rgba(0,0,0,0.8);
 }
@@ -22,8 +38,24 @@
     background-color: rgb(0,0,0);
 }
 
+.backgroundnorepeat{
+    background-repeat: no-repeat;
+}
+
+.backgroundpositiontopcenter{
+    background-position: top center;
+}
+
+.backgroundsize100percent{
+    background-size: 100%;
+}
+
 .block{
     display: block;
+}
+
+.bold{
+    font-weight: 700;
 }
 
 .border1px{
@@ -34,12 +66,12 @@
     border-width: 5px;
 }
 
-.borderridge{
-    border-style: ridge;
+.borderinset{
+    border-style: inset;
 }
 
-.bordersolid{
-    border-style: solid;
+.borderridge{
+    border-style: ridge;
 }
 
 .borderbottomridge{
@@ -54,12 +86,20 @@
     border-right-style: ridge;
 }
 
-.bordercolor255{
-    border-color: rgb(255,255,255);
+.bordersolid{
+    border-style: solid;
 }
 
 .bordercolor100{
     border-color: rgb(100,100,100);
+}
+
+.bordercolor150{
+    border-color: rgb(150,150,150);
+}
+
+.bordercolor255{
+    border-color: rgb(255,255,255);
 }
 
 .borderradius0{
@@ -110,12 +150,24 @@
     display: inline;
 }
 
+.italic{
+    font-style: italic;
+}
+
 .justifytext{
     text-align: justify;
 }
 
+.leftn5rem{
+    left: -0.5rem;
+}
+
 .lefttext{
     text-align: left;
+}
+
+.letterspacing3px{
+    letter-spacing: 3px;
 }
 
 .marginauto{
@@ -174,6 +226,14 @@
     margin-top: 2rem;
 }
 
+.minheight75percent{
+    min-height: 75%;
+}
+
+.minwidth125rem{
+    min-width: 12.5rem;
+}
+
 .minwidth50rem{
     min-width: 5rem;
 }
@@ -186,6 +246,18 @@
     overflow: auto;
 }
 
+.overflowxauto{
+    overflow-x: auto;
+}
+
+.padding0{
+    padding: 0;
+}
+
+.padding70px{
+    padding: 70px;
+}
+
 .padding0125rem{
     padding: 0.125rem;
 }
@@ -196,6 +268,22 @@
 
 .padding5rem{
     padding: 0.5rem;
+}
+
+.paddingleft5rem{
+    padding-left: 0.5rem;
+}
+
+.paddingright5rem{
+    padding-right: 0.5rem;
+}
+
+.relative{
+    position: relative;
+}
+
+.rightn5rem{
+    right: -0.5rem;
 }
 
 .righttext{
@@ -216,4 +304,12 @@
 
 .width230rem{
     width: 23rem;
+}
+
+.width25vw{
+    width: 25vw;
+}
+
+.width50vw{
+    width: 50vw;
 }

@@ -1,11 +1,12 @@
 <!-- Csillag nézet megjelenítése -->
-<DIV class='maincontainer viewcontainer view' id='starviewcontainer'>
-    <HEADER><SPAN id='starviewstarname' class='objecttitle'></SPAN></HEADER>
+<DIV class='maincontainer viewcontainer view absolute0 backgroundblack8 border5px bordercolor100 borderinset displaynone overflowauto' id='starviewcontainer'>
+    <HEADER class='centertext padding0'>
+        <SPAN class='bold centertext fontsize20rem italic letterspacing3px padding0125rem' id='starviewstarname'></SPAN>
+    </HEADER>
+    <MAIN class='paddingleft5rem paddingright5rem viewmain' id='starviewmain'>
     
-    <MAIN id='starviewmain'>
-    
-        <SECTION class='listcontainer leftcontainer' id='starviewleftcontainer'>
-            <DIV class='listcontainertitle'>Összegzés</DIV>
+        <SECTION class='border5px borderbottomridge borderrightridge bordercolor100 centertext floatleft leftn5rem minheight75percent minwidth125rem overflowxauto relative width25vw' id='starviewleftcontainer'>
+            <DIV class='border5px borderbottomridge bordercolor100 centertext fontsize15rem padding025rem'>Összegzés</DIV>
             
             <DIV class='list'>
                 <DIV class='listtitle'>Erőforrások</DIV>
@@ -32,12 +33,12 @@
             
         </SECTION>
         
-        <SECTION class='listcontainer rightcontainer' id='starviewrightcontainer'>
-            <DIV class='listcontainertitle'>Gyártósor</DIV>
+        <SECTION class='border5px borderbottomridge borderleftridge bordercolor100 floatright minheight75percent minwidth125rem overflowxauto relative rightn5rem width25vw' id='starviewrightcontainer'>
+            <DIV class='border5px borderbottomridge bordercolor100 centertext fontsize15rem padding025rem'>Gyártósor</DIV>
             <DIV class='list' id='starviewqueue'></DIV>
         </SECTION>
         
-        <SECTION id='starviewplanetlist'></SECTION>
+        <SECTION class='centertext marginauto relative width50vw' id='starviewplanetlist'></SECTION>
         
     </MAIN>
     
