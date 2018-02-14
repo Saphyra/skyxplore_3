@@ -74,6 +74,10 @@
     text-align: justify;
 }
 
+.marginauto{
+    margin: auto;
+}
+
 .margin10rem{
     margin: 1rem;
 }
@@ -88,6 +92,10 @@
 
 .marginbottom10rem{
     margin-bottom: 1rem;
+}
+
+.marginbottom20rem{
+    margin-bottom: 2rem;
 }
 
 .marginbottom30rem{
@@ -128,6 +136,10 @@
 
 .underline{
     text-decoration: underline;
+}
+
+.width100rem{
+    width: 10rem;
 }
 
 .width230rem{
