@@ -22,12 +22,20 @@
     display: block;
 }
 
+.border1px{
+    border-width: 1px;
+}
+
 .border5px{
     border-width: 5px;
 }
 
 .borderridge{
     border-style: ridge;
+}
+
+.bordersolid{
+    border-style: solid;
 }
 
 .borderbottomridge{
@@ -42,8 +50,16 @@
     border-right-style: ridge;
 }
 
+.bordercolor255{
+    border-color: rgb(255,255,255);
+}
+
 .bordercolor100{
     border-color: rgb(100,100,100);
+}
+
+.borderradius0{
+    border-radius: 0;
 }
 
 .centertext{
@@ -62,6 +78,10 @@
     font-size: 0.875rem;
 }
 
+.fontsize10rem{
+    font-size: 1rem;
+}
+
 .fontsize15rem{
     font-size: 1.5rem;
 }
@@ -70,12 +90,24 @@
     font-size: 2rem;
 }
 
+.inline{
+    display: inline;
+}
+
 .justifytext{
     text-align: justify;
 }
 
 .marginauto{
     margin: auto;
+}
+
+.margin0125rem{
+    margin: 0.125rem;
+}
+
+.margin5rem{
+    margin: 0.5rem;
 }
 
 .margin10rem{
@@ -122,12 +154,28 @@
     margin-top: 2rem;
 }
 
+.minwidth50rem{
+    min-width: 5rem;
+}
+
+.minwidth400rem{
+    min-width: 40rem;
+}
+
 .overflowauto{
     overflow: auto;
 }
 
+.padding0125rem{
+    padding: 0.125rem;
+}
+
 .padding025rem{
     padding: 0.25rem;
+}
+
+.padding5rem{
+    padding: 0.5rem;
 }
 
 .righttext{
@@ -136,6 +184,10 @@
 
 .underline{
     text-decoration: underline;
+}
+
+.width100percent{
+    width: 100%;
 }
 
 .width100rem{
