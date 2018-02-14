@@ -5,8 +5,20 @@
     user-select: none;
 }
 
-.viewcontainer{
-    display: none;
+.viewmain:after{
+    content: "";
+    clear: left;
+    display: block;
+}
+
+.cover{
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
 }
 
 .list{
@@ -36,3 +48,18 @@
             overflow-x: auto;
             overflow-y: hidden;
         }
+        
+@media screen and (max-width: 620px){
+    #starviewleftcontainer, #starviewrightcontainer{
+        float: none;
+        width: 100%;
+        border: none;
+        border-bottom: 5px ridge rgb(100,100,100);
+        position: static;
+        min-height: 0;
+    }
+    
+    #starviewplanetlist{
+        width: 100%;
+    }
+}

@@ -15,19 +15,29 @@
 <HEAD>
     <TITLE>Regisztráció megerősítése</TITLE>
     <META charset="utf-8">
+    <LINK rel="stylesheet" href="../css/reset.css">
     <LINK rel="stylesheet" href="../css/common.css">
-    <LINK rel="stylesheet" href="../css/index/validateregistration_style.css">
+    <LINK rel="stylesheet" href="../css/classes.css">
+    
+    <STYLE>
+        @media screen and (max-width: 500px){
+            main{
+                position: static !important;
+                height: 100%;
+            }
+        }
+    </STYLE>
 </HEAD>
 <BODY>
-    <MAIN>
-        <H1>Regisztráció megerősítése</H1>
-        <H2><?php print $GLOBALS["message"]; ?></H2>
-        <FORM method="POST">
-            <LABEL>Írja be a megadott e-mail címére küldött megerősítő kódot:</LABEL>
-            <INPUT type="text" name="validationcode" placeholder="Megerősítő kód" required><BR>
-            <BUTTON>Regisztráció megerősítése</BUTTON>
+    <MAIN class='absolute50rem backgroundblack8 border5px borderridge bordercolor100 centertext overflowauto'>
+        <H1 class='marginbottom5rem'>Regisztráció megerősítése</H1>
+        <H2 class='fontsize20rem marginbottom10rem underline'><?php print $GLOBALS["message"]; ?></H2>
+        <FORM class='marginbottom30rem' method="POST">
+            <LABEL class='fontsize20rem'>Írja be a megadott e-mail címére küldött megerősítő kódot:</LABEL>
+            <INPUT class='fontsize15rem' type="text" name="validationcode" placeholder="Megerősítő kód" required><BR>
+            <BUTTON class='fontsize15rem margintop5rem'>Regisztráció megerősítése</BUTTON>
         </FORM>
-        <A href="../index.php">Kezdőlap</A>
+        <A class='fontsize20rem' href="../index.php">Kezdőlap</A>
     </MAIN>
 </BODY>
 </HTML>

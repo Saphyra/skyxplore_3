@@ -1,12 +1,12 @@
-.absolute50{
+.absolute0{
     position: absolute;
-    top: 5rem;
-    left: 5rem;
-    bottom: 5rem;
-    right: 5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
-.absolute20{
+.absolute20rem{
     position: absolute;
     left: 2rem;
     right: 2rem;
@@ -14,16 +14,60 @@
     bottom: 2rem;
 }
 
+.absolute50rem{
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
+    bottom: 5rem;
+    right: 5rem;
+}
+
+.backgroundattachmentfixed{
+    background-attachment: fixed;
+}
+
+.backgroundblack2{
+    background-color: rgba(0,0,0,0.2);
+}
+
 .backgroundblack8{
     background-color: rgba(0,0,0,0.8);
+}
+
+.backgroundblack10{
+    background-color: rgb(0,0,0);
+}
+
+.backgroundnorepeat{
+    background-repeat: no-repeat;
+}
+
+.backgroundpositiontopcenter{
+    background-position: top center;
+}
+
+.backgroundsize100percent{
+    background-size: 100%;
 }
 
 .block{
     display: block;
 }
 
+.bold{
+    font-weight: 700;
+}
+
+.border1px{
+    border-width: 1px;
+}
+
 .border5px{
     border-width: 5px;
+}
+
+.borderinset{
+    border-style: inset;
 }
 
 .borderridge{
@@ -42,12 +86,40 @@
     border-right-style: ridge;
 }
 
+.bordersolid{
+    border-style: solid;
+}
+
 .bordercolor100{
     border-color: rgb(100,100,100);
 }
 
+.bordercolor150{
+    border-color: rgb(150,150,150);
+}
+
+.bordercolor255{
+    border-color: rgb(255,255,255);
+}
+
+.borderradius0{
+    border-radius: 0;
+}
+
 .centertext{
     text-align: center;
+}
+
+.displaynone{
+    display: none;
+}
+
+.fixed0{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .floatleft{
@@ -62,6 +134,10 @@
     font-size: 0.875rem;
 }
 
+.fontsize10rem{
+    font-size: 1rem;
+}
+
 .fontsize15rem{
     font-size: 1.5rem;
 }
@@ -70,8 +146,40 @@
     font-size: 2rem;
 }
 
+.inline{
+    display: inline;
+}
+
+.italic{
+    font-style: italic;
+}
+
 .justifytext{
     text-align: justify;
+}
+
+.leftn5rem{
+    left: -0.5rem;
+}
+
+.lefttext{
+    text-align: left;
+}
+
+.letterspacing3px{
+    letter-spacing: 3px;
+}
+
+.marginauto{
+    margin: auto;
+}
+
+.margin0125rem{
+    margin: 0.125rem;
+}
+
+.margin5rem{
+    margin: 0.5rem;
 }
 
 .margin10rem{
@@ -80,6 +188,18 @@
 
 .marginbottom025rem{
     margin-bottom: 0.25rem;
+}
+
+.marginbottom5rem{
+    margin-bottom: 0.5rem;
+}
+
+.marginbottom10rem{
+    margin-bottom: 1rem;
+}
+
+.marginbottom20rem{
+    margin-bottom: 2rem;
 }
 
 .marginbottom30rem{
@@ -94,6 +214,10 @@
     margin-right: 0.25rem;
 }
 
+.margintop5rem{
+    margin-top: 0.5rem;
+}
+
 .margintop15rem{
     margin-top: 1.5rem;
 }
@@ -102,18 +226,90 @@
     margin-top: 2rem;
 }
 
+.minheight75percent{
+    min-height: 75%;
+}
+
+.minwidth125rem{
+    min-width: 12.5rem;
+}
+
+.minwidth50rem{
+    min-width: 5rem;
+}
+
+.minwidth400rem{
+    min-width: 40rem;
+}
+
 .overflowauto{
     overflow: auto;
+}
+
+.overflowxauto{
+    overflow-x: auto;
+}
+
+.padding0{
+    padding: 0;
+}
+
+.padding70px{
+    padding: 70px;
+}
+
+.padding0125rem{
+    padding: 0.125rem;
 }
 
 .padding025rem{
     padding: 0.25rem;
 }
 
+.padding5rem{
+    padding: 0.5rem;
+}
+
+.paddingleft5rem{
+    padding-left: 0.5rem;
+}
+
+.paddingright5rem{
+    padding-right: 0.5rem;
+}
+
+.relative{
+    position: relative;
+}
+
+.rightn5rem{
+    right: -0.5rem;
+}
+
 .righttext{
     text-align: right;
 }
 
+.underline{
+    text-decoration: underline;
+}
+
+.width100percent{
+    width: 100%;
+}
+
+.width100rem{
+    width: 10rem;
+}
+
 .width230rem{
     width: 23rem;
+}
+
+.width25vw{
+    width: 25vw;
+}
+
+.width50vw{
+    width: 50vw;
 }

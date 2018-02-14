@@ -10,7 +10,9 @@
     <TITLE>SkyXplore</TITLE>
     <META charset='utf-8'>
     
+    <LINK rel='stylesheet' href='../css/reset.css'>
     <LINK rel='stylesheet' href='../css/common.css'>
+    <LINK rel='stylesheet' href='../css/classes.css'>
     <LINK rel='stylesheet' href='../css/fs_common.css'>
     <?php
         $files = scandir("../css/game/");
@@ -37,9 +39,9 @@
 <BODY>
     <DIV id='content'></DIV>
     
-    <DIV id='logcontainer' oncontextmenu='document.getElementById("logcontainer").style.display="none"'>
+    <DIV class='backgroundblack10 centertext displaynone fixed0 overflowauto' id='logcontainer' oncontextmenu='document.getElementById("logcontainer").style.display="none"'>
         <BUTTON onclick='document.getElementById("logcontainer").style.display="none"'>Bezárás</BUTTON>
-        <DIV id='log'></DIV>
+        <DIV class='lefttext' id='log'></DIV>
     </DIV>
 </BODY>
 </HTML>
