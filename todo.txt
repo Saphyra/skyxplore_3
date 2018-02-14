@@ -1,7 +1,6 @@
 Cookie login / remember me
 
 Planet background higher quality (400-600)
-CSS classes
 Building background download
 
 visibility

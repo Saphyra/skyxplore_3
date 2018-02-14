@@ -11,14 +11,14 @@
     display: block;
 }
 
-.cover{
-    background-color: rgba(0,0,0,0.5);
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
+.backgrounddesert{
+    background-image: url("../../content/img/desert_background.jpg");
+}
+.backgroundlava{
+    background-image: url("../../content/img/lava_background.jpg");
+}
+.backgroundterran{
+    background-image: url("../../content/img/terran_background.jpg");
 }
 
 .list{
@@ -30,7 +30,7 @@
     overflow-y: hidden;
 }
 
-    .listitem, .planetlistitem{
+    .listitem{
         border: 2px ridge rgb(150,150,150);
         margin: 0.25rem;
         padding: 0.25rem;
@@ -38,7 +38,7 @@
         overflow-y: hidden;
     }
     
-    .listitem:hover, .planetlistitem:hover{
+    .listitem:hover{
         border-color: rgb(200,200,200);
     }
     

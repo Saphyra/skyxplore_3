@@ -10,26 +10,39 @@ function initializeLazy(){
 }
 
 function Initializer(){
-    this.initialize = function(){
-        loadContent();
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        
-        window.animation = new Animation();
-        window.back = new Back();
-        window.data = new Data();
-        window.filters = new Filters();
-        window.nameConverter = new NameConverter();
-        window.planetView = new PlanetView();
-        window.map = new Map();
-        window.starView = new StarView();
-        window.counter = new Counter();
-        
-        
-        loadGame();
-        map.showMap();
-        
-        back.addBackListeners();
-        animation.addMapListener();
+    
+    this.initialize = function initialize(){
+        try{
+            loadContent();
+            document.addEventListener('contextmenu', event => event.preventDefault());
+            
+            createBeans();
+            
+            loadGame();
+            map.showMap();
+            
+            back.addBackListeners();
+            animation.addMapListener();
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    function createBeans(){
+        try{
+            window.animation = new Animation();
+            window.back = new Back();
+            window.counter = new Counter();
+            window.data = new Data();
+            window.domElementCreator = new DOMElementCreator();
+            window.filters = new Filters();
+            window.map = new Map();
+            window.nameConverter = new NameConverter();
+            window.planetView = new PlanetView();
+            window.starView = new StarView();
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
     }
     
     function loadGame(){
