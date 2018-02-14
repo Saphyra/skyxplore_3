@@ -1,6 +1,5 @@
 Cookie login / remember me
 
-Planet background higher quality (400-600)
 Building background download
 
 visibility
@@ -25,7 +24,3 @@ schema
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
-            
-            
-starviewplanet (starview.css)
-cover (game.css)

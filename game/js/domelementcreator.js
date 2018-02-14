@@ -21,6 +21,7 @@ function DOMElementCreator(){
             }else{
                 borderColor = "bordercolor150";
             }
+            
             const element = document.createElement("DIV");
                 element.classList.add("border2px");
                 element.classList.add("borderridge");
@@ -30,19 +31,17 @@ function DOMElementCreator(){
                 element.classList.add("overflowyhidden");
                 element.classList.add("padding1px");
                 element.classList.add(borderColor);
-            
-            
-            $(element).hover(
-                    function(){
-                        element.classList.remove(borderColor);
-                        element.classList.add("bordercolor200");
-                    },
-                    function(){
-                        element.classList.remove("bordercolor200")
-                        element.classList.add(borderColor);
-                    },
-                    
-            );
+                $(element).hover(
+                        function(){
+                            element.classList.remove(borderColor);
+                            element.classList.add("bordercolor200");
+                        },
+                        function(){
+                            element.classList.remove("bordercolor200")
+                            element.classList.add(borderColor);
+                        }
+                );
+                
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
@@ -70,8 +69,7 @@ function DOMElementCreator(){
                 element.classList.add("background" + planet.type);
                 $(element).hover(
                     function(){element.classList.add("bordercolor255")},
-                    function(){element.classList.remove("bordercolor255")},
-                    
+                    function(){element.classList.remove("bordercolor255")}
                 );
                 element.onclick = function(){planetView.showPlanet(planet)};
             
