@@ -46,29 +46,30 @@ function StarViewPlanetDisplayer(){
     function displayPlanetSlots(planet){
         try{
             const list = document.createElement("DIV");
+                const slotNames = data.getElementData({source: "constants", key: "slotname"});
                 
                 const farmNum = counter.countBuildingsOfSlot(planet.planetid, "food");
                 const foodSlots = planet.slots.food;
                 const farmSlotListItem = domElementCreator.createPlanetListItem(farmNum, foodSlots);
-                    farmSlotListItem.innerHTML = "Farm hely: "  + farmNum + " / " + foodSlots;
+                    farmSlotListItem.innerHTML = slotNames.food + " "  + farmNum + " / " + foodSlots;
             list.appendChild(farmSlotListItem);
             
                 const minefieldSlots = planet.slots.minefield
                 const minefieldNum = counter.countBuildingsOfSlot(planet.planetid, "minefield");
                 const mineSlotListItem = domElementCreator.createPlanetListItem(minefieldNum, minefieldSlots);
-                    mineSlotListItem.innerHTML = "Bánya hely: " + minefieldNum + " / " + minefieldSlots;
+                    mineSlotListItem.innerHTML = slotNames.minefield + " " + minefieldNum + " / " + minefieldSlots;
             list.appendChild(mineSlotListItem);
             
                 const buildingNum = counter.countBuildingsOfSlot(planet.planetid, "building")
                 const buildingSlots = planet.slots.building;
                 const buildingSlotListItem = domElementCreator.createPlanetListItem(buildingNum, buildingSlots);
-                    buildingSlotListItem.innerHTML = "Épület hely: " + buildingNum + " / " + buildingSlots;
+                    buildingSlotListItem.innerHTML = slotNames.building + " " + buildingNum + " / " + buildingSlots;
             list.appendChild(buildingSlotListItem);
             
                 const defenseSlots = planet.slots.defense;
                 const defenseNum = counter.countDefense(planet.planetid);
                 const defenseSlotListItem = domElementCreator.createPlanetListItem(defenseNum, defenseSlots);
-                    defenseSlotListItem.innerHTML = "Védelem hely: " + defenseNum + " / " + defenseSlots;
+                    defenseSlotListItem.innerHTML = slotNames.defense + " " + defenseNum + " / " + defenseSlots;
             list.appendChild(defenseSlotListItem);
                 
             return list;

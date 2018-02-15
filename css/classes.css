@@ -174,6 +174,10 @@
     font-size: 2rem;
 }
 
+.height100rem{
+    height: 10rem;
+}
+
 .height15vw{
     height: 15vw;
 }
@@ -252,6 +256,10 @@
 
 .marginright025rem{
     margin-right: 0.25rem;
+}
+
+.margintop0{
+    margin-top: 0;
 }
 
 .margintop5rem{
@@ -366,6 +374,10 @@
     width: 10rem;
 }
 
+.width100rem{
+    width: 10rem;
+}
+
 .width230rem{
     width: 23rem;
 }
@@ -376,6 +388,10 @@
 
 .width25vw{
     width: 25vw;
+}
+
+.width45vw{
+    width: 45vw;
 }
 
 .width50vw{

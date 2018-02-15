@@ -1,5 +1,5 @@
 <?php
-    $defense = [];
+    $defense["typename"] = [];
     //Támadás
     $type="gausscannon";
     $defense[$type]["type"] = $type;

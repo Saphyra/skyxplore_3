@@ -22,7 +22,12 @@ function Data(){
             const request = new XMLHttpRequest();
                 request.open("GET", "gamedata/data/" + source + ".json", 0);
                 request.send();
-            return JSON.parse(request.responseText);
+                if(request.status == 404){
+                    log("loadElementData - target at " + source + " not found.");
+                    return null;
+                }else{
+                    return JSON.parse(request.responseText);
+                }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

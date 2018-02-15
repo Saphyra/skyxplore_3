@@ -7,7 +7,7 @@
 
 .viewmain:after{
     content: "";
-    clear: left;
+    clear: both;
     display: block;
 }
 
@@ -16,6 +16,9 @@
 }
 .backgroundlava{
     background-image: url("../../content/img/lava_background.jpg");
+}
+.backgroundplus{
+    background-image: url("../../content/img/plus_background.png");
 }
 .backgroundterran{
     background-image: url("../../content/img/terran_background.jpg");

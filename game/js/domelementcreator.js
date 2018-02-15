@@ -48,6 +48,76 @@ function DOMElementCreator(){
         }
     }
     
+    this.createPlanetSlotContainer = function createPlanetSlotContainer(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("border1px");
+                element.classList.add("borderridge");
+                element.classList.add("bordercolor150");
+                element.classList.add("marginbottom5rem");
+            
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createPlanetSlotContainerName = function createPlanetSlotContainerName(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("border1px");
+                element.classList.add("borderbottomridge");
+                element.classList.add("bordercolor150");
+                element.classList.add("fontsize15rem");
+                element.classList.add("marginbottom10rem");
+                
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createPlanetSlot = function createPlanetSlot(type){
+        try{
+            const element = this.createEmptyPlanetSlot();
+                element.classList.add("backgroundnorepeat");
+                element.classList.add("backgroundpositioncenter");
+                element.classList.add("backgroundsizecover");
+                
+                switch(type){
+                    case "empty":
+                        element.classList.add("backgroundplus");
+                    break;
+                }
+            
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createEmptyPlanetSlot = function createEmptyPlanetSlot(){
+        try{
+             const element = document.createElement("DIV");
+                element.classList.add("border5px");
+                element.classList.add("borderinset");
+                element.classList.add("bordercolor150");
+                element.classList.add("inlineblock");
+                element.classList.add("width100rem");
+                element.classList.add("height100rem");
+                element.classList.add("margin5rem");
+                element.classList.add("margintop0");
+                element.classList.add("relative");
+                $(element).hover(
+                    function(){element.classList.add("bordercolor255")},
+                    function(){element.classList.remove("bordercolor255")}
+                );
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
     this.createStarViewPlanet = function createStarViewPlanet(planet){
         try{
             const element = document.createElement("DIV");
