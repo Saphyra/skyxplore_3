@@ -2,6 +2,8 @@ Cookie login / remember me
 
 Building background download
 
+    - mine
+
 visibility
     - owned = Saját birtkban (Zöld)
     - enemy = Ellenségé (Piros)

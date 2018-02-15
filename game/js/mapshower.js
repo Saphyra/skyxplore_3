@@ -71,40 +71,39 @@ function MapShower(elements){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
-}
-
-function StarElement(star){
-    try{
-        this.star = star;
-        this.starMapElement = this.createStarMapElement(star);
-        this.starNameMapElement = this.createStarNameMapElement(star);
-        
-        let visibility;
-        switch(star.visibility.player.visibility){
-            case "owned":
-                visibility = "ownedmapelement";
-            break;
-            case "visible":
-                visibility = "visiblemapelement";
-            break;
-            case "enemy":
-                visibility = "enemymapelement";
-            break;
-            case "connected":
-                visibility = "connectedmapelement";
-            break;
-            case "hidden":
-                visibility = "hiddenmapelement";
-            break;
+    
+    function StarElement(star){
+        try{
+            this.star = star;
+            this.starMapElement = this.createStarMapElement(star);
+            this.starNameMapElement = this.createStarNameMapElement(star);
+            
+            let visibility;
+            switch(star.visibility.player.visibility){
+                case "owned":
+                    visibility = "ownedmapelement";
+                break;
+                case "visible":
+                    visibility = "visiblemapelement";
+                break;
+                case "enemy":
+                    visibility = "enemymapelement";
+                break;
+                case "connected":
+                    visibility = "connectedmapelement";
+                break;
+                case "hidden":
+                    visibility = "hiddenmapelement";
+                break;
+            }
+            
+            this.starMapElement.classList.add(visibility);
+            this.starNameMapElement.classList.add(visibility);
+            
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
-        
-        this.starMapElement.classList.add(visibility);
-        this.starNameMapElement.classList.add(visibility);
-        
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }
-}
     StarElement.prototype.createStarMapElement = function createStarMapElement(star){
         try{
             const element = createSVGElement("circle");
@@ -150,21 +149,21 @@ function StarElement(star){
         }
     }
 
-function ConnectionElement(star1, star2, connection){
-    try{
-        this.connection = connection;
-        this.star1 = star1;
-        this.star2 = star2;
-        this.connectionMapElement = this.createConnectionMapElement(star1, star2, connection);
-        
-        if(this.isConnectionHidden(star1.visibility.player.visibility, star2.visibility.player.visibility)){
-            this.connectionMapElement.classList.add("hiddenmapelement");
+    function ConnectionElement(star1, star2, connection){
+        try{
+            this.connection = connection;
+            this.star1 = star1;
+            this.star2 = star2;
+            this.connectionMapElement = this.createConnectionMapElement(star1, star2, connection);
+            
+            if(this.isConnectionHidden(star1.visibility.player.visibility, star2.visibility.player.visibility)){
+                this.connectionMapElement.classList.add("hiddenmapelement");
+            }
+            
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
-        
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }
-}
     ConnectionElement.prototype.createConnectionMapElement = function createConnectionMapElement(star1, star2, connection){
         try{
             const element = createSVGElement("line");
@@ -200,3 +199,5 @@ function ConnectionElement(star1, star2, connection){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
+}
+
