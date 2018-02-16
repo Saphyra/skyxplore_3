@@ -51,10 +51,10 @@ function DOMElementCreator(){
     this.createPlanetSlotContainer = function createPlanetSlotContainer(){
         try{
             const element = document.createElement("DIV");
-                element.classList.add("border1px");
+                element.classList.add("border3px");
                 element.classList.add("borderridge");
                 element.classList.add("bordercolor150");
-                element.classList.add("marginbottom5rem");
+                element.classList.add("margintop5rem");
             
             return element;
         }catch(err){
@@ -132,6 +132,41 @@ function DOMElementCreator(){
                     function(){element.classList.add("bordercolor255")},
                     function(){element.classList.remove("bordercolor255")}
                 );
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createPlanetSlotTitle = function createPlanetSlotTitle(title){
+        try{
+            const element = document.createElement("DIV");
+                element.innerHTML = title;
+                element.classList.add("backgroundblack8");
+                element.classList.add("fontsize125rem");
+                element.classList.add("border2px");
+                element.classList.add("borderbottomridge");
+                element.classList.add("bordercolor150");
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createPlanetSlotLevel = function createPlanetSlotLevel(level){
+        try{
+            const element = document.createElement("DIV");
+                element.innerHTML = "Szint: " + level
+                element.classList.add("absolute");
+                element.classList.add("backgroundblack8");
+                element.classList.add("border2px");
+                element.classList.add("bordertopridge");
+                element.classList.add("bordercolor150");
+                element.classList.add("bottom1px");
+                element.classList.add("fontsize125rem");
+                element.classList.add("width100percent");
+                
+                
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);

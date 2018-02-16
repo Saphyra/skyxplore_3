@@ -44,17 +44,21 @@ function PlanetView(){
             function createSlots(planet, buildings, slot){
                 try{
                     let num = 0;
-                    const element = domElementCreator.createPlanetSlotContainer();
-                        const elementTitle = domElementCreator.createPlanetSlotContainerName()
-                            elementTitle.innerHTML = data.getElementData({source: "constants", key: "slotname"})[slot];
-                    element.appendChild(elementTitle);
+                    const container = domElementCreator.createPlanetSlotContainer();
+                        const containerTitle = domElementCreator.createPlanetSlotContainerName()
+                            containerTitle.innerHTML = data.getElementData({source: "constants", key: "slotname"})[slot];
+                    container.appendChild(containerTitle);
                     
                     for(let index in buildings[slot]){
                         const building = buildings[slot][index];
                         const buildingSlot = domElementCreator.createPlanetSlot(building.buildingData.type);
                             const buildingSlotCover = domElementCreator.createCoverElement();
+                                const planetSlotTitle = domElementCreator.createPlanetSlotTitle(building.buildingData.name);
+                            buildingSlotCover.appendChild(planetSlotTitle);
+                                const planetSlotLevel = domElementCreator.createPlanetSlotLevel(building.buildingData.level);
+                            buildingSlotCover.appendChild(planetSlotLevel);
                         buildingSlot.appendChild(buildingSlotCover);
-                        element.appendChild(buildingSlot);
+                        container.appendChild(buildingSlot);
                         num++
                     }
                     
@@ -62,10 +66,10 @@ function PlanetView(){
                         const emptySlot = domElementCreator.createPlanetSlot("empty");
                             const emptySlotCover = domElementCreator.createCoverElement();
                         emptySlot.appendChild(emptySlotCover);
-                        element.appendChild(emptySlot);
+                        container.appendChild(emptySlot);
                     }
                     
-                    return element;
+                    return container;
                 }catch(err){
                     log(arguments.callee.name + " - " + err.name + ": " + err.message);
                 }

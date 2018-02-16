@@ -1,3 +1,7 @@
+.absolute{
+    position: absolute;
+}
+
 .absolute0{
     position: absolute;
     top: 0;
@@ -106,6 +110,10 @@
     border-right-style: ridge;
 }
 
+.bordertopridge{
+    border-top-style: ridge;
+}
+
 .bordersolid{
     border-style: solid;
 }
@@ -132,6 +140,10 @@
 
 .borderradius0{
     border-radius: 0;
+}
+
+.bottom1px{
+    bottom: 1px;
 }
 
 .centertext{
@@ -165,6 +177,11 @@
 .fontsize10rem{
     font-size: 1rem;
 }
+
+.fontsize125rem{
+    font-size: 1.25rem;
+}
+
 
 .fontsize15rem{
     font-size: 1.5rem;
