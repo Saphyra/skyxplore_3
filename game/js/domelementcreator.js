@@ -103,8 +103,8 @@ function DOMElementCreator(){
                 element.classList.add("borderinset");
                 element.classList.add("bordercolor150");
                 element.classList.add("inlineblock");
-                element.classList.add("width100rem");
-                element.classList.add("height100rem");
+                element.classList.add("width75rem");
+                element.classList.add("height75rem");
                 element.classList.add("margin5rem");
                 element.classList.add("margintop0");
                 element.classList.add("relative");
