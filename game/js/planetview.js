@@ -36,11 +36,6 @@ function PlanetView(){
                         container.appendChild(createSlots(planet, buildings, slot));
                     }
                 
-                    /*container.appendChild(createFarmSlots(planet, buildings));
-                    container.appendChild(createMineSlots(planet, buildings));
-                    container.appendChild(createBuildingSlots(planet, buildings));
-                    container.appendChild(createDefenseSlots(planet, buildings));*/
-                
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message);
             }
@@ -69,46 +64,6 @@ function PlanetView(){
                         emptySlot.appendChild(emptySlotCover);
                         element.appendChild(emptySlot);
                     }
-                    
-                    return element;
-                }catch(err){
-                    log(arguments.callee.name + " - " + err.name + ": " + err.message);
-                }
-            }
-            
-            function createMineSlots(planet, buildings){
-                try{
-                    const element = domElementCreator.createPlanetSlotContainer();  
-                        const elementTitle = domElementCreator.createPlanetSlotContainerName()
-                            elementTitle.innerHTML = data.getElementData({source: "constants", key: "slotname"}).minefield;
-                    element.appendChild(elementTitle);
-                    
-                    return element;
-                }catch(err){
-                    log(arguments.callee.name + " - " + err.name + ": " + err.message);
-                }
-            }
-            
-            function createBuildingSlots(planet, buildings){
-                try{
-                    const element = domElementCreator.createPlanetSlotContainer();
-                        element.appendChild(domElementCreator.createPlanetSlotContainerName());
-                        const elementTitle = domElementCreator.createPlanetSlotContainerName()
-                            elementTitle.innerHTML = data.getElementData({source: "constants", key: "slotname"}).building;
-                    element.appendChild(elementTitle);
-                    
-                    return element;
-                }catch(err){
-                    log(arguments.callee.name + " - " + err.name + ": " + err.message);
-                }
-            }
-            
-            function createDefenseSlots(planet, buildings){
-                try{
-                    const element = domElementCreator.createPlanetSlotContainer();
-                        const elementTitle = domElementCreator.createPlanetSlotContainerName()
-                            elementTitle.innerHTML = data.getElementData({source: "constants", key: "slotname"}).defense;
-                    element.appendChild(elementTitle);
                     
                     return element;
                 }catch(err){

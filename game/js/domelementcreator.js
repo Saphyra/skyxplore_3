@@ -85,6 +85,26 @@ function DOMElementCreator(){
                 element.classList.add("backgroundsizecover");
                 
                 switch(type){
+                    case "farm":
+                        element.classList.add("backgroundfarm");
+                    break;
+                    case "mine":
+                        element.classList.add("backgroundmine");
+                    break;
+                    case "factory":
+                        element.classList.add("backgroundfactory");
+                    break;
+                    case "house":
+                        element.classList.add("backgroundhouse");
+                    break;
+                    case "fridge":
+                    case "depot":
+                    case "storage":
+                        element.classList.add("backgroundstorage");
+                    break;
+                    case "defense":
+                        element.classList.add("backgrounddefense");
+                    break;
                     case "empty":
                         element.classList.add("backgroundplus");
                     break;

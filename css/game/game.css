@@ -11,14 +11,32 @@
     display: block;
 }
 
+.backgrounddefense{
+    background-image: url("../../content/img/defense_background.png");
+}
 .backgrounddesert{
     background-image: url("../../content/img/desert_background.jpg");
+}
+.backgroundfactory{
+    background-image: url("../../content/img/factory_background.png");
+}
+.backgroundfarm{
+    background-image: url("../../content/img/farm_background.png");
+}
+.backgroundhouse{
+    background-image: url("../../content/img/house_background.png");
 }
 .backgroundlava{
     background-image: url("../../content/img/lava_background.jpg");
 }
+.backgroundmine{
+    background-image: url("../../content/img/mine_background.png");
+}
 .backgroundplus{
     background-image: url("../../content/img/plus_background.png");
+}
+.backgroundstorage{
+    background-image: url("../../content/img/storage_background.png");
 }
 .backgroundterran{
     background-image: url("../../content/img/terran_background.jpg");
