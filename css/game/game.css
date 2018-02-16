@@ -70,8 +70,8 @@
             overflow-y: hidden;
         }
         
-@media screen and (max-width: 620px){
-    #starviewleftcontainer, #starviewrightcontainer{
+@media screen and (max-width: 650px){
+    .container{
         float: none;
         width: 100%;
         border: none;
@@ -80,7 +80,7 @@
         min-height: 0;
     }
     
-    #starviewplanetlist{
+    .slotlist{
         width: 100%;
     }
 }
