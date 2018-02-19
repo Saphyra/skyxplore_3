@@ -1,4 +1,39 @@
 function Filters(){
+    this.searchElements = function searchElements(params){
+        try{
+            const sources = gameDataSources;
+            const result = [];
+            for(let sindex in sources){
+                const source = sources[sindex];
+                const elements = data.getFromCache(source);
+                for(let eindex in elements){
+                    const element = elements[eindex];
+                    if(isElementValid(element, params)){
+                        result.push(element);
+                    }
+                }
+            }
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+        function isElementValid(element, params){
+            try{
+                let result = true;
+                    for(let key in params){
+                        if(element[key] != params[key]){
+                            result = false;
+                        }
+                    }
+                
+                return result;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            }
+        }
+    
     this.getPlanetsOfStar = function getPlanetsOfStar(starid){
         try{
             let result = data.getFromCache("planetsof" + starid);
@@ -37,6 +72,14 @@ function Filters(){
             }
             
             return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.getBuildableBuildingsOfSlot = function getBuildableBuildingsOfSlot(slot){
+        try{
+            return this.searchElements({slot: slot, level: 1});
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

@@ -7,7 +7,7 @@ function Data(){
             let result = this.getFromCache(resource.source);
             
             if(result === null){
-                result = this.loadElementData(resource.source);
+                result = loadElementData(resource.source);
                 this.putToCache(resource.source, result);
             }
             
@@ -17,7 +17,7 @@ function Data(){
         }
     }
     
-    this.loadElementData = function loadElementData(source){
+    loadElementData = function loadElementData(source){
         try{
             const request = new XMLHttpRequest();
                 request.open("GET", "gamedata/data/" + source + ".json", 0);
@@ -44,6 +44,17 @@ function Data(){
     this.getFromCache = function getFromCache(key){
         try{
             return cache[key] || null;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.loadGameData = function loadGameData(){
+        try{
+            for(let index in gameDataSources){
+                const entry = gameDataSources[index];
+                this.putToCache(entry, loadElementData(entry));
+            }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

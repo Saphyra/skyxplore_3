@@ -66,6 +66,7 @@ function PlanetView(){
                         const emptySlot = domElementCreator.createPlanetSlot("empty");
                             const emptySlotCover = domElementCreator.createCoverElement();
                         emptySlot.appendChild(emptySlotCover);
+                        emptySlot.onclick = function(){buildNewBuilding.showPage(planet.planetid, slot)};
                         container.appendChild(emptySlot);
                     }
                     

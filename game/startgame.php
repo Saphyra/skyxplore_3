@@ -23,7 +23,12 @@
         }
     ?>
     <SCRIPT>
-        window.startGameid = "<?php print $_POST["gameid"]; ?>";
+        try{
+            window.startGameid = "<?php print $_POST["gameid"]; ?>";
+            window.gameDataSources = JSON.parse('<?php print getGameDataSources(); ?>');
+        }catch(e){
+            alert(e.message);
+        }
     </SCRIPT>
     <SCRIPT src='../content/js/jquery.js'></SCRIPT>
     
@@ -45,3 +50,16 @@
     </DIV>
 </BODY>
 </HTML>
+
+<?php
+    function getGameDataSources(){
+        $files = scandir("gamedata/data/");
+        $result = [];
+        foreach($files as $file){
+            if(strstr($file, ".json")){
+                $result[] = explode(".json", $file)[0];
+            }
+        }
+        return json_encode($result);
+    }
+?>

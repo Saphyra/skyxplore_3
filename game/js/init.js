@@ -13,11 +13,13 @@ function Initializer(){
     
     this.initialize = function initialize(){
         try{
+            
             loadContent();
             document.addEventListener('contextmenu', event => event.preventDefault());
             
             createBeans();
             
+            data.loadGameData();
             loadGame();
             map.showMap();
             
@@ -32,6 +34,7 @@ function Initializer(){
         try{
             window.animation = new Animation();
             window.back = new Back();
+            window.buildNewBuilding = new BuildNewBuilding();
             window.counter = new Counter();
             window.data = new Data();
             window.domElementCreator = new DOMElementCreator();
