@@ -22,3 +22,14 @@ schema
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
+            
+DOMElementCreator
+    - Subclasses
+    - Only delegate
+    
+NewBuildingView
+    - ResourceList formáz
+    - Építési idő, maxHR kijelez
+    
+Minden elem készítésénél DOMElementCreator használata
+    - Subclass legyártja a DOM elemet, fő class feltölti adattal (Ahol lehetséges)

@@ -275,6 +275,10 @@
     margin-left: 0.25rem;
 }
 
+.marginleft80rem{
+    margin-left: 8rem;
+}
+
 .marginright025rem{
     margin-right: 0.25rem;
 }
@@ -303,6 +307,14 @@
     max-width: 20rem;
 }
 
+.minheight75rem{
+    min-height: 7.5rem;
+}
+
+.minheight85rem{
+    min-height: 8.5rem;
+}
+
 .minheight100rem{
     min-height: 10rem;
 }
@@ -313,6 +325,10 @@
 
 .minwidth50rem{
     min-width: 5rem;
+}
+
+.minwidth75rem{
+    min-width: 7.5rem;
 }
 
 .minwidth100rem{
@@ -363,6 +379,10 @@
     padding: 0.5rem;
 }
 
+.paddingbottom10percent{
+    padding-bottom: 10%;
+}
+
 .paddingleft5rem{
     padding-left: 0.5rem;
 }
@@ -385,6 +405,10 @@
 
 .underline{
     text-decoration: underline;
+}
+
+.width10percent{
+    width: 10%;
 }
 
 .width100percent{

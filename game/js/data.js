@@ -3,15 +3,15 @@ function Data(){
     
     this.getElementData = function getElementData(resource){
         try{
-            //log(resource.source + " - " + resource.key);
-            let result = this.getFromCache(resource.source);
+            let element = this.getFromCache(resource.source);
             
-            if(result === null){
-                result = loadElementData(resource.source);
-                this.putToCache(resource.source, result);
+            if(element === null){
+                element = loadElementData(resource.source);
+                this.putToCache(resource.source, element);
             }
+            const result = element[resource.key] || function(){log("No data in element " + resource.source + " with key " + resource.key); return null};
             
-            return result[resource.key];
+            return result;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

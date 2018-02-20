@@ -76,6 +76,13 @@ BuildingGrouper.prototype.orderBuildingsByName = function orderBuildingsByName(b
         log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }
 }
+BuildingGrouper.prototype.orderBuildingDatasByName = function orderBuildingDatasByName(buildings){
+    try{
+        return buildings.sort(function(a, b){a.name.localeCompare(b.name)});
+    }catch(err){
+        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+    }
+}
 BuildingGrouper.prototype.groupBuildingsBySlot = function groupBuildingsBySlot(buildings){
     try{
         const slots = {};

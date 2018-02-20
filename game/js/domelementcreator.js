@@ -11,6 +11,69 @@ function DOMElementCreator(){
         }
     }
     
+    this.createNewBuildingListItem = function createNewBuildingListItem(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("listitem");
+                element.classList.add("lefttext");
+                element.classList.add("minheight85rem");
+                element.style.borderWidth = "5px";
+                element.style.padding = 0;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createNewBuildingCover = function createNewBuildingCover(type){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("absolute");
+                element.classList.add("backgroundpositioncenter");
+                element.classList.add("backgroundsize100percent");
+                element.classList.add("border2px");
+                element.classList.add("borderinset");
+                element.classList.add("bordercolor150");
+                element.classList.add("inlineblock");
+                element.classList.add("height75rem");
+                element.classList.add("width75rem");
+                element.classList.add(getBackgroundByType(type));
+                
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createNewBuildingContentContainer = function createNewBuildingContentContainer(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("border5px");
+                element.classList.add("borderbottomridge");
+                element.classList.add("borderleftridge");
+                element.classList.add("bordercolor150");
+                element.classList.add("marginleft80rem");
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createNewBuildingTitle = function createNewBuildingTitle(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("border5px");
+                element.classList.add("borderbottomridge");
+                element.classList.add("bordercolor150");
+                element.classList.add("centertext");
+                element.classList.add("fontsize20rem");
+                
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
     this.createPlanetListItem = function createPlanetListItem(num, slot){
         try{
             let borderColor;
@@ -83,38 +146,53 @@ function DOMElementCreator(){
                 element.classList.add("backgroundnorepeat");
                 element.classList.add("backgroundpositioncenter");
                 element.classList.add("backgroundsizecover");
+                element.classList.add(getBackgroundByType(type));
                 
-                switch(type){
-                    case "farm":
-                        element.classList.add("backgroundfarm");
-                    break;
-                    case "mine":
-                        element.classList.add("backgroundmine");
-                    break;
-                    case "factory":
-                        element.classList.add("backgroundfactory");
-                    break;
-                    case "house":
-                        element.classList.add("backgroundhouse");
-                    break;
-                    case "fridge":
-                    case "depot":
-                    case "storage":
-                        element.classList.add("backgroundstorage");
-                    break;
-                    case "defense":
-                        element.classList.add("backgrounddefense");
-                    break;
-                    case "empty":
-                        element.classList.add("backgroundplus");
-                    break;
-                }
             
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
+    
+        function getBackgroundByType(type){
+            try{
+                let background;
+                switch(type){
+                    case "farm":
+                        background = "backgroundfarm"
+                    break;
+                    case "mine":
+                        background = "backgroundmine";
+                    break;
+                    case "factory":
+                        background = "backgroundfactory";
+                    break;
+                    case "house":
+                        background = "backgroundhouse";
+                    break;
+                    case "fridge":
+                    case "depot":
+                    case "storage":
+                        background = "backgroundstorage";
+                    break;
+                    case "defense":
+                        background = "backgrounddefense";
+                    break;
+                    case "empty":
+                        background = "backgroundplus";
+                    break;
+                    default:
+                        log("Unknown building type: " + type);
+                        background = null;
+                    break;
+                }
+                
+                return background;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            }
+        }
     
     this.createEmptyPlanetSlot = function createEmptyPlanetSlot(){
         try{
