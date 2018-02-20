@@ -79,7 +79,18 @@ function Filters(){
     
     this.getBuildableBuildingsOfSlot = function getBuildableBuildingsOfSlot(slot){
         try{
-            return this.searchElements({slot: slot, level: 1});
+            const elements = this.searchElements({slot: slot});
+            const result = [];
+            
+                for(let index in elements){
+                    const element = elements[index];
+                    if(element.level === undefined || element.level === 1){
+                        result.push(element);
+                    }
+                }
+            
+            return result;
+            
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

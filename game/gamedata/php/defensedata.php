@@ -1,7 +1,9 @@
 <?php
-    $defense["typename"] = [];
+    $defaultDefense["slot"] = "defense";
+    $defense["typename"] = "Védelem";
     //Támadás
     $type="gausscannon";
+    $defense[$type] = $defaultDefense;
     $defense[$type]["type"] = $type;
     $defense[$type]["name"] = "Lövegtorony";
     $defense[$type]["hull"] = 40000;
@@ -15,6 +17,7 @@
     
     //Támogatás
     $type="repairstation";
+    $defense[$type] = $defaultDefense;
     $defense[$type]["type"] = $type;
     $defense[$type]["name"] = "Javító állomás";
     $defense[$type]["hull"] = 30000;
@@ -28,6 +31,7 @@
     
     //Védelem
     $type="deflector";
+    $defense[$type] = $defaultDefense;
     $defense[$type]["type"] = $type;
     $defense[$type]["name"] = "Deflektor";
     $defense[$type]["hull"] = 100000;
@@ -41,6 +45,7 @@
     
     //Szabotázs
     $type="minefield";
+    $defense[$type] = $defaultDefense;
     $defense[$type]["type"] = $type;
     $defense[$type]["name"] = "Aknamező";
     $defense[$type]["hull"] = 35000;
@@ -54,6 +59,7 @@
     
     //Szabotázs
     $type="starbase";
+    $defense[$type] = $defaultDefense;
     $defense[$type]["type"] = $type;
     $defense[$type]["name"] = "Csillagbázis";
     $defense[$type]["hull"] = 100000;
