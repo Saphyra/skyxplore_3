@@ -5,13 +5,12 @@ function StarViewQueueDisplayer(){
                 container.innerHTML = "";
                 
             if(!queue.length){
-                container.innerHTML = "<DIV class='listtitle'>Nincs tétel</DIV>";
+                container.appendChild(domElementCreator.createListElementTitle("Nincs tétel"));
             }else{
                 for(let index in queue){
                     const element = queue[index];
                     
-                    const item = document.createElement("DIV");
-                        item.className = "listitem";
+                    const item = domElementCreator.createListItem();
                         item.innerHTML = "Tétel";
                     container.appendChild(item);
                 }

@@ -34,8 +34,7 @@ function StarViewDetailsDisplayer(){
             const netFoodIncome = counter.countNetFoodIncome(star);
             const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : "- " + netFoodIncome;
             const fridgeCapacity = counter.countStorageCapacity(star.starid, "fridge");
-            const foodListItem = document.createElement("DIV");
-                foodListItem.className = "listitem";
+            const foodListItem = domElementCreator.createListItem();
                 foodListItem.innerHTML = 
                     data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
                     + " (" + foodIncome + "/kör)";
@@ -48,14 +47,12 @@ function StarViewDetailsDisplayer(){
                     const list = domElementCreator.createListElement();
                         
                         const capacity = counter.countStorageCapacity(star.starid, storageKey);
-                        const listTitle = document.createElement("DIV");
-                            listTitle.className = "listtitle";
+                        const listTitle = domElementCreator.createListElementTitle();
                             
                     list.appendChild(listTitle);
                     let actualCapacity = 0;
                     for(let resourceKey in storage){
-                        const resourceItem = document.createElement("DIV");
-                            resourceItem.className = "listitem";
+                        const resourceItem = domElementCreator.createListItem()
                             resourceItem.innerHTML = data.getElementData({source: "resource", key: resourceKey}).name
                             + ": " + storage[resourceKey];
                         list.appendChild(resourceItem);
@@ -79,8 +76,7 @@ function StarViewDetailsDisplayer(){
             
             for(let type in types){
                 const buildings = types[type];
-                let listItem = document.createElement("DIV");
-                listItem.className = "listitem";
+                let listItem = domElementCreator.createListItem()
                 
                 switch(type){
                     case "farm":
@@ -113,8 +109,7 @@ function StarViewDetailsDisplayer(){
             for(let type in types){
                 const buildings = types[type];
                 
-                const listItem = document.createElement("DIV");
-                    listItem.className = "listitem";
+                const listItem = domElementCreator.createListItem()
                 switch(type){
                     case "storage":
                     case "depot":

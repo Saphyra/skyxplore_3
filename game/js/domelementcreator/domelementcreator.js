@@ -1,14 +1,13 @@
 function DOMElementCreator(){
     this.commonElementCreator = new CommonElementCreator(this);
-    
-    this.createCoverElement = this.commonElementCreator.createCoverElement;
-    
-    this.createListElement = this.commonElementCreator.createListElement;
+        this.createCoverElement = this.commonElementCreator.createCoverElement;
+        this.createListElement = this.commonElementCreator.createListElement;
+        this.createListElementTitle = this.commonElementCreator.createListElementTitle;
+        this.createListItem = this.commonElementCreator.createListItem;
     
     this.createNewBuildingListItem = function createNewBuildingListItem(){
         try{
-            const element = document.createElement("DIV");
-                element.classList.add("listitem");
+            const element = this.createListItem();
                 element.classList.add("lefttext");
                 element.classList.add("minheight85rem");
                 element.style.borderWidth = "5px";
