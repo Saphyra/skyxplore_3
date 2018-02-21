@@ -30,13 +30,12 @@ function BuildNewBuildingView(){
                 try{
                     const item = domElementCreator.createNewBuildingListItem();
                         
-                        const cover = domElementCreator.createNewBuildingCover(building.type);
+                        const cover = domElementCreator.createNewBuildingIcon(building.type);
                     item.appendChild(cover);
                     
                         const contentContainer = domElementCreator.createNewBuildingContentContainer();
                     
-                            const title = domElementCreator.createNewBuildingTitle();
-                                title.innerHTML = building.name;
+                            const title = domElementCreator.createNewBuildingTitle(building.name);
                         contentContainer.appendChild(title);
                             
                             const hrContainer = domElementCreator.createListElement();

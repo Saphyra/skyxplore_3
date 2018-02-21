@@ -45,8 +45,7 @@ function PlanetView(){
                 try{
                     let num = 0;
                     const container = domElementCreator.createPlanetSlotContainer();
-                        const containerTitle = domElementCreator.createPlanetSlotContainerName()
-                            containerTitle.innerHTML = data.getElementData({source: "constants", key: "slotname"})[slot];
+                        const containerTitle = domElementCreator.createPlanetSlotContainerName(data.getElementData({source: "constants", key: "slotname"})[slot]);
                     container.appendChild(containerTitle);
                     
                     for(let index in buildings[slot]){

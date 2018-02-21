@@ -50,25 +50,25 @@ function StarViewPlanetDisplayer(){
                 
                 const farmNum = counter.countBuildingsOfSlot(planet.planetid, "food");
                 const foodSlots = planet.slots.food;
-                const farmSlotListItem = domElementCreator.createPlanetListItem(farmNum, foodSlots);
+                const farmSlotListItem = domElementCreator.createPlanetSlotListItem(farmNum, foodSlots);
                     farmSlotListItem.innerHTML = slotNames.food + " "  + farmNum + " / " + foodSlots;
             list.appendChild(farmSlotListItem);
             
                 const minefieldSlots = planet.slots.minefield
                 const minefieldNum = counter.countBuildingsOfSlot(planet.planetid, "minefield");
-                const mineSlotListItem = domElementCreator.createPlanetListItem(minefieldNum, minefieldSlots);
+                const mineSlotListItem = domElementCreator.createPlanetSlotListItem(minefieldNum, minefieldSlots);
                     mineSlotListItem.innerHTML = slotNames.minefield + " " + minefieldNum + " / " + minefieldSlots;
             list.appendChild(mineSlotListItem);
             
                 const buildingNum = counter.countBuildingsOfSlot(planet.planetid, "building")
                 const buildingSlots = planet.slots.building;
-                const buildingSlotListItem = domElementCreator.createPlanetListItem(buildingNum, buildingSlots);
+                const buildingSlotListItem = domElementCreator.createPlanetSlotListItem(buildingNum, buildingSlots);
                     buildingSlotListItem.innerHTML = slotNames.building + " " + buildingNum + " / " + buildingSlots;
             list.appendChild(buildingSlotListItem);
             
                 const defenseSlots = planet.slots.defense;
                 const defenseNum = counter.countDefense(planet.planetid);
-                const defenseSlotListItem = domElementCreator.createPlanetListItem(defenseNum, defenseSlots);
+                const defenseSlotListItem = domElementCreator.createPlanetSlotListItem(defenseNum, defenseSlots);
                     defenseSlotListItem.innerHTML = slotNames.defense + " " + defenseNum + " / " + defenseSlots;
             list.appendChild(defenseSlotListItem);
                 
