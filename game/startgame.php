@@ -33,12 +33,7 @@
     <SCRIPT src='../content/js/jquery.js'></SCRIPT>
     
     <?php
-        $files = scandir("js/");
-        foreach($files as $file){
-            if(strstr($file, ".js")){
-                print "<SCRIPT src='js/$file'></SCRIPT>";
-            }
-        }
+        addScripts("js");
     ?>
 </HEAD>
 <BODY>
@@ -61,5 +56,19 @@
             }
         }
         return json_encode($result);
+    }
+    
+    function addScripts($dirname){
+        $dir = $dirname .= "/";
+        $files = scandir($dir);
+        foreach($files as $file){
+            if($file != "." && $file!= ".."){
+                if(is_dir($dir . $file)){
+                    addScripts($dir . $file);
+                }else if(strstr($file, ".js")){
+                    print "<SCRIPT src='$dir$file'></SCRIPT>";
+                }
+            }
+        }
     }
 ?>

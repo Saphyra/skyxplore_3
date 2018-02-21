@@ -1,4 +1,6 @@
 function DOMElementCreator(){
+    //this.commonElementCreator = new CommonElementCreator(this);
+    
     this.createCoverElement = function createCoverElement(){
         try{    
             const element = document.createElement("DIV");

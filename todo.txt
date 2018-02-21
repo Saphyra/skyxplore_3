@@ -29,7 +29,6 @@ DOMElementCreator
     
 NewBuildingView
     - ResourceList formáz
-    - Építési idő, maxHR kijelez
     
 Minden elem készítésénél DOMElementCreator használata
     - Subclass legyártja a DOM elemet, fő class feltölti adattal (Ahol lehetséges)
