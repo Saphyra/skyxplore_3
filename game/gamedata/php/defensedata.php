@@ -44,7 +44,7 @@
     $defense[$type]["soldier"] = 1;
     
     //Szabotázs
-    $type="minefield";
+    $type="minefied";
     $defense[$type] = $defaultDefense;
     $defense[$type]["type"] = $type;
     $defense[$type]["name"] = "Aknamező";

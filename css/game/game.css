@@ -11,6 +11,9 @@
     display: block;
 }
 
+.backgrounddeflector{
+    background-image: url("../../content/img/deflector_background.png");
+}
 .backgrounddesert{
     background-image: url("../../content/img/desert_background.jpg");
 }
@@ -19,6 +22,9 @@
 }
 .backgroundfarm{
     background-image: url("../../content/img/farm_background.png");
+}
+.backgroundgausscannon{
+    background-image: url("../../content/img/gausscannon_background.png");
 }
 .backgroundhouse{
     background-image: url("../../content/img/house_background.png");
@@ -29,8 +35,17 @@
 .backgroundmine{
     background-image: url("../../content/img/mine_background.png");
 }
+.backgroundminefield{
+    background-image: url("../../content/img/minefield_background.png");
+}
 .backgroundplus{
     background-image: url("../../content/img/plus_background.png");
+}
+.backgroundrepairstation{
+    background-image: url("../../content/img/repairstation_background.png");
+}
+.backgroundstarbase{
+    background-image: url("../../content/img/starbase_background.png");
 }
 .backgroundstorage{
     background-image: url("../../content/img/storage_background.png");

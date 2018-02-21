@@ -176,6 +176,21 @@ function DOMElementCreator(){
                     case "storage":
                         background = "backgroundstorage";
                     break;
+                    case "deflector":
+                        background = "backgrounddeflector";
+                    break;
+                    case "gausscannon":
+                        background = "backgroundgausscannon";
+                    break;
+                    case "minefield":
+                        background = "backgroundminefield";
+                    break;
+                    case "repairstation":
+                        background = "backgroundrepairstation";
+                    break;
+                    case "starbase":
+                        background = "backgroundstarbase";
+                    break;
                     case "empty":
                         background = "backgroundplus";
                     break;
