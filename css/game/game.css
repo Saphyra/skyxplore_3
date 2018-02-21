@@ -11,9 +11,6 @@
     display: block;
 }
 
-.backgrounddefense{
-    background-image: url("../../content/img/defense_background.png");
-}
 .backgrounddesert{
     background-image: url("../../content/img/desert_background.jpg");
 }

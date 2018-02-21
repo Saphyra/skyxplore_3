@@ -176,9 +176,6 @@ function DOMElementCreator(){
                     case "storage":
                         background = "backgroundstorage";
                     break;
-                    case "defense":
-                        background = "backgrounddefense";
-                    break;
                     case "empty":
                         background = "backgroundplus";
                     break;
