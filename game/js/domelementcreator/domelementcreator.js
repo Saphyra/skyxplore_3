@@ -1,17 +1,9 @@
 function DOMElementCreator(){
-    //this.commonElementCreator = new CommonElementCreator(this);
+    this.commonElementCreator = new CommonElementCreator(this);
     
-    this.createCoverElement = function createCoverElement(){
-        try{    
-            const element = document.createElement("DIV");
-                element.classList.add("absolute0");
-                element.classList.add("backgroundblack5");
-                element.classList.add("overflowauto");
-            return element;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
-        }
-    }
+    this.createCoverElement = this.commonElementCreator.createCoverElement;
+    
+    this.createListElement = this.commonElementCreator.createListElement;
     
     this.createNewBuildingListItem = function createNewBuildingListItem(){
         try{

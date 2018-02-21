@@ -90,8 +90,40 @@
     border-width: 5px;
 }
 
+.borderbottom5px{
+    border-bottom-width: 5px;
+}
+
+.bordercolor50{
+    border-color: rgb(50,50,50);
+}
+
+.bordercolor100{
+    border-color: rgb(100,100,100);
+}
+
+.bordercolor150{
+    border-color: rgb(150,150,150);
+}
+
+.bordercolor255{
+    border-color: rgb(255,255,255);
+}
+
+.bordercolorgreen{
+    border-color: green;
+}
+
+.bordercolorred{
+    border-color: red;
+}
+
 .borderinset{
     border-style: inset;
+}
+
+.borderradius0{
+    border-radius: 0;
 }
 
 .borderridge{
@@ -116,30 +148,6 @@
 
 .bordersolid{
     border-style: solid;
-}
-
-.bordercolor100{
-    border-color: rgb(100,100,100);
-}
-
-.bordercolor150{
-    border-color: rgb(150,150,150);
-}
-
-.bordercolor255{
-    border-color: rgb(255,255,255);
-}
-
-.bordercolorgreen{
-    border-color: green;
-}
-
-.bordercolorred{
-    border-color: red;
-}
-
-.borderradius0{
-    border-radius: 0;
 }
 
 .bottom1px{

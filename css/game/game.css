@@ -54,15 +54,6 @@
     background-image: url("../../content/img/terran_background.jpg");
 }
 
-.list{
-    border: 3px ridge rgb(50,50,50);
-    border-bottom-width: 5px;
-    margin: 0.25rem;
-    margin-top: 0.25rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
     .listitem{
         border: 2px ridge rgb(150,150,150);
         margin: 0.25rem;

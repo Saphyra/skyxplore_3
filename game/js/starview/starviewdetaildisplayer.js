@@ -45,8 +45,7 @@ function StarViewDetailsDisplayer(){
                 const storage = resources[storageKey];
                 
                 if(storageKey !== "food" && Object.keys(storage).length){
-                    const list = document.createElement("DIV");
-                        list.className = "list";
+                    const list = domElementCreator.createListElement();
                         
                         const capacity = counter.countStorageCapacity(star.starid, storageKey);
                         const listTitle = document.createElement("DIV");

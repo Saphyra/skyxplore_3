@@ -39,13 +39,11 @@ function BuildNewBuildingView(){
                                 title.innerHTML = building.name;
                         contentContainer.appendChild(title);
                             
-                            const hrContainer = document.createElement("DIV");
-                                hrContainer.className = "list";
+                            const hrContainer = domElementCreator.createListElement();
                                 hrContainer.innerHTML = "Építési idő: " + building.constructiontime + " / Max. munkás: " + building.maxhr;
                         contentContainer.appendChild(hrContainer);
                         
-                            const resourceContainer = document.createElement("DIV");
-                                resourceContainer.className = "list";
+                            const resourceContainer = domElementCreator.createListElement();
                             
                                 for(let rindex in building.resource){
                                     const resource = building.resource[rindex];
