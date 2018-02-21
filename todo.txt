@@ -23,12 +23,8 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
             
-DOMElementCreator
-    - Subclasses
-    - Only delegate, and fill the content
+StarView
+    - DOM elemek készítése creatoron keresztül -> Átvizsgál
     
 NewBuildingView
     - ResourceList formáz
-    
-Minden elem készítésénél DOMElementCreator használata
-    - Subclass legyártja a DOM elemet, fő class feltölti adattal (Ahol lehetséges)
