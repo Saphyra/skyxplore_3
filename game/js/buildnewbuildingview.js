@@ -1,4 +1,4 @@
-function BuildNewBuilding(){
+function BuildNewBuildingView(){
     this.grouper = new BuildingGrouper();
     
     this.showPage = function showPage(planetid, slot){
@@ -38,8 +38,14 @@ function BuildNewBuilding(){
                             const title = domElementCreator.createNewBuildingTitle();
                                 title.innerHTML = building.name;
                         contentContainer.appendChild(title);
+                            
+                            const hrContainer = document.createElement("DIV");
+                                hrContainer.className = "list";
+                                hrContainer.innerHTML = "Építési idő: " + building.constructiontime + " / Max. munkás: " + building.maxhr;
+                        contentContainer.appendChild(hrContainer);
                         
                             const resourceContainer = document.createElement("DIV");
+                                resourceContainer.className = "list";
                             
                                 for(let rindex in building.resource){
                                     const resource = building.resource[rindex];

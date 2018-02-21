@@ -25,7 +25,7 @@ schema
             
 DOMElementCreator
     - Subclasses
-    - Only delegate
+    - Only delegate, and fill the content
     
 NewBuildingView
     - ResourceList formáz
@@ -33,5 +33,3 @@ NewBuildingView
     
 Minden elem készítésénél DOMElementCreator használata
     - Subclass legyártja a DOM elemet, fő class feltölti adattal (Ahol lehetséges)
-    
-Defense building type

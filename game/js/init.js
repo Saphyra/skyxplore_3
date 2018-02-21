@@ -34,7 +34,7 @@ function Initializer(){
         try{
             window.animation = new Animation();
             window.back = new Back();
-            window.buildNewBuilding = new BuildNewBuilding();
+            window.buildNewBuildingView = new BuildNewBuildingView();
             window.counter = new Counter();
             window.data = new Data();
             window.domElementCreator = new DOMElementCreator();
