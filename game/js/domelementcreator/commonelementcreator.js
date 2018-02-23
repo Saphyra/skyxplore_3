@@ -13,6 +13,10 @@ function CommonElementCreator(domElementCreator){
         }
     }
     
+    this.createDIV = function createDIV(){
+        return document.createElement("DIV");
+    }
+    
     this.createListElement = function createListElement(){
         try{
             const element = document.createElement("DIV");
