@@ -4,6 +4,7 @@ function DOMElementCreator(){
     
     const commonElementCreator = new CommonElementCreator(this);
         this.createCoverElement = commonElementCreator.createCoverElement;
+        this.createDIV = commonElementCreator.createDIV;
         this.createListElement = commonElementCreator.createListElement;
         this.createListElementTitle = commonElementCreator.createListElementTitle;
         this.createListItem = commonElementCreator.createListItem;
@@ -25,7 +26,7 @@ function DOMElementCreator(){
             return planetViewElementCreator.createPlanetSlot(backgroundType);
         }
         this.createPlanetSlotTitle = planetViewElementCreator.createPlanetSlotTitle;
-        this.createPlanetSlotLevel = planetViewElementCreator.createPlanetSlotLevel;
+        this.createPlanetSlotLevel = planetViewElementCreator.createPlanetSlotLevel;        
         
     const starViewElementCreator = new StarViewElementCreator(this);
         this.createPlanetSlotListItem = function(num, slot){
@@ -41,6 +42,8 @@ function DOMElementCreator(){
             return starViewElementCreator.createPlanetSlotListItem(borderColor);
         }
         this.createStarViewPlanet = starViewElementCreator.createStarViewPlanet;
+        this.createStarViewPlanetName = starViewElementCreator.createStarViewPlanetName;
+        this.createStarViewPlanetDescription = starViewElementCreator.createStarViewPlanetDescription;
     
     function getBackgroundByType(type){
         try{

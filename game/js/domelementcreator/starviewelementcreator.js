@@ -59,4 +59,28 @@ function StarViewElementCreator(parent){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
+    
+    this.createStarViewPlanetName = function createStarViewPlanetName(planetName){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("border3px");
+                element.classList.add("borderbottomridge");
+                element.classList.add("bordercolor100");
+                element.classList.add("fontsize15rem");
+                element.innerHTML = planetName;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createStarViewPlanetDescription = function createStarViewPlanetDescription(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("fontsize0875rem");
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
 }

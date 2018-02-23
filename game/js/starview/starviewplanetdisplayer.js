@@ -19,24 +19,18 @@ function StarViewPlanetDisplayer(){
     function displayPlanet(planet){
         try{
             const element = domElementCreator.createStarViewPlanet(planet);
-                
                 const cover = domElementCreator.createCoverElement();
                     
-                    const planetName = document.createElement("DIV");
-                        planetName.className = "fontsize15rem border3px borderbottomridge bordercolor100";
-                        planetName.innerHTML = planet.planetname;
-                        
-                        const description = document.createElement("DIV");
-                            description.className = "fontsize0875rem";
+                    const planetName = domElementCreator.createStarViewPlanetName(planet.planetname);
+                        const description = domElementCreator.createStarViewPlanetDescription();
                             description.innerHTML = nameConverter.convertPlanetSize(planet.size)
                                 + " " + nameConverter.convertPlanetType(planet.type);
                     planetName.appendChild(description);
+                    
                 cover.appendChild(planetName);
-                
                 cover.appendChild(displayPlanetSlots(planet));
                 
             element.appendChild(cover);
-                
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
@@ -45,7 +39,7 @@ function StarViewPlanetDisplayer(){
     
     function displayPlanetSlots(planet){
         try{
-            const list = document.createElement("DIV");
+            const list = domElementCreator.createDIV();
                 const slotNames = data.getElementData({source: "constants", key: "slotname"});
                 
                 const farmNum = counter.countBuildingsOfSlot(planet.planetid, "food");

@@ -22,9 +22,6 @@ schema
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
-            
-StarView
-    - DOM elemek készítése creatoron keresztül -> Átvizsgál
     
 NewBuildingView
     - ResourceList formáz
