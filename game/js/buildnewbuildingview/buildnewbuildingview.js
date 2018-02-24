@@ -6,7 +6,6 @@ function BuildNewBuildingView(){
             back.switchWindow("#newbuildingviewcontainer");
             const buildableBuildings = this.grouper.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
             displayBuildableBuildings(buildableBuildings);
-            
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
@@ -38,24 +37,26 @@ function BuildNewBuildingView(){
                             const title = domElementCreator.createNewBuildingTitle(building.name);
                         contentContainer.appendChild(title);
                             
-                            const hrContainer = domElementCreator.createListElement();
-                                hrContainer.innerHTML = "Építési idő: " + building.constructiontime + " / Max. munkás: " + building.maxhr;
+                            const hrContainer = domElementCreator.createNewBuildingHRCell(building.constructiontime, building.maxhr);
                         contentContainer.appendChild(hrContainer);
                         
-                            const resourceContainer = domElementCreator.createListElement();
+                            const resourceContainer = domElementCreator.createNewBuildingResourceContainer();
                             
                                 for(let rindex in building.resource){
                                     const resource = building.resource[rindex];
                                     const resourceData = data.getElementData({source: "resource", key: rindex});
-                                    const resourceElement = document.createElement("DIV");
-                                        resourceElement.innerHTML = resourceData.name + ": " + resource;
+                                    const resourceElement = domElementCreator.createNewBuildngResourceElement(resourceData.name, resource);
                                     resourceContainer.appendChild(resourceElement);
                                 }
                             
                         contentContainer.appendChild(resourceContainer);
                         
-                        
                     item.appendChild(contentContainer);
+                    
+                        const buildButtonContainer = domElementCreator.createBuildButtonContainer();
+                            const buildButton = domElementCreator.createBuildButton();
+                        buildButtonContainer.appendChild(buildButton);
+                    item.appendChild(buildButtonContainer);
                         
                     return item;
                 }catch(err){

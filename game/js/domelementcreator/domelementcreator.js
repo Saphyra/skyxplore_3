@@ -17,6 +17,11 @@ function DOMElementCreator(){
         }
         this.createNewBuildingContentContainer = newBuildingViewElementCreator.createNewBuildingContentContainer;
         this.createNewBuildingTitle = newBuildingViewElementCreator.createNewBuildingTitle;
+        this.createNewBuildingHRCell = newBuildingViewElementCreator.createNewBuildingHRCell;
+        this.createNewBuildingResourceContainer = newBuildingViewElementCreator.createNewBuildingResourceContainer;
+        this.createNewBuildngResourceElement = newBuildingViewElementCreator.createNewBuildngResourceElement;
+        this.createBuildButtonContainer = newBuildingViewElementCreator.createBuildButtonContainer;
+        this.createBuildButton = newBuildingViewElementCreator.createBuildButton;
         
     const planetViewElementCreator = new PlanetViewElementCreator(this);
         this.createPlanetSlotContainer = planetViewElementCreator.createPlanetSlotContainer;

@@ -1,5 +1,5 @@
 function CommonElementCreator(domElementCreator){
-    this.domElementCreator = domElementCreator;
+    const parent = domElementCreator;
     
     this.createCoverElement = function createCoverElement(){
         try{    
@@ -62,11 +62,11 @@ function CommonElementCreator(domElementCreator){
                 element.classList.add("padding025rem");
                 $(element).hover(
                         function(){
-                            element.classList.remove("bordercolor150");
-                            element.classList.add("bordercolor200");
+                            parent.removeClassesContains(element, "bordercolor");
+                            element.classList.add("bordercolor255");
                         },
                         function(){
-                            element.classList.remove("bordercolor200")
+                            parent.removeClassesContains(element, "bordercolor");
                             element.classList.add("bordercolor150");
                         }
                 );

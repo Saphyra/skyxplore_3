@@ -69,7 +69,7 @@ function PlanetViewElementCreator(parent){
             const element = document.createElement("DIV");
                 element.innerHTML = title;
                 element.classList.add("backgroundblack8");
-                element.classList.add("fontsize125rem");
+                element.classList.add("fontsize0125rem");
                 element.classList.add("border2px");
                 element.classList.add("borderbottomridge");
                 element.classList.add("bordercolor150");

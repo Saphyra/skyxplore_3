@@ -34,10 +34,10 @@ function StarViewDetailsDisplayer(){
             const netFoodIncome = counter.countNetFoodIncome(star);
             const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : "- " + netFoodIncome;
             const fridgeCapacity = counter.countStorageCapacity(star.starid, "fridge");
-            const foodListItem = domElementCreator.createListItem();
-                foodListItem.innerHTML = 
-                    data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
+            
+            const content = data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
                     + " (" + foodIncome + "/kör)";
+            const foodListItem = domElementCreator.createListItem(content);
             container.appendChild(foodListItem);
             
             for(let storageKey in resources){
@@ -76,25 +76,24 @@ function StarViewDetailsDisplayer(){
             
             for(let type in types){
                 const buildings = types[type];
-                let listItem = domElementCreator.createListItem()
                 
-                switch(type){
-                    case "farm":
-                        listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countFoodIncome(starid) + " étel/kör)";
-                    break;
-                    case "mine":
-                        listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countResourceIncome(starid) + " nyersanyag/kör)";
-                    break;
-                    case "factory":
-                        listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " (Termelés: +" + counter.countProductivity(starid) + "/kör)";
-                    break;
-                    default:
-                        const buildingNum = buildings.length;
-                        listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
-                    break;
-                }
-                
-                container.appendChild(listItem);
+                let content;
+                    switch(type){
+                        case "farm":
+                            content = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countFoodIncome(starid) + " étel/kör)";
+                        break;
+                        case "mine":
+                            content = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countResourceIncome(starid) + " nyersanyag/kör)";
+                        break;
+                        case "factory":
+                            content = data.getElementData({source: type, key: "typename"}) + " (Termelés: +" + counter.countProductivity(starid) + "/kör)";
+                        break;
+                        default:
+                            const buildingNum = buildings.length;
+                            content = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
+                        break;
+                    }
+                container.appendChild(domElementCreator.createListItem(content));
             }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
@@ -109,25 +108,25 @@ function StarViewDetailsDisplayer(){
             for(let type in types){
                 const buildings = types[type];
                 
-                const listItem = domElementCreator.createListItem()
-                switch(type){
-                    case "storage":
-                    case "depot":
-                    case "fridge":
-                        const capacity = counter.countStorageCapacity(star.starid, type);
-                        listItem.innerHTML = data.getElementData({source: type, key: "typename"})
-                            + " (Kapacitás: " + capacity + ")";
-                    break;
-                    case "house":
-                        listItem.innerHTML = data.getElementData({source: type, key: "typename"})
-                            + " (Lakóhely: " + counter.countHouseNum(star) + ")";
-                    break;
-                    default:
-                        const buildingNum = buildings.length;
-                        listItem.innerHTML = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
-                    break;
-                }
-                container.appendChild(listItem);
+                let content;
+                    switch(type){
+                        case "storage":
+                        case "depot":
+                        case "fridge":
+                            const capacity = counter.countStorageCapacity(star.starid, type);
+                            content = data.getElementData({source: type, key: "typename"})
+                                + " (Kapacitás: " + capacity + ")";
+                        break;
+                        case "house":
+                            content = data.getElementData({source: type, key: "typename"})
+                                + " (Lakóhely: " + counter.countHouseNum(star) + ")";
+                        break;
+                        default:
+                            const buildingNum = buildings.length;
+                            content = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
+                        break;
+                    }
+                container.appendChild(domElementCreator.createListItem(content));
             }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);

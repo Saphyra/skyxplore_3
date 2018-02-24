@@ -6,10 +6,12 @@ function NewBuildingViewElementCreator(parent){
             const element = this.createListItem();
                 domElementCreator.removeClassesContains(element, "border");
                 domElementCreator.removeClassesContains(element, "padding");
+                domElementCreator.removeClassesContains(element, "margin");
                 element.classList.add("border5px");
                 element.classList.add("bordercolor150");
                 element.classList.add("borderridge");
                 element.classList.add("lefttext");
+                element.classList.add("marginbottom10rem");
                 element.classList.add("minheight85rem");
                 element.classList.add("padding0");
             return element;
@@ -60,6 +62,64 @@ function NewBuildingViewElementCreator(parent){
                 element.classList.add("fontsize20rem");
                 
                 element.innerHTML = title;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createNewBuildingResourceContainer = createNewBuildingResourceContainer;
+    function createNewBuildingResourceContainer(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("border3px");
+                element.classList.add("borderridge");
+                element.classList.add("bordercolor50");
+                element.classList.add("margin025rem");
+                element.classList.add("padding025rem");
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createNewBuildingHRCell = function createNewBuildingHRCell(buildingTime, hr){
+        try{
+            const element = createNewBuildingResourceContainer();
+                element.innerHTML = "Építési idő: " + buildingTime + " / Max. munkás: " + hr;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createNewBuildngResourceElement = function createNewBuildngResourceElement(resName, amount){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("fontsize0125rem");
+                element.innerHTML = resName + ": " + amount;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createBuildButtonContainer = function createBuildButtonContainer(){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("centertext");
+                element.classList.add("margin5rem");
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createBuildButton = function createBuildButton(){
+        try{
+            const element = document.createElement("BUTTON");
+                element.classList.add("fontsize0125rem");
+                element.innerHTML = "Felépít";
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
