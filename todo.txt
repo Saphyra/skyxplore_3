@@ -23,8 +23,4 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
             
-StarView
-    - DOM elemek készítése creatoron keresztül -> Átvizsgál
-    
-NewBuildingView
-    - ResourceList formáz
+Prioritás Slider beépít

@@ -5,27 +5,27 @@ function BuildNewBuildingView(){
         try{
             back.switchWindow("#newbuildingviewcontainer");
             const buildableBuildings = this.grouper.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
-            displayBuildableBuildings(buildableBuildings);
+            displayBuildableBuildings(planetid, buildableBuildings);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
         
-        function displayBuildableBuildings(buildableBuildings){
+        function displayBuildableBuildings(planetid, buildableBuildings){
             try{
                 const container = document.getElementById("newbuildinglistcontainer");
                     container.innerHTML = "";
                 
                 for(let bindex in buildableBuildings){
                     const building = buildableBuildings[bindex];
-                    container.appendChild(createBuildableBuildingElement(building));
+                    container.appendChild(createBuildableBuildingElement(planetid, building));
                 }
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message);
             }
         }
         
-            function createBuildableBuildingElement(building){
+            function createBuildableBuildingElement(planetid, building){
                 try{
                     const item = domElementCreator.createNewBuildingListItem();
                         
@@ -55,6 +55,11 @@ function BuildNewBuildingView(){
                     
                         const buildButtonContainer = domElementCreator.createBuildButtonContainer();
                             const buildButton = domElementCreator.createBuildButton();
+                                buildButton.onclick = function(){
+                                    gameDataModificator.buildNewBuilding(planetid, building);
+                                    planetView.displayPlanetData(gameData.planets[planetid]);
+                                    back.backOneWindow();
+                                };
                         buildButtonContainer.appendChild(buildButton);
                     item.appendChild(buildButtonContainer);
                         
