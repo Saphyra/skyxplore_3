@@ -4,7 +4,7 @@ function PlanetView(){
             const star = gameData.stars[planet.starid];
             switch(star.visibility.player.visibility){
                 default:
-                    displayPlanetData(planet);
+                    this.displayPlanetData(planet);
                     back.switchWindow("#planetviewcontainer");
                 break;
             }
@@ -13,7 +13,7 @@ function PlanetView(){
         }
     }
     
-    function displayPlanetData(planet){
+    this.displayPlanetData = function displayPlanetData(planet){
         try{
             $("#planetviewplanetname").text(planet.planetname);
             const imgUrl = "url('../content/img/" + planet.type + "_background.jpg')";

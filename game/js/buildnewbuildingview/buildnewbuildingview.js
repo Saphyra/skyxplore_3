@@ -5,28 +5,27 @@ function BuildNewBuildingView(){
         try{
             back.switchWindow("#newbuildingviewcontainer");
             const buildableBuildings = this.grouper.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
-            displayBuildableBuildings(buildableBuildings);
-            
+            displayBuildableBuildings(planetid, buildableBuildings);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
         
-        function displayBuildableBuildings(buildableBuildings){
+        function displayBuildableBuildings(planetid, buildableBuildings){
             try{
                 const container = document.getElementById("newbuildinglistcontainer");
                     container.innerHTML = "";
                 
                 for(let bindex in buildableBuildings){
                     const building = buildableBuildings[bindex];
-                    container.appendChild(createBuildableBuildingElement(building));
+                    container.appendChild(createBuildableBuildingElement(planetid, building));
                 }
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message);
             }
         }
         
-            function createBuildableBuildingElement(building){
+            function createBuildableBuildingElement(planetid, building){
                 try{
                     const item = domElementCreator.createNewBuildingListItem();
                         
@@ -38,24 +37,42 @@ function BuildNewBuildingView(){
                             const title = domElementCreator.createNewBuildingTitle(building.name);
                         contentContainer.appendChild(title);
                             
-                            const hrContainer = domElementCreator.createListElement();
-                                hrContainer.innerHTML = "Építési idő: " + building.constructiontime + " / Max. munkás: " + building.maxhr;
+                            const hrContainer = domElementCreator.createNewBuildingHRCell(building.constructiontime, building.maxhr);
                         contentContainer.appendChild(hrContainer);
                         
-                            const resourceContainer = domElementCreator.createListElement();
+                            const resourceContainer = domElementCreator.createNewBuildingResourceContainer();
                             
                                 for(let rindex in building.resource){
                                     const resource = building.resource[rindex];
                                     const resourceData = data.getElementData({source: "resource", key: rindex});
-                                    const resourceElement = document.createElement("DIV");
-                                        resourceElement.innerHTML = resourceData.name + ": " + resource;
+                                    const resourceElement = domElementCreator.createNewBuildngResourceElement(resourceData.name, resource);
                                     resourceContainer.appendChild(resourceElement);
                                 }
                             
                         contentContainer.appendChild(resourceContainer);
                         
-                        
                     item.appendChild(contentContainer);
+                    
+                        const buildButtonContainer = domElementCreator.createBuildButtonContainer();
+                            const label = domElementCreator.createTextLabel("Prioritás: ");
+                                const slider = domElementCreator.createNewBuildingPrioritySlider();
+                                const sliderValue = domElementCreator.createTextElement(slider.value);
+                                    slider.onchange = function(){
+                                    sliderValue.innerHTML = slider.value;
+                                }
+                            label.appendChild(sliderValue);
+                            label.appendChild(slider);
+                        buildButtonContainer.appendChild(label);
+                            
+                            const buildButton = domElementCreator.createBuildButton();
+                                buildButton.onclick = function(){
+                                    gameDataModificator.buildNewBuilding(planetid, building, slider.value);
+                                    planetView.displayPlanetData(gameData.planets[planetid]);
+                                    starView.displayStarData(gameData.stars[gameData.planets[planetid].starid]);
+                                    back.backOneWindow();
+                                };
+                        buildButtonContainer.appendChild(buildButton);
+                    item.appendChild(buildButtonContainer);
                         
                     return item;
                 }catch(err){

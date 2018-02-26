@@ -22,6 +22,5 @@ schema
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
-    
-NewBuildingView
-    - ResourceList formáz
+     
+Source és Key érték hozzáadása az adatokhoz

@@ -1,5 +1,5 @@
 function CommonElementCreator(domElementCreator){
-    this.domElementCreator = domElementCreator;
+    const parent = domElementCreator;
     
     this.createCoverElement = function createCoverElement(){
         try{    
@@ -62,16 +62,36 @@ function CommonElementCreator(domElementCreator){
                 element.classList.add("padding025rem");
                 $(element).hover(
                         function(){
-                            element.classList.remove("bordercolor150");
-                            element.classList.add("bordercolor200");
+                            parent.removeClassesContains(element, "bordercolor");
+                            element.classList.add("bordercolor255");
                         },
                         function(){
-                            element.classList.remove("bordercolor200")
+                            parent.removeClassesContains(element, "bordercolor");
                             element.classList.add("bordercolor150");
                         }
                 );
             
                 element.innerHTML = content;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createTextElement = function createTextElement(text){
+        try{
+            const element = document.createElement("SPAN");
+                element.innerHTML = text;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createTextLabel = function createTextLabel(text){
+        try{
+            const element = document.createElement("LABEL");
+                element.innerHTML = text;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);

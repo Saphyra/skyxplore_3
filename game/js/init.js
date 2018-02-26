@@ -39,6 +39,7 @@ function Initializer(){
             window.data = new Data();
             window.domElementCreator = new DOMElementCreator();
             window.filters = new Filters();
+            window.gameDataModificator = new GameDataModificator();
             window.map = new Map();
             window.nameConverter = new NameConverter();
             window.planetView = new PlanetView();
