@@ -77,4 +77,24 @@ function CommonElementCreator(domElementCreator){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
+    
+    this.createTextElement = function createTextElement(text){
+        try{
+            const element = document.createElement("SPAN");
+                element.innerHTML = text;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.createTextLabel = function createTextLabel(text){
+        try{
+            const element = document.createElement("LABEL");
+                element.innerHTML = text;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
 }

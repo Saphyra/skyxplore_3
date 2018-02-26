@@ -54,10 +54,21 @@ function BuildNewBuildingView(){
                     item.appendChild(contentContainer);
                     
                         const buildButtonContainer = domElementCreator.createBuildButtonContainer();
+                            const label = domElementCreator.createTextLabel("Prioritás: ");
+                                const slider = domElementCreator.createNewBuildingPrioritySlider();
+                                const sliderValue = domElementCreator.createTextElement(slider.value);
+                                    slider.onchange = function(){
+                                    sliderValue.innerHTML = slider.value;
+                                }
+                            label.appendChild(sliderValue);
+                            label.appendChild(slider);
+                        buildButtonContainer.appendChild(label);
+                            
                             const buildButton = domElementCreator.createBuildButton();
                                 buildButton.onclick = function(){
-                                    gameDataModificator.buildNewBuilding(planetid, building);
+                                    gameDataModificator.buildNewBuilding(planetid, building, slider.value);
                                     planetView.displayPlanetData(gameData.planets[planetid]);
+                                    starView.displayStarData(gameData.stars[gameData.planets[planetid].starid]);
                                     back.backOneWindow();
                                 };
                         buildButtonContainer.appendChild(buildButton);

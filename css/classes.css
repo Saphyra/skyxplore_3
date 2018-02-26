@@ -283,12 +283,20 @@
     margin-left: 0.25rem;
 }
 
+.marginleft5rem{
+    margin-left: 0.5rem;
+}
+
 .marginleft80rem{
     margin-left: 8rem;
 }
 
 .marginright025rem{
     margin-right: 0.25rem;
+}
+
+.marginright5rem{
+    margin-right: 0.5rem;
 }
 
 .margintop0{
@@ -413,6 +421,10 @@
 
 .underline{
     text-decoration: underline;
+}
+
+.verticalcenter{
+    vertical-align: middle;
 }
 
 .width10percent{

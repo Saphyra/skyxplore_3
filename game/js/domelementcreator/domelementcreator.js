@@ -8,6 +8,8 @@ function DOMElementCreator(){
         this.createListElement = commonElementCreator.createListElement;
         this.createListElementTitle = commonElementCreator.createListElementTitle;
         this.createListItem = commonElementCreator.createListItem;
+        this.createTextElement = commonElementCreator.createTextElement;
+        this.createTextLabel = commonElementCreator.createTextLabel;
         
     const newBuildingViewElementCreator = new NewBuildingViewElementCreator(this);
         this.createNewBuildingListItem = newBuildingViewElementCreator.createNewBuildingListItem;
@@ -22,6 +24,7 @@ function DOMElementCreator(){
         this.createNewBuildngResourceElement = newBuildingViewElementCreator.createNewBuildngResourceElement;
         this.createBuildButtonContainer = newBuildingViewElementCreator.createBuildButtonContainer;
         this.createBuildButton = newBuildingViewElementCreator.createBuildButton;
+        this.createNewBuildingPrioritySlider = newBuildingViewElementCreator.createNewBuildingPrioritySlider;
         
     const planetViewElementCreator = new PlanetViewElementCreator(this);
         this.createPlanetSlotContainer = planetViewElementCreator.createPlanetSlotContainer;

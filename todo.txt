@@ -23,4 +23,4 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
             
-Prioritás Slider beépít
+Source és Key érték hozzáadása az adatokhoz
