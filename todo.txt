@@ -22,3 +22,6 @@ schema
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
+
+planetview: show building status
+Queue: őut new building into queue

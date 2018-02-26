@@ -67,9 +67,6 @@ function BuildNewBuildingView(){
                             const buildButton = domElementCreator.createBuildButton();
                                 buildButton.onclick = function(){
                                     gameDataModificator.buildNewBuilding(planetid, building, slider.value);
-                                    planetView.displayPlanetData(gameData.planets[planetid]);
-                                    starView.displayStarData(gameData.stars[gameData.planets[planetid].starid]);
-                                    back.backOneWindow();
                                 };
                         buildButtonContainer.appendChild(buildButton);
                     item.appendChild(buildButtonContainer);

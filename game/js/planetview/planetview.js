@@ -54,6 +54,11 @@ function PlanetView(){
                             const buildingSlotCover = domElementCreator.createCoverElement();
                                 const planetSlotTitle = domElementCreator.createPlanetSlotTitle(building.buildingData.name);
                             buildingSlotCover.appendChild(planetSlotTitle);
+                            
+                            if(building.building.data.status !== 0){
+                                //Show building status
+                            }
+                            
                                 const planetSlotLevel = domElementCreator.createPlanetSlotLevel(building.buildingData.level);
                             buildingSlotCover.appendChild(planetSlotLevel);
                         buildingSlot.appendChild(buildingSlotCover);
