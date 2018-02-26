@@ -4,9 +4,11 @@
     $defaultStorage["name"] = "Raktár";
     $defaultStorage["slot"] = "building";
     $defaultStorage["role"] = "economy";
+    $defaultStorage["source"] = "storage";
     
     $level = 1;
     $storage[$level] = $defaultStorage;
+    $storage[$level]["key"] = $level;
     $storage[$level]["level"] = $level;
     $storage[$level]["constructiontime"] = 10;
     $storage[$level]["maxhr"] = 1;
@@ -17,6 +19,7 @@
     
     $level = 2;
     $storage[$level] = $defaultStorage;
+    $storage[$level]["key"] = $level;
     $storage[$level]["level"] = $level;
     $storage[$level]["constructiontime"] = 40;
     $storage[$level]["maxhr"] = 2;
@@ -28,6 +31,7 @@
     
     $level = 3;
     $storage[$level] = $defaultStorage;
+    $storage[$level]["key"] = $level;
     $storage[$level]["level"] = $level;
     $storage[$level]["constructiontime"] = 90;
     $storage[$level]["maxhr"] = 3;

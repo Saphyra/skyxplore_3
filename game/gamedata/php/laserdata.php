@@ -6,9 +6,11 @@
     $defaultLaser["accuracy"] = 700;
     $defaultLaser["reload"] = 1;
     $defaultLaser["weight"] = 2;
+    $defaultLaser["source"] = "laser";
     
     $level = 1;
         $laser[$level] = $defaultLaser;
+        $laser[$level]["key"] = $level;
         $laser[$level]["level"] = $level;
         $laser[$level]["shielddamage"] = 1000;
         $laser[$level]["hulldamage"] = 1000;
@@ -19,6 +21,7 @@
     
     $level = 2;
         $laser[$level] = $defaultLaser;
+        $laser[$level]["key"] = $level;
         $laser[$level]["level"] = $level;
         $laser[$level]["shielddamage"] = 1500;
         $laser[$level]["hulldamage"] = 1500;
@@ -29,6 +32,7 @@
         
     $level = 3;
         $laser[$level] = $defaultLaser;
+        $laser[$level]["key"] = $level;
         $laser[$level]["level"] = $level;
         $laser[$level]["shielddamage"] = 2000;
         $laser[$level]["hulldamage"] = 2000;

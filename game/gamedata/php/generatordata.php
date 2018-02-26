@@ -4,9 +4,11 @@
     $defaultGenerator["name"] = "Generátor";
     $defaultGenerator["storage"] = "storage";
     $defaultGenerator["weight"] = 16;
+    $defaultGenerator["source"] = "generator";
     
     $level = 1;
     $generator[$level] = $defaultGenerator;
+    $generator[$level]["key"] = $level;
     $generator[$level]["level"] = $level;
     $generator[$level]["power"] = 10;
     $generator[$level]["resource"]["wire"] = 3;
@@ -16,6 +18,7 @@
     
     $level = 2;
     $generator[$level] = $defaultGenerator;
+    $generator[$level]["key"] = $level;
     $generator[$level]["level"] = $level;
     $generator[$level]["power"] = 15;
     $generator[$level]["resource"]["wire"] = 9;
@@ -25,6 +28,7 @@
     
     $level = 3;
     $generator[$level] = $defaultGenerator;
+    $generator[$level]["key"] = $level;
     $generator[$level]["level"] = $level;
     $generator[$level]["power"] = 20;
     $generator[$level]["resource"]["wire"] = 27;

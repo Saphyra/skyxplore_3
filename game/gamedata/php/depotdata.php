@@ -4,9 +4,11 @@
     $defaultDepot["name"] = "Depó";
     $defaultDepot["slot"] = "building";
     $defaultDepot["role"] = "economy";
+    $defaultDepot["source"] = "depot";
     
     $level = 1;
     $depot[$level] = $defaultDepot;
+    $depot[$level]["key"] = $level;
     $depot[$level]["level"] = $level;
     $depot[$level]["constructiontime"] = 5;
     $depot[$level]["maxhr"] = 1;
@@ -17,6 +19,7 @@
     
     $level = 2;
     $depot[$level] = $defaultDepot;
+    $depot[$level]["key"] = $level;
     $depot[$level]["level"] = $level;
     $depot[$level]["constructiontime"] = 20;
     $depot[$level]["maxhr"] = 2;
@@ -28,6 +31,7 @@
     
     $level = 3;
     $depot[$level] = $defaultDepot;
+    $depot[$level]["key"] = $level;
     $depot[$level]["level"] = $level;
     $depot[$level]["constructiontime"] = 60;
     $depot[$level]["maxhr"] = 3;

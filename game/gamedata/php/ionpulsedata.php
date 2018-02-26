@@ -6,9 +6,11 @@
     $defaultIonpulse["accuracy"] = 700;
     $defaultIonpulse["reload"] = 1;
     $defaultIonpulse["weight"] = 2;
+    $defaultIonpulse["source"] = "ionpulse";
     
    $level = 1;
         $ionpulse[$level] = $defaultIonpulse;
+        $ionpulse[$level]["key"] = $level;
         $ionpulse[$level]["level"] = $level;
         $ionpulse[$level]["shielddamage"] = 2000;
         $ionpulse[$level]["hulldamage"] = 500;
@@ -19,6 +21,7 @@
         
     $level = 2;
         $ionpulse[$level] = $defaultIonpulse;
+        $ionpulse[$level]["key"] = $level;
         $ionpulse[$level]["level"] = $level;
         $ionpulse[$level]["shielddamage"] = 3000;
         $ionpulse[$level]["hulldamage"] = 750;
@@ -29,6 +32,7 @@
         
     $level = 3;
         $ionpulse[$level] = $defaultIonpulse;
+        $ionpulse[$level]["key"] = $level;
         $ionpulse[$level]["level"] = $level;
         $ionpulse[$level]["shielddamage"] = 4000;
         $ionpulse[$level]["hulldamage"] = 1000;

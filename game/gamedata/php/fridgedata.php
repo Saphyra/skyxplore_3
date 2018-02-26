@@ -4,9 +4,11 @@
     $defaultFridge["name"] = "Hűtőház";
     $defaultFridge["slot"] = "building";
     $defaultFridge["role"] = "economy";
+    $defaultFridge["source"] = "fridge";
     
     $level = 1;
     $fridge[$level] = $defaultFridge;
+    $fridge[$level]["key"] = $level;
     $fridge[$level]["level"] = $level;
     $fridge[$level]["constructiontime"] = 5;
     $fridge[$level]["maxhr"] = 1;
@@ -17,6 +19,7 @@
     
     $level = 2;
     $fridge[$level] = $defaultFridge;
+    $fridge[$level]["key"] = $level;
     $fridge[$level]["level"] = $level;
     $fridge[$level]["constructiontime"] = 20;
     $fridge[$level]["maxhr"] = 2;
@@ -28,6 +31,7 @@
     
     $level = 3;
     $fridge[$level] = $defaultFridge;
+    $fridge[$level]["key"] = $level;
     $fridge[$level]["level"] = $level;
     $fridge[$level]["constructiontime"] = 45;
     $fridge[$level]["maxhr"] = 3;

@@ -1,7 +1,10 @@
 <?php
+    $defaultEquipment["source"] = "equipment";
     
     //Overtime armor recharge
     $type = "regeneration";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Regeneráció";
     $equipment[$type]["weight"] = 50;
@@ -17,6 +20,8 @@
     
     //Overtime shield recharge
     $type = "shieldrecharge";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Pajzstöltés";
     $equipment[$type]["weight"] = 50;
@@ -32,6 +37,8 @@
     
     //Overtime energy recharge
     $type = "energyrecharge";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Energiatöltés";
     $equipment[$type]["weight"] = 50;
@@ -47,6 +54,8 @@
     
     //Sebzés átvállalás
     $type = "maneuver";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Életmentő manőver";
     $equipment[$type]["weight"] = 100;
@@ -61,6 +70,8 @@
     
     //Sebzés csökkentés a páncélon
     $type = "kineticshield";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Kinetikus pajzs";
     $equipment[$type]["weight"] = 100;
@@ -76,6 +87,8 @@
     
     //Pajzslopás sebzés alapján
     $type = "shieldleech";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Pajzslopás";
     $equipment[$type]["weight"] = 150;
@@ -91,6 +104,8 @@
     
     //Sebezhetetlenség
     $type = "energyfield";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Energiamező";
     $equipment[$type]["weight"] = 150;
@@ -105,6 +120,8 @@
     
     //Kitérés
     $type = "magneticfield";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Mágneses köd";
     $equipment[$type]["weight"] = 150;
@@ -120,6 +137,8 @@
     
     //Overtime energiacsökkentés
     $type = "energyleech";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Energiaelszívás";
     $equipment[$type]["weight"] = 100;
@@ -135,6 +154,8 @@
     
     //Generátorok kikapcsolása
     $type = "cybervirus";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Kibervírus";
     $equipment[$type]["weight"] = 100;
@@ -149,6 +170,8 @@
     
     //Képességek blokkolása
     $type = "ioncannon";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Ionágyú";
     $equipment[$type]["weight"] = 100;
@@ -163,6 +186,8 @@
     
     //Találati esély csökkentés
     $type = "pld";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Plazma zavaró egység";
     $equipment[$type]["weight"] = 50;
@@ -177,6 +202,8 @@
     
     //Személyszállítás
     $type = "cabin";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Kabin";
     $equipment[$type]["weight"] = 10;
@@ -188,6 +215,8 @@
     
     //Teherszállítás
     $type = "container";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Konténer";
     $equipment[$type]["weight"] = 10;
@@ -199,6 +228,8 @@
     
     //Kolonizáció
     $type = "colony";
+    $equipment[$type] = $defaultEquipment;
+    $equipment[$type]["key"] = $type;
     $equipment[$type]["type"] = $type;
     $equipment[$type]["name"] = "Kolónia";
     $equipment[$type]["weight"] = 10;

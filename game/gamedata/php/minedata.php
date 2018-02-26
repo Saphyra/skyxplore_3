@@ -5,9 +5,11 @@
     $defaultMine["slot"] = "minefield";
     $defaultMine["income"] = 25;
     $defaultMine["role"] = "industry";
+    $defaultMine["source"] = "mine";
     
     $level = 1;
     $mine[$level] = $defaultMine;
+    $mine[$level]["key"] = $level;
     $mine[$level]["level"] = $level;
     $mine[$level]["constructiontime"] = 20;
     $mine[$level]["maxhr"] = 1;
@@ -18,6 +20,7 @@
     
     $level = 2;
     $mine[$level] = $defaultMine;
+    $mine[$level]["key"] = $level;
     $mine[$level]["level"] = $level;
     $mine[$level]["constructiontime"] = 50;
     $mine[$level]["maxhr"] = 2;
@@ -29,6 +32,7 @@
     
     $level = 3;
     $mine[$level] = $defaultMine;
+    $mine[$level]["key"] = $level;
     $mine[$level]["level"] = $level;
     $mine[$level]["constructiontime"] = 105;
     $mine[$level]["maxhr"] = 3;

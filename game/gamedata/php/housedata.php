@@ -4,9 +4,11 @@
     $defaultHouse["name"] = "Lakóház";
     $defaultHouse["slot"] = "building";
     $defaultHouse["role"] = "economy";
+    $defaultHouse["source"] = "house";
     
     $level = 1;
     $house[$level] = $defaultHouse;
+    $house[$level]["key"] = $level;
     $house[$level]["level"] = $level;
     $house[$level]["constructiontime"] = 10;
     $house[$level]["maxhr"] = 1;
@@ -16,6 +18,7 @@
     
     $level = 2;
     $house[$level] = $defaultHouse;
+    $house[$level]["key"] = $level;
     $house[$level]["level"] = $level;
     $house[$level]["constructiontime"] = 30;
     $house[$level]["maxhr"] = 2;
@@ -26,6 +29,7 @@
     
     $level = 3;
     $house[$level] = $defaultHouse;
+    $house[$level]["key"] = $level;
     $house[$level]["level"] = $level;
     $house[$level]["constructiontime"] = 60;
     $house[$level]["maxhr"] = 3;

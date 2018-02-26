@@ -4,9 +4,11 @@
     $defaultEngine["name"] = "Meghajtó";
     $defaultEngine["storage"] = "storage";
     $defaultEngine["weight"] = 20;
+    $defaultEngine["source"] = "engine";
     
     $level = 1;
     $engine[$level] = $defaultEngine;
+    $engine[$level]["key"] = $level;
     $engine[$level]["level"] = $level;
     $engine[$level]["speed"] = 10;
     $engine[$level]["resource"]["wire"] = 2;
@@ -16,6 +18,7 @@
     
     $level = 2;
     $engine[$level] = $defaultEngine;
+    $engine[$level]["key"] = $level;
     $engine[$level]["level"] = $level;
     $engine[$level]["speed"] = 15;
     $engine[$level]["resource"]["wire"] = 6;
@@ -25,6 +28,7 @@
     
     $level = 3;
     $engine[$level] = $defaultEngine;
+    $engine[$level]["key"] = $level;
     $engine[$level]["level"] = $level;
     $engine[$level]["speed"] = 20;
     $engine[$level]["resource"]["wire"] = 18;

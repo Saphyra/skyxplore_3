@@ -22,5 +22,3 @@ schema
             - Termelés gyorsítása
             - Raktárkapacitás növelés
             - Extra slotok
-     
-Source és Key érték hozzáadása az adatokhoz

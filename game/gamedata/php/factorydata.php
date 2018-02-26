@@ -4,9 +4,11 @@
     $defaultFactory["name"] = "Gyár";
     $defaultFactory["slot"] = "building";
     $defaultFactory["role"] = "industry";
+    $defaultFactory["source"] = "factory";
     
     $level = 1;
     $factory[$level] = $defaultFactory;
+    $factory[$level]["key"] = $level;
     $factory[$level]["level"] = $level;
     $factory[$level]["constructiontime"] = 15;
     $factory[$level]["maxhr"] = 1;
@@ -18,6 +20,7 @@
     
     $level = 2;
     $factory[$level] = $defaultFactory;
+    $factory[$level]["key"] = $level;
     $factory[$level]["level"] = $level;
     $factory[$level]["constructiontime"] = 40;
     $factory[$level]["maxhr"] = 2;
@@ -30,6 +33,7 @@
     
     $level = 3;
     $factory[$level] = $defaultFactory;
+    $factory[$level]["key"] = $level;
     $factory[$level]["level"] = $level;
     $factory[$level]["constructiontime"] = 75;
     $factory[$level]["maxhr"] = 3;

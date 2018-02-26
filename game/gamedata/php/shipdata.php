@@ -1,8 +1,10 @@
 <?php
-    $defaultShip = [];
+    $defaultShip["source"] = "ship";
     
     //tank
     $type="tenacity";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Tenacity";
     $ship[$type]["hull"] = 75000;
@@ -16,6 +18,8 @@
     
     //Támogatás
     $type="salvation";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Salvation";
     $ship[$type]["hull"] = 40000;
@@ -29,6 +33,8 @@
     
     //Energiaellátás
     $type="siren";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Siren";
     $ship[$type]["capacity"] = 150;
@@ -42,6 +48,8 @@
     
     //Gyors, gyenge
     $type="revanant";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Revanant";
     $ship[$type]["hull"] = 25000;
@@ -55,6 +63,8 @@
     
     //Lézer
     $type="executor";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Executor";
     $ship[$type]["hull"] = 50000;
@@ -68,6 +78,8 @@
     
     //Pulzuságyú
     $type="specter";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Specter";
     $ship[$type]["capacity"] = 150;
@@ -81,6 +93,8 @@
     
     //Rakétakilövő
     $type="striker";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Striker";
     $ship[$type]["capacity"] = 150;
@@ -94,6 +108,8 @@
     
     //Szabotázs
     $type="nightmare";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Nightmare";
     $ship[$type]["capacity"] = 200;
@@ -107,6 +123,8 @@
     
     //Szállítás
     $type="colossus";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Colossus";
     $ship[$type]["capacity"] = 70;
@@ -120,6 +138,8 @@
     
     //Kolonizáció
     $type="conqueror";
+    $ship[$type] = $defaultShip;
+    $ship[$type]["key"] = $type;
     $ship[$type]["type"] = $type;
     $ship[$type]["name"] = "Conqueror";
     $ship[$type]["capacity"] = 140;

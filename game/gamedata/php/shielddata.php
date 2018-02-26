@@ -4,9 +4,11 @@
     $defaultShield["name"] = "Pajzs";
     $defaultShield["storage"] = "storage";
     $defaultShield["weight"] = 8;
+    $defaultShield["source"] = "shield";
     
     $level = 1;
         $shield[$level] = $defaultShield;
+        $shield[$level]["key"] = $level;
         $shield[$level]["level"] = $level;
         $shield[$level]["shieldenergy"] = 10000;
         $shield[$level]["regeneration"] = 250;
@@ -19,6 +21,7 @@
         
     $level = 2;
         $shield[$level] = $defaultShield;
+        $shield[$level]["key"] = $level;
         $shield[$level]["level"] = $level;
         $shield[$level]["shieldenergy"] = 15000;
         $shield[$level]["regeneration"] = 375;
@@ -31,6 +34,7 @@
         
     $level = 3;
         $shield[$level] = $defaultShield;
+        $shield[$level]["key"] = $level;
         $shield[$level]["level"] = $level;
         $shield[$level]["shieldenergy"] = 20000;
         $shield[$level]["regeneration"] = 500;

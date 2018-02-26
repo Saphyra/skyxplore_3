@@ -5,9 +5,11 @@
     $defaultFarm["slot"] = "food";
     $defaultFarm["income"] = 20;
     $defaultFarm["role"] = "industry";
+    $defaultFarm["source"] = "farm";
     
     $level = 1;
     $farm[$level] = $defaultFarm;
+    $farm[$level]["key"] = $level;
     $farm[$level]["level"] = $level;
     $farm[$level]["constructiontime"] = 15;
     $farm[$level]["maxhr"] = 1;
@@ -18,6 +20,7 @@
     
     $level = 2;
     $farm[$level] = $defaultFarm;
+    $farm[$level]["key"] = $level;
     $farm[$level]["level"] = $level;
     $farm[$level]["constructiontime"] = 40;
     $farm[$level]["maxhr"] = 2;
@@ -29,6 +32,7 @@
     
     $level = 3;
     $farm[$level] = $defaultFarm;
+    $farm[$level]["key"] = $level;
     $farm[$level]["level"] = $level;
     $farm[$level]["constructiontime"] = 75;
     $farm[$level]["maxhr"] = 3;
