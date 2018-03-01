@@ -34,6 +34,7 @@ function DOMElementCreator(){
             return planetViewElementCreator.createPlanetSlot(backgroundType);
         }
         this.createPlanetSlotTitle = planetViewElementCreator.createPlanetSlotTitle;
+        this.createPlanetSlotBuildStatus = planetViewElementCreator.createPlanetSlotBuildStatus;
         this.createPlanetSlotLevel = planetViewElementCreator.createPlanetSlotLevel;        
         
     const starViewElementCreator = new StarViewElementCreator(this);
@@ -93,7 +94,7 @@ function DOMElementCreator(){
                     background = "backgroundplus";
                 break;
                 default:
-                    log("Unknown building type: " + type);
+                    log(arguments.callee.name + ": Unknown building type: " + type);
                     background = null;
                 break;
             }
