@@ -83,4 +83,18 @@ function StarViewElementCreator(parent){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
+    
+    this.createStarViewQueueBuildStatus = function createStarViewQueueBuildStatus(status, maxStatus){
+        try{
+            const element = parent.createBuildStatus(status, maxStatus);
+                element.classList.add("border2px");
+                element.classList.add("borderinset");
+                element.classList.add("bordercolor150");
+                element.classList.add("fontsize0125rem");
+                element.classList.add("padding0125rem");
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
 }

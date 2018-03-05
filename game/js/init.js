@@ -43,6 +43,7 @@ function Initializer(){
             window.generator = new Generator();
             window.map = new Map();
             window.nameConverter = new NameConverter();
+            window.order = new Order();
             window.planetView = new PlanetView();
             window.starView = new StarView();
         }catch(err){

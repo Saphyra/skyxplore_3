@@ -8,7 +8,8 @@ function NewBuildingBuilder(gameDataModificator){
             
             const building = createBuilding(planetid, buildingData);
             const requestid = generator.generateId("request", star.data.queue);
-            const request = new Request(requestid, "building", buildingData, priority, building.buildingid);
+            const request = new Request(requestid, "building", buildingData, priority, building.buildingid, new CancelBuilding(star.data.queue, building.buildingid, requestid, star));
+            star.data.queue[requestid] = request;
             
             planetView.displayPlanetData(planet);
             starView.displayStarData(star);
@@ -32,6 +33,18 @@ function NewBuildingBuilder(gameDataModificator){
                 
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            }
+        }
+        
+        function CancelBuilding(queue, buildingid, requestid, star){
+            this.queue = queue;
+            this.buildingid = buildingid;
+            this.requestid = requestid;
+            this.star = star;
+            this.undo = function(){
+                delete this.queue[requestid];
+                delete gameData.buildings[buildingid];
+                starView.showStar(this.star);
             }
         }
 }

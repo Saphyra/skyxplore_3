@@ -40,7 +40,7 @@ function Counter(){
                 for(let buildingid in buildings){
                     const building = buildings[buildingid];
                     const buildingData = data.getElementData(building.data.resource);
-                    if(buildingData.slot === "food"){
+                    if(buildingData.slot === "food" && building.data.status === 0){
                         result += buildingData.income * buildingData.workplace;
                     }
                 }
@@ -60,7 +60,7 @@ function Counter(){
             
             for(let buildingid in buildings){
                 const building = buildings[buildingid];
-                if(building.type == type && planetids.indexOf(building.planetid) > -1){
+                if(building.type == type && planetids.indexOf(building.planetid) > -1 && building.data.status === 0){
                     const buildingData = data.getElementData(building.data.resource);
                     capacity += buildingData.capacity;
                 }

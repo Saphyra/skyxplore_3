@@ -103,44 +103,4 @@ function NewBuildingViewElementCreator(parent){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
-    
-    this.createBuildButtonContainer = function createBuildButtonContainer(){
-        try{
-            const element = document.createElement("DIV");
-                element.classList.add("centertext");
-                element.classList.add("fontsize0125rem");
-                element.classList.add("margin5rem");
-            return element;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
-        }
-    }
-    
-    this.createBuildButton = function createBuildButton(){
-        try{
-            const element = document.createElement("BUTTON");
-                element.classList.add("fontsize0125rem");
-                element.innerHTML = "Felépít";
-            return element;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
-        }
-    }
-    
-    this.createNewBuildingPrioritySlider = function createNewBuildingPrioritySlider(){
-        try{
-            const element = document.createElement("INPUT");
-                element.type = "range";
-                element.min = 1;
-                element.max = 10;
-                element.step = 1;
-                element.value = 5;
-                element.classList.add("verticalcenter");
-                element.classList.add("marginleft5rem");
-                element.classList.add("marginright5rem");
-            return element;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
-        }
-    }
 }

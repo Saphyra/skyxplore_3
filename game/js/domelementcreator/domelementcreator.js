@@ -10,6 +10,8 @@ function DOMElementCreator(){
         this.createListItem = commonElementCreator.createListItem;
         this.createTextElement = commonElementCreator.createTextElement;
         this.createTextLabel = commonElementCreator.createTextLabel;
+        this.createBuildStatus = commonElementCreator.createBuildStatus;
+        this.createPrioritySliderButton = commonElementCreator.createPrioritySliderButton;
         
     const newBuildingViewElementCreator = new NewBuildingViewElementCreator(this);
         this.createNewBuildingListItem = newBuildingViewElementCreator.createNewBuildingListItem;
@@ -22,9 +24,6 @@ function DOMElementCreator(){
         this.createNewBuildingHRCell = newBuildingViewElementCreator.createNewBuildingHRCell;
         this.createNewBuildingResourceContainer = newBuildingViewElementCreator.createNewBuildingResourceContainer;
         this.createNewBuildngResourceElement = newBuildingViewElementCreator.createNewBuildngResourceElement;
-        this.createBuildButtonContainer = newBuildingViewElementCreator.createBuildButtonContainer;
-        this.createBuildButton = newBuildingViewElementCreator.createBuildButton;
-        this.createNewBuildingPrioritySlider = newBuildingViewElementCreator.createNewBuildingPrioritySlider;
         
     const planetViewElementCreator = new PlanetViewElementCreator(this);
         this.createPlanetSlotContainer = planetViewElementCreator.createPlanetSlotContainer;
@@ -53,6 +52,7 @@ function DOMElementCreator(){
         this.createStarViewPlanet = starViewElementCreator.createStarViewPlanet;
         this.createStarViewPlanetName = starViewElementCreator.createStarViewPlanetName;
         this.createStarViewPlanetDescription = starViewElementCreator.createStarViewPlanetDescription;
+        this.createStarViewQueueBuildStatus = starViewElementCreator.createStarViewQueueBuildStatus;
     
     function getBackgroundByType(type){
         try{

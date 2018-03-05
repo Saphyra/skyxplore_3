@@ -1,7 +1,8 @@
 function StarView(){
-    this.detailDisplayer = new StarViewDetailsDisplayer();
-    this.queueDisplayer = new StarViewQueueDisplayer();
-    this.planetDisplayer = new StarViewPlanetDisplayer();
+    const detailDisplayer = new StarViewDetailsDisplayer();
+    const queueDisplayer = new StarViewQueueDisplayer();
+        this.displayQueue = queueDisplayer.displayQueue;
+    const planetDisplayer = new StarViewPlanetDisplayer();
     
     this.showStar = function showStar(star){
         try{
@@ -22,9 +23,9 @@ function StarView(){
     
     this.displayStarData = function displayStarData(star){
         try{
-            this.detailDisplayer.displayDetails(star);
-            this.queueDisplayer.displayQueue(star.data.queue);
-            this.planetDisplayer.displayPlanets(star.starid);
+            detailDisplayer.displayDetails(star);
+            queueDisplayer.displayQueue(star.data.queue);
+            planetDisplayer.displayPlanets(star.starid);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

@@ -52,30 +52,23 @@ function BuildNewBuildingView(){
                                 }
                             
                         contentContainer.appendChild(resourceContainer);
-                        
                     item.appendChild(contentContainer);
                     
-                        const buildButtonContainer = domElementCreator.createBuildButtonContainer();
-                            const label = domElementCreator.createTextLabel("Prioritás: ");
-                                const slider = domElementCreator.createNewBuildingPrioritySlider();
-                                const sliderValue = domElementCreator.createTextElement(slider.value);
-                                    slider.onchange = function(){
-                                    sliderValue.innerHTML = slider.value;
-                                }
-                            label.appendChild(sliderValue);
-                            label.appendChild(slider);
-                        buildButtonContainer.appendChild(label);
-                            
-                            const buildButton = domElementCreator.createBuildButton();
-                                buildButton.onclick = function(){
-                                    gameDataModificator.buildNewBuilding(planetid, building, slider.value);
-                                };
-                        buildButtonContainer.appendChild(buildButton);
-                    item.appendChild(buildButtonContainer);
+                        const buildButton = domElementCreator.createPrioritySliderButton("Felépít", 5, new Action(planetid, building));
+                    item.appendChild(buildButton);
                         
                     return item;
                 }catch(err){
                     log(arguments.callee.name + " - " + err.name + ": " + err.message);
                 }
             }
+            
+                function Action(planetid, building){
+                    this.planetid = planetid;
+                    this.building = building;
+                    this.change = function(){};
+                    this.run = function(value){
+                        gameDataModificator.buildNewBuilding(this.planetid, this.building, value);
+                    }
+                }
 }
