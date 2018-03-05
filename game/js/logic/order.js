@@ -21,4 +21,38 @@ function Order(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
     }
+    
+    this.orderBuildingsByName = function orderBuildingsByName(buildings){
+        //Épületek sorba rendezése név szerint
+        try{
+            const arr = [];
+            const result = {};
+
+            for(let type in buildings){
+                arr.push({type: type, data: buildings[type]});
+            }
+            
+            arr.sort(function(a, b){
+                return data.getElementData({source: a.type, key: "typename"}).localeCompare(data.getElementData({source: b.type, key: "typename"}))
+            });
+            
+            for(let index in arr){
+                result[arr[index].type] = arr[index].data;
+            }
+            
+            return result;
+            
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
+    this.orderBuildingDatasByName = function orderBuildingDatasByName(buildings){
+        //Épületek sorba rendezése név szerint
+        try{
+            return buildings.sort(function(a, b){a.name.localeCompare(b.name)});
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
 }

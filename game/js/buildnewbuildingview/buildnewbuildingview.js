@@ -1,12 +1,10 @@
 function BuildNewBuildingView(){
-    this.grouper = new BuildingGrouper();
-    
     this.showPage = function showPage(planetid, slot){
         //Oldal megjelenítése
         try{
             back.switchWindow("#newbuildingviewcontainer");
             //Megjelenítendő épületek listájának összeállítása, és rendezése
-            const buildableBuildings = this.grouper.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
+            const buildableBuildings = order.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
             displayBuildableBuildings(planetid, buildableBuildings);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);

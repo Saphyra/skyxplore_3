@@ -29,8 +29,8 @@ BuildingGrouper.prototype.groupBuildingsByRole = function groupBuildingsByRole(s
         }
         
         //Épületek csoportosítása típus szerint, sorba rendezése név szerint
-        result.industry = this.orderBuildingsByName(this.groupBuildingsByType(grouped.industry));
-        result.economy = this.orderBuildingsByName(this.groupBuildingsByType(grouped.economy));
+        result.industry = order.orderBuildingsByName(this.groupBuildingsByType(grouped.industry));
+        result.economy = order.orderBuildingsByName(this.groupBuildingsByType(grouped.economy));
         
         return result;
     }catch(err){
@@ -53,38 +53,6 @@ BuildingGrouper.prototype.groupBuildingsByType = function groupBuildingsByType(b
         }
         
         return result;
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
-    }
-}
-BuildingGrouper.prototype.orderBuildingsByName = function orderBuildingsByName(buildings){
-    //Épületek sorba rendezése név szerint
-    try{
-        const arr = [];
-        const result = {};
-
-        for(let type in buildings){
-            arr.push({type: type, data: buildings[type]});
-        }
-        
-        arr.sort(function(a, b){
-            return data.getElementData({source: a.type, key: "typename"}).localeCompare(data.getElementData({source: b.type, key: "typename"}))
-        });
-        
-        for(let index in arr){
-            result[arr[index].type] = arr[index].data;
-        }
-        
-        return result;
-        
-    }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
-    }
-}
-BuildingGrouper.prototype.orderBuildingDatasByName = function orderBuildingDatasByName(buildings){
-    //Épületek sorba rendezése név szerint
-    try{
-        return buildings.sort(function(a, b){a.name.localeCompare(b.name)});
     }catch(err){
         log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }

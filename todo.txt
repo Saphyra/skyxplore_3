@@ -24,4 +24,4 @@ schema
             - Extra slotok
 
 Implement Defense view
-Building order -> order.js
+Implement newround
