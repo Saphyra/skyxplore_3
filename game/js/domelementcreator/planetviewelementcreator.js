@@ -2,6 +2,7 @@ function PlanetViewElementCreator(parent){
     const domElementCreator = parent;
     
     this.createPlanetSlotContainer = function createPlanetSlotContainer(){
+        //Slotlista tároló létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("border3px");
@@ -15,6 +16,7 @@ function PlanetViewElementCreator(parent){
     }
     
     this.createPlanetSlotContainerName = function createPlanetSlotContainerName(name){
+        //Slot név létrehozása
         try{
             name = name || "";
             const element = document.createElement("DIV");
@@ -32,6 +34,7 @@ function PlanetViewElementCreator(parent){
     }
     
     this.createPlanetSlot = function createPlanetSlot(backgroundType){
+        //Slot létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("border5px");
@@ -65,6 +68,7 @@ function PlanetViewElementCreator(parent){
     }
     
     this.createPlanetSlotTitle = function createPlanetSlotTitle(title){
+        //Slot név (slotba épített elem neve)
         try{
             const element = document.createElement("DIV");
                 element.innerHTML = title;
@@ -80,6 +84,7 @@ function PlanetViewElementCreator(parent){
     }
     
     this.createPlanetSlotBuildStatus = function createPlanetSlotBuildStatus(status, maxStatus){
+        //Épület állapot nézetre specializálása
         try{
             const element = parent.createBuildStatus(status, maxStatus);
                 element.classList.add("border2px");
@@ -93,6 +98,7 @@ function PlanetViewElementCreator(parent){
     }
     
     this.createPlanetSlotLevel = function createPlanetSlotLevel(level){
+        //Épület szintje
         try{
             const element = document.createElement("DIV");
                 element.innerHTML = "Szint: " + level

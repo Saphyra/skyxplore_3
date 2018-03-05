@@ -1,5 +1,6 @@
 function PlanetView(){
     this.showPlanet = function showPlanet(planet){
+        //Bolygó nézet megjelenítése
         try{
             const star = gameData.stars[planet.starid];
             switch(star.visibility.player.visibility){
@@ -14,6 +15,7 @@ function PlanetView(){
     }
     
     this.displayPlanetData = function displayPlanetData(planet){
+        //Bolygó adatainak megjelenítése
         try{
             $("#planetviewplanetname").text(planet.planetname);
             const imgUrl = "url('../content/img/" + planet.type + "_background.jpg')";
@@ -25,6 +27,7 @@ function PlanetView(){
     }
     
         function displaySlots(planet){
+            //Bolygó slotjainak megjelenítése
             try{
                 const container = document.getElementById("planetviewslotlist");
                     container.innerHTML = "";
@@ -39,19 +42,20 @@ function PlanetView(){
                             container.appendChild(createSlots(planet, buildings, slot));
                         }
                     }
-                
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message);
             }
         }
         
             function createSlots(planet, buildings, slot){
+                //Slotok létrehozása
                 try{
                     let num = 0;
                     const container = domElementCreator.createPlanetSlotContainer();
                         const containerTitle = domElementCreator.createPlanetSlotContainerName(data.getElementData({source: "constants", key: "slotname"})[slot]);
                     container.appendChild(containerTitle);
                     
+                    //Épületek megjelenítése
                     for(let index in buildings[slot]){
                         const building = buildings[slot][index];
                         const buildingSlot = domElementCreator.createPlanetSlot(building.buildingData.type);
@@ -60,6 +64,7 @@ function PlanetView(){
                             buildingSlotCover.appendChild(planetSlotTitle);
                             
                             if(building.building.data.status !== 0){
+                                //Építési állapot megjelenítése
                                 const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.status, building.buildingData.constructiontime);
                                 buildingSlotCover.appendChild(buildStatus);
                             }
@@ -71,6 +76,7 @@ function PlanetView(){
                         num++
                     }
                     
+                    //Üres slotok megjelenítése
                     for(num; num < planet.slots[slot]; num++){
                         const emptySlot = domElementCreator.createPlanetSlot("empty");
                             const emptySlotCover = domElementCreator.createCoverElement();

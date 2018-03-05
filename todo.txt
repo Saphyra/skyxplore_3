@@ -24,4 +24,4 @@ schema
             - Extra slotok
 
 Implement Defense view
-Commenting long methods
+Building order -> order.js

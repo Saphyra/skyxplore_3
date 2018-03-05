@@ -1,15 +1,7 @@
-function Counter(){
-    this.countHouseNum = function countHouseNum(star){
+function Counter(){    
+    this.countPopulationGrowth = function countPopulationGrowth(star){
+        //Népességnövekedés kiszámolása
         try{
-            return this.countStorageCapacity(star.starid, "house");
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
-        }
-    }
-    
-    this.countPopulationGrowth = function countPopulationGrowth(star, houseNum){
-        try{
-            houseNum = houseNum || countHouseNum(star);
             const netIncome = this.countNetFoodIncome(star);
             const food = star.data.resources.food;
             const citizennum = star.data.citizennum || 1;
@@ -21,6 +13,7 @@ function Counter(){
     }
     
     this.countNetFoodIncome = function countNetFoodIncome(star){
+        //Nettó élelmiszertermelés kiszámolása
         try{
             const income = this.countFoodIncome(star.starid);
             return income - star.data.citizennum;
@@ -30,6 +23,7 @@ function Counter(){
     }
     
     this.countFoodIncome = function countFoodIncome(starid){
+        //Teljes élelmiszertermelés kiszámolása
         try{
             const planets = filters.getPlanetsOfStar(starid);
             let result = 0;
@@ -53,6 +47,7 @@ function Counter(){
     }
     
     this.countStorageCapacity = function countStorageCapacity(starid, type){
+        //Tárolókapacitás kiszámolása
         try{
             const planetids = Object.keys(filters.getPlanetsOfStar(starid));
             const buildings = gameData.buildings;
@@ -73,6 +68,7 @@ function Counter(){
     }
     
     this.countBuildingsOfSlot = function countBuildingsOfSlot(planetid, slot){
+        //Bolygó slot épületeinek megszámolása
         try{
             let result = 0;
             const buildings = filters.getBuildingsOfPlanet(planetid);
@@ -91,6 +87,7 @@ function Counter(){
     }
     
     this.countDefense = function countDefense(planetid){
+        //Bolygó védelmi rendszerének száma
         try{
             let result = 0;
             
@@ -111,6 +108,7 @@ function Counter(){
     }
     
     this.countResourceIncome = function countResourceIncome(starid){
+        //Bányák termelése
         try{
             const planets = filters.getPlanetsOfStar(starid);
             let result = 0;
@@ -134,6 +132,7 @@ function Counter(){
     }
     
     this.countProductivity = function countProductivity(starid){
+        //Gyárak termelése
         try{
             const planets = filters.getPlanetsOfStar(starid);
             let result = 0;

@@ -2,6 +2,7 @@ function NewBuildingViewElementCreator(parent){
     const domElementCreator = parent;
     
     this.createNewBuildingListItem = function createNewBuildingListItem(){
+        //Lista elem az Új épület nézetre specializálva
         try{
             const element = this.createListItem();
                 domElementCreator.removeClassesContains(element, "border");
@@ -21,6 +22,7 @@ function NewBuildingViewElementCreator(parent){
     }
     
     this.createNewBuildingIcon = function createNewBuildingIcon(backgroundType){
+        //Ikon elem létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("absolute");
@@ -38,6 +40,7 @@ function NewBuildingViewElementCreator(parent){
     }
     
     this.createNewBuildingContentContainer = function createNewBuildingContentContainer(){
+        //Tartalom tároló elem létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("border5px");
@@ -52,6 +55,7 @@ function NewBuildingViewElementCreator(parent){
     }
     
     this.createNewBuildingTitle = function createNewBuildingTitle(title){
+        //Épület cím elem létrehozása
         try{
             title = title || "";
             const element = document.createElement("DIV");
@@ -70,6 +74,7 @@ function NewBuildingViewElementCreator(parent){
     
     this.createNewBuildingResourceContainer = createNewBuildingResourceContainer;
     function createNewBuildingResourceContainer(){
+        //Építéshez szükséges nyersanyagok tároló létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("border3px");
@@ -84,6 +89,7 @@ function NewBuildingViewElementCreator(parent){
     }
     
     this.createNewBuildingHRCell = function createNewBuildingHRCell(buildingTime, hr){
+        //Építéshez szükséges rőforrás tároló létrehozása
         try{
             const element = createNewBuildingResourceContainer();
                 element.innerHTML = "Építési idő: " + buildingTime + " / Max. munkás: " + hr;
@@ -94,6 +100,7 @@ function NewBuildingViewElementCreator(parent){
     }
     
     this.createNewBuildngResourceElement = function createNewBuildngResourceElement(resName, amount){
+        //Építéshez szükséges nyersanyagok elem létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("fontsize0125rem");

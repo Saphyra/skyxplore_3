@@ -1,5 +1,6 @@
 function Order(){
     this.orderQueueByPriority = function orderQueueByPriority(queue){
+        //Prioritás alapján csökkenő sorrendbe rendezi az építési listát
         try{
             const requests = [];
             for(let requestid in queue){

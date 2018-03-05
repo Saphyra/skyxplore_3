@@ -1,7 +1,9 @@
 function DOMElementCreator(){
+    //Elemek módosítása
     const elementManipulator = new ElementManipulator();
         this.removeClassesContains = elementManipulator.removeClassesContains;
     
+    //Közös elemek létrehozása
     const commonElementCreator = new CommonElementCreator(this);
         this.createCoverElement = commonElementCreator.createCoverElement;
         this.createDIV = commonElementCreator.createDIV;
@@ -13,6 +15,7 @@ function DOMElementCreator(){
         this.createBuildStatus = commonElementCreator.createBuildStatus;
         this.createPrioritySliderButton = commonElementCreator.createPrioritySliderButton;
         
+    //Új épület létrehozása oldal
     const newBuildingViewElementCreator = new NewBuildingViewElementCreator(this);
         this.createNewBuildingListItem = newBuildingViewElementCreator.createNewBuildingListItem;
         this.createNewBuildingIcon = function(type){
@@ -25,6 +28,7 @@ function DOMElementCreator(){
         this.createNewBuildingResourceContainer = newBuildingViewElementCreator.createNewBuildingResourceContainer;
         this.createNewBuildngResourceElement = newBuildingViewElementCreator.createNewBuildngResourceElement;
         
+    //Bolygó nézet
     const planetViewElementCreator = new PlanetViewElementCreator(this);
         this.createPlanetSlotContainer = planetViewElementCreator.createPlanetSlotContainer;
         this.createPlanetSlotContainerName = planetViewElementCreator.createPlanetSlotContainerName;
@@ -36,6 +40,7 @@ function DOMElementCreator(){
         this.createPlanetSlotBuildStatus = planetViewElementCreator.createPlanetSlotBuildStatus;
         this.createPlanetSlotLevel = planetViewElementCreator.createPlanetSlotLevel;        
         
+    //Csillag nézet
     const starViewElementCreator = new StarViewElementCreator(this);
         this.createPlanetSlotListItem = function(num, slot){
             let borderColor;
@@ -54,6 +59,7 @@ function DOMElementCreator(){
         this.createStarViewPlanetDescription = starViewElementCreator.createStarViewPlanetDescription;
         this.createStarViewQueueBuildStatus = starViewElementCreator.createStarViewQueueBuildStatus;
     
+    //Elem típusához tartozó háttér osztálynevének kiválasztása
     function getBackgroundByType(type){
         try{
             let background;

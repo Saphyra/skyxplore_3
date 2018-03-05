@@ -1,5 +1,6 @@
 function NameConverter(){
     this.convertPlanetSize = function convertPlanetSize(planetSize){
+        //Név társítása bolygómérethez
         try{
             let result;
             
@@ -25,6 +26,7 @@ function NameConverter(){
     }
     
     this.convertPlanetType = function convertPlanetType(planetType){
+        //Név társítása bolygótípushoz
         try{
             let result;
             

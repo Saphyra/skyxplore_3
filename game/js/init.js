@@ -1,6 +1,7 @@
 $(document).ready(initializeLazy);
 
 function initializeLazy(){
+    //Adatok betöltése
     try{
         window.initializer = new Initializer();
         initializer.initialize();
@@ -10,8 +11,8 @@ function initializeLazy(){
 }
 
 function Initializer(){
-    
     this.initialize = function initialize(){
+        //Adatok betöltése
         try{
             
             loadContent();
@@ -31,6 +32,7 @@ function Initializer(){
     }
     
     function createBeans(){
+        //Komponensek létrehozása
         try{
             window.animation = new Animation();
             window.back = new Back();
@@ -52,6 +54,7 @@ function Initializer(){
     }
     
     function loadGame(){
+        //Mentett játék betöltése
         try{
             const path = "saves/" + window.startGameid + ".json";
             const request = new XMLHttpRequest();
@@ -64,6 +67,7 @@ function Initializer(){
     }
     
     function loadContent(){
+        //Nézetek betöltése
         try{
             const request = new XMLHttpRequest();
                 request.open("GET", "content/contentloader.php", 0);

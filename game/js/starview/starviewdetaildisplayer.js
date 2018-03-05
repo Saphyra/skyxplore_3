@@ -2,6 +2,7 @@ function StarViewDetailsDisplayer(){
     const buildingGrouper = new BuildingGrouper();
     
     this.displayDetails = function(star){
+        //Részletek megjelenítése
         $("#starviewstarname").text(star.starname);
         displayCitizens(star);
         displayResources(star);
@@ -12,9 +13,10 @@ function StarViewDetailsDisplayer(){
     }
     
     function displayCitizens(star){
+        //Lakosok adatainak megjelenítése
         try{
-            const houseNum = counter.countHouseNum(star);
-            const populationGrowth = counter.countPopulationGrowth(star, houseNum);
+            const houseNum = counter.countStorageCapacity(star.starid, "house");
+            const populationGrowth = counter.countPopulationGrowth(star);
             const growth = populationGrowth >= 0 ? "+ " + populationGrowth : "- " + populationGrowth;
             document.getElementById("starviewcitizens").innerHTML = 
                 "Munkás: " + star.data.citizennum
@@ -26,11 +28,13 @@ function StarViewDetailsDisplayer(){
     }
     
     function displayResources(star){
+        //Tárolt nyersanyagok megjelenítése
         try{
             const resources = star.data.resources;
             const container = document.getElementById("starviewresourcelist");
             container.innerHTML = "";
             
+            //Élelmiszer termelés megjelenítése
             const netFoodIncome = counter.countNetFoodIncome(star);
             const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : "- " + netFoodIncome;
             const fridgeCapacity = counter.countStorageCapacity(star.starid, "fridge");
@@ -40,6 +44,7 @@ function StarViewDetailsDisplayer(){
             const foodListItem = domElementCreator.createListItem(content);
             container.appendChild(foodListItem);
             
+            //Tárolt anyagtípusok megjelenítése
             for(let storageKey in resources){
                 const storage = resources[storageKey];
                 
@@ -51,6 +56,7 @@ function StarViewDetailsDisplayer(){
                             
                     list.appendChild(listTitle);
                     let actualCapacity = 0;
+                    //Típus nyersanyagainek megjelenítése
                     for(let resourceKey in storage){
                         const resourceItem = domElementCreator.createListItem()
                             resourceItem.innerHTML = data.getElementData({source: "resource", key: resourceKey}).name
@@ -70,6 +76,7 @@ function StarViewDetailsDisplayer(){
     }
     
     function displayIndustry(types, starid){
+        //Ipar épületeinek megjelenítése
         try{
             const container = document.getElementById("starviewindustry");
             container.innerHTML = "";
@@ -101,6 +108,7 @@ function StarViewDetailsDisplayer(){
     }
     
     function displayEconomy(types, star){
+        //Gazdasági épületek megjelenítése
         try{
             const container = document.getElementById("starvieweconomy");
             container.innerHTML = "";
@@ -119,7 +127,7 @@ function StarViewDetailsDisplayer(){
                         break;
                         case "house":
                             content = data.getElementData({source: type, key: "typename"})
-                                + " (Lakóhely: " + counter.countHouseNum(star) + ")";
+                                + " (Lakóhely: " + counter.countStorageCapacity(star.starid, "house"); + ")";
                         break;
                         default:
                             const buildingNum = buildings.length;

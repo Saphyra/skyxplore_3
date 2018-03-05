@@ -3,11 +3,13 @@ function BuildingGrouper(){
 }
 
 BuildingGrouper.prototype.groupBuildingsByRole = function groupBuildingsByRole(star){
+    //Épületek csoportosítása szerep szerint (gazdaság/Ipar), épületek csoportosítása típus szerint, épületek sorba rendezése név szerint
     try{
         const buildings = gameData.buildings;
         const grouped = {industry: {}, economy: {}};
         const result = {industry: {}, economy: {}};
         
+        //Épületek csoportosítása szerep szerint
         for(let buildingid in buildings){
             const building = gameData.buildings[buildingid]
             if(gameData.planets[building.planetid].starid === star.starid){
@@ -26,6 +28,7 @@ BuildingGrouper.prototype.groupBuildingsByRole = function groupBuildingsByRole(s
             }
         }
         
+        //Épületek csoportosítása típus szerint, sorba rendezése név szerint
         result.industry = this.orderBuildingsByName(this.groupBuildingsByType(grouped.industry));
         result.economy = this.orderBuildingsByName(this.groupBuildingsByType(grouped.economy));
         
@@ -35,6 +38,7 @@ BuildingGrouper.prototype.groupBuildingsByRole = function groupBuildingsByRole(s
     }
 }
 BuildingGrouper.prototype.groupBuildingsByType = function groupBuildingsByType(buildings){
+    //Épületek csoportosítása típus szerint
     try{
         const result = {};
         
@@ -54,6 +58,7 @@ BuildingGrouper.prototype.groupBuildingsByType = function groupBuildingsByType(b
     }
 }
 BuildingGrouper.prototype.orderBuildingsByName = function orderBuildingsByName(buildings){
+    //Épületek sorba rendezése név szerint
     try{
         const arr = [];
         const result = {};
@@ -77,6 +82,7 @@ BuildingGrouper.prototype.orderBuildingsByName = function orderBuildingsByName(b
     }
 }
 BuildingGrouper.prototype.orderBuildingDatasByName = function orderBuildingDatasByName(buildings){
+    //Épületek sorba rendezése név szerint
     try{
         return buildings.sort(function(a, b){a.name.localeCompare(b.name)});
     }catch(err){
@@ -84,6 +90,7 @@ BuildingGrouper.prototype.orderBuildingDatasByName = function orderBuildingDatas
     }
 }
 BuildingGrouper.prototype.groupBuildingsBySlot = function groupBuildingsBySlot(buildings){
+    //Épületek csoportosítása slot szerint
     try{
         const slots = {};
 
@@ -100,7 +107,6 @@ BuildingGrouper.prototype.groupBuildingsBySlot = function groupBuildingsBySlot(b
         }
         
         return slots;
-        
     }catch(err){
         log(arguments.callee.name + " - " + err.name + ": " + err.message);
     }

@@ -2,6 +2,7 @@ function MapShower(elements){
     const mapElements = elements;
     
     this.showMap = function showMap(){
+        //Térkép kijelzése
         try{
             const connections = createStarMapElements();
             createConnectionMapElements(connections);
@@ -12,67 +13,72 @@ function MapShower(elements){
         }
     }
     
-    function createStarMapElements(){
-        try{
-            const connections = [];
-            for(let starid in gameData.stars){
-                const star = gameData.stars[starid];
-                
-                const starElement = new StarElement(star);
-                mapElements.starElements[star.starid] = starElement;
-                
-                for(let connectionIndex in star.connections){
-                    if(connections.indexOf(star.connections[connectionIndex]) === -1){
-                        connections.push(star.connections[connectionIndex]);
+        function createStarMapElements(){
+            //Csillagok létrehozása
+            try{
+                const connections = [];
+                for(let starid in gameData.stars){
+                    const star = gameData.stars[starid];
+                    
+                    const starElement = new StarElement(star);
+                    mapElements.starElements[star.starid] = starElement;
+                    
+                    //Csillag kapcsolatainak gyűjtése
+                    for(let connectionIndex in star.connections){
+                        if(connections.indexOf(star.connections[connectionIndex]) === -1){
+                            connections.push(star.connections[connectionIndex]);
+                        }
                     }
                 }
-            }
 
-            return connections;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                return connections;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            }
         }
-    }
-    
-    function createConnectionMapElements(connections){
-        try{
-            const stars = gameData.stars;
-            
-            for(let connectionIndex in connections){
-                const connection = connections[connectionIndex];
+        
+        function createConnectionMapElements(connections){
+            //Kapcsolatok létrehozása
+            try{
+                const stars = gameData.stars;
                 
-                const starids = connection.split("-");
-                
-                const connectionElement = new ConnectionElement(stars[starids[0]], stars[starids[1]], connection);
-                mapElements.connectionElements[connection] = connectionElement;
+                for(let connectionIndex in connections){
+                    const connection = connections[connectionIndex];
+                    
+                    const starids = connection.split("-");
+                    
+                    const connectionElement = new ConnectionElement(stars[starids[0]], stars[starids[1]], connection);
+                    mapElements.connectionElements[connection] = connectionElement;
+                }
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message);
             }
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
-    }
     
-    function showElements(){
-        try{
-            const map = document.getElementById("map");
-            
-            for(let connectionElementIndex in mapElements.connectionElements){
-                map.appendChild(mapElements.connectionElements[connectionElementIndex].connectionMapElement);
+        function showElements(){
+            //Elemek megjelenítése
+            try{
+                const map = document.getElementById("map");
+                
+                for(let connectionElementIndex in mapElements.connectionElements){
+                    map.appendChild(mapElements.connectionElements[connectionElementIndex].connectionMapElement);
+                }
+                
+                for(let starElementIndex in mapElements.starElements){
+                    map.appendChild(mapElements.starElements[starElementIndex].starMapElement);
+                }
+                
+                for(let starElementIndex in mapElements.starElements){
+                    map.appendChild(mapElements.starElements[starElementIndex].starNameMapElement);
+                }
+                
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message);
             }
-            
-            for(let starElementIndex in mapElements.starElements){
-                map.appendChild(mapElements.starElements[starElementIndex].starMapElement);
-            }
-            
-            for(let starElementIndex in mapElements.starElements){
-                map.appendChild(mapElements.starElements[starElementIndex].starNameMapElement);
-            }
-            
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }
-    }
     
     function StarElement(star){
+        //Csillag elem
         try{
             this.star = star;
             this.starMapElement = this.createStarMapElement(star);
@@ -105,6 +111,7 @@ function MapShower(elements){
         }
     }
     StarElement.prototype.createStarMapElement = function createStarMapElement(star){
+        //Csillag elem létrehozása
         try{
             const element = createSVGElement("circle");
             
@@ -117,8 +124,13 @@ function MapShower(elements){
                 element.setAttribute("cy", star.ycord);
                 
                 element.onclick = function(event){starView.showStar(star);};
-                element.onmouseenter = function(){animation.starMapElementMouseEnter(element)};
-                element.onmouseout = function(){animation.starMapElementMouseOut(element)};
+                element.onmouseenter = function(){
+                    element.setAttribute("stroke", "blue");
+                    element.setAttribute("stroke-width", 3);
+                };
+                element.onmouseout = function(){
+                    element.setAttribute("stroke-width", 0);
+                };
                 
             return element;
         }catch(err){
@@ -126,6 +138,7 @@ function MapShower(elements){
         }
     }
     StarElement.prototype.createStarNameMapElement = function createStarNameMapElement(star){
+        //Csillagév elem létrehozása
         try{
             const element = createSVGElement("text");
                 element.classList.add("starnamemapelement");
@@ -165,6 +178,7 @@ function MapShower(elements){
         }
     }
     ConnectionElement.prototype.createConnectionMapElement = function createConnectionMapElement(star1, star2, connection){
+        //Kapcsolat elem létrehozása
         try{
             const element = createSVGElement("line");
                 element.classList.add("connectionmapelement");
@@ -182,6 +196,7 @@ function MapShower(elements){
         }
     }
     ConnectionElement.prototype.isConnectionHidden = function isConnectionHidden(visibility1, visibility2){
+        //Igaz, ha a kapcsolat látható
         try{
             let result = false;
             

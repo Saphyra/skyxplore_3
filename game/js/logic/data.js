@@ -2,6 +2,7 @@ function Data(){
     cache = {};
     
     this.getElementData = function getElementData(resource){
+        //Elem adatainak beolvasása
         try{
             let element = this.getFromCache(resource.source);
             
@@ -18,6 +19,7 @@ function Data(){
     }
     
     loadElementData = function loadElementData(source){
+        //Forrás betöltése fájlból
         try{
             const request = new XMLHttpRequest();
                 request.open("GET", "gamedata/data/" + source + ".json", 0);
@@ -34,6 +36,7 @@ function Data(){
     }
     
     this.putToCache = function putToCache(key, data){
+        //Gyorsítótárazás
         try{
             cache[key] = data;
         }catch(err){
@@ -42,6 +45,7 @@ function Data(){
     }
     
     this.getFromCache = function getFromCache(key){
+        //Kiolvasás gyorsítótárból
         try{
             return cache[key] || null;
         }catch(err){
@@ -50,6 +54,7 @@ function Data(){
     }
     
     this.loadGameData = function loadGameData(){
+        //Játékadatok betöltése
         try{
             for(let index in gameDataSources){
                 const entry = gameDataSources[index];

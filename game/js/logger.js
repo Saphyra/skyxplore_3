@@ -1,4 +1,5 @@
 function log(message){
+    //Logolás
     try{
         document.getElementById("logcontainer").style.display = "block";
         const div = document.getElementById("log");

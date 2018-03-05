@@ -2,8 +2,10 @@ function BuildNewBuildingView(){
     this.grouper = new BuildingGrouper();
     
     this.showPage = function showPage(planetid, slot){
+        //Oldal megjelenítése
         try{
             back.switchWindow("#newbuildingviewcontainer");
+            //Megjelenítendő épületek listájának összeállítása, és rendezése
             const buildableBuildings = this.grouper.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
             displayBuildableBuildings(planetid, buildableBuildings);
         }catch(err){
@@ -12,6 +14,7 @@ function BuildNewBuildingView(){
     }
         
         function displayBuildableBuildings(planetid, buildableBuildings){
+            //Építhető épületek megjelenítése
             try{
                 const container = document.getElementById("newbuildinglistcontainer");
                     container.innerHTML = "";
@@ -26,24 +29,23 @@ function BuildNewBuildingView(){
         }
         
             function createBuildableBuildingElement(planetid, building){
+                //Építhető épület megjelenítése
                 try{
                     const item = domElementCreator.createNewBuildingListItem();
-                        
+                        //Ikonkép
                         const cover = domElementCreator.createNewBuildingIcon(building.type);
                     item.appendChild(cover);
-                    
+                        
                         const contentContainer = domElementCreator.createNewBuildingContentContainer();
                     
                             const title = domElementCreator.createNewBuildingTitle(building.name);
                         contentContainer.appendChild(title);
                             
-                            if(building.constructiontime && building.maxhr){
-                                const hrContainer = domElementCreator.createNewBuildingHRCell(building.constructiontime, building.maxhr);
-                                contentContainer.appendChild(hrContainer);
-                            }
+                            const hrContainer = domElementCreator.createNewBuildingHRCell(building.constructiontime, building.maxhr);
+                        contentContainer.appendChild(hrContainer);
                             
                             const resourceContainer = domElementCreator.createNewBuildingResourceContainer();
-                            
+                                //Építéshez szükséges nyersanyagk kijelzése
                                 for(let rindex in building.resource){
                                     const resource = building.resource[rindex];
                                     const resourceData = data.getElementData({source: "resource", key: rindex});
@@ -64,6 +66,7 @@ function BuildNewBuildingView(){
             }
             
                 function Action(planetid, building){
+                    //Épület felépítése
                     this.planetid = planetid;
                     this.building = building;
                     this.change = function(){};

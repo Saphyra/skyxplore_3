@@ -1,5 +1,6 @@
 function StarViewQueueDisplayer(){
     this.displayQueue = function displayQueue(queue){
+        //Építési sor megjelenítése
         try{
             const container = document.getElementById("starviewqueue");
                 container.innerHTML = "";
@@ -9,6 +10,7 @@ function StarViewQueueDisplayer(){
             }else{
                 orderedQueue = order.orderQueueByPriority(queue);
                 
+                //Építési sor elemeinek megjelenítése
                 for(let requestid in orderedQueue){
                     const request = orderedQueue[requestid];
                     let item;
@@ -33,6 +35,7 @@ function StarViewQueueDisplayer(){
     }
     
         function displayBuilding(request, queue){
+            //Épület építési sor megjelenítése
             try{
                 const building = gameData.buildings[request.elementid];
                 const buildingData = data.getElementData(building.data.resource);
@@ -51,6 +54,7 @@ function StarViewQueueDisplayer(){
         }
         
             function Action(request, queue){
+                //Kérelem visszavonása / prioritás megváltoztatása
                 this.request = request;
                 this.queue = queue;
                 

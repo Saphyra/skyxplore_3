@@ -5,6 +5,7 @@ function StarView(){
     const planetDisplayer = new StarViewPlanetDisplayer();
     
     this.showStar = function showStar(star){
+        //Csillag nézet megjelenítése
         try{
             switch(star.visibility.player.visibility){
                 case "connected":
@@ -22,6 +23,7 @@ function StarView(){
     }
     
     this.displayStarData = function displayStarData(star){
+        //Csillag részleteink megjelenítése
         try{
             detailDisplayer.displayDetails(star);
             queueDisplayer.displayQueue(star.data.queue);

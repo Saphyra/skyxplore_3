@@ -1,5 +1,6 @@
 function StarViewPlanetDisplayer(){
     this.displayPlanets = function displayPlanets(starid){
+        //Csillag bolyóinak megjelenítése
         try{
             const container = document.getElementById("starviewplanetlist");
                 container.innerHTML = "";
@@ -17,14 +18,13 @@ function StarViewPlanetDisplayer(){
     }
     
     function displayPlanet(planet){
+        //Bolygó megjelenítése
         try{
             const element = domElementCreator.createStarViewPlanet(planet);
                 const cover = domElementCreator.createCoverElement();
                     
                     const planetName = domElementCreator.createStarViewPlanetName(planet.planetname);
-                        const description = domElementCreator.createStarViewPlanetDescription();
-                            description.innerHTML = nameConverter.convertPlanetSize(planet.size)
-                                + " " + nameConverter.convertPlanetType(planet.type);
+                        const description = domElementCreator.createStarViewPlanetDescription(nameConverter.convertPlanetSize(planet.size), nameConverter.convertPlanetType(planet.type));
                     planetName.appendChild(description);
                     
                 cover.appendChild(planetName);
@@ -38,8 +38,9 @@ function StarViewPlanetDisplayer(){
     }
     
     function displayPlanetSlots(planet){
+        //Bolygó slot összesétés megjelenítése
         try{
-            const list = domElementCreator.createDIV();
+            const list = document.createElement("DIV");
                 const slotNames = data.getElementData({source: "constants", key: "slotname"});
                 
                 const farmNum = counter.countBuildingsOfSlot(planet.planetid, "food");

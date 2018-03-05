@@ -2,6 +2,7 @@ function StarViewElementCreator(parent){
     domElementCreator = parent;
     
     this.createPlanetSlotListItem = function createPlanetSlotListItem(borderColor){
+        //Bolygó slot cella létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("border2px");
@@ -30,6 +31,7 @@ function StarViewElementCreator(parent){
     }
     
     this.createStarViewPlanet = function createStarViewPlanet(planet){
+        //Bolygó tároló létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("backgroundnorepeat");
@@ -61,6 +63,7 @@ function StarViewElementCreator(parent){
     }
     
     this.createStarViewPlanetName = function createStarViewPlanetName(planetName){
+        //Bolygó név létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("border3px");
@@ -74,10 +77,12 @@ function StarViewElementCreator(parent){
         }
     }
     
-    this.createStarViewPlanetDescription = function createStarViewPlanetDescription(){
+    this.createStarViewPlanetDescription = function createStarViewPlanetDescription(planetSize, planetType){
+        //Bolygó leírás létrehozása
         try{
             const element = document.createElement("DIV");
                 element.classList.add("fontsize0875rem");
+                element.innerHTML = planetSize + " " + planetType;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
@@ -85,6 +90,7 @@ function StarViewElementCreator(parent){
     }
     
     this.createStarViewQueueBuildStatus = function createStarViewQueueBuildStatus(status, maxStatus){
+        //Építési sor épület státusz létrehozása
         try{
             const element = parent.createBuildStatus(status, maxStatus);
                 element.classList.add("border2px");

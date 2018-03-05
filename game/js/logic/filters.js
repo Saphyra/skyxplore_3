@@ -1,5 +1,6 @@
 function Filters(){
     this.searchElements = function searchElements(params){
+        //Megadott paramétereknek megfelelő játékelemek keresése
         try{
             const sources = gameDataSources;
             const result = [];
@@ -20,6 +21,7 @@ function Filters(){
     }
     
         function isElementValid(element, params){
+            //Adott játékelem megfelel-e a keresési követelményeknek
             try{
                 let result = true;
                     for(let key in params){
@@ -35,6 +37,7 @@ function Filters(){
         }
     
     this.getPlanetsOfStar = function getPlanetsOfStar(starid){
+        //Csillag bolygói
         try{
             let result = data.getFromCache("planetsof" + starid);
             
@@ -60,6 +63,7 @@ function Filters(){
     }
     
     this.getBuildingsOfPlanet = function getBuildingsOfPlanet(planetid){
+        //Bolygó épületei
         try{
             const result = {};
             const buildings = gameData.buildings;
@@ -78,6 +82,7 @@ function Filters(){
     }
     
     this.getBuildableBuildingsOfSlot = function getBuildableBuildingsOfSlot(slot){
+        //Adott slotba építhető épületek
         try{
             const elements = this.searchElements({slot: slot});
             const result = [];

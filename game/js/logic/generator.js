@@ -1,5 +1,6 @@
 function Generator(){
     this.generateId = function generateId(prefix, reserved){
+        //Egyedi azonosító generálása
         try{
             let id;
             do{
@@ -17,6 +18,7 @@ function Generator(){
     
     this.random = random;
     function random(min, max){
+        //Véletlenszerű érték
         try{
             if(typeof min !== "number" || typeof max !== "number") return NaN;
             var num = Math.floor(Math.random() * (max - min + 1) ) + min;

@@ -2,6 +2,7 @@ function CommonElementCreator(domElementCreator){
     const parent = domElementCreator;
     
     this.createCoverElement = function createCoverElement(){
+        //Teljes tárolót lefedő fólia, félig átlátszó háttérrel
         try{    
             const element = document.createElement("DIV");
                 element.classList.add("absolute0");
@@ -13,11 +14,8 @@ function CommonElementCreator(domElementCreator){
         }
     }
     
-    this.createDIV = function createDIV(){
-        return document.createElement("DIV");
-    }
-    
     this.createListElement = function createListElement(){
+        //Lista tároló, sötét szegéllyel
         try{
             const element = document.createElement("DIV");
                 element.classList.add("border3px");
@@ -34,6 +32,7 @@ function CommonElementCreator(domElementCreator){
     }
     
     this.createListElementTitle = function createListElementTitle(title){
+        //Lista cím
         try{
             title = title || "";
             const element = document.createElement("DIV");
@@ -50,6 +49,7 @@ function CommonElementCreator(domElementCreator){
     }
     
     this.createListItem = function createListItem(content){
+        //Lista elem, szegélyszín változtatással
         try{
             content = content || "";
             const element = document.createElement("DIV");
@@ -79,6 +79,7 @@ function CommonElementCreator(domElementCreator){
     }
     
     this.createTextElement = function createTextElement(text){
+        //Inline szöveg megjelenítése
         try{
             const element = document.createElement("SPAN");
                 element.innerHTML = text;
@@ -89,6 +90,7 @@ function CommonElementCreator(domElementCreator){
     }
     
     this.createTextLabel = function createTextLabel(text){
+        //INPUT mezőhöz tartozó felirat
         try{
             const element = document.createElement("LABEL");
                 element.innerHTML = text;
@@ -99,6 +101,7 @@ function CommonElementCreator(domElementCreator){
     }
     
     this.createBuildStatus = function createBuildStatus(status, maxStatus){
+        //Építési állapotot jelző sáv, megfelelő arányban kitöltve
         try{
             const element = document.createElement("DIV");
                 element.classList.add("backgroundblack5");
@@ -119,10 +122,19 @@ function CommonElementCreator(domElementCreator){
     }
     
     this.createPrioritySliderButton = function createPrioritySliderButton(buttonText, defaultValue, action){
+        /*Prioritást állító csúszka a hozzá tartozó feliratokkal, és küldés gombbal.
+            buttonText: a gomb szövege
+            defaultValue: a csúszka kezdőértéke
+            action: az események kezeléséhez tartozó objektum
+                action.change(sliderValue): A slider értékének megváltozásakor fut
+                action.run(sliderValue): A gomb megnyomásakor fut
+        */
         try{
             const buildButtonContainer = createBuildButtonContainer();
+                //Csúszka és szövegek létrehozása
                 const label = this.createTextLabel("Prioritás: ");
                     const slider = createPrioritySlider(defaultValue);
+                    //Felirat értékének szinkronizálása a csúszka értékével
                     const sliderValue = this.createTextElement(slider.value);
                         slider.onchange = function(){
                         action.change(slider.value);
@@ -132,6 +144,7 @@ function CommonElementCreator(domElementCreator){
                 label.appendChild(slider);
             buildButtonContainer.appendChild(label);
                 
+                //Gomb létrehozása
                 const buildButton = createBuildButton(buttonText);
                     buildButton.onclick = function(){action.run(slider.value)};
             buildButtonContainer.appendChild(buildButton);
@@ -143,6 +156,7 @@ function CommonElementCreator(domElementCreator){
     }
     
         function createBuildButtonContainer(){
+            //Prioritást állító csúszka és  ahozzá tartozó elemek közös tárolója
             try{
                 const element = document.createElement("DIV");
                     element.classList.add("centertext");
@@ -155,6 +169,7 @@ function CommonElementCreator(domElementCreator){
         }
         
         function createBuildButton(text){
+            //Prioritást állító csúszkához tartozó gomb
             try{
                 const element = document.createElement("BUTTON");
                     element.classList.add("fontsize0125rem");
@@ -166,6 +181,7 @@ function CommonElementCreator(domElementCreator){
         }
         
         function createPrioritySlider(value){
+            //Prioritást állító csúszka létrehozása a megadott kezdőértékkel
             try{
                 const element = document.createElement("INPUT");
                     element.type = "range";
