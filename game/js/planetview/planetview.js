@@ -33,7 +33,11 @@ function PlanetView(){
                     const buildings = groupper.groupBuildingsBySlot(filters.getBuildingsOfPlanet(planet.planetid));
                     
                     for(let slot in planet.slots){
-                        container.appendChild(createSlots(planet, buildings, slot));
+                        if(slot === "defense"){
+                            //TODO Do
+                        }else{
+                            container.appendChild(createSlots(planet, buildings, slot));
+                        }
                     }
                 
             }catch(err){
@@ -56,7 +60,8 @@ function PlanetView(){
                             buildingSlotCover.appendChild(planetSlotTitle);
                             
                             if(building.building.data.status !== 0){
-                                //Show building status
+                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.status, building.buildingData.constructiontime);
+                                buildingSlotCover.appendChild(buildStatus);
                             }
                             
                                 const planetSlotLevel = domElementCreator.createPlanetSlotLevel(building.buildingData.level);

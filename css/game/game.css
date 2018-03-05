@@ -26,6 +26,9 @@
 .backgroundgausscannon{
     background-image: url("../../content/img/gausscannon_background.png");
 }
+.backgroundgreenpixel{
+    background-image: url("../../content/img/pixelgreen.jpg");
+}
 .backgroundhouse{
     background-image: url("../../content/img/house_background.png");
 }

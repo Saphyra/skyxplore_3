@@ -37,9 +37,11 @@ function BuildNewBuildingView(){
                             const title = domElementCreator.createNewBuildingTitle(building.name);
                         contentContainer.appendChild(title);
                             
-                            const hrContainer = domElementCreator.createNewBuildingHRCell(building.constructiontime, building.maxhr);
-                        contentContainer.appendChild(hrContainer);
-                        
+                            if(building.constructiontime && building.maxhr){
+                                const hrContainer = domElementCreator.createNewBuildingHRCell(building.constructiontime, building.maxhr);
+                                contentContainer.appendChild(hrContainer);
+                            }
+                            
                             const resourceContainer = domElementCreator.createNewBuildingResourceContainer();
                             
                                 for(let rindex in building.resource){

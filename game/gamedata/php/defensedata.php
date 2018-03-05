@@ -49,7 +49,7 @@
     $defense[$type]["soldier"] = 1;
     
     //Szabotázs
-    $type="minefied";
+    $type="minefield";
     $defense[$type] = $defaultDefense;
     $defense[$type]["key"] = $type;
     $defense[$type]["type"] = $type;

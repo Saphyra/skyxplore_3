@@ -54,6 +54,10 @@
     background-position: center;
 }
 
+.backgroundpositionleftcenter{
+    background-position: left center;
+}
+
 .backgroundpositiontopcenter{
     background-position: top center;
 }
@@ -156,6 +160,10 @@
 
 .centertext{
     text-align: center;
+}
+
+.colorred{
+    color: lightblue;
 }
 
 .displaynone{
@@ -404,6 +412,10 @@
 
 .paddingright5rem{
     padding-right: 0.5rem;
+}
+
+.paddingtop0125rem{
+    padding-top: 0.25rem;
 }
 
 .relative{

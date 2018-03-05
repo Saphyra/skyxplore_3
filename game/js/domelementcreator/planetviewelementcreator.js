@@ -79,6 +79,30 @@ function PlanetViewElementCreator(parent){
         }
     }
     
+    this.createPlanetSlotBuildStatus = function createPlanetSlotBuildStatus(status, maxStatus){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("backgroundblack5");
+                element.classList.add("backgroundgreenpixel");
+                element.classList.add("backgroundnorepeat");
+                element.classList.add("backgroundpositionleftcenter");
+                element.classList.add("border2px");
+                element.classList.add("borderbottomridge");
+                element.classList.add("bordercolor150");
+                element.classList.add("centertext");
+                element.classList.add("paddingtop0125rem");
+                
+                const completed = maxStatus - status;
+                const backgroundWidth = Math.round(completed / maxStatus * 100) + "%";
+                element.style.backgroundSize = backgroundWidth + " 100%";
+                
+                element.innerHTML = "Építés: " + completed + "/" + maxStatus;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        }
+    }
+    
     this.createPlanetSlotLevel = function createPlanetSlotLevel(level){
         try{
             const element = document.createElement("DIV");
@@ -89,7 +113,7 @@ function PlanetViewElementCreator(parent){
                 element.classList.add("bordertopridge");
                 element.classList.add("bordercolor150");
                 element.classList.add("bottom1px");
-                element.classList.add("fontsize125rem");
+                element.classList.add("fontsize0125rem");
                 element.classList.add("width100percent");
             return element;
         }catch(err){

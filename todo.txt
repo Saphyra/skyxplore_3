@@ -23,5 +23,5 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
 
-planetview: show building status
-Queue: őut new building into queue
+Implement Defense view
+Commenting long methods
