@@ -4,11 +4,11 @@ function StarViewQueueDisplayer(){
             const container = document.getElementById("starviewqueue");
                 container.innerHTML = "";
                 
-            if(!queue.length){
+            if(!Object.keys(queue).length){
                 container.appendChild(domElementCreator.createListElementTitle("Nincs tétel"));
             }else{
-                for(let index in queue){
-                    const element = queue[index];
+                for(let requestid in queue){
+                    const element = queue[requestid];
                     
                     const item = domElementCreator.createListItem();
                         item.innerHTML = "Tétel";

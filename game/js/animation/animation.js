@@ -38,7 +38,6 @@ function Animation(){
                     }
                 };
                 map.onwheel = function(event){event.preventDefault();};
-                
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message);
         }

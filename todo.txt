@@ -24,4 +24,4 @@ schema
             - Extra slotok
 
 Implement Defense view
-Queue: őut new building into queue
+Commenting long methods
