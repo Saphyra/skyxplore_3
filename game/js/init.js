@@ -5,8 +5,13 @@ function initializeLazy(){
     try{
         window.initializer = new Initializer();
         initializer.initialize();
+        
+        log("Ez egy egyszerű üzenet.", "message");
+        log("Ez hibakeresést segítő üzenet.", "debug");
+        log("Ez egy figyelmeztető üzenet.", "warn");
+        log("Ez egy hibaüzenet. Ilyet nem szeretnél látni.", "error");
     }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
     }
 }
 
@@ -27,7 +32,7 @@ function Initializer(){
             back.addBackListeners();
             animation.addMapListener();
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -49,7 +54,7 @@ function Initializer(){
             window.planetView = new PlanetView();
             window.starView = new StarView();
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -62,7 +67,7 @@ function Initializer(){
                 request.send();
                 window.gameData = JSON.parse(request.responseText);
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     

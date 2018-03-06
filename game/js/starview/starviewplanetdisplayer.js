@@ -13,7 +13,7 @@ function StarViewPlanetDisplayer(){
             }
             
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -33,7 +33,7 @@ function StarViewPlanetDisplayer(){
             element.appendChild(cover);
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -69,7 +69,7 @@ function StarViewPlanetDisplayer(){
                 
             return list;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

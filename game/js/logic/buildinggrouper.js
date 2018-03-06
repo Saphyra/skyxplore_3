@@ -34,7 +34,7 @@ BuildingGrouper.prototype.groupBuildingsByRole = function groupBuildingsByRole(s
         
         return result;
     }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
     }
 }
 BuildingGrouper.prototype.groupBuildingsByType = function groupBuildingsByType(buildings){
@@ -54,7 +54,7 @@ BuildingGrouper.prototype.groupBuildingsByType = function groupBuildingsByType(b
         
         return result;
     }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
     }
 }
 BuildingGrouper.prototype.groupBuildingsBySlot = function groupBuildingsBySlot(buildings){
@@ -76,6 +76,6 @@ BuildingGrouper.prototype.groupBuildingsBySlot = function groupBuildingsBySlot(b
         
         return slots;
     }catch(err){
-        log(arguments.callee.name + " - " + err.name + ": " + err.message);
+        log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
     }
 }

@@ -17,7 +17,7 @@ function NewBuildingViewElementCreator(parent){
                 element.classList.add("padding0");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -35,7 +35,7 @@ function NewBuildingViewElementCreator(parent){
                 
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -50,7 +50,7 @@ function NewBuildingViewElementCreator(parent){
                 element.classList.add("marginleft80rem");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -68,7 +68,7 @@ function NewBuildingViewElementCreator(parent){
                 element.innerHTML = title;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -84,7 +84,7 @@ function NewBuildingViewElementCreator(parent){
                 element.classList.add("padding025rem");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -95,7 +95,7 @@ function NewBuildingViewElementCreator(parent){
                 element.innerHTML = "Építési idő: " + buildingTime + " / Max. munkás: " + hr;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -107,7 +107,7 @@ function NewBuildingViewElementCreator(parent){
                 element.innerHTML = resName + ": " + amount;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

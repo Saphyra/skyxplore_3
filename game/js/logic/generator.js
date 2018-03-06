@@ -12,7 +12,7 @@ function Generator(){
             
             return id;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -24,7 +24,7 @@ function Generator(){
             var num = Math.floor(Math.random() * (max - min + 1) ) + min;
             return num;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

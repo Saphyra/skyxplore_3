@@ -16,7 +16,7 @@ function ElementManipulator(){
                 element.classList.remove(removableClassName);
             }
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

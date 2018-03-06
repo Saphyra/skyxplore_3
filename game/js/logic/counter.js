@@ -8,7 +8,7 @@ function Counter(){
             
             return (netIncome + food / 200) / (citizennum + 1);
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -18,7 +18,7 @@ function Counter(){
             const income = this.countFoodIncome(star.starid);
             return income - star.data.citizennum;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -42,7 +42,7 @@ function Counter(){
                 
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -63,7 +63,7 @@ function Counter(){
             
             return capacity;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -82,7 +82,7 @@ function Counter(){
             }
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -103,7 +103,7 @@ function Counter(){
             
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -127,7 +127,7 @@ function Counter(){
                 
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -151,7 +151,7 @@ function Counter(){
                 
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

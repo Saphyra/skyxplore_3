@@ -18,7 +18,7 @@ function StarView(){
             }
             
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -29,7 +29,7 @@ function StarView(){
             queueDisplayer.displayQueue(star.data.queue);
             planetDisplayer.displayPlanets(star.starid);
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

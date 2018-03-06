@@ -26,7 +26,7 @@ function StarViewElementCreator(parent){
                 
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -58,7 +58,7 @@ function StarViewElementCreator(parent){
             
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -73,7 +73,7 @@ function StarViewElementCreator(parent){
                 element.innerHTML = planetName;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -85,7 +85,7 @@ function StarViewElementCreator(parent){
                 element.innerHTML = planetSize + " " + planetType;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -100,7 +100,7 @@ function StarViewElementCreator(parent){
                 element.classList.add("padding0125rem");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

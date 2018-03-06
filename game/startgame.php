@@ -40,7 +40,7 @@
     <DIV id='content'></DIV>
     
     <DIV class='backgroundblack10 centertext displaynone fixed0 overflowauto' id='logcontainer' oncontextmenu='document.getElementById("logcontainer").style.display="none"'>
-        <BUTTON onclick='document.getElementById("logcontainer").style.display="none"'>Bezárás</BUTTON>
+        <BUTTON onclick='document.getElementById("logcontainer").style.display="none"; $("#log").text("");'>Bezárás</BUTTON>
         <DIV class='lefttext' id='log'></DIV>
     </DIV>
 </BODY>

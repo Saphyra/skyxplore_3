@@ -38,7 +38,8 @@ function DOMElementCreator(){
         }
         this.createPlanetSlotTitle = planetViewElementCreator.createPlanetSlotTitle;
         this.createPlanetSlotBuildStatus = planetViewElementCreator.createPlanetSlotBuildStatus;
-        this.createPlanetSlotLevel = planetViewElementCreator.createPlanetSlotLevel;        
+        this.createPlanetSlotLevel = planetViewElementCreator.createPlanetSlotLevel;
+        this.createPlanetViewCancelBuildingButton = planetViewElementCreator.createPlanetViewCancelBuildingButton;
         
     //Csillag nézet
     const starViewElementCreator = new StarViewElementCreator(this);
@@ -107,7 +108,7 @@ function DOMElementCreator(){
             
             return background;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

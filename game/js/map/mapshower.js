@@ -9,7 +9,7 @@ function MapShower(elements){
             
             showElements();
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -33,7 +33,7 @@ function MapShower(elements){
 
                 return connections;
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
         
@@ -51,7 +51,7 @@ function MapShower(elements){
                     mapElements.connectionElements[connection] = connectionElement;
                 }
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
     
@@ -73,7 +73,7 @@ function MapShower(elements){
                 }
                 
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
     
@@ -107,7 +107,7 @@ function MapShower(elements){
             this.starNameMapElement.classList.add(visibility);
             
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     StarElement.prototype.createStarMapElement = function createStarMapElement(star){
@@ -134,7 +134,7 @@ function MapShower(elements){
                 
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     StarElement.prototype.createStarNameMapElement = function createStarNameMapElement(star){
@@ -158,7 +158,7 @@ function MapShower(elements){
                 
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 
@@ -174,7 +174,7 @@ function MapShower(elements){
             }
             
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     ConnectionElement.prototype.createConnectionMapElement = function createConnectionMapElement(star1, star2, connection){
@@ -192,7 +192,7 @@ function MapShower(elements){
                 element.setAttribute("stroke-width", 1);
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     ConnectionElement.prototype.isConnectionHidden = function isConnectionHidden(visibility1, visibility2){
@@ -211,7 +211,7 @@ function MapShower(elements){
             return result;
             
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

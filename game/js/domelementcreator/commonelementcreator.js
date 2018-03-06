@@ -10,7 +10,7 @@ function CommonElementCreator(domElementCreator){
                 element.classList.add("overflowauto");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -27,7 +27,7 @@ function CommonElementCreator(domElementCreator){
                 element.classList.add("overflowyhidden");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -44,7 +44,7 @@ function CommonElementCreator(domElementCreator){
                 element.innerHTML = title;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -74,7 +74,7 @@ function CommonElementCreator(domElementCreator){
                 element.innerHTML = content;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -85,7 +85,7 @@ function CommonElementCreator(domElementCreator){
                 element.innerHTML = text;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -96,7 +96,7 @@ function CommonElementCreator(domElementCreator){
                 element.innerHTML = text;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -117,7 +117,7 @@ function CommonElementCreator(domElementCreator){
                 element.innerHTML = "Építés: " + completed + "/" + maxStatus;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -151,7 +151,7 @@ function CommonElementCreator(domElementCreator){
             
             return buildButtonContainer;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -164,7 +164,7 @@ function CommonElementCreator(domElementCreator){
                     element.classList.add("margin5rem");
                 return element;
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
         
@@ -176,7 +176,7 @@ function CommonElementCreator(domElementCreator){
                     element.innerHTML = text;
                 return element;
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
         
@@ -194,7 +194,7 @@ function CommonElementCreator(domElementCreator){
                     element.classList.add("marginright5rem");
                 return element;
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
 }

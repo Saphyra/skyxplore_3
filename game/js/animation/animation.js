@@ -28,7 +28,7 @@ function Animation(){
                 //Görgővel való görgetés tiltása
                 map.onwheel = function(event){event.preventDefault();};
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

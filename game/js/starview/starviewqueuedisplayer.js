@@ -30,7 +30,7 @@ function StarViewQueueDisplayer(){
                 }
             }
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -49,7 +49,7 @@ function StarViewQueueDisplayer(){
                 item.appendChild(cancelButton);
                 return item;
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
         

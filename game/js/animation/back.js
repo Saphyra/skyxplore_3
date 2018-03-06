@@ -6,7 +6,7 @@ function Back(){
         try{
             $(".viewcontainer").contextmenu(function(){back.backOneWindow()});
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -17,7 +17,7 @@ function Back(){
             viewStack.push(windowid);
             $(windowid).toggle();
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 
@@ -27,7 +27,7 @@ function Back(){
             viewStack.pop();
             this.switchWindow(viewStack.pop());
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

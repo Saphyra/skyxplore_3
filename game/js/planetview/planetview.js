@@ -10,7 +10,7 @@ function PlanetView(){
                 break;
             }
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -22,7 +22,7 @@ function PlanetView(){
             $("#planetviewcontainer").css("backgroundImage", imgUrl);
             displaySlots(planet);
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -43,7 +43,7 @@ function PlanetView(){
                         }
                     }
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
         
@@ -67,6 +67,13 @@ function PlanetView(){
                                 //Építési állapot megjelenítése
                                 const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.status, building.buildingData.constructiontime);
                                 buildingSlotCover.appendChild(buildStatus);
+                                
+                                //Építés visszavonása
+                                const star = gameData.stars[planet.starid];
+                                const requestid = building.building.data.requestid;
+                                const request = star.data.queue[requestid];
+                                const cancelBuilding = domElementCreator.createPlanetViewCancelBuildingButton(request);
+                                buildingSlotCover.appendChild(cancelBuilding);
                             }
                             
                                 const planetSlotLevel = domElementCreator.createPlanetSlotLevel(building.buildingData.level);
@@ -87,7 +94,7 @@ function PlanetView(){
                     
                     return container;
                 }catch(err){
-                    log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                    log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
                 }
             }
 }

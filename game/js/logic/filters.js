@@ -16,7 +16,7 @@ function Filters(){
             }
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -32,7 +32,7 @@ function Filters(){
                 
                 return result;
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
     
@@ -58,7 +58,7 @@ function Filters(){
             
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -77,7 +77,7 @@ function Filters(){
             
             return result;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -97,7 +97,7 @@ function Filters(){
             return result;
             
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

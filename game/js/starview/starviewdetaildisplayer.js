@@ -23,7 +23,7 @@ function StarViewDetailsDisplayer(){
                 + " (" + growth + "/kör)"
                 + " - Lakóhely: " + houseNum;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -71,7 +71,7 @@ function StarViewDetailsDisplayer(){
                 }
             }
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -103,7 +103,7 @@ function StarViewDetailsDisplayer(){
                 container.appendChild(domElementCreator.createListItem(content));
             }
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -137,7 +137,7 @@ function StarViewDetailsDisplayer(){
                 container.appendChild(domElementCreator.createListItem(content));
             }
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

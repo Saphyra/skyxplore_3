@@ -11,7 +11,7 @@ function PlanetViewElementCreator(parent){
                 element.classList.add("margintop5rem");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -29,7 +29,7 @@ function PlanetViewElementCreator(parent){
                 element.innerHTML = name;
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -63,7 +63,7 @@ function PlanetViewElementCreator(parent){
                 );
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -79,7 +79,7 @@ function PlanetViewElementCreator(parent){
                 element.classList.add("bordercolor150");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -93,7 +93,27 @@ function PlanetViewElementCreator(parent){
                 element.classList.add("paddingtop0125rem");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.createPlanetViewCancelBuildingButton = function createPlanetViewCancelBuildingButton(request){
+        try{
+            const element = document.createElement("DIV");
+                element.classList.add("backgroundblack8");
+                element.classList.add("border2px");
+                element.classList.add("borderbottomridge");
+                element.classList.add("bordercolor150");
+                element.classList.add("padding1px");
+                
+                const button = document.createElement("BUTTON");
+                    button.innerHTML = "Visszavon";
+                    button.onclick = function(){request.undo()};
+                
+                element.appendChild(button);
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
@@ -112,7 +132,7 @@ function PlanetViewElementCreator(parent){
                 element.classList.add("width100percent");
             return element;
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
 }

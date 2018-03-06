@@ -7,7 +7,7 @@ function BuildNewBuildingView(){
             const buildableBuildings = order.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
             displayBuildableBuildings(planetid, buildableBuildings);
         }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message);
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
         
@@ -22,7 +22,7 @@ function BuildNewBuildingView(){
                     container.appendChild(createBuildableBuildingElement(planetid, building));
                 }
             }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
         
@@ -59,7 +59,7 @@ function BuildNewBuildingView(){
                         
                     return item;
                 }catch(err){
-                    log(arguments.callee.name + " - " + err.name + ": " + err.message);
+                    log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
                 }
             }
             

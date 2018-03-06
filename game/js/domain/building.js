@@ -1,4 +1,4 @@
-function Building(planetid, buildingid, buildingData){
+function Building(planetid, buildingid, buildingData, requestid){
     this.planetid = planetid;
     this.buildingid = buildingid;
     this.type = buildingData.type;
@@ -9,5 +9,6 @@ function Building(planetid, buildingid, buildingData){
             source: buildingData.source,
             key: buildingData.key,
         },
+        requestid: requestid,
     };
 }
