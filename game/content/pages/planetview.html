@@ -1,25 +1,18 @@
 <!-- Bolygó nézet megjelenítése -->
-<DIV class='maincontainer viewcontainer absolute0 backgroundattachmentfixed backgroundnorepeat backgroundpositiontopcenter backgroundsize100percent border5px bordercolor100 borderinset displaynone overflowauto' id='planetviewcontainer'>
-    <DIV class='absolute0 backgroundblack5 overflowauto'>
-        <HEADER class='centertext padding0'>
-            <SPAN class='bold centertext fontsize20rem italic letterspacing3px padding0125rem' id='planetviewplanetname'></SPAN>
-        </HEADER>
-    
-        <MAIN class='overflowauto paddingleft5rem paddingright5rem viewmain'>
+<DIV id='planetviewcontainer' class='maincontainer viewcontainer absolute0 backgroundattachmentfixed backgroundnorepeat backgroundpositiontopcenter backgroundsize100percent border5px bordercolor100 borderinset displaynone overflowauto backgroundblack5'>
+    <HEADER class='centertext padding0'>
+        <SPAN class='bold centertext fontsize20rem italic letterspacing3px padding0125rem' id='planetviewplanetname'></SPAN>
+    </HEADER>
+
+    <MAIN class='overflowauto paddingleft5rem paddingright5rem viewmain'>
+        <SECTION class='displaynone container border5px borderbottomridge borderrightridge bordercolor100 centertext floatleft leftn5rem minheight75percent  overflowxauto relative width25vw' id='planetviewleftcontainer'>
+            <DIV class='border5px borderbottomridge bordercolor100 centertext fontsize15rem padding025rem'>Elem</DIV>
+        </SECTION>
         
-            <SECTION class='displaynone container border5px borderbottomridge borderrightridge bordercolor100 centertext floatleft leftn5rem minheight75percent  overflowxauto relative width25vw' id='planetviewleftcontainer'>
-                <DIV class='border5px borderbottomridge bordercolor100 centertext fontsize15rem padding025rem'>Elem</DIV>
-            </SECTION>
-            
-            <SECTION class='displaynone container border5px borderbottomridge borderleftridge bordercolor100 floatright minheight75percent overflowxauto relative rightn5rem width25vw' id='planetviewrightcontainer'>
-                <DIV class='border5px borderbottomridge bordercolor100 centertext fontsize15rem padding025rem'>Elem</DIV>
-            </SECTION>
-            <!-- Original width with 2 sidebars: 45vw without borders-->
-            <SECTION class=' slotlist border5px borderinset bordercolor150 centertext marginauto padding5rem relative width100percent' id='planetviewslotlist'></SECTION>
-            
-        </MAIN>
-        
-        <FOOTER><BUTTON onclick='back.backOneWindow()'>Vissza</BUTTON></FOOTER>
-    </DIV>
-    
+        <SECTION class='displaynone container border5px borderbottomridge borderleftridge bordercolor100 floatright minheight75percent overflowxauto relative rightn5rem width25vw' id='planetviewrightcontainer'>
+            <DIV class='border5px borderbottomridge bordercolor100 centertext fontsize15rem padding025rem'>Elem</DIV>
+        </SECTION>
+        <!-- Original width with 2 sidebars: 45vw without borders-->
+        <SECTION class=' slotlist border5px borderinset bordercolor150 centertext marginauto padding5rem relative width100percent' id='planetviewslotlist'></SECTION>
+    </MAIN>
 </DIV>

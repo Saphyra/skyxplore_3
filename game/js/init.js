@@ -5,11 +5,6 @@ function initializeLazy(){
     try{
         window.initializer = new Initializer();
         initializer.initialize();
-        
-        log("Ez egy egyszerű üzenet.", "message");
-        log("Ez hibakeresést segítő üzenet.", "debug");
-        log("Ez egy figyelmeztető üzenet.", "warn");
-        log("Ez egy hibaüzenet. Ilyet nem szeretnél látni.", "error");
     }catch(err){
         log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
     }

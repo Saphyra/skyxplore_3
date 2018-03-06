@@ -53,7 +53,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`pkey`, `id`, `username`, `password`, `email`, `requestdata`) VALUES
-(13, 'user9035536966', 'a', 'a', 'a@a.aa', '[]');
+(1, 'user9035536966', 'a', 'a', 'a@a.aa', '[]');
 
 --
 -- Indexek a kiírt táblákhoz

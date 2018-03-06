@@ -39,6 +39,13 @@
 <BODY>
     <DIV id='content'></DIV>
     
+    <FOOTER>
+        <BUTTON onclick='newround.newRound()'>Új kör</BUTTON>
+        <BUTTON onclick='data.saveGame()'>Játék mentése</BUTTON>
+        <BUTTON onclick='schemas.showAll()'>Harcászati sémák</BUTTON>
+        <BUTTON onclick='window.location.href = "../mainmenu/mainmenu.php"'>Kilépés</BUTTON>
+    </FOOTER>
+    
     <DIV class='backgroundblack10 centertext displaynone fixed0 overflowauto' id='logcontainer' oncontextmenu='document.getElementById("logcontainer").style.display="none"'>
         <BUTTON onclick='document.getElementById("logcontainer").style.display="none"; $("#log").text("");'>Bezárás</BUTTON>
         <DIV class='lefttext' id='log'></DIV>
