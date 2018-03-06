@@ -14,7 +14,6 @@ function Initializer(){
     this.initialize = function initialize(){
         //Adatok betöltése
         try{
-            
             loadContent();
             document.addEventListener('contextmenu', event => event.preventDefault());
             
@@ -26,6 +25,7 @@ function Initializer(){
             
             back.addBackListeners();
             animation.addMapListener();
+            animation.addWindowStateChangeListener();
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
