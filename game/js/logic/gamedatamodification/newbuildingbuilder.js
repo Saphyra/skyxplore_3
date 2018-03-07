@@ -7,14 +7,13 @@ function NewBuildingBuilder(gameDataModificator){
             const planet = gameData.planets[planetid];
             const star = gameData.stars[planet.starid];
             
-            const requestid = generator.generateId("request", star.data.queue);
+            const requestid = generator.generateId("request", Object.keys(star.data.queue));
             //Épület létrehozása
             const building = createBuilding(planetid, buildingData, requestid);
             gameData.buildings[building.buildingid] = building;
-            //Kérelem létrehozása
             
-            const cancel = new CancelBuilding(star.data.queue, building.buildingid, requestid, star);
-            const request = new Request(requestid, "building", buildingData, priority, building.buildingid, cancel);
+            //Kérelem létrehozása
+            const request = new Request(requestid, "building", priority, building.buildingid);
             star.data.queue[requestid] = request;
             
             //Ablakok frissítése
@@ -35,21 +34,6 @@ function NewBuildingBuilder(gameDataModificator){
                 return building;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-            }
-        }
-        
-        function CancelBuilding(queue, buildingid, requestid, star){
-            //Építési kérelem visszavonása
-            this.queue = queue;
-            this.buildingid = buildingid;
-            this.requestid = requestid;
-            this.star = star;
-            this.undo = function(){
-                const planetid = gameData.buildings[this.buildingid].planetid;
-                delete this.queue[requestid];
-                delete gameData.buildings[this.buildingid];
-                starView.displayStarData(this.star);
-                planetView.displayPlanetData(gameData.planets[planetid]);
             }
         }
 }

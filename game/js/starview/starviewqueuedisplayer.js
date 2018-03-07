@@ -63,7 +63,7 @@ function StarViewQueueDisplayer(){
                     starView.displayQueue(this.queue);
                 };
                 this.run = function(value){
-                    this.request.undo();
+                    undoRequest.undo(request);
                 }
             }
 }

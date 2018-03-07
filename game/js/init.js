@@ -20,7 +20,7 @@ function Initializer(){
             createBeans();
             
             data.loadGameData();
-            loadGame();
+            data.loadGame();
             map.showMap();
             
             back.addBackListeners();
@@ -45,26 +45,18 @@ function Initializer(){
             window.generator = new Generator();
             window.map = new Map();
             window.nameConverter = new NameConverter();
+            window.newRound = new NewRound();
             window.order = new Order();
             window.planetView = new PlanetView();
+            window.schemaView = new SchemaView();
             window.starView = new StarView();
+            window.undoRequest = new UndoRequest();
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
-    function loadGame(){
-        //Mentett játék betöltése
-        try{
-            const path = "saves/" + window.startGameid + ".json";
-            const request = new XMLHttpRequest();
-                request.open("GET", path, 0);
-                request.send();
-                window.gameData = JSON.parse(request.responseText);
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
+    
     
     function loadContent(){
         //Nézetek betöltése

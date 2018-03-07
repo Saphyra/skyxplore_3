@@ -1,9 +1,6 @@
-function Request(requestid, type, data, priority, elementid, cancel){
+function Request(requestid, type, priority, elementid){
     this.requestid = requestid;
     this.type = type;
-    this.data = data;
     this.priority = priority;
     this.elementid = elementid;
-    this.cancel = cancel;
-    this.undo = function(){cancel.undo()};
 }

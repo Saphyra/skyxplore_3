@@ -189,7 +189,7 @@
         
         private function setVisibility(){
             $defaultVisibility["visibility"] = "hidden";
-            $defaultVisibility["snapshot"] = [];
+            $defaultVisibility["snapshot"] = new stdClass();
             
             $visibility["player"] = $defaultVisibility;
             $visibility["enemy"] = $defaultVisibility;
@@ -200,7 +200,7 @@
         private function createStarData(){
             $starData = [];
             
-            $starData["queue"] = [];
+            $starData["queue"] = new stdClass();
             
             $starData["resources"] = [];
             $starData["resources"]["food"] = 0;

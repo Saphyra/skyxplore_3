@@ -122,6 +122,9 @@ function StarViewDetailsDisplayer(){
                         case "depot":
                         case "fridge":
                             const capacity = counter.countStorageCapacity(star.starid, type);
+                            if(capacity === 0){
+                                continue;
+                            }
                             content = data.getElementData({source: type, key: "typename"})
                                 + " (Kapacitás: " + capacity + ")";
                         break;

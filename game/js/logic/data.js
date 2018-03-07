@@ -64,4 +64,33 @@ function Data(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+    
+    this.loadGame = function loadGame(){
+        //Mentett játék betöltése
+        try{
+            const path = "saves/" + startGameid + ".json";
+            const request = new XMLHttpRequest();
+                request.open("GET", path, 0);
+                request.send();
+                window.gameData = JSON.parse(request.responseText);
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.saveGame = function saveGame(){
+        try{
+            const request = new XMLHttpRequest();
+                request.open("POST", "php/savegame.php", 0);
+                request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.send("gameid=" + startGameid + "&data=" + JSON.stringify(gameData));
+                if(request.responseText == "1"){
+                    log("Játék elmentve.", "warn");
+                }else{
+                    log("Mentés sikertelen: " + request.responseText, "error");
+                }
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
 }

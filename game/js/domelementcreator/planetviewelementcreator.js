@@ -108,7 +108,7 @@ function PlanetViewElementCreator(parent){
                 
                 const button = document.createElement("BUTTON");
                     button.innerHTML = "Visszavon";
-                    button.onclick = function(){request.undo()};
+                    button.onclick = function(){undoRequest.undo(request)};
                 
                 element.appendChild(button);
             return element;
