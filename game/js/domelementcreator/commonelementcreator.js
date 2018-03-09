@@ -1,5 +1,5 @@
-function CommonElementCreator(domElementCreator){
-    const parent = domElementCreator;
+function CommonElementCreator(parent){
+    const domElementCreator = parent;
     
     this.createCoverElement = function createCoverElement(){
         //Teljes tárolót lefedő fólia, félig átlátszó háttérrel
@@ -62,11 +62,11 @@ function CommonElementCreator(domElementCreator){
                 element.classList.add("padding025rem");
                 $(element).hover(
                         function(){
-                            parent.removeClassesContains(element, "bordercolor");
+                            domElementCreator.removeClassesContains(element, "bordercolor");
                             element.classList.add("bordercolor255");
                         },
                         function(){
-                            parent.removeClassesContains(element, "bordercolor");
+                            domElementCreator.removeClassesContains(element, "bordercolor");
                             element.classList.add("bordercolor150");
                         }
                 );

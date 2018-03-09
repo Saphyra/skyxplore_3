@@ -42,6 +42,7 @@ function StarViewDetailsDisplayer(){
             const content = data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
                     + " (" + foodIncome + "/kör)";
             const foodListItem = domElementCreator.createListItem(content);
+                domElementCreator.convertElementToButton(foodListItem, function(){buildingListView.showFarmListView(star.starid)}, true);
             container.appendChild(foodListItem);
             
             //Tárolt anyagtípusok megjelenítése

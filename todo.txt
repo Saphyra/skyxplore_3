@@ -4,7 +4,7 @@ visibility
     - owned = Saját birtkban (Zöld)
     - enemy = Ellenségé (Piros)
     - visible = Látható (Flotta hatókörében) (Sárga)
-    - connected = Kapcsolódik (Saját csilalghoz, vagy flotta által kontrollált csllaghoz)
+    - connected = Kapcsolódik (Saját csilalghoz, vagy flotta által kontrollált csillaghoz)
     - hidden - Ismeretlen
     
 schema
@@ -23,5 +23,7 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
 
+Upgrade buildings
 Implement Defense view
+Implement farm view
 Implement newround

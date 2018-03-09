@@ -36,6 +36,7 @@ function Initializer(){
         try{
             window.animation = new Animation();
             window.back = new Back();
+            window.buildingListView = new BuildingListView();
             window.buildNewBuildingView = new BuildNewBuildingView();
             window.counter = new Counter();
             window.data = new Data();

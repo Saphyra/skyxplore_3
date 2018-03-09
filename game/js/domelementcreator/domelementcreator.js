@@ -1,7 +1,8 @@
 function DOMElementCreator(){
     //Elemek módosítása
-    const elementManipulator = new ElementManipulator();
+    const elementManipulator = new ElementManipulator(this);
         this.removeClassesContains = elementManipulator.removeClassesContains;
+        this.convertElementToButton = elementManipulator.convertElementToButton;
     
     //Közös elemek létrehozása
     const commonElementCreator = new CommonElementCreator(this);

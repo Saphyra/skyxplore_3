@@ -166,6 +166,10 @@
     color: lightblue;
 }
 
+.cursorpointer{
+    cursor: pointer;
+}
+
 .displaynone{
     display: none;
 }
