@@ -4,11 +4,11 @@ function Data(){
     this.getElementData = function getElementData(resource){
         //Elem adatainak beolvasása
         try{
-            let element = this.getFromCache(resource.source);
+            let element = this.getFromCache("elements", resource.source);
             
             if(element === null){
                 element = loadElementData(resource.source);
-                this.putToCache(resource.source, element);
+                this.putToCache("elements", resource.source, element);
             }
             const result = element[resource.key] || function(){log("No data in element " + resource.source + " with key " + resource.key); return null};
             
@@ -35,19 +35,44 @@ function Data(){
         }
     }
     
-    this.putToCache = function putToCache(key, data){
+    this.putToCache = function putToCache(cacheName, key, data){
         //Gyorsítótárazás
         try{
-            cache[key] = data;
+            if(cache[cacheName] == undefined){
+                cache[cacheName] = {};
+            }
+            cache[cacheName][key] = data;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
-    this.getFromCache = function getFromCache(key){
+    this.getFromCache = function getFromCache(cacheName, key){
         //Kiolvasás gyorsítótárból
         try{
-            return cache[key] || null;
+            if(cache[cacheName] == undefined){
+                return null;
+            }
+            
+            return cache[cacheName][key] || null;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.getCacheNames = function getCacheNames(){
+        //A gyorsítótár tárolónevei
+        try{
+            return Object.keys(cache);
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.emptyCache = function emptyCache(cacheName){
+        //Kiüríti a gyorsítótár megadott nevű tárolóját
+        try{
+            cache[cacheName] = {};
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
@@ -58,7 +83,7 @@ function Data(){
         try{
             for(let index in gameDataSources){
                 const entry = gameDataSources[index];
-                this.putToCache(entry, loadElementData(entry));
+                this.putToCache("elements", entry, loadElementData(entry));
             }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

@@ -6,7 +6,7 @@ function Filters(){
             const result = [];
             for(let sindex in sources){
                 const source = sources[sindex];
-                const elements = data.getFromCache(source);
+                const elements = data.getFromCache("elements", source);
                 for(let eindex in elements){
                     const element = elements[eindex];
                     if(isElementValid(element, params)){
@@ -39,7 +39,7 @@ function Filters(){
     this.getPlanetsOfStar = function getPlanetsOfStar(starid){
         //Csillag bolygói
         try{
-            let result = data.getFromCache("planetsof" + starid);
+            let result = data.getFromCache("planetsofstar", starid);
             
             if(result === null){
                 result = {};
@@ -53,7 +53,7 @@ function Filters(){
                     }
                 }
                 
-                data.putToCache("planetsof" + starid, result);
+                data.putToCache("planetsofstar", starid, result);
             }
             
             return result;
