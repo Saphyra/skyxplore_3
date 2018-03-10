@@ -16,6 +16,10 @@ function DOMElementCreator(){
         this.createBuildStatus = commonElementCreator.createBuildStatus;
         this.createPrioritySliderButton = commonElementCreator.createPrioritySliderButton;
         
+    const farmListViewElementCreator = new FarmListViewElementCreator(this);
+        this.createFarmListViewFoodStatusSlider = farmListViewElementCreator.createFarmListViewFoodStatusSlider;
+        this.createFarmListViewPrioritySlider = farmListViewElementCreator.createFarmListViewPrioritySlider;
+        
     //Új épület létrehozása oldal
     const newBuildingViewElementCreator = new NewBuildingViewElementCreator(this);
         this.createNewBuildingListItem = newBuildingViewElementCreator.createNewBuildingListItem;

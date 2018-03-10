@@ -16,6 +16,7 @@ function UndoRequest(){
     }
     
         function undoBuildingRequest(request){
+            //Épületek kérelmének visszavonása
             try{
                 const building = gameData.buildings[request.elementid];
                 const planet = gameData.planets[building.planetid];
