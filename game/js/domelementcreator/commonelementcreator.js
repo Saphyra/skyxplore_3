@@ -92,6 +92,7 @@ function CommonElementCreator(parent){
     this.createTextLabel = function createTextLabel(text){
         //INPUT mezőhöz tartozó felirat
         try{
+            text = text || "";
             const element = document.createElement("LABEL");
                 element.innerHTML = text;
             return element;
@@ -133,7 +134,7 @@ function CommonElementCreator(parent){
             const buildButtonContainer = createBuildButtonContainer();
                 //Csúszka és szövegek létrehozása
                 const label = this.createTextLabel("Prioritás: ");
-                    const slider = createPrioritySlider(defaultValue);
+                    const slider = this.createPrioritySlider(defaultValue);
                     //Felirat értékének szinkronizálása a csúszka értékével
                     const sliderValue = this.createTextElement(slider.value);
                         slider.onchange = function(){
@@ -180,7 +181,7 @@ function CommonElementCreator(parent){
             }
         }
         
-        function createPrioritySlider(value){
+        this.createPrioritySlider = function createPrioritySlider(value){
             //Prioritást állító csúszka létrehozása a megadott kezdőértékkel
             try{
                 const element = document.createElement("INPUT");
@@ -189,9 +190,9 @@ function CommonElementCreator(parent){
                     element.max = 10;
                     element.step = 1;
                     element.value = value;
-                    element.classList.add("verticalcenter");
                     element.classList.add("marginleft5rem");
                     element.classList.add("marginright5rem");
+                    element.classList.add("verticalcenter");
                 return element;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

@@ -100,4 +100,56 @@ function Filters(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+    
+    this.getOwnedStars = function getOwnedStars(){
+        //Lakott csillagok
+        try{
+            const stars = gameData.stars;
+            const result = [];
+            
+            for(let starid in stars){
+                const star = stars[starid];
+                if(star.owner !== "neutral"){
+                    result.push(star);
+                }
+            }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.getBuildingsOfTypeOfStar = function getBuildingsOfTypeOfStar(starid, type, includeUnderConstruction){
+        //Egy csillag bolygóin található épületek a megadott típusból
+        try{
+            if(includeUnderConstruction == undefined){
+                includeUnderConstruction = includeUnderConstruction == undefined ? false : true;
+            }
+            
+            const star = gameData.stars[starid];
+            const planets = this.getPlanetsOfStar(starid);
+            const result = [];
+            
+            for(let pindex in planets){
+                const planet = planets[pindex];
+                const buildings = this.getBuildingsOfPlanet(planet.planetid);
+                
+                for(let bindex in buildings){
+                    const building = buildings[bindex];
+                    if(building.type === type){
+                        if(includeUnderConstruction === true){
+                            result.push(building);
+                        }else if(building.data.status === 0){
+                            result.push(building);
+                        }
+                    }
+                }
+            }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
 }

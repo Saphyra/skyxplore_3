@@ -207,6 +207,12 @@
             $starData["resources"]["depot"] = [];
             $starData["resources"]["storage"] = [];
             
+            $starData["foodproductionpriority"] = 6;
+            $starData["storagestatus"] = [];
+            $starData["storagestatus"]["minfridgestatus"] = 70;
+            $starData["storagestatus"]["maxfridgestatus"] = 90;
+            
+            
             return $starData;
         }
     }

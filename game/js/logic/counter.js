@@ -25,19 +25,13 @@ function Counter(){
     this.countFoodIncome = function countFoodIncome(starid){
         //Teljes élelmiszertermelés kiszámolása
         try{
-            const planets = filters.getPlanetsOfStar(starid);
             let result = 0;
+            const farms = filters.getBuildingsOfTypeOfStar(starid, "farm", false);
                 
-            for(let planetid in planets){
-                const buildings = filters.getBuildingsOfPlanet(planetid);
-                
-                for(let buildingid in buildings){
-                    const building = buildings[buildingid];
-                    const buildingData = data.getElementData(building.data.resource);
-                    if(buildingData.slot === "food" && building.data.status === 0){
-                        result += buildingData.income * buildingData.workplace;
-                    }
-                }
+            for(let findex in farms){
+                const farm = farms[findex];
+                const buildingData = data.getElementData(farm.data.resource);
+                result += buildingData.income * buildingData.workplace;
             }
                 
             return result;
@@ -86,7 +80,7 @@ function Counter(){
         }
     }
     
-    this.countDefense = function countDefense(planetid){
+    this.countDefenseOfPlanet = function countDefenseOfPlanet(planetid){
         //Bolygó védelmi rendszerének száma
         try{
             let result = 0;
@@ -99,7 +93,6 @@ function Counter(){
                     result++;
                 }
             }
-                
             
             return result;
         }catch(err){
@@ -148,7 +141,6 @@ function Counter(){
                     }
                 }
             }
-                
             return result;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

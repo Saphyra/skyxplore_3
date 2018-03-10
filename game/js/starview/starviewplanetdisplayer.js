@@ -62,7 +62,7 @@ function StarViewPlanetDisplayer(){
             list.appendChild(buildingSlotListItem);
             
                 const defenseSlots = planet.slots.defense;
-                const defenseNum = counter.countDefense(planet.planetid);
+                const defenseNum = counter.countDefenseOfPlanet(planet.planetid);
                 const defenseSlotListItem = domElementCreator.createPlanetSlotListItem(defenseNum, defenseSlots);
                     defenseSlotListItem.innerHTML = slotNames.defense + " " + defenseNum + " / " + defenseSlots;
             list.appendChild(defenseSlotListItem);

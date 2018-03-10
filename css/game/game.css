@@ -11,6 +11,13 @@
     display: block;
 }
 
+header{
+    border-bottom: 5px ridge rgb(100,100,100);
+    padding: 0px;
+    padding-right: 2.5rem;
+    position: relative;
+}
+
 .backgrounddeflector{
     background-image: url("../../content/img/deflector_background.png");
 }
@@ -57,7 +64,7 @@
     background-image: url("../../content/img/terran_background.jpg");
 }
         
-@media screen and (max-width: 650px){
+@media screen and (max-width: 755px){
     .container{
         float: none;
         width: 100%;

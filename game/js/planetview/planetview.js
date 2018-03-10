@@ -2,13 +2,8 @@ function PlanetView(){
     this.showPlanet = function showPlanet(planet){
         //Bolygó nézet megjelenítése
         try{
-            const star = gameData.stars[planet.starid];
-            switch(star.visibility.player.visibility){
-                default:
-                    this.displayPlanetData(planet);
-                    back.switchWindow("#planetviewcontainer");
-                break;
-            }
+            this.displayPlanetData(planet);
+            back.switchWindow("#planetviewcontainer");
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
