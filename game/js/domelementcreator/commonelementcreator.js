@@ -92,6 +92,7 @@ function CommonElementCreator(parent){
     this.createTextLabel = function createTextLabel(text){
         //INPUT mezőhöz tartozó felirat
         try{
+            text = text || "";
             const element = document.createElement("LABEL");
                 element.innerHTML = text;
             return element;
