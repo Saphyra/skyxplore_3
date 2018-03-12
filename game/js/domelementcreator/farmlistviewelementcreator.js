@@ -57,7 +57,6 @@ function FarmListViewElementCreator(parent){
         try{
             const element = domElementCreator.createListItem();
                 element.appendChild(createSliderText("Prioritás"));
-            
                 const label = domElementCreator.createTextLabel();
                     const slider = domElementCreator.createPrioritySlider(star.data.foodproductionpriority);
                 label.appendChild(slider);

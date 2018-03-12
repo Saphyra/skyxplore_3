@@ -169,4 +169,19 @@ function Filters(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+    
+    this.getOwnedStars = function getOwnedStars(){
+        //Lakott csillagok
+        const stars = gameData.stars;
+        const result = [];
+        
+        for(let starid in stars){
+            const star = stars[starid];
+            if(star.owner !== "neutral"){
+                result.push(star);
+            }
+        }
+        
+        return result;
+    }
 }
