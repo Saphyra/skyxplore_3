@@ -10,16 +10,21 @@ function DOMElementCreator(){
         this.createDIV = commonElementCreator.createDIV;
         this.createListElement = commonElementCreator.createListElement;
         this.createListElementTitle = commonElementCreator.createListElementTitle;
+        this.createListItemUnhovered = commonElementCreator.createListItemUnhovered;
         this.createListItem = commonElementCreator.createListItem;
         this.createTextElement = commonElementCreator.createTextElement;
+        this.createTextCell = commonElementCreator.createTextCell;
         this.createTextLabel = commonElementCreator.createTextLabel;
         this.createBuildStatus = commonElementCreator.createBuildStatus;
         this.createPrioritySlider = commonElementCreator.createPrioritySlider;
         this.createPrioritySliderButton = commonElementCreator.createPrioritySliderButton;
+        this.createListElementLeftText = commonElementCreator.createListElementLeftText;
         
     const farmListViewElementCreator = new FarmListViewElementCreator(this);
         this.createFarmListViewFoodStatusSlider = farmListViewElementCreator.createFarmListViewFoodStatusSlider;
         this.createFarmListViewPrioritySlider = farmListViewElementCreator.createFarmListViewPrioritySlider;
+        this.createFarmListViewBuildStatus = farmListViewElementCreator.createFarmListViewBuildStatus;
+        this.createFarmListViewUpgradeButton = farmListViewElementCreator.createFarmListViewUpgradeButton;
         
     //Új épület létrehozása oldal
     const newBuildingViewElementCreator = new NewBuildingViewElementCreator(this);

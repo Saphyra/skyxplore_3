@@ -16,6 +16,7 @@ function UndoRequest(){
     }
     
         function undoBuildingRequest(request){
+            //Épületépítési kérelem visszavonása
             try{
                 const building = gameData.buildings[request.elementid];
                 const planet = gameData.planets[building.planetid];
@@ -23,8 +24,10 @@ function UndoRequest(){
                 
                 delete star.data.queue[request.requestid];
                 delete gameData.buildings[building.buildingid];
+                
                 starView.displayStarData(star);
                 planetView.displayPlanetData(planet);
+                buildingListView.refresh(star.starid);
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }

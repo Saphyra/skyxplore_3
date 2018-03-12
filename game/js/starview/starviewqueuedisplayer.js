@@ -45,25 +45,11 @@ function StarViewQueueDisplayer(){
                 item.appendChild(title);
                     const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.data.status, buildingData.constructiontime);
                 item.appendChild(buildStatus);
-                    const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.priority, new Action(request, queue));
+                    const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.priority, new PrioritySliderAction(request, queue));
                 item.appendChild(cancelButton);
                 return item;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
         }
-        
-            function Action(request, queue){
-                //Kérelem visszavonása / prioritás megváltoztatása
-                this.request = request;
-                this.queue = queue;
-                
-                this.change = function(newPriority){
-                    this.request.priority = newPriority;
-                    starView.displayQueue(this.queue);
-                };
-                this.run = function(value){
-                    undoRequest.undo(request);
-                }
-            }
 }

@@ -23,14 +23,20 @@ function ElementManipulator(parent){
     }
     
     this.convertElementToButton = function convertElementToButton(element, action, changeBorder){
-        //Gombbá alakítja a megadott elemet.
+        /*Gombbá alakítja a megadott elemet.
+            @element: Az átalakítandó elem
+            @action: Gombnyomásra futtatandó művelet
+            @changeBorder: Ha igaz, a gombra vonatkozó fehér/piros színek lépnek életbe
+        */
         try{
+            changeBorder = changeBorder == undefined ? false : true;
+            
             element.classList.add("cursorpointer");
             
             if(changeBorder){
                 domElementCreator.removeClassesContains(element, "border");
                 element.classList.add("border2px");
-                element.classList.add("bordercolor150");
+                element.classList.add("bordercolor255");
                 element.classList.add("borderridge");
                 
                 $(element).hover(
@@ -40,13 +46,15 @@ function ElementManipulator(parent){
                     },
                     function(){
                         domElementCreator.removeClassesContains(element, "bordercolor");
-                        element.classList.add("bordercolor150");
+                        element.classList.add("bordercolor255");
                     }
                 );
             }
             
             
             element.onclick = action;
+            
+            return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

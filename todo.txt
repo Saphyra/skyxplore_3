@@ -26,6 +26,6 @@ schema
 Upgrade buildings
 Implement Defense view
 Implement farm view
-    - building list
+    - upgrade building request
 Implement newround
 Add explaining title to elements

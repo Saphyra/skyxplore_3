@@ -290,6 +290,10 @@
     margin: 1rem;
 }
 
+.marginbottom0125rem{
+    margin-bottom: 0.125rem;
+}
+
 .marginbottom025rem{
     margin-bottom: 0.25rem;
 }
@@ -336,6 +340,10 @@
 
 .margintop0{
     margin-top: 0;
+}
+
+.margintop0125rem{
+    margin-top: 0.125rem;
 }
 
 .margintop5rem{
@@ -477,6 +485,10 @@
 
 .width10percent{
     width: 10%;
+}
+
+.width30percent{
+    width: 30%;
 }
 
 .width100percent{

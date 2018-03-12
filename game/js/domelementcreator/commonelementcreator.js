@@ -14,9 +14,11 @@ function CommonElementCreator(parent){
         }
     }
     
-    this.createListElement = function createListElement(){
+    this.createListElement = function createListElement(content){
         //Lista tároló, sötét szegéllyel
         try{
+            content = content || "";
+            
             const element = document.createElement("DIV");
                 element.classList.add("border3px");
                 element.classList.add("borderbottom5px");
@@ -25,6 +27,8 @@ function CommonElementCreator(parent){
                 element.classList.add("margin025rem");
                 element.classList.add("overflowxauto");
                 element.classList.add("overflowyhidden");
+                
+                element.innerHTML = content;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -48,8 +52,8 @@ function CommonElementCreator(parent){
         }
     }
     
-    this.createListItem = function createListItem(content){
-        //Lista elem, szegélyszín változtatással
+    this.createListItemUnhovered = function createListItemUnhovered(content){
+        //Lista elem szegélyszín változtatás nélkül
         try{
             content = content || "";
             const element = document.createElement("DIV");
@@ -60,6 +64,19 @@ function CommonElementCreator(parent){
                 element.classList.add("overflowxauto");
                 element.classList.add("overflowyhidden");
                 element.classList.add("padding025rem");
+                
+                element.innerHTML = content;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.createListItem = function createListItem(content){
+        //Lista elem, szegélyszín változtatással
+        try{
+            content = content || "";
+            const element = this.createListItemUnhovered(content);
                 $(element).hover(
                         function(){
                             domElementCreator.removeClassesContains(element, "bordercolor");
@@ -71,7 +88,6 @@ function CommonElementCreator(parent){
                         }
                 );
             
-                element.innerHTML = content;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -83,6 +99,19 @@ function CommonElementCreator(parent){
         try{
             const element = document.createElement("SPAN");
                 element.innerHTML = text;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.createTextCell = function createTextCell(text, size, align){
+        //Inline szöveg megjelenítése
+        try{
+            const element = document.createElement("DIV");
+                element.innerHTML = text;
+                element.style.fontSize = size || "1rem";
+                element.style.textAlign = align || "left";
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -193,6 +222,16 @@ function CommonElementCreator(parent){
                     element.classList.add("marginleft5rem");
                     element.classList.add("marginright5rem");
                     element.classList.add("verticalcenter");
+                return element;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
+        }
+        
+        this.createListElementLeftText = function createListElementLeftText(content){
+            try{
+                const element = this.createListElement(content);
+                    element.classList.add("lefttext");
                 return element;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
