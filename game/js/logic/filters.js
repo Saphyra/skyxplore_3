@@ -1,7 +1,9 @@
 function Filters(){
-    this.searchElements = function searchElements(params){
+    this.searchElements = function searchElements(params, singleResult){
         //Megadott paramétereknek megfelelő játékelemek keresése
         try{
+            singleResult = singleResult == undefined ? true : singleResult;
+            
             const sources = gameDataSources;
             const result = [];
             for(let sindex in sources){
@@ -14,7 +16,7 @@ function Filters(){
                     }
                 }
             }
-            return result;
+            return singleResult ? result.length === 1 ? result[0] : result : result;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
@@ -84,18 +86,112 @@ function Filters(){
     this.getBuildableBuildingsOfSlot = function getBuildableBuildingsOfSlot(slot){
         //Adott slotba építhető épületek
         try{
-            const elements = this.searchElements({slot: slot});
+            const elements = this.searchElements({slot: slot, level: 1}, false);
             const result = [];
-            
                 for(let index in elements){
                     const element = elements[index];
-                    if(element.level === undefined || element.level === 1){
+                    //if(element.level === undefined || element.level === 1){
                         result.push(element);
-                    }
+                    //}
                 }
             
             return result;
             
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.getOwnedStars = function getOwnedStars(){
+        //Lakott csillagok
+        try{
+            const stars = gameData.stars;
+            const result = [];
+            
+            for(let starid in stars){
+                const star = stars[starid];
+                if(star.owner !== "neutral"){
+                    result.push(star);
+                }
+            }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.getBuildingsOfTypeOfStar = function getBuildingsOfTypeOfStar(starid, type, includeUnderConstruction){
+        //Egy csillag bolygóin található épületek a megadott típusból
+        try{
+            if(includeUnderConstruction == undefined){
+                includeUnderConstruction = includeUnderConstruction == undefined ? false : true;
+            }
+            
+            const star = gameData.stars[starid];
+            const planets = this.getPlanetsOfStar(starid);
+            const result = [];
+            
+            for(let pindex in planets){
+                const planet = planets[pindex];
+                const buildings = this.getBuildingsOfPlanet(planet.planetid);
+                
+                for(let bindex in buildings){
+                    const building = buildings[bindex];
+                    if(building.type === type){
+                        if(includeUnderConstruction === true){
+                            result.push(building);
+                        }else if(building.data.status === 0){
+                            result.push(building);
+                        }
+                    }
+                }
+            }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.getRequestOfBuilding = function getRequestOfBuilding(buildingid, queue){
+        //Épület építéséhez tartozó kérelem megkeresése
+        try{
+            queue = queue || gameData.stars[gameData.buildings[buildingid].starid];
+            
+            for(let qindex in queue){
+                const request = queue[qindex];
+                if(request.elementid == buildingid){
+                    return request;
+                }
+            }
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.getOwnedStars = function getOwnedStars(){
+        //Lakott csillagok
+        try{
+            const stars = gameData.stars;
+            const result = [];
+            
+            for(let starid in stars){
+                const star = stars[starid];
+                if(star.owner !== "neutral"){
+                    result.push(star);
+                }
+            }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.getStarOfBuilding = function getStarOfBuilding(buildingid){
+        try{
+            return gameData.stars[gameData.planets[gameData.buildings[buildingid].planetid].starid];
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

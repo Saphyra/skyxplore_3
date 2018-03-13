@@ -54,7 +54,7 @@ function BuildNewBuildingView(){
                         contentContainer.appendChild(resourceContainer);
                     item.appendChild(contentContainer);
                     
-                        const buildButton = domElementCreator.createPrioritySliderButton("Felépít", 5, new Action(planetid, building));
+                        const buildButton = domElementCreator.createPrioritySliderButton("Felépít", 5, new PrioritySliderBuildNewBuildingAction(planetid, building));
                     item.appendChild(buildButton);
                         
                     return item;
@@ -63,13 +63,5 @@ function BuildNewBuildingView(){
                 }
             }
             
-                function Action(planetid, building){
-                    //Épület felépítése
-                    this.planetid = planetid;
-                    this.building = building;
-                    this.change = function(){};
-                    this.run = function(value){
-                        gameDataModificator.buildNewBuilding(this.planetid, this.building, value);
-                    }
-                }
+                
 }

@@ -78,6 +78,7 @@
                 function createBuilding($planetId, $buildings, $type){
                     $buildingId = generateBuildingId($buildings);
                     $data["status"] = 0;
+                    $data["upgradestatus"] = 0;
                     $data["resource"]["source"] = $type;
                     $data["resource"]["key"] = 1;
                     return new Building($buildingId, $planetId, $type, $data);

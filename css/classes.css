@@ -154,8 +154,16 @@
     border-style: solid;
 }
 
+.bottom0{
+    bottom: 0;
+}
+
 .bottom1px{
     bottom: 1px;
+}
+
+.bottom35rem{
+    bottom: 3.5rem;
 }
 
 .centertext{
@@ -172,6 +180,10 @@
 
 .displaynone{
     display: none;
+}
+
+.fixed{
+    position: fixed;
 }
 
 .fixed0{
@@ -222,6 +234,10 @@
     height: 15vw;
 }
 
+.height25rem{
+    height: 2.5rem;
+}
+
 .inline{
     display: inline;
 }
@@ -236,6 +252,10 @@
 
 .justifytext{
     text-align: justify;
+}
+
+.left0{
+    left: 0;
 }
 
 .leftn5rem{
@@ -270,6 +290,10 @@
     margin: 1rem;
 }
 
+.marginbottom0125rem{
+    margin-bottom: 0.125rem;
+}
+
 .marginbottom025rem{
     margin-bottom: 0.25rem;
 }
@@ -288,6 +312,10 @@
 
 .marginbottom30rem{
     margin-bottom: 3rem;
+}
+
+.marginbottom35rem{
+    margin-bottom: 3.5rem;
 }
 
 .marginleft025rem{
@@ -312,6 +340,10 @@
 
 .margintop0{
     margin-top: 0;
+}
+
+.margintop0125rem{
+    margin-top: 0.125rem;
 }
 
 .margintop5rem{
@@ -370,6 +402,11 @@
     min-width: 40rem;
 }
 
+.nowrap{
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
 .overflowauto{
     overflow: auto;
 }
@@ -426,6 +463,10 @@
     position: relative;
 }
 
+.right0{
+    right: 0;
+}
+
 .rightn5rem{
     right: -0.5rem;
 }
@@ -444,6 +485,10 @@
 
 .width10percent{
     width: 10%;
+}
+
+.width30percent{
+    width: 30%;
 }
 
 .width100percent{
@@ -476,4 +521,8 @@
 
 .width50vw{
     width: 50vw;
+}
+
+.width70vw{
+    width: 70vw;
 }

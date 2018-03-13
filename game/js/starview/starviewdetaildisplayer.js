@@ -17,7 +17,7 @@ function StarViewDetailsDisplayer(){
         try{
             const houseNum = counter.countStorageCapacity(star.starid, "house");
             const populationGrowth = counter.countPopulationGrowth(star);
-            const growth = populationGrowth >= 0 ? "+ " + populationGrowth : "- " + populationGrowth;
+            const growth = populationGrowth >= 0 ? "+ " + populationGrowth : populationGrowth;
             document.getElementById("starviewcitizens").innerHTML = 
                 "Munkás: " + star.data.citizennum
                 + " (" + growth + "/kör)"
@@ -36,7 +36,7 @@ function StarViewDetailsDisplayer(){
             
             //Élelmiszer termelés megjelenítése
             const netFoodIncome = counter.countNetFoodIncome(star);
-            const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : "- " + netFoodIncome;
+            const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : netFoodIncome;
             const fridgeCapacity = counter.countStorageCapacity(star.starid, "fridge");
             
             const content = data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
@@ -86,22 +86,29 @@ function StarViewDetailsDisplayer(){
                 const buildings = types[type];
                 
                 let content;
+                let item;
                     switch(type){
                         case "farm":
                             content = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countFoodIncome(starid) + " étel/kör)";
+                            item = domElementCreator.createListItem(content);
+                            domElementCreator.convertElementToButton(item, function(){buildingListView.showView(type, starid)}, false);
                         break;
                         case "mine":
                             content = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countResourceIncome(starid) + " nyersanyag/kör)";
+                            item = domElementCreator.createListItem(content);
+                            domElementCreator.convertElementToButton(item, function(){buildingListView.showView(type, starid)}, false);
                         break;
                         case "factory":
                             content = data.getElementData({source: type, key: "typename"}) + " (Termelés: +" + counter.countProductivity(starid) + "/kör)";
+                            item = domElementCreator.createListItem(content);
+                            domElementCreator.convertElementToButton(item, function(){buildingListView.showView(type, starid)}, false);
                         break;
                         default:
                             const buildingNum = buildings.length;
                             content = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
                         break;
                     }
-                container.appendChild(domElementCreator.createListItem(content));
+                container.appendChild(item);
             }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -131,7 +138,7 @@ function StarViewDetailsDisplayer(){
                         break;
                         case "house":
                             content = data.getElementData({source: type, key: "typename"})
-                                + " (Lakóhely: " + counter.countStorageCapacity(star.starid, "house"); + ")";
+                                + " (Lakóhely: " + counter.countStorageCapacity(star.starid, "house") + ")";
                         break;
                         default:
                             const buildingNum = buildings.length;

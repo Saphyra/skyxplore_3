@@ -13,7 +13,6 @@
     <LINK rel='stylesheet' href='../css/reset.css'>
     <LINK rel='stylesheet' href='../css/common.css'>
     <LINK rel='stylesheet' href='../css/classes.css'>
-    <LINK rel='stylesheet' href='../css/fs_common.css'>
     <?php
         $files = scandir("../css/game/");
         foreach($files as $file){
@@ -37,9 +36,9 @@
     ?>
 </HEAD>
 <BODY>
-    <DIV id='content'></DIV>
+    <DIV id='content' class='absolute0 bottom35rem'></DIV>
     
-    <FOOTER>
+    <FOOTER style='height: 3.5rem' class='backgroundblack10 border5px bordertopridge bordercolor100 bottom0 centertext fixed height25rem left0 nowrap padding025rem right0'>
         <BUTTON onclick='newRound.newRound()'>Új kör</BUTTON>
         <BUTTON onclick='data.saveGame()'>Játék mentése</BUTTON>
         <BUTTON onclick='schemaView.showChemaView()'>Harcászati sémák</BUTTON>

@@ -14,9 +14,11 @@ function CommonElementCreator(parent){
         }
     }
     
-    this.createListElement = function createListElement(){
+    this.createListElement = function createListElement(content){
         //Lista tároló, sötét szegéllyel
         try{
+            content = content || "";
+            
             const element = document.createElement("DIV");
                 element.classList.add("border3px");
                 element.classList.add("borderbottom5px");
@@ -25,6 +27,8 @@ function CommonElementCreator(parent){
                 element.classList.add("margin025rem");
                 element.classList.add("overflowxauto");
                 element.classList.add("overflowyhidden");
+                
+                element.innerHTML = content;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -48,8 +52,8 @@ function CommonElementCreator(parent){
         }
     }
     
-    this.createListItem = function createListItem(content){
-        //Lista elem, szegélyszín változtatással
+    this.createListItemUnhovered = function createListItemUnhovered(content){
+        //Lista elem szegélyszín változtatás nélkül
         try{
             content = content || "";
             const element = document.createElement("DIV");
@@ -60,6 +64,19 @@ function CommonElementCreator(parent){
                 element.classList.add("overflowxauto");
                 element.classList.add("overflowyhidden");
                 element.classList.add("padding025rem");
+                
+                element.innerHTML = content;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.createListItem = function createListItem(content){
+        //Lista elem, szegélyszín változtatással
+        try{
+            content = content || "";
+            const element = this.createListItemUnhovered(content);
                 $(element).hover(
                         function(){
                             domElementCreator.removeClassesContains(element, "bordercolor");
@@ -71,7 +88,6 @@ function CommonElementCreator(parent){
                         }
                 );
             
-                element.innerHTML = content;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -83,6 +99,19 @@ function CommonElementCreator(parent){
         try{
             const element = document.createElement("SPAN");
                 element.innerHTML = text;
+            return element;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.createTextCell = function createTextCell(text, size, align){
+        //Inline szöveg megjelenítése
+        try{
+            const element = document.createElement("DIV");
+                element.innerHTML = text;
+                element.style.fontSize = size || "1rem";
+                element.style.textAlign = align || "left";
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -101,9 +130,10 @@ function CommonElementCreator(parent){
         }
     }
     
-    this.createBuildStatus = function createBuildStatus(status, maxStatus){
+    this.createBuildStatus = function createBuildStatus(status, maxStatus, type){
         //Építési állapotot jelző sáv, megfelelő arányban kitöltve
         try{
+            type = type || "Építés";
             const element = document.createElement("DIV");
                 element.classList.add("backgroundblack5");
                 element.classList.add("backgroundgreenpixel");
@@ -115,7 +145,7 @@ function CommonElementCreator(parent){
                 const backgroundWidth = Math.round(completed / maxStatus * 100) + "%";
                 element.style.backgroundSize = backgroundWidth + " 100%";
                 
-                element.innerHTML = "Építés: " + completed + "/" + maxStatus;
+                element.innerHTML = type + ": " + completed + "/" + maxStatus;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -134,10 +164,10 @@ function CommonElementCreator(parent){
             const buildButtonContainer = createBuildButtonContainer();
                 //Csúszka és szövegek létrehozása
                 const label = this.createTextLabel("Prioritás: ");
-                    const slider = createPrioritySlider(defaultValue);
+                    const slider = this.createPrioritySlider(defaultValue);
                     //Felirat értékének szinkronizálása a csúszka értékével
                     const sliderValue = this.createTextElement(slider.value);
-                        slider.onchange = function(){
+                    slider.onchange = function(){
                         action.change(slider.value);
                         sliderValue.innerHTML = slider.value;
                     }
@@ -181,7 +211,7 @@ function CommonElementCreator(parent){
             }
         }
         
-        function createPrioritySlider(value){
+        this.createPrioritySlider = function createPrioritySlider(value){
             //Prioritást állító csúszka létrehozása a megadott kezdőértékkel
             try{
                 const element = document.createElement("INPUT");
@@ -190,9 +220,19 @@ function CommonElementCreator(parent){
                     element.max = 10;
                     element.step = 1;
                     element.value = value;
-                    element.classList.add("verticalcenter");
                     element.classList.add("marginleft5rem");
                     element.classList.add("marginright5rem");
+                    element.classList.add("verticalcenter");
+                return element;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
+        }
+        
+        this.createListElementLeftText = function createListElementLeftText(content){
+            try{
+                const element = this.createListElement(content);
+                    element.classList.add("lefttext");
                 return element;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
