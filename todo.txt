@@ -23,9 +23,7 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
 
-Upgrade buildings
 Implement Defense view
-Implement farm view
-    - upgrade building request
 Implement newround
 Add explaining title to elements
+Building list views

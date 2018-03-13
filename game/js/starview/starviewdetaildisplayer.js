@@ -86,22 +86,29 @@ function StarViewDetailsDisplayer(){
                 const buildings = types[type];
                 
                 let content;
+                let item;
                     switch(type){
                         case "farm":
                             content = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countFoodIncome(starid) + " étel/kör)";
+                            item = domElementCreator.createListItem(content);
+                            domElementCreator.convertElementToButton(item, function(){buildingListView.showView(type, starid)}, false);
                         break;
                         case "mine":
                             content = data.getElementData({source: type, key: "typename"}) + " (+" + counter.countResourceIncome(starid) + " nyersanyag/kör)";
+                            item = domElementCreator.createListItem(content);
+                            domElementCreator.convertElementToButton(item, function(){buildingListView.showView(type, starid)}, false);
                         break;
                         case "factory":
                             content = data.getElementData({source: type, key: "typename"}) + " (Termelés: +" + counter.countProductivity(starid) + "/kör)";
+                            item = domElementCreator.createListItem(content);
+                            domElementCreator.convertElementToButton(item, function(){buildingListView.showView(type, starid)}, false);
                         break;
                         default:
                             const buildingNum = buildings.length;
                             content = data.getElementData({source: type, key: "typename"}) + " - " + buildingNum;
                         break;
                     }
-                container.appendChild(domElementCreator.createListItem(content));
+                container.appendChild(item);
             }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

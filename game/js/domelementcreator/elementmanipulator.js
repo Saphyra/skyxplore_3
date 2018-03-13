@@ -29,11 +29,12 @@ function ElementManipulator(parent){
             @changeBorder: Ha igaz, a gombra vonatkozó fehér/piros színek lépnek életbe
         */
         try{
-            changeBorder = changeBorder == undefined ? false : true;
+            if(changeBorder === undefined){
+                changeBorder = false;
+            }
             
             element.classList.add("cursorpointer");
-            
-            if(changeBorder){
+            if(changeBorder === true){
                 domElementCreator.removeClassesContains(element, "border");
                 element.classList.add("border2px");
                 element.classList.add("bordercolor255");
