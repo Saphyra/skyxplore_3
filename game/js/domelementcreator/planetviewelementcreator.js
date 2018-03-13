@@ -83,10 +83,10 @@ function PlanetViewElementCreator(parent){
         }
     }
     
-    this.createPlanetSlotBuildStatus = function createPlanetSlotBuildStatus(status, maxStatus){
+    this.createPlanetSlotBuildStatus = function createPlanetSlotBuildStatus(status, maxStatus, type){
         //Épület állapot nézetre specializálása
         try{
-            const element = parent.createBuildStatus(status, maxStatus);
+            const element = parent.createBuildStatus(status, maxStatus, type);
                 element.classList.add("border2px");
                 element.classList.add("borderbottomridge");
                 element.classList.add("bordercolor150");
@@ -97,7 +97,7 @@ function PlanetViewElementCreator(parent){
         }
     }
     
-    this.createPlanetViewCancelBuildingButton = function createPlanetViewCancelBuildingButton(request){
+    this.createPlanetViewActionBuildingButton = function createPlanetViewActionBuildingButton(text, action){
         try{
             const element = document.createElement("DIV");
                 element.classList.add("backgroundblack8");
@@ -107,8 +107,8 @@ function PlanetViewElementCreator(parent){
                 element.classList.add("padding1px");
                 
                 const button = document.createElement("BUTTON");
-                    button.innerHTML = "Visszavon";
-                    button.onclick = function(){undoRequest.undo(request)};
+                    button.innerHTML = text;
+                    button.onclick = action;
                 
                 element.appendChild(button);
             return element;

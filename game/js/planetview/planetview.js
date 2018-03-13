@@ -59,16 +59,35 @@ function PlanetView(){
                             buildingSlotCover.appendChild(planetSlotTitle);
                             
                             if(building.building.data.status !== 0){
+                                //Ha az épület építés alatt
                                 //Építési állapot megjelenítése
-                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.status, building.buildingData.constructiontime);
+                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.status, building.buildingData.constructiontime, "Építés");
                                 buildingSlotCover.appendChild(buildStatus);
                                 
                                 //Építés visszavonása
                                 const star = gameData.stars[planet.starid];
                                 const requestid = building.building.data.requestid;
                                 const request = star.data.queue[requestid];
-                                const cancelBuilding = domElementCreator.createPlanetViewCancelBuildingButton(request);
+                                
+                                const cancelBuilding = domElementCreator.createPlanetViewActionBuildingButton("Visszavon", function(){undoRequest.undo(request)});
                                 buildingSlotCover.appendChild(cancelBuilding);
+                            }else if(building.building.data.upgradestatus !== 0){
+                                //Ha az épület fejlesztés alatt áll
+                                const upgradeBuildingData = filters.searchElements({type: building.buildingData.type, level: building.buildingData.level + 1})
+                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.upgradestatus, upgradeBuildingData.constructiontime, "Fejlesztés");
+                                buildingSlotCover.appendChild(buildStatus);
+                                
+                                //Fejlesztés visszavonása
+                                const star = gameData.stars[planet.starid];
+                                const requestid = building.building.data.requestid;
+                                const request = star.data.queue[requestid];
+                                
+                                const cancelBuilding = domElementCreator.createPlanetViewActionBuildingButton("Visszavon", function(){undoRequest.undo(request)});
+                                buildingSlotCover.appendChild(cancelBuilding);
+                            }else if(building.building.level < 3){
+                                //Épület fejlesztése
+                                const upgradeBuilding = domElementCreator.createPlanetViewActionBuildingButton("Fejlesztés", function(){gameDataModificator.upgradeBuilding(building.building.buildingid, 5)});
+                                buildingSlotCover.appendChild(upgradeBuilding);
                             }
                             
                                 const planetSlotLevel = domElementCreator.createPlanetSlotLevel(building.buildingData.level);

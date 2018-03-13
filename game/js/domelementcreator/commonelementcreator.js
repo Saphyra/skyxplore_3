@@ -130,9 +130,10 @@ function CommonElementCreator(parent){
         }
     }
     
-    this.createBuildStatus = function createBuildStatus(status, maxStatus){
+    this.createBuildStatus = function createBuildStatus(status, maxStatus, type){
         //Építési állapotot jelző sáv, megfelelő arányban kitöltve
         try{
+            type = type || "Építés";
             const element = document.createElement("DIV");
                 element.classList.add("backgroundblack5");
                 element.classList.add("backgroundgreenpixel");
@@ -144,7 +145,7 @@ function CommonElementCreator(parent){
                 const backgroundWidth = Math.round(completed / maxStatus * 100) + "%";
                 element.style.backgroundSize = backgroundWidth + " 100%";
                 
-                element.innerHTML = "Építés: " + completed + "/" + maxStatus;
+                element.innerHTML = type + ": " + completed + "/" + maxStatus;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -166,7 +167,7 @@ function CommonElementCreator(parent){
                     const slider = this.createPrioritySlider(defaultValue);
                     //Felirat értékének szinkronizálása a csúszka értékével
                     const sliderValue = this.createTextElement(slider.value);
-                        slider.onchange = function(){
+                    slider.onchange = function(){
                         action.change(slider.value);
                         sliderValue.innerHTML = slider.value;
                     }

@@ -5,6 +5,7 @@ function Building(planetid, buildingid, buildingData, requestid){
     this.level = buildingData.level;
     this.data = {
         status: buildingData.constructiontime,
+        upgradestatus: 0,
         resource: {
             source: buildingData.source,
             key: buildingData.key,

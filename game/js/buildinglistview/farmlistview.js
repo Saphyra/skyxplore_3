@@ -62,6 +62,7 @@ function FarmListView(){
                         container.appendChild(domElementCreator.createListElementTitle(farmData.name + " - Szint: " + farmData.level));
                         
                         if(farm.data.status === 0){
+                            //Ha az épület kész
                             const detailsContainer = domElementCreator.createListElementLeftText();
                                 const income = farmData.income;
                                 const workplace = farmData.workplace;
@@ -70,9 +71,19 @@ function FarmListView(){
                                 "Termelés: " + production + " Étel / kör (" + income + " / fő X " + workplace + " munkahely)"
                             ));
                             
-                            if(farmData.level < 3){
-                                upgradeLevel = farmData.level + 1;
-                                const upgradeFarmData = filters.searchElements({type: "farm", level: upgradeLevel});
+                            if(farm.data.upgradestatus !== 0){
+                                //Ha az épület fejlesztés alatt áll
+                                const upgradeFarmData = filters.searchElements({type: "farm", level: farmData.level + 1});
+                                const buildStatus = domElementCreator.createFarmListViewBuildStatus(farm.data.upgradestatus, upgradeFarmData.constructiontime, "Fejlesztés");
+                                container.appendChild(buildStatus);
+                                
+                                const queue = star.data.queue;
+                                const request = filters.getRequestOfBuilding(farm.buildingid, queue);
+                                const prioritySlider = domElementCreator.createPrioritySliderButton("Visszavon", request.priority, new PrioritySliderModificationAction(request, queue));
+                                container.appendChild(prioritySlider);
+                            }else if(farmData.level < 3){
+                                //Ha az épület fejleszthető
+                                const upgradeFarmData = filters.searchElements({type: "farm", level: farmData.level + 1});
                                 
                                 const upgradeContainer = domElementCreator.createListItem();
                                     const title = domElementCreator.createTextCell("Fejlesztés (" + upgradeFarmData.name + " - Szint: " + upgradeFarmData.level + ")", "1.25rem", "center");
@@ -99,20 +110,20 @@ function FarmListView(){
                                 
                                 upgradeContainer.appendChild(upgradeCostContainer);
                                 
-                                    const upgradeButton = domElementCreator.createFarmListViewUpgradeButton("Fejlesztés", function(){upgradeBuilding()});
-                                upgradeContainer.appendChild(upgradeButton);
+                                    const upgradePrioritySlider = domElementCreator.createPrioritySliderButton("Fejlesztés", 5, new PrioritySliderUpgradeAction(farm.buildingid));
+                                upgradeContainer.appendChild(upgradePrioritySlider);
                                 
                                 detailsContainer.appendChild(upgradeContainer);
                             }
                             
                             container.appendChild(detailsContainer);
                         }else{
-                            const buildStatus = domElementCreator.createFarmListViewBuildStatus(farm.data.status, farmData.constructiontime);
+                            const buildStatus = domElementCreator.createFarmListViewBuildStatus(farm.data.status, farmData.constructiontime, "Építés");
                             container.appendChild(buildStatus);
                             
                             const queue = star.data.queue;
                             const request = filters.getRequestOfBuilding(farm.buildingid, queue);
-                            const prioritySlider = domElementCreator.createPrioritySliderButton("Visszavon", request.priority, new PrioritySliderAction(request, queue));
+                            const prioritySlider = domElementCreator.createPrioritySliderButton("Visszavon", request.priority, new PrioritySliderModificationAction(request, queue));
                             container.appendChild(prioritySlider);
                         }
                         
@@ -121,10 +132,6 @@ function FarmListView(){
                     log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
                 }
             }
-        
-                function upgradeBuilding(){
-                    //Épület fejlesztéséhez való kérlem összeállítása
-                }
         
     function ApplySliderChanges(){
         this.oldValue;

@@ -50,7 +50,7 @@ function DOMElementCreator(){
         this.createPlanetSlotTitle = planetViewElementCreator.createPlanetSlotTitle;
         this.createPlanetSlotBuildStatus = planetViewElementCreator.createPlanetSlotBuildStatus;
         this.createPlanetSlotLevel = planetViewElementCreator.createPlanetSlotLevel;
-        this.createPlanetViewCancelBuildingButton = planetViewElementCreator.createPlanetViewCancelBuildingButton;
+        this.createPlanetViewActionBuildingButton = planetViewElementCreator.createPlanetViewActionBuildingButton;
         
     //Csillag nézet
     const starViewElementCreator = new StarViewElementCreator(this);

@@ -75,9 +75,9 @@ function FarmListViewElementCreator(parent){
         }
     }
     
-    this.createFarmListViewBuildStatus = function createFarmListViewBuildStatus(status, maxStatus){
+    this.createFarmListViewBuildStatus = function createFarmListViewBuildStatus(status, maxStatus, type){
         try{
-            const element = domElementCreator.createBuildStatus(status, maxStatus);
+            const element = domElementCreator.createBuildStatus(status, maxStatus, type);
                 domElementCreator.removeClassesContains(element, "fontsize");
                 domElementCreator.removeClassesContains(element, "border");
                 

@@ -1,5 +1,5 @@
-function NewBuildingBuilder(gameDataModificator){
-    const parent = gameDataModificator;
+function NewBuildingBuilder(parent){
+    const gameDataModificator = parent;
     
     this.buildNewBuilding = function buildNewBuilding(planetid, buildingData, priority){
         //Új épület építése
