@@ -22,6 +22,16 @@ function Order(){
         }
     }
     
+    this.orderRequestsByPriority = function orderRequestsByPriority(requests){
+        try{
+            requests.sort(function(a, b){return b.priority - a.priority});
+            
+            return requests;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
     this.orderBuildingsByName = function orderBuildingsByName(buildings){
         //Épületek sorba rendezése név szerint
         try{

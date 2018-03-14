@@ -1,7 +1,30 @@
-function log(message, level){
+function log(message, level, prefix){
     //Logolás
     try{
         level = level || "message";
+        prefix = prefix || "";
+        
+        switch(level){
+            case "error":
+            
+            break;
+            case "warn":
+            
+            break;
+            case "message":
+            
+            break;
+            case "debug":
+            
+            break;
+            default:
+                log("Unknown log level " + type + " with message " + message, "warn");
+                return;
+            break;
+        }
+        
+        
+        
         document.getElementById("logcontainer").style.display = "block";
         const div = document.getElementById("log");
         
@@ -12,7 +35,14 @@ function log(message, level){
             container.style.color = color;
             const levelNode = createLevelNode(level);
         container.appendChild(levelNode);
-            const textNode = createTextNode(message);
+        container.appendChild(createTextNode(prefix));
+        
+        let textNode;
+            if(typeof message == "object"){
+                textNode = parseObject(message);
+            }else{
+                textNode = createTextNode(message);
+            }
         container.appendChild(textNode);
             
         div.insertBefore(container, div.childNodes[0]);
@@ -53,5 +83,29 @@ function log(message, level){
             const element = document.createElement("SPAN");
                 element.innerHTML = message;
             return element;
+        }
+        
+        function parseObject(obj){
+            try{
+                const element = document.createElement("OL");
+                const keys = Object.keys(obj);
+
+                for(let kindex in keys){
+                    const key = keys[kindex]
+                    const elem = obj[key];
+                    const line = document.createElement("LI");
+                        if(typeof elem == "object"){
+                            line.appendChild(document.createTextNode(kindex + ": "));
+                            line.appendChild(parseObject(elem));
+                        }else{
+                            line.innerHTML = key + ": " + elem;
+                        }
+                    element.appendChild(line);
+                }
+                
+                return element;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
         }
 }

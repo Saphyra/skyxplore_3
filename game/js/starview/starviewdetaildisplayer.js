@@ -16,7 +16,7 @@ function StarViewDetailsDisplayer(){
         //Lakosok adatainak megjelenítése
         try{
             const houseNum = counter.countStorageCapacity(star.starid, "house");
-            const populationGrowth = counter.countPopulationGrowth(star);
+            const populationGrowth = counter.countPopulationGrowth(star.starid);
             const growth = populationGrowth >= 0 ? "+ " + populationGrowth : populationGrowth;
             document.getElementById("starviewcitizens").innerHTML = 
                 "Munkás: " + star.data.citizennum
@@ -35,7 +35,7 @@ function StarViewDetailsDisplayer(){
             container.innerHTML = "";
             
             //Élelmiszer termelés megjelenítése
-            const netFoodIncome = counter.countNetFoodIncome(star);
+            const netFoodIncome = counter.countNetFoodIncome(star.starid);
             const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : netFoodIncome;
             const fridgeCapacity = counter.countStorageCapacity(star.starid, "fridge");
             

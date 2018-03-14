@@ -104,6 +104,7 @@ function Data(){
     }
     
     this.saveGame = function saveGame(){
+        //Játék mentése
         try{
             const request = new XMLHttpRequest();
                 request.open("POST", "php/savegame.php", 0);

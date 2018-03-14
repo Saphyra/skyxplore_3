@@ -13,7 +13,7 @@ function NewBuildingBuilder(parent){
             gameData.buildings[building.buildingid] = building;
             
             //Kérelem létrehozása
-            const request = new Request(requestid, "building", priority, building.buildingid);
+            const request = new Request(star.starid, requestid, "building", "collectresources", priority, building.buildingid);
             star.data.queue[requestid] = request;
             
             //Ablakok frissítése

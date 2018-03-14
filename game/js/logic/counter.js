@@ -1,10 +1,11 @@
 function Counter(){    
-    this.countPopulationGrowth = function countPopulationGrowth(star){
+    this.countPopulationGrowth = function countPopulationGrowth(starid){
         //Népességnövekedés kiszámolása
         try{
-            const netIncome = this.countNetFoodIncome(star);
+            const star = gameData.stars[starid];
+            const netIncome = this.countNetFoodIncome(starid);
             const food = star.data.resources.food;
-            const citizennum = star.data.citizennum || 1;
+            const citizennum = star.data.citizennum;
             
             return (netIncome + food / 200) / (citizennum + 1);
         }catch(err){
@@ -12,10 +13,32 @@ function Counter(){
         }
     }
     
-    this.countNetFoodIncome = function countNetFoodIncome(star){
+    this.countNetPopulationGrowth = function countNetPopulationGrowth(starid){
+        //Tényleges népességnövekedés kiszámítása
+        try{
+            const star = gameData.stars[starid];
+            const citizennum = star.data.citizennum;
+            const growth = this.countPopulationGrowth(starid);
+            const place = this.countStorageCapacity(starid, "house");
+            
+            const emptyPlace = place - citizennum;
+            
+            if(emptyPlace <= growth){
+                return emptyPlace;
+            }else{
+                return growth;
+            }
+            
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.countNetFoodIncome = function countNetFoodIncome(starid){
         //Nettó élelmiszertermelés kiszámolása
         try{
-            const income = this.countFoodIncome(star.starid);
+            const star = gameData.stars[starid];
+            const income = this.countFoodIncome(starid);
             return income - star.data.citizennum;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

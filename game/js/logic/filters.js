@@ -211,4 +211,26 @@ function Filters(){
         
         return result;
     }
+    
+    this.getRequestsOfPlayer = function getRequestsOfPlayer(playerName){
+        //A játékos által irányított csillagok kérelmei
+        try{
+            const stars = gameData.stars;
+            let result = [];
+            
+            for(let starid in stars){
+                const star = stars[starid];
+                const queue = star.data.queue;
+                if(star.owner == playerName && Object.keys(queue).length){
+                    for(requestid in queue){
+                        result.push(queue[requestid]);
+                    }
+                }
+            }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
 }

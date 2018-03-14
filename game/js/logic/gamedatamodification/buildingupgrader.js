@@ -16,7 +16,7 @@ function BuildingUpgrader(parent){
             
             const requestid = generator.generateId("request", Object.keys(queue));
             building.data.requestid = requestid;
-            const request = new Request(requestid, "buildingupgrade", priority, buildingid);
+            const request = new Request(star.starid, requestid, "buildingupgrade", "collectresources", priority, buildingid);
             queue[requestid] = request;
             
             buildingListView.refresh(star.starid);

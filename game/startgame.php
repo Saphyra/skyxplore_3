@@ -47,7 +47,8 @@
     </FOOTER>
     
     <DIV class='backgroundblack10 centertext displaynone fixed0 overflowauto' id='logcontainer' oncontextmenu='document.getElementById("logcontainer").style.display="none"'>
-        <BUTTON onclick='document.getElementById("logcontainer").style.display="none"; $("#log").text("");'>Bezárás</BUTTON>
+        <BUTTON style='font-size: 1.25rem; margin: 0.5rem;' onclick='document.getElementById("logcontainer").style.display="none"; $("#log").text("");'>Bezárás</BUTTON>
+        <BUTTON style='font-size: 1.25rem; margin: 0.5rem;' onclick='document.getElementById("log").innerHTML = ""'>Ürítés</BUTTON>
         <DIV class='lefttext' id='log'></DIV>
     </DIV>
 </BODY>

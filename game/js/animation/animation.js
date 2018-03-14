@@ -44,21 +44,21 @@ function Animation(){
         try{
             let lastX = 0;
             let lastY = 0;
-            this.clicked = false;
-            this.clickedButton;
+            let clicked = false;
+            let clickedButton;
             const map = document.getElementById("map");
                 //Egérkattintások mappelése
                 map.onmousedown = function(event){
                     lastX = event.clientX;
                     lastY = event.clientY;
-                    this.clicked = true;
-                    this.clickedButton = event.button;
+                    clicked = true;
+                    clickedButton = event.button;
                 };
-                map.onmouseup = function(){this.clicked = false;};
+                map.onmouseup = function(){clicked = false;};
                 
                 //Térkép mozgatása
                 map.onmousemove = function(event){
-                    if(this.clicked && this.clickedButton == 2){
+                    if(clicked && clickedButton == 2){
                         const diffX = lastX - event.clientX;
                         const diffY = lastY - event.clientY;
                         document.getElementById("mapcontainer").scrollBy(diffX * 1.5, diffY * 2.5);

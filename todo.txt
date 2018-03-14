@@ -23,6 +23,7 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
 
+Kereső és szűrő rendszerek ID alapján keres, objektumot adja vissza
 Implement Defense view
 Implement newround
 Add explaining title to elements
