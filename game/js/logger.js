@@ -89,13 +89,17 @@ function log(message, level, prefix){
             try{
                 const element = document.createElement("OL");
                 const keys = Object.keys(obj);
+                
+                if(keys.length  == 0){
+                    return document.createTextNode("(Empty object/array)");
+                }
 
                 for(let kindex in keys){
                     const key = keys[kindex]
                     const elem = obj[key];
                     const line = document.createElement("LI");
                         if(typeof elem == "object"){
-                            line.appendChild(document.createTextNode(kindex + ": "));
+                            line.appendChild(document.createTextNode(key + ": "));
                             line.appendChild(parseObject(elem));
                         }else{
                             line.innerHTML = key + ": " + elem;

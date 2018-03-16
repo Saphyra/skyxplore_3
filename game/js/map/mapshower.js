@@ -17,16 +17,19 @@ function MapShower(elements){
             //Csillagok létrehozása
             try{
                 const connections = [];
-                for(let starid in gameData.stars){
-                    const star = gameData.stars[starid];
+                const stars = gameData.getStarService().getAllStars();
+                for(let starid in stars){
+                    const star = stars[starid];
                     
                     const starElement = new StarElement(star);
-                    mapElements.starElements[star.starid] = starElement;
+                    mapElements.starElements[starid] = starElement;
                     
                     //Csillag kapcsolatainak gyűjtése
-                    for(let connectionIndex in star.connections){
-                        if(connections.indexOf(star.connections[connectionIndex]) === -1){
-                            connections.push(star.connections[connectionIndex]);
+                    const starConnections = star.getConnections();
+                    for(let cindex in starConnections){
+                        const connection = starConnections[cindex];
+                        if(connections.indexOf(connection.getConnection()) === -1){
+                            connections.push(connection);
                         }
                     }
                 }
@@ -40,15 +43,19 @@ function MapShower(elements){
         function createConnectionMapElements(connections){
             //Kapcsolatok létrehozása
             try{
-                const stars = gameData.stars;
                 
-                for(let connectionIndex in connections){
-                    const connection = connections[connectionIndex];
+                const starService = gameData.getStarService();
+                
+                for(let cindex in connections){
+                    const connection = connections[cindex];
                     
-                    const starids = connection.split("-");
+                    const starIds = connection.getStarIds();
                     
-                    const connectionElement = new ConnectionElement(stars[starids[0]], stars[starids[1]], connection);
-                    mapElements.connectionElements[connection] = connectionElement;
+                    const star1 = starService.getStarById(starIds[0]);
+                    const star2 = starService.getStarById(starIds[1]);
+                    
+                    const connectionElement = new ConnectionElement(star1, star2, connection);
+                    mapElements.connectionElements[connection.getConnection()] = connectionElement;
                 }
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -85,7 +92,7 @@ function MapShower(elements){
             this.starNameMapElement = this.createStarNameMapElement(star);
             
             let visibility;
-            switch(star.visibility.player.visibility){
+            switch(star.getVisibilityService().getVisibilityOf("player").getVisibility()){
                 case "owned":
                     visibility = "ownedmapelement";
                 break;
@@ -114,14 +121,14 @@ function MapShower(elements){
         //Csillag elem létrehozása
         try{
             const element = createSVGElement("circle");
-            
+            const starid = star.getStarId();
                 element.classList.add("starmapelement");
-                element.classList.add("mapelement" + star.starid);
+                element.classList.add("mapelement" + starid);
                 
-                element.id = "starmapelement" + star.starid;
+                element.id = "starmapelement" + starid;
                 element.setAttribute("r", 20);
-                element.setAttribute("cx", star.xcord);
-                element.setAttribute("cy", star.ycord);
+                element.setAttribute("cx", star.getXCord());
+                element.setAttribute("cy", star.getYCord());
                 
                 element.onclick = function(event){starView.showStar(star);};
                 element.onmouseenter = function(){
@@ -141,18 +148,20 @@ function MapShower(elements){
         //Csillagév elem létrehozása
         try{
             const element = createSVGElement("text");
+            const starid = star.getStarId();
+            
                 element.classList.add("starnamemapelement");
-                element.classList.add("mapelement" + star.starid);
-                element.id = "starnamemapelement" + star.starid;
+                element.classList.add("mapelement" + starid);
+                element.id = "starnamemapelement" + starid;
                 
-                if(star.visibility.player.visibility == "connected"){
+                if(star.getVisibilityService().getVisibilityOf("player").getVisibility() == "connected"){
                     element.innerHTML = "Ismeretlen";
                 }else{
-                    element.innerHTML = star.starname + " (" + star.planetnum + ")";
+                    element.innerHTML = star.getStarName() + " (" + star.getPlanetNum() + ")";
                 }
                 
-                element.setAttribute("x", star.xcord);
-                element.setAttribute("y", star.ycord - 40);
+                element.setAttribute("x", star.getXCord());
+                element.setAttribute("y", star.getYCord() - 40);
                 element.setAttribute("text-anchor", "middle");
                 element.setAttribute("pointer-events", "none");
                 
@@ -169,7 +178,10 @@ function MapShower(elements){
             this.star2 = star2;
             this.connectionMapElement = this.createConnectionMapElement(star1, star2, connection);
             
-            if(this.isConnectionHidden(star1.visibility.player.visibility, star2.visibility.player.visibility)){
+            const visibility1 = star1.getVisibilityService().getVisibilityOf("player").getVisibility();
+            const visibility2 = star2.getVisibilityService().getVisibilityOf("player").getVisibility();
+            
+            if(this.isConnectionHidden(visibility1, visibility2)){
                 this.connectionMapElement.classList.add("hiddenmapelement");
             }
             
@@ -182,12 +194,12 @@ function MapShower(elements){
         try{
             const element = createSVGElement("line");
                 element.classList.add("connectionmapelement");
-                element.id = "connectionmapelement" + connection;
+                element.id = "connectionmapelement" + connection.getConnection();
                 
-                element.setAttribute("x1", star1.xcord);
-                element.setAttribute("y1", star1.ycord);
-                element.setAttribute("x2", star2.xcord);
-                element.setAttribute("y2", star2.ycord);
+                element.setAttribute("x1", star1.getXCord());
+                element.setAttribute("y1", star1.getYCord());
+                element.setAttribute("x2", star2.getXCord());
+                element.setAttribute("y2", star2.getYCord());
                 element.setAttribute("stroke", "white");
                 element.setAttribute("stroke-width", 1);
             return element;

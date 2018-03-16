@@ -1,5 +1,6 @@
 function Data(){
     cache = {};
+    const gameDataConverter = new GameDataConverter();
     
     this.getElementData = function getElementData(resource){
         //Elem adatainak beolvasása
@@ -97,7 +98,7 @@ function Data(){
             const request = new XMLHttpRequest();
                 request.open("GET", path, 0);
                 request.send();
-                window.gameData = JSON.parse(request.responseText);
+                window.gameData = new GameData(JSON.parse(request.responseText));
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
@@ -106,10 +107,13 @@ function Data(){
     this.saveGame = function saveGame(){
         //Játék mentése
         try{
+            const data = gameDataConverter.convertGameData();
+            //log(data.stars);
+            
             const request = new XMLHttpRequest();
                 request.open("POST", "php/savegame.php", 0);
                 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.send("gameid=" + startGameid + "&data=" + JSON.stringify(gameData));
+                //request.send("gameid=" + startGameid + "&data=" + JSON.stringify(data));
                 if(request.responseText == "1"){
                     log("Játék elmentve.", "warn");
                 }else{

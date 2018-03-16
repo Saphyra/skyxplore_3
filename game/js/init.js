@@ -56,14 +56,12 @@ function Initializer(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
-    
-    
-    
+
     function loadContent(){
         //Nézetek betöltése
         try{
             const request = new XMLHttpRequest();
-                request.open("GET", "content/contentloader.php", 0);
+                request.open("GET", "php/contentloader.php", 0);
                 request.send();
                 document.getElementById("content").innerHTML = request.responseText;
         }catch(err){

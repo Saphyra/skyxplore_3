@@ -17,20 +17,19 @@
     
     
     function createNeutralFleets($game){
-        $gameid = $game["gameid"];
-        $game["fleets"] = createFleets($game["stars"], $gameid);
+        $game["fleets"] = createFleets($game["stars"]);
         $game = createShips($game);
         
         return $game;
     }
         
-        function createFleets($stars, $gameid){
+        function createFleets($stars){
             $fleets = new ArrayList();
             $fleetids = new ArrayList();
             
             foreach($stars as $starid=>$star){
                 if($star->owner == "neutral"){
-                    $fleet = createNewFleet($star, $gameid, $fleetids);
+                    $fleet = createNewFleet($star, $fleetids);
                     $fleets->array[$fleet->fleetid] = $fleet;
                 }
             }
@@ -38,10 +37,10 @@
             return $fleets->array;
         }
         
-            function createNewFleet($star, $gameid, $fleetids){
+            function createNewFleet($star, $fleetids){
                 $fleetid = generateFleetid($fleetids);
                 
-                return new Fleet($fleetid, $gameid, $star->xcord, $star->ycord);
+                return new Fleet($fleetid, $star->xcord, $star->ycord);
             }
             
                 function generateFleetid($fleetids){
@@ -65,7 +64,7 @@
                     unset($game["fleets"][$fleetid]);
                 }else{
                     for($x = 0; $x < $fleetSize; $x++){
-                        $ship = createNewShip($shipids, $game["gameid"], $fleetid);
+                        $ship = createNewShip($shipids, $fleetid);
                         $game["ships"][$ship->shipid] = $ship;
                     }
                 }
@@ -74,9 +73,9 @@
             return $game;
         }
         
-            function createNewShip($shipids, $gameid, $fleetid){
+            function createNewShip($shipids, $fleetid){
                 $shipid = generateShipid($shipids);
-                return new Ship($shipid, $gameid, $fleetid);
+                return new Ship($shipid, $fleetid);
             }
             
                 function generateShipid($shipids){
@@ -93,15 +92,13 @@
             
     class Fleet{
         public $fleetid;
-        public $gameid;
         public $owner = "neutral";
         public $xcord;
         public $ycord;
         public $data;
 
-        function Fleet($fleetid, $gameid, $xcord, $ycord){
+        function Fleet($fleetid, $xcord, $ycord){
             $this->fleetid = $fleetid;
-            $this->gameid = $gameid;
             $this->xcord = $xcord;
             $this->ycord = $ycord;
             $this->data["duty"] = [];
@@ -110,16 +107,14 @@
     
     class Ship{
         public $shipid;
-        public $gameid;
         public $owner = "neutral";
         public $fleetid;
         public $details;
         public $stats;
         private $shipTypeData;
         
-        function Ship($shipid, $gameid, $fleetid){
+        function Ship($shipid, $fleetid){
             $this->shipid = $shipid;
-            $this->gameid = $gameid;
             $this->fleetid = $fleetid;
             $this->details = $this->getDetails();
             $this->stats = $this->getStats();
@@ -178,9 +173,6 @@
                 }
                 
                     private function getRandomEquipment(){
-                        
-                        
-                        
                         $choosableEquipments = getFromCache("choosableequipments");
                         $types = getFromCache("choosableequipmenttypes");
                         $type = $types[rand(0, count($types) - 1)];

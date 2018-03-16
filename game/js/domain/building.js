@@ -1,4 +1,5 @@
-function Building(planetid, buildingid, buildingData, requestid){
+//Building created newly
+/*function Building(planetid, buildingid, buildingData, requestid){
     this.planetid = planetid;
     this.buildingid = buildingid;
     this.type = buildingData.type;
@@ -12,4 +13,4 @@ function Building(planetid, buildingid, buildingData, requestid){
         },
         requestid: requestid,
     };
-}
+}*/

@@ -1,9 +1,9 @@
 <?php
     $farm["typename"] = "Farm";
+    $farm["income"] = 20;
     $defaultFarm["type"] = "farm";
     $defaultFarm["name"] = "Farm";
     $defaultFarm["slot"] = "food";
-    $defaultFarm["income"] = 20;
     $defaultFarm["role"] = "industry";
     $defaultFarm["source"] = "farm";
     

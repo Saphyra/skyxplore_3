@@ -50,11 +50,12 @@ function Counter(){
         try{
             let result = 0;
             const farms = filters.getBuildingsOfTypeOfStar(starid, "farm", false);
+            const income = data.getElementData({source: "farm", key: "income"});
                 
             for(let findex in farms){
                 const farm = farms[findex];
                 const buildingData = data.getElementData(farm.data.resource);
-                result += buildingData.income * buildingData.workplace;
+                result += income * buildingData.workplace;
             }
                 
             return result;
@@ -127,6 +128,7 @@ function Counter(){
         //Bányák termelése
         try{
             const planets = filters.getPlanetsOfStar(starid);
+            const income = data.getElementData({source: "mine", key: "income"});
             let result = 0;
                 
             for(let planetid in planets){
@@ -136,7 +138,7 @@ function Counter(){
                     const building = buildings[buildingid];
                     const buildingData = data.getElementData(building.data.resource);
                     if(buildingData.slot === "minefield" && building.data.status === 0){
-                        result += buildingData.income * buildingData.workplace;
+                        result += income * buildingData.workplace;
                     }
                 }
             }
@@ -151,6 +153,7 @@ function Counter(){
         //Gyárak termelése
         try{
             const planets = filters.getPlanetsOfStar(starid);
+            const productivity = data.getElementData({source: "factory", key: "productivity"});
             let result = 0;
                 
             for(let planetid in planets){
@@ -160,10 +163,42 @@ function Counter(){
                     const building = buildings[buildingid];
                     if(building.type === "factory"){
                         const buildingData = data.getElementData(building.data.resource);
-                        result += buildingData.productivity * buildingData.workplace;
+                        result += productivity * buildingData.workplace;
                     }
                 }
             }
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.countFridgeStatusOfStar = function countFridgeStatusOfStar(starid){
+        //Hűtőház telítettségének kiszámolása
+        try{
+            const star = gameData.stars[starid];
+            const capacity = this.countStorageCapacity(starid, "fridge");
+            const food = star.data.resources.food;
+            
+            const result = food / capacity * 100;
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.countWorkplacesOfStar = function countWorkplacesOfStar(starid, type){
+        //Az adott csillaghoz és épülethez tartozó munkahelyek
+        try{
+            let result = 0;
+                const buildings = filters.getBuildingsOfStar(starid);
+                for(let buildingid in buildings){
+                    const building = buildings[buildingid];
+                    if(building.type == type && building.data.status === 0){
+                        const buildingData = data.getElementData(building.data.resource);
+                        result += buildingData.workplace;
+                    }
+                }
             return result;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

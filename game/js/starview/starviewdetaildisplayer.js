@@ -3,7 +3,7 @@ function StarViewDetailsDisplayer(){
     
     this.displayDetails = function(star){
         //Részletek megjelenítése
-        $("#starviewstarname").text(star.starname);
+        $("#starviewstarname").text(star.getStarName());
         displayCitizens(star);
         displayResources(star);
         

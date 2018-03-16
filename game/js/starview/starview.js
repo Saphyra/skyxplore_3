@@ -7,7 +7,7 @@ function StarView(){
     this.showStar = function showStar(star){
         //Csillag nézet megjelenítése
         try{
-            switch(star.visibility.player.visibility){
+            switch(star.getVisibilityService().getVisibilityOf("player").getVisibility()){
                 case "connected":
                     back.switchWindow("#connectedstarviewcontainer");
                 break;

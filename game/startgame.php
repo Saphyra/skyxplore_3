@@ -43,6 +43,7 @@
         <BUTTON onclick='data.saveGame()'>Játék mentése</BUTTON>
         <BUTTON onclick='schemaView.showChemaView()'>Harcászati sémák</BUTTON>
         <BUTTON onclick='animation.toggleFullScreen()' id='fullscreenbutton'>Teljes képernyő</BUTTON>
+        <BUTTON onclick='document.getElementById("logcontainer").style.display = "block"'>Log</BUTTON>
         <BUTTON onclick='window.location.href = "../mainmenu/mainmenu.php"'>Kilépés</BUTTON>
     </FOOTER>
     

@@ -1,9 +1,9 @@
 <?php
     $mine["typename"] = "Bánya";
+    $mine["income"] = 25;
     $defaultMine["type"] = "mine";
     $defaultMine["name"] = "Bánya";
     $defaultMine["slot"] = "minefield";
-    $defaultMine["income"] = 25;
     $defaultMine["role"] = "industry";
     $defaultMine["source"] = "mine";
     

@@ -83,6 +83,25 @@ function Filters(){
         }
     }
     
+    this.getBuildingsOfStar = function getBuildingsOfStar(starid){
+        //Csillag épületei
+        try{
+            const result = {};
+            
+                const planets = this.getPlanetsOfStar(starid);
+                for(let planetid in planets){
+                    const buildings = this.getBuildingsOfPlanet(planetid);
+                    for(let buildingid in buildings){
+                        result[buildingid] = buildings[buildingid];
+                    }
+                }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
     this.getBuildableBuildingsOfSlot = function getBuildableBuildingsOfSlot(slot){
         //Adott slotba építhető épületek
         try{
@@ -90,9 +109,7 @@ function Filters(){
             const result = [];
                 for(let index in elements){
                     const element = elements[index];
-                    //if(element.level === undefined || element.level === 1){
-                        result.push(element);
-                    //}
+                    sresult.push(element);
                 }
             
             return result;

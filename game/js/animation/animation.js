@@ -1,5 +1,6 @@
 function Animation(){
     this.addWindowStateChangeListener = function addWindowStateChangeListener(){
+        //Ablakméret állapotfigyelő hozzáadása
         try{
             document.addEventListener("keydown", e => { if(e.key == "F11") e.preventDefault(); });
             $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function(e){setButtonText();});
@@ -10,6 +11,7 @@ function Animation(){
     }
         
         function setButtonText(){
+            //Beállítja az átméretező gomb szövegét az aktuális képernyőállapot alapján
             try{
                 let buttonText = (!window.screenTop && !window.screenY) ? "Teljes képernyő" : "Normál képernyő";
                 $("#fullscreenbutton").text(buttonText);
@@ -19,6 +21,7 @@ function Animation(){
         }
     
     this.toggleFullScreen = function toggleFullScreen() {
+        //Váltás a képernyőmódok között
         if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
             //Teljes képernyőre váltás
             if (document.documentElement.requestFullScreen) {  
