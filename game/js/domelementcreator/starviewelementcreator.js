@@ -49,7 +49,7 @@ function StarViewElementCreator(parent){
                 element.classList.add("minwidth100rem");
                 element.classList.add("relative");
                 element.classList.add("width15vw");
-                element.classList.add("background" + planet.type);
+                element.classList.add("background" + planet.getType());
                 $(element).hover(
                     function(){element.classList.add("bordercolor255")},
                     function(){element.classList.remove("bordercolor255")}

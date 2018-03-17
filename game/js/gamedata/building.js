@@ -5,7 +5,7 @@ function Building(buildingData){
     const level = buildingData.level;
     const data = buildingData.data;
     
-    this.getBuildingid = function(){return buildingid};
+    this.getBuildingId = function(){return buildingid};
     this.getPlanetId = function(){return planetid};
     this.getType = function(){return type};
     this.getLevel = function(){return level};

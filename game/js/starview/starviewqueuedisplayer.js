@@ -1,7 +1,8 @@
 function StarViewQueueDisplayer(){
-    this.displayQueue = function displayQueue(queue){
+    this.displayQueue = function displayQueue(queueService){
         //Építési sor megjelenítése
         try{
+            const queue = queueService.getQueue();
             const container = document.getElementById("starviewqueue");
                 container.innerHTML = "";
                 

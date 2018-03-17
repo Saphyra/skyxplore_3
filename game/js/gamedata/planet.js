@@ -1,7 +1,7 @@
 function Planet(planetData){
     const planetid = planetData.planetid;
     const starid = planetData.starid;
-    const planetName = planetData.planetName;
+    const planetName = planetData.planetname;
     const size = planetData.size;
     const type = planetData.type;
     const slots = planetData.slots;

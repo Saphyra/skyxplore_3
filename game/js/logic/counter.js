@@ -2,10 +2,10 @@ function Counter(){
     this.countPopulationGrowth = function countPopulationGrowth(starid){
         //Népességnövekedés kiszámolása
         try{
-            const star = gameData.stars[starid];
+            const star = gameData.getStarService().getStarById(starid);
             const netIncome = this.countNetFoodIncome(starid);
-            const food = star.data.resources.food;
-            const citizennum = star.data.citizennum;
+            const food = star.getData().getResources().food;
+            const citizennum = star.getData().getCitizenNum();
             
             return (netIncome + food / 200) / (citizennum + 1);
         }catch(err){
@@ -16,7 +16,7 @@ function Counter(){
     this.countNetPopulationGrowth = function countNetPopulationGrowth(starid){
         //Tényleges népességnövekedés kiszámítása
         try{
-            const star = gameData.stars[starid];
+            const star = gameData.getStarService().getStarById(starid);
             const citizennum = star.data.citizennum;
             const growth = this.countPopulationGrowth(starid);
             const place = this.countStorageCapacity(starid, "house");
@@ -37,9 +37,9 @@ function Counter(){
     this.countNetFoodIncome = function countNetFoodIncome(starid){
         //Nettó élelmiszertermelés kiszámolása
         try{
-            const star = gameData.stars[starid];
+            const star = gameData.getStarService().getStarById(starid);
             const income = this.countFoodIncome(starid);
-            return income - star.data.citizennum;
+            return income - star.getData().getCitizenNum();
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
@@ -49,15 +49,15 @@ function Counter(){
         //Teljes élelmiszertermelés kiszámolása
         try{
             let result = 0;
-            const farms = filters.getBuildingsOfTypeOfStar(starid, "farm", false);
+            const farms = gameData.getBuildingService().getBuildingsOfTypeOfStar(starid, "farm", false);
             const income = data.getElementData({source: "farm", key: "income"});
                 
-            for(let findex in farms){
-                const farm = farms[findex];
-                const buildingData = data.getElementData(farm.data.resource);
+            for(let buildingid in farms){
+                const farm = farms[buildingid];
+                const buildingData = data.getElementData(farm.getData().resource);
                 result += income * buildingData.workplace;
             }
-                
+            
             return result;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -67,14 +67,14 @@ function Counter(){
     this.countStorageCapacity = function countStorageCapacity(starid, type){
         //Tárolókapacitás kiszámolása
         try{
-            const planetids = Object.keys(filters.getPlanetsOfStar(starid));
-            const buildings = gameData.buildings;
+            const planetids = Object.keys(gameData.getPlanetService().getPlanetsOfStar(starid));
+            const buildings = gameData.getBuildingService().getAllBuildings();
             let capacity = 0;
             
             for(let buildingid in buildings){
                 const building = buildings[buildingid];
-                if(building.type == type && planetids.indexOf(building.planetid) > -1 && building.data.status === 0){
-                    const buildingData = data.getElementData(building.data.resource);
+                if(building.getType() == type && planetids.indexOf(building.getPlanetId()) > -1 && building.getData().status === 0){
+                    const buildingData = data.getElementData(building.getData().resource);
                     capacity += buildingData.capacity;
                 }
             }
@@ -89,11 +89,11 @@ function Counter(){
         //Bolygó slot épületeinek megszámolása
         try{
             let result = 0;
-            const buildings = filters.getBuildingsOfPlanet(planetid);
+            const buildings = gameData.getBuildingService().getBuildingsOfPlanet(planetid);
                         
             for(let buildingid in buildings){
                 const building = buildings[buildingid];
-                const buildingData = data.getElementData(building.data.resource);
+                const buildingData = data.getElementData(building.getData().resource);
                 if(buildingData.slot === slot){
                     result++;
                 }
@@ -127,17 +127,17 @@ function Counter(){
     this.countResourceIncome = function countResourceIncome(starid){
         //Bányák termelése
         try{
-            const planets = filters.getPlanetsOfStar(starid);
+            const planets = gameData.getPlanetService().getPlanetsOfStar(starid);
             const income = data.getElementData({source: "mine", key: "income"});
             let result = 0;
                 
             for(let planetid in planets){
-                const buildings = filters.getBuildingsOfPlanet(planetid);
+                const buildings = gameData.getBuildingService().getBuildingsOfPlanet(planetid);
                 
                 for(let buildingid in buildings){
                     const building = buildings[buildingid];
-                    const buildingData = data.getElementData(building.data.resource);
-                    if(buildingData.slot === "minefield" && building.data.status === 0){
+                    const buildingData = data.getElementData(building.getData().resource);
+                    if(buildingData.type === "mine" && building.getData().status === 0){
                         result += income * buildingData.workplace;
                     }
                 }
@@ -152,17 +152,17 @@ function Counter(){
     this.countProductivity = function countProductivity(starid){
         //Gyárak termelése
         try{
-            const planets = filters.getPlanetsOfStar(starid);
+            const planets = gameData.getPlanetService().getPlanetsOfStar(starid);
             const productivity = data.getElementData({source: "factory", key: "productivity"});
             let result = 0;
                 
             for(let planetid in planets){
-                const buildings = filters.getBuildingsOfPlanet(planetid);
+                const buildings = gameData.getBuildingService().getBuildingsOfPlanet(planetid);
                 
                 for(let buildingid in buildings){
                     const building = buildings[buildingid];
-                    if(building.type === "factory"){
-                        const buildingData = data.getElementData(building.data.resource);
+                    if(building.getType() === "factory"){
+                        const buildingData = data.getElementData(building.getData().resource);
                         result += productivity * buildingData.workplace;
                     }
                 }

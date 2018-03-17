@@ -52,7 +52,7 @@ function GameDataConverter(){
                             planetnum: star.getPlanetNum(),
                             connections: convertConnections(star.getConnections()),
                             visibility: convertVisibilities(star.getVisibilityService().getAllVisibilities()),
-                            data: star.getStarData()
+                            data: convertStarData(star.getData())
                         };
                     }
                 return result;
@@ -88,6 +88,42 @@ function GameDataConverter(){
                     log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
                 }
             }
+            
+            function convertStarData(starData){
+                try{
+                    const result = {
+                        queue: convertQueue(starData.getQueueService().getQueue()),
+                        resources: starData.getResources(),
+                        foodproductionpriority: starData.getFoodProductionPriority(),
+                        storagestatus: starData.getStorageStarus(),
+                        citizennum: starData.getCitizenNum()
+                    };
+                    
+                    return result;
+                }catch(err){
+                    log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+                }
+            }
+            
+                function convertQueue(queue){
+                    try{
+                        const result = {};
+                            for(let requestid in queue){
+                                const request = queue[requestid];
+                                result[requestid] = {
+                                    starid: request.getStarId(),
+                                    requestid: request.getRequestId(),
+                                    type: request.getType(),
+                                    priority: request.getPriority(),
+                                    elementid: request.getElementId(),
+                                    data: request.getData()
+                                }
+                            }
+                        return result;
+                    }catch(err){
+                        log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+                    }
+                }
         
         function convertPlanets(data){
             try{
@@ -117,7 +153,7 @@ function GameDataConverter(){
                     for(let buildingid in buildings){
                         const building = buildings[buildingid];
                         result[buildingid] = {
-                            buildingid: building.getBuildingid(),
+                            buildingid: building.getBuildingId(),
                             planetid: building.getPlanetId(),
                             type: building.getType(),
                             level: building.getLevel(),

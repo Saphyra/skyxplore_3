@@ -7,19 +7,20 @@ function StarViewDetailsDisplayer(){
         displayCitizens(star);
         displayResources(star);
         
-        const buildings = buildingGrouper.groupBuildingsByRole(star);
-        displayIndustry(buildings.industry, star.starid);
-        displayEconomy(buildings.economy, star);
+        const buildingService = gameData.getBuildingService();
+        const buildings = buildingService.groupBuildingsByRole(buildingService.getBuildingsOfStar(star.getStarId()));
+        displayIndustry(buildings.industry, star.getStarId());
+        displayEconomy(buildings.economy, star.getStarId());
     }
     
     function displayCitizens(star){
         //Lakosok adatainak megjelenítése
         try{
-            const houseNum = counter.countStorageCapacity(star.starid, "house");
-            const populationGrowth = counter.countPopulationGrowth(star.starid);
+            const houseNum = counter.countStorageCapacity(star.getStarId(), "house");
+            const populationGrowth = counter.countPopulationGrowth(star.getStarId());
             const growth = populationGrowth >= 0 ? "+ " + populationGrowth : populationGrowth;
             document.getElementById("starviewcitizens").innerHTML = 
-                "Munkás: " + star.data.citizennum
+                "Munkás: " + star.getData().getCitizenNum()
                 + " (" + growth + "/kör)"
                 + " - Lakóhely: " + houseNum;
         }catch(err){
@@ -30,12 +31,12 @@ function StarViewDetailsDisplayer(){
     function displayResources(star){
         //Tárolt nyersanyagok megjelenítése
         try{
-            const resources = star.data.resources;
+            const resources = star.getData().getResources();
             const container = document.getElementById("starviewresourcelist");
             container.innerHTML = "";
             
             //Élelmiszer termelés megjelenítése
-            const netFoodIncome = counter.countNetFoodIncome(star.starid);
+            const netFoodIncome = counter.countNetFoodIncome(star.getStarId());
             const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : netFoodIncome;
             const fridgeCapacity = counter.countStorageCapacity(star.starid, "fridge");
             
@@ -52,7 +53,7 @@ function StarViewDetailsDisplayer(){
                 if(storageKey !== "food" && Object.keys(storage).length){
                     const list = domElementCreator.createListElement();
                         
-                        const capacity = counter.countStorageCapacity(star.starid, storageKey);
+                        const capacity = counter.countStorageCapacity(star.getStarId(), storageKey);
                         const listTitle = domElementCreator.createListElementTitle();
                             
                     list.appendChild(listTitle);
@@ -76,14 +77,17 @@ function StarViewDetailsDisplayer(){
         }
     }
     
-    function displayIndustry(types, starid){
+    function displayIndustry(industrialBuildings, starid){
         //Ipar épületeinek megjelenítése
         try{
+            const buildingService = gameData.getBuildingService();
+            const orderedBuildings = buildingService.orderBuildingsByName(industrialBuildings);
+            const buildingTypes = gameData.getBuildingService().groupBuildingsByType(orderedBuildings);
+            
             const container = document.getElementById("starviewindustry");
             container.innerHTML = "";
-            
-            for(let type in types){
-                const buildings = types[type];
+            for(let type in buildingTypes){
+                const buildings = buildingTypes[type];
                 
                 let content;
                 let item;
@@ -115,21 +119,25 @@ function StarViewDetailsDisplayer(){
         }
     }
     
-    function displayEconomy(types, star){
+    function displayEconomy(economicBuildings, starid){
         //Gazdasági épületek megjelenítése
         try{
+            const buildingService = gameData.getBuildingService();
+            const orderedBuildings = buildingService.orderBuildingsByName(economicBuildings);
+            const buildingTypes = gameData.getBuildingService().groupBuildingsByType(orderedBuildings);
+            
             const container = document.getElementById("starvieweconomy");
             container.innerHTML = "";
             
-            for(let type in types){
-                const buildings = types[type];
+            for(let type in buildingTypes){
+                const buildings = buildingTypes[type];
                 
                 let content;
                     switch(type){
                         case "storage":
                         case "depot":
                         case "fridge":
-                            const capacity = counter.countStorageCapacity(star.starid, type);
+                            const capacity = counter.countStorageCapacity(starid, type);
                             if(capacity === 0){
                                 continue;
                             }
@@ -138,7 +146,7 @@ function StarViewDetailsDisplayer(){
                         break;
                         case "house":
                             content = data.getElementData({source: type, key: "typename"})
-                                + " (Lakóhely: " + counter.countStorageCapacity(star.starid, "house") + ")";
+                                + " (Lakóhely: " + counter.countStorageCapacity(starid, "house") + ")";
                         break;
                         default:
                             const buildingNum = buildings.length;

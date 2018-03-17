@@ -7,7 +7,7 @@ function Star(starData){
     const planetnum = starData.planetnum;
     const connections = convertConnections(starData.connections);
     const visibilityService = new VisibilityService(starData.visibility);
-    const data = starData.data;
+    const data = new StarData(starData.data);
     
     this.getStarId = function(){return starid};
     this.getXCord = function(){return xcord};
@@ -17,7 +17,7 @@ function Star(starData){
     this.getPlanetNum = function(){return planetnum};
     this.getConnections = function(){return connections};
     this.getVisibilityService = function(){return visibilityService};
-    this.getStarData = function(){return data};
+    this.getData = function(){return data};
     
         function convertConnections(connections){
             try{

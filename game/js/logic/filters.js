@@ -38,70 +38,6 @@ function Filters(){
             }
         }
     
-    this.getPlanetsOfStar = function getPlanetsOfStar(starid){
-        //Csillag bolygói
-        try{
-            let result = data.getFromCache("planetsofstar", starid);
-            
-            if(result === null){
-                result = {};
-                const planets = gameData.planets;
-            
-                for(let planetid in planets){
-                    const planet = planets[planetid];
-                    
-                    if(planet.starid === starid){
-                        result[planetid] = planet;
-                    }
-                }
-                
-                data.putToCache("planetsofstar", starid, result);
-            }
-            
-            return result;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
-    
-    this.getBuildingsOfPlanet = function getBuildingsOfPlanet(planetid){
-        //Bolygó épületei
-        try{
-            const result = {};
-            const buildings = gameData.buildings;
-            
-            for(let buildingid in buildings){
-                const building = buildings[buildingid];
-                if(building.planetid == planetid){
-                    result[buildingid] = building;
-                }
-            }
-            
-            return result;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
-    
-    this.getBuildingsOfStar = function getBuildingsOfStar(starid){
-        //Csillag épületei
-        try{
-            const result = {};
-            
-                const planets = this.getPlanetsOfStar(starid);
-                for(let planetid in planets){
-                    const buildings = this.getBuildingsOfPlanet(planetid);
-                    for(let buildingid in buildings){
-                        result[buildingid] = buildings[buildingid];
-                    }
-                }
-            
-            return result;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
-    
     this.getBuildableBuildingsOfSlot = function getBuildableBuildingsOfSlot(slot){
         //Adott slotba építhető épületek
         try{
@@ -129,39 +65,6 @@ function Filters(){
                 const star = stars[starid];
                 if(star.owner !== "neutral"){
                     result.push(star);
-                }
-            }
-            
-            return result;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
-    
-    this.getBuildingsOfTypeOfStar = function getBuildingsOfTypeOfStar(starid, type, includeUnderConstruction){
-        //Egy csillag bolygóin található épületek a megadott típusból
-        try{
-            if(includeUnderConstruction == undefined){
-                includeUnderConstruction = includeUnderConstruction == undefined ? false : true;
-            }
-            
-            const star = gameData.stars[starid];
-            const planets = this.getPlanetsOfStar(starid);
-            const result = [];
-            
-            for(let pindex in planets){
-                const planet = planets[pindex];
-                const buildings = this.getBuildingsOfPlanet(planet.planetid);
-                
-                for(let bindex in buildings){
-                    const building = buildings[bindex];
-                    if(building.type === type){
-                        if(includeUnderConstruction === true){
-                            result.push(building);
-                        }else if(building.data.status === 0){
-                            result.push(building);
-                        }
-                    }
                 }
             }
             

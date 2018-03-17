@@ -26,8 +26,8 @@ function StarView(){
         //Csillag részleteink megjelenítése
         try{
             detailDisplayer.displayDetails(star);
-            queueDisplayer.displayQueue(star.data.queue);
-            planetDisplayer.displayPlanets(star.starid);
+            queueDisplayer.displayQueue(star.getData().getQueueService());
+            planetDisplayer.displayPlanets(star.getStarId());
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

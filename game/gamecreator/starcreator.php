@@ -212,6 +212,7 @@
             $starData["storagestatus"]["minfridgestatus"] = 70;
             $starData["storagestatus"]["maxfridgestatus"] = 90;
             
+            $starData["citizennum"] = 0;
             
             return $starData;
         }
