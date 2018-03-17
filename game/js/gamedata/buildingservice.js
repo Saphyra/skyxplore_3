@@ -10,7 +10,7 @@ function BuildingService(buildingsData){
     this.orderBuildingsByName = orderBuildingsByName;
     
     function getBuildingsOfPlanet(planetid){
-        //Egy bolygó épületei
+        //Egy bolygÃ³ Ã©pÃ¼letei
         try{
             const result = {};
                 for(let buildingid in buildings){
@@ -26,7 +26,7 @@ function BuildingService(buildingsData){
     }
     
     function getBuildingsOfStar(starid){
-        //Egy csillag épületei
+        //Egy csillag Ã©pÃ¼letei
         try{
             const result = {};
                 const planets = gameData.getPlanetService().getPlanetsOfStar(starid);
@@ -44,7 +44,7 @@ function BuildingService(buildingsData){
     }
     
     function getBuildingsOfTypeOfStar(starid, type, includeUnderConstruction){
-        //Egy csillag bolygóin található épületek a megadott típusból
+        //Egy csillag bolygÃ³in talÃ¡lhatÃ³ Ã©pÃ¼letek a megadott tÃ­pusbÃ³l
         try{
             if(includeUnderConstruction == undefined){
                 includeUnderConstruction = includeUnderConstruction == undefined ? false : true;
@@ -76,7 +76,7 @@ function BuildingService(buildingsData){
     }
     
     function groupBuildingsByRole(buildings){
-        //Épületek cél szerinti besorolása
+        //Ã‰pÃ¼letek cÃ©l szerinti besorolÃ¡sa
         try{
             const result = {}
             
@@ -96,7 +96,7 @@ function BuildingService(buildingsData){
     }
     
     function groupBuildingsByType(buildings){
-        //Épületek csoportosítása típus szerint
+        //Ã‰pÃ¼letek csoportosÃ­tÃ¡sa tÃ­pus szerint
         try{
             const result = {};
                 for(let buildingid in buildings){
@@ -113,7 +113,7 @@ function BuildingService(buildingsData){
     }
     
     function orderBuildingsByName(buildings){
-        //Név szerint sorba rendezi az épületeket
+        //NÃ©v szerint sorba rendezi az Ã©pÃ¼leteket
         try{
             const arr = Object.values(buildings);
             arr.sort(function(a, b){

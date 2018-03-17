@@ -1,4 +1,4 @@
-function Counter(){    
+function Counter(){
     this.countPopulationGrowth = function countPopulationGrowth(starid){
         //Népességnövekedés kiszámolása
         try{

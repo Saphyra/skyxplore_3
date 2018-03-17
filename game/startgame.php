@@ -30,10 +30,7 @@
         }
     </SCRIPT>
     <SCRIPT src='../content/js/jquery.js'></SCRIPT>
-    
-    <?php
-        addScripts("js");
-    ?>
+    <?php addScripts("js"); ?>
 </HEAD>
 <BODY>
     <DIV id='content' class='absolute0 bottom35rem'></DIV>
@@ -75,7 +72,8 @@
                 if(is_dir($dir . $file)){
                     addScripts($dir . $file);
                 }else if(strstr($file, ".js")){
-                    print "<SCRIPT src='$dir$file'></SCRIPT>";
+                    //print "<SCRIPT src='$dir$file'></SCRIPT>";
+                    print "<SCRIPT>" . file_get_contents($dir.$file) . "</SCRIPT>";
                 }
             }
         }
