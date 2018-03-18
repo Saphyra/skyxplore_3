@@ -11,13 +11,17 @@ function StarSteps(){
                 3. Étel termelés, ahol van szabad munkaerő, és az állapot max limit alatt van.
             */
             
-            const ownedStars = filters.getOwnedStars();
+            const ownedStars = gameData.getStarService().getOwnedStars();
             increasePopulation(ownedStars);
             loadStarTemps(ownedStars);
 
-            for(let playerName in gameData.players){
-                const player = gameData.players[playerName];
-                const requests = order.orderRequestsByPriority(filters.getRequestsOfPlayer(playerName));
+            const players = gameData.getPlayerService().getAllPlayers();
+            for(let playerName in players){
+                const player = players[playerName];
+                
+                const starsOfPlayer = gameData.getStarService().getStarsOfPlayer(playerName);
+                const requests = collectRequestsOfStars(starsOfPlayer);
+                
                 log(requests, "debug", "All requests of " + playerName + ": ");
                 for(let rindex in requests){
                     const request = requests[rindex];
@@ -34,12 +38,12 @@ function StarSteps(){
         function increasePopulation(ownedStars){
             //Népesség növelése / csökkentése
             try{
-                for(let sindex in ownedStars){
-                    const star = ownedStars[sindex];
+                for(let starid in ownedStars){
+                    const star = ownedStars[starid];
                 
-                    const populationChange = counter.countNetPopulationGrowth(star.starid);
-                    log("PopulationChange at " + star.starname + ": " + populationChange, "debug");
-                    star.data.citizennum += populationChange;
+                    const populationChange = counter.countNetPopulationGrowth(starid);
+                    log("PopulationChange at " + star.getStarName() + ": " + populationChange, "debug");
+                    star.getData().addCitizens(populationChange);
                 }
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
@@ -49,15 +53,33 @@ function StarSteps(){
         function loadStarTemps(ownedStars){
             //Csillagok aktuális körére vonatkozó adatok
             try{
-                for(let sindex in ownedStars){
-                    const star = ownedStars[sindex];
+                for(let starid in ownedStars){
+                    const star = ownedStars[starid];
                     const tempData = {};
                     
-                    tempData.availableWorkers = star.data.citizennum;
-                    tempData.availableFarmers = counter.countWorkplacesOfStar(star.starid, "farm");
+                    tempData.availableWorkers = star.getData().getCitizenNum();
+                    tempData.availableFarmers = counter.countWorkplacesOfStar(starid, "farm");
                     
-                    data.putToCache("newroundtemp", star.starid, tempData);
+                    data.putToCache("newroundtemp", starid, tempData);
                 }
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
+        }
+        
+        function collectRequestsOfStars(stars){
+            //A csillagok összes kérelme prioritás szerint rendezve
+            try{
+                const result = [];
+                    for(let starid in stars){
+                        const star = stars[starid];
+                        const requests = star.getData().getQueueService().getQueue();
+                        for(let requestid in requests){
+                            result.push(requests[requestid]);
+                        }
+                    }
+                result.sort(function(a, b){return b.getPriority() - a.getPriority()});
+                return result;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
@@ -66,11 +88,11 @@ function StarSteps(){
         function addMoneyForUneployedCitizens(ownedStars){
             //A körben nem dolgozó munkások után pénzegyenleg növelése
             try{
-                for(let sindex in ownedStars){
-                    const star = ownedStars[sindex];
-                    const starInfo = data.getFromCache("newroundtemp", star.starid);
+                for(let starid in ownedStars){
+                    const star = ownedStars[starid];
+                    const starInfo = data.getFromCache("newroundtemp", starid);
                     
-                    gameData.players[star.owner].money += starInfo.availableWorkers * 2;
+                    gameData.getPlayerService().getPlayer(star.getOwner()).addMoney(starInfo.availableWorkers * 2);
                 }
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

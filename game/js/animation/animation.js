@@ -76,4 +76,13 @@ function Animation(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+    
+    this.displayPlayerMoney = function displayPlayerMoney(money){
+        //Játékos pénzmennyiségének kijelzése
+        try{
+            document.getElementById("playermoney").innerHTML = money;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
 }

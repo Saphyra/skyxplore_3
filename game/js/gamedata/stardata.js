@@ -3,13 +3,14 @@ function StarData(starData){
     const resources = starData.resources;
     let foodProductionPriority = starData.foodproductionpriority;
     const storageStatus = starData.storagestatus;
-    const citizenNum = starData.citizennum;
+    let citizenNum = starData.citizennum;
     
     this.getQueueService = function(){return queueService};
     this.getResources = function(){return resources};
     this.getFoodProductionPriority = function(){return foodProductionPriority};
     this.getStorageStatus = function(){return storageStatus};
     this.getCitizenNum = function(){return citizenNum};
+    this.addCitizens = function(change){citizenNum += change};
     
     this.setFoodProductionPriority = function(newPriority){foodProductionPriority = newPriority};
 }

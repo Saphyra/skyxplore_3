@@ -17,7 +17,7 @@ function Counter(){
         //Tényleges népességnövekedés kiszámítása
         try{
             const star = gameData.getStarService().getStarById(starid);
-            const citizennum = star.data.citizennum;
+            const citizennum = star.getData().getCitizenNum();
             const growth = this.countPopulationGrowth(starid);
             const place = this.countStorageCapacity(starid, "house");
             
@@ -176,9 +176,9 @@ function Counter(){
     this.countFridgeStatusOfStar = function countFridgeStatusOfStar(starid){
         //Hűtőház telítettségének kiszámolása
         try{
-            const star = gameData.stars[starid];
+            const star = gameData.getStarService().getStarById(starid);
             const capacity = this.countStorageCapacity(starid, "fridge");
-            const food = star.data.resources.food;
+            const food = star.getData().getResources().food;
             
             const result = food / capacity * 100;
             return result;
@@ -191,11 +191,11 @@ function Counter(){
         //Az adott csillaghoz és épülethez tartozó munkahelyek
         try{
             let result = 0;
-                const buildings = filters.getBuildingsOfStar(starid);
+                const buildings = gameData.getBuildingService().getBuildingsOfStar(starid);
                 for(let buildingid in buildings){
                     const building = buildings[buildingid];
-                    if(building.type == type && building.data.status === 0){
-                        const buildingData = data.getElementData(building.data.resource);
+                    if(building.getType() == type && building.getData().status === 0){
+                        const buildingData = data.getElementData(building.getData().resource);
                         result += buildingData.workplace;
                     }
                 }

@@ -3,24 +3,7 @@ function Filters(){
     
     
     
-    this.getOwnedStars = function getOwnedStars(){
-        //Lakott csillagok
-        try{
-            const stars = gameData.stars;
-            const result = [];
-            
-            for(let starid in stars){
-                const star = stars[starid];
-                if(star.owner !== "neutral"){
-                    result.push(star);
-                }
-            }
-            
-            return result;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
+    
     
     this.getRequestOfBuilding = function getRequestOfBuilding(buildingid, queue){
         //Épület építéséhez tartozó kérelem megkeresése

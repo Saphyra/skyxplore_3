@@ -26,6 +26,7 @@ function Initializer(){
             back.addBackListeners();
             animation.addMapListener();
             animation.addWindowStateChangeListener();
+            animation.displayPlayerMoney(gameData.getPlayerService().getPlayer("player").getMoney());
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
@@ -47,7 +48,6 @@ function Initializer(){
             window.map = new Map();
             window.nameConverter = new NameConverter();
             window.newRound = new NewRound();
-            window.order = new Order();
             window.planetView = new PlanetView();
             window.schemaView = new SchemaView();
             window.starView = new StarView();

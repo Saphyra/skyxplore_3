@@ -35,13 +35,22 @@
 <BODY>
     <DIV id='content' class='absolute0 bottom35rem'></DIV>
     
-    <FOOTER style='height: 3.5rem' class='backgroundblack10 border5px bordertopridge bordercolor100 bottom0 centertext fixed height25rem left0 nowrap padding025rem right0'>
-        <BUTTON onclick='newRound.newRound()'>Új kör</BUTTON>
-        <BUTTON onclick='data.saveGame()'>Játék mentése</BUTTON>
-        <BUTTON onclick='schemaView.showChemaView()'>Harcászati sémák</BUTTON>
-        <BUTTON onclick='animation.toggleFullScreen()' id='fullscreenbutton'>Teljes képernyő</BUTTON>
-        <BUTTON onclick='document.getElementById("logcontainer").style.display = "block"'>Log</BUTTON>
-        <BUTTON onclick='window.location.href = "../mainmenu/mainmenu.php"'>Kilépés</BUTTON>
+    <FOOTER style='height: 3.6rem' class='backgroundblack10 border5px bordertopridge bordercolor100 bottom0 fixed height25rem left0 nowrap padding025rem right0'>
+        <TABLE class='width100percents'>
+            <TR>
+                <TD class='paddingright20rem'>Pénz: <SPAN id='playermoney'></SPAN></TD>
+                <TD class='centertext paddingright20rem'>
+                    <BUTTON onclick='newRound.newRound()'>Új kör</BUTTON>
+                    <BUTTON onclick='schemaView.showChemaView()'>Harcászati sémák</BUTTON>
+                </TD>
+                <TD class='paddingright20rem righttext'>
+                    <BUTTON onclick='data.saveGame()'>Játék mentése</BUTTON>
+                    <BUTTON onclick='animation.toggleFullScreen()' id='fullscreenbutton'>Teljes képernyő</BUTTON>
+                    <BUTTON onclick='document.getElementById("logcontainer").style.display = "block"'>Log</BUTTON>
+                    <BUTTON onclick='window.location.href = "../mainmenu/mainmenu.php"'>Kilépés</BUTTON>
+                </TD>
+            </TR>
+        </TABLE>
     </FOOTER>
     
     <DIV class='backgroundblack10 centertext displaynone fixed0 overflowauto' id='logcontainer' oncontextmenu='document.getElementById("logcontainer").style.display="none"'>

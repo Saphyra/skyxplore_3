@@ -3,8 +3,8 @@ function RequestProcessor(parent){
     this.workOnRequest = function workOnRequest(playerName, request){
         //Kérelmek teljesítése
         try{
-            const star = gameData.stars[request.starid];
-            const starInfo = data.getFromCache("newroundtemp", star.starid);
+            const star = gameData.getStarService().getStarById(request.getStarId());
+            const starInfo = data.getFromCache("newroundtemp", star.getStarId());
             
             if(starInfo.availableWorkers){
                 //Ha vannak a csillagon szabad munkások
@@ -17,7 +17,7 @@ function RequestProcessor(parent){
                     }
                     const job = new Job(produceFoodJobData, function(){
                         this.data.starInfo.availableFarmers--;
-                        this.data.star.data.resources.food += this.data.income;
+                        this.data.star.getData().getResources().food += this.data.income;
                     });
                     starSteps.work(playerName, job, starInfo);
                 }
@@ -34,15 +34,19 @@ function RequestProcessor(parent){
                     - A kajatermelés prioritása nagyobb, mint a kérelemé
                     - Az aktuális ételmennyiség kisebb, mint a minimum
             */
-            const availableFarmers = (starInfo.availableFarmers > 0);
-            const priority = (star.data.foodproductionpriority > request.priority);
-            
-            if(availableFarmers && priority){
-                const fridgeStatus = counter.countFridgeStatusOfStar(star.starid);
-                if(fridgeStatus < star.data.storagestatus.minfridgestatus){
-                    return true;
+            try{
+                const availableFarmers = (starInfo.availableFarmers > 0);
+                const priority = (star.getData().getFoodProductionPriority() > request.getPriority());
+                
+                if(availableFarmers && priority){
+                    const fridgeStatus = counter.countFridgeStatusOfStar(star.getStarId());
+                    if(fridgeStatus < star.getData().getStorageStatus().minfridgestatus){
+                        return true;
+                    }
                 }
+                return false;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
-            return false;
         }
 }

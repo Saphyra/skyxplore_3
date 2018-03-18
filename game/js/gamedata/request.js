@@ -15,5 +15,5 @@ function Request(requestData){
     this.getElementId = function(){return elementid};
     this.getData = function(){return data};
     
-    this.setPriority = function(newPriority){ priority = newPriority};
+    this.setPriority = function(newPriority){priority = newPriority};
 }

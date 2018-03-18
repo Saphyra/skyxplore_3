@@ -330,7 +330,7 @@
     margin-left: 8rem;
 }
 
-.marginright025rem{
+.paddingrght025rem{
     margin-right: 0.25rem;
 }
 
@@ -453,6 +453,10 @@
 
 .paddingright5rem{
     padding-right: 0.5rem;
+}
+
+.paddingright20rem{
+    padding-right: 2rem;
 }
 
 .paddingtop0125rem{
