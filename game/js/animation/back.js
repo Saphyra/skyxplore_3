@@ -1,5 +1,5 @@
 function Back(){
-    viewStack = ["#galaxyviewcontainer"];
+    let viewStack = ["#galaxyviewcontainer"];
     
     this.addBackListeners = function addBackListeners(){
         //Eseményfigyelő hozzáadása az ablakokhoz
@@ -26,6 +26,16 @@ function Back(){
         try{
             viewStack.pop();
             this.switchWindow(viewStack.pop());
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    this.showMap = function showMap(){
+        //Visszalépés a térkép nézetre
+        try{
+            this.switchWindow("#galaxyviewcontainer");
+            viewStack = ["#galaxyviewcontainer"];
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

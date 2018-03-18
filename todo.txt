@@ -25,7 +25,7 @@ schema
 
 Implement Defense view
 Implement newround
-    -Refactor to new data system
+    - requestProcessor process request...
 Add explaining title to elements
 Building list views
 Deconstructing buildings

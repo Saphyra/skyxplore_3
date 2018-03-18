@@ -15,7 +15,7 @@ function StarViewDetailsDisplayer(){
         //Lakosok adatainak megjelenítése
         try{
             const houseNum = counter.countStorageCapacity(star.getStarId(), "house");
-            const populationGrowth = counter.countPopulationGrowth(star.getStarId());
+            const populationGrowth = nameConverter.convertFloatNumber(counter.countPopulationGrowth(star.getStarId()), 2);
             const growth = populationGrowth >= 0 ? "+ " + populationGrowth : populationGrowth;
             document.getElementById("starviewcitizens").innerHTML = 
                 "Munkás: " + star.getData().getCitizenNum()

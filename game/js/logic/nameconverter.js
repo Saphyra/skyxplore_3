@@ -50,4 +50,16 @@ function NameConverter(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+    
+    this.convertFloatNumber = function convertFloatNumber(number, decimals){
+        //A tört számot a megadott számú tizedesjeggyel rendelkező számmá alakítja
+        try{
+            const mult = Math.pow(10, decimals)
+            const num = Number(number) * mult;
+            
+            return Math.round(num) / mult;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
 }

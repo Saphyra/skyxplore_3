@@ -29,7 +29,9 @@ function StarSteps(){
                 }
             }
             
+            produceFood(ownedStars);
             addMoneyForUneployedCitizens(ownedStars);
+            back.showMap();
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
@@ -80,6 +82,32 @@ function StarSteps(){
                     }
                 result.sort(function(a, b){return b.getPriority() - a.getPriority()});
                 return result;
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
+        }
+        
+        function produceFood(ownedStars){
+            //Étel termelése azokon a csillagokon, ahol van szabad munkaerő, és szükséges az ételtermelés
+            try{
+                for(let starid in ownedStars){
+                    const star = ownedStars[starid];
+                    const starInfo = data.getFromCache("newroundtemp", starid);
+                    const maxFridgeStatus = star.getData().getStorageStatus().maxfridgestatus;
+                    
+                    while(starInfo.availableFarmers > 0 && counter.countFridgeStatusOfStar(starid) < maxFridgeStatus){
+                        const produceFoodJobData = {
+                            starInfo: starInfo,
+                            star: star,
+                            income: data.getElementData({source: "farm", key: "income"})
+                        }
+                        const job = new Job(produceFoodJobData, function(){
+                            this.data.starInfo.availableFarmers--;
+                            this.data.star.getData().getResources().food += this.data.income;
+                        });
+                        worker.work(star.getOwner(), job, starInfo);
+                    }
+                }
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }

@@ -15,7 +15,7 @@ function log(message, level, prefix){
             
             break;
             case "debug":
-            
+                return;
             break;
             default:
                 log("Unknown log level " + type + " with message " + message, "warn");
@@ -38,8 +38,10 @@ function log(message, level, prefix){
         container.appendChild(createTextNode(prefix));
         
         let textNode;
-            if(typeof message == "object"){
+            if(typeof message == "object" && message != null){
                 textNode = parseObject(message);
+            }else if(message == null){
+                textNode = createTextNode("null");
             }else{
                 textNode = createTextNode(message);
             }

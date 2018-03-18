@@ -20,6 +20,10 @@ function RequestProcessor(parent){
                         this.data.star.getData().getResources().food += this.data.income;
                     });
                     starSteps.work(playerName, job, starInfo);
+                    this.workOnRequest(playerName, request);
+                }else{
+                    //Ha a kérelem kerül sorra...
+                    
                 }
             }
         }catch(err){
