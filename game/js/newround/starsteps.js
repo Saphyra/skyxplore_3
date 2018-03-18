@@ -12,6 +12,7 @@ function StarSteps(){
             */
             
             const ownedStars = gameData.getStarService().getOwnedStars();
+            consumeFood(ownedStars);
             increasePopulation(ownedStars);
             loadStarTemps(ownedStars);
 
@@ -36,6 +37,30 @@ function StarSteps(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+        function consumeFood(ownedStars){
+            //Étel fogyasztás
+            try{
+                for(let starid in ownedStars){
+                    const star = ownedStars[starid];
+                    
+                    const starData = star.getData();
+                    const citizennum = starData.getCitizenNum();
+                    const resources = starData.getResources();
+                    resources.food -= citizennum;
+                    
+                    if(star.getData().getResources().food < 0){
+                        star.getData().addCitizens(resources.food);
+                        resources.food = 0;
+                    }
+                    
+                    if(starData.getCitizenNum() <= 0){
+                        //TODO Kihalt a csillag
+                    }
+                }
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
+        }
         
         function increasePopulation(ownedStars){
             //Népesség növelése / csökkentése
