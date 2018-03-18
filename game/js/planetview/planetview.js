@@ -12,8 +12,8 @@ function PlanetView(){
     this.displayPlanetData = function displayPlanetData(planet){
         //Bolygó adatainak megjelenítése
         try{
-            $("#planetviewplanetname").text(planet.planetname);
-            const imgUrl = "url('../content/img/" + planet.type + "_background.jpg')";
+            $("#planetviewplanetname").text(planet.getPlanetName());
+            const imgUrl = "url('../content/img/" + planet.getType() + "_background.jpg')";
             $("#planetviewcontainer").css("backgroundImage", imgUrl);
             displaySlots(planet);
         }catch(err){
@@ -27,10 +27,11 @@ function PlanetView(){
                 const container = document.getElementById("planetviewslotlist");
                     container.innerHTML = "";
                     
-                    const groupper = new BuildingGrouper();
-                    const buildings = groupper.groupBuildingsBySlot(filters.getBuildingsOfPlanet(planet.planetid));
+                    const buildingService = gameData.getBuildingService();
+                    let buildings = buildingService.getBuildingsOfPlanet(planet.getPlanetId());
+                    buildings = buildingService.groupBuildingsBySlot(buildings);
                     
-                    for(let slot in planet.slots){
+                    for(let slot in planet.getSlots()){
                         if(slot === "defense"){
                             //TODO Do
                         }else{
@@ -51,46 +52,48 @@ function PlanetView(){
                     container.appendChild(containerTitle);
                     
                     //Épületek megjelenítése
-                    for(let index in buildings[slot]){
-                        const building = buildings[slot][index];
-                        const buildingSlot = domElementCreator.createPlanetSlot(building.buildingData.type);
+                    for(let buildingid in buildings[slot]){
+                        const building = buildings[slot][buildingid];
+                        const buildingData = data.getElementData(building.getData().resource);
+                        
+                        const buildingSlot = domElementCreator.createPlanetSlot(buildingData.type);
                             const buildingSlotCover = domElementCreator.createCoverElement();
-                                const planetSlotTitle = domElementCreator.createPlanetSlotTitle(building.buildingData.name);
+                                const planetSlotTitle = domElementCreator.createPlanetSlotTitle(buildingData.name);
                             buildingSlotCover.appendChild(planetSlotTitle);
                             
-                            if(building.building.data.status !== 0){
+                            if(building.getData().status !== 0){
                                 //Ha az épület építés alatt
                                 //Építési állapot megjelenítése
-                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.status, building.buildingData.constructiontime, "Építés");
+                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.getData().status, buildingData.constructiontime, "Építés");
                                 buildingSlotCover.appendChild(buildStatus);
                                 
                                 //Építés visszavonása
-                                const star = gameData.stars[planet.starid];
-                                const requestid = building.building.data.requestid;
-                                const request = star.data.queue[requestid];
+                                const star = gameData.getStarService().getStarById(planet.getStarId());
+                                const requestid = building.getData().requestid;
+                                const request = star.getData().getQueueService().getRequestById(requestid);
                                 
                                 const cancelBuilding = domElementCreator.createPlanetViewActionBuildingButton("Visszavon", function(){undoRequest.undo(request)});
                                 buildingSlotCover.appendChild(cancelBuilding);
-                            }else if(building.building.data.upgradestatus !== 0){
+                            }else if(building.getData().upgradestatus !== 0){
                                 //Ha az épület fejlesztés alatt áll
-                                const upgradeBuildingData = filters.searchElements({type: building.buildingData.type, level: building.buildingData.level + 1})
-                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.building.data.upgradestatus, upgradeBuildingData.constructiontime, "Fejlesztés");
+                                const upgradeBuildingData = data.searchElements({type: buildingData.type, level: buildingData.level + 1})
+                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime, "Fejlesztés");
                                 buildingSlotCover.appendChild(buildStatus);
                                 
                                 //Fejlesztés visszavonása
-                                const star = gameData.stars[planet.starid];
-                                const requestid = building.building.data.requestid;
-                                const request = star.data.queue[requestid];
+                                const star = gameData.getStarService().getStarById(planet.getStarId());
+                                const requestid = building.getData().requestid;
+                                const request = star.getData().getQueueService().getRequestById(requestid);
                                 
                                 const cancelBuilding = domElementCreator.createPlanetViewActionBuildingButton("Visszavon", function(){undoRequest.undo(request)});
                                 buildingSlotCover.appendChild(cancelBuilding);
-                            }else if(building.building.level < 3){
+                            }else if(building.getLevel() < 3){
                                 //Épület fejlesztése
-                                const upgradeBuilding = domElementCreator.createPlanetViewActionBuildingButton("Fejlesztés", function(){gameDataModificator.upgradeBuilding(building.building.buildingid, 5)});
+                                const upgradeBuilding = domElementCreator.createPlanetViewActionBuildingButton("Fejlesztés", function(){gameDataModificator.upgradeBuilding(building.getBuildingId(), 5)});
                                 buildingSlotCover.appendChild(upgradeBuilding);
                             }
                             
-                                const planetSlotLevel = domElementCreator.createPlanetSlotLevel(building.buildingData.level);
+                                const planetSlotLevel = domElementCreator.createPlanetSlotLevel(buildingData.level);
                             buildingSlotCover.appendChild(planetSlotLevel);
                         buildingSlot.appendChild(buildingSlotCover);
                         container.appendChild(buildingSlot);
@@ -98,11 +101,11 @@ function PlanetView(){
                     }
                     
                     //Üres slotok megjelenítése
-                    for(num; num < planet.slots[slot]; num++){
+                    for(num; num < planet.getSlots()[slot]; num++){
                         const emptySlot = domElementCreator.createPlanetSlot("empty");
                             const emptySlotCover = domElementCreator.createCoverElement();
                         emptySlot.appendChild(emptySlotCover);
-                        emptySlot.onclick = function(){buildNewBuildingView.showPage(planet.planetid, slot)};
+                        emptySlot.onclick = function(){buildNewBuildingView.showPage(planet.getPlanetId(), slot)};
                         container.appendChild(emptySlot);
                     }
                     

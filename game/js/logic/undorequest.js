@@ -2,7 +2,7 @@ function UndoRequest(){
     this.undo = function undo(request){
         //Visszavonja az adott kérelmet
         try{
-            switch(request.type){
+            switch(request.getType()){
                 case "building":
                     undoBuildingRequest(request);
                 break;
@@ -21,16 +21,16 @@ function UndoRequest(){
         function undoBuildingRequest(request){
             //Épületépítési kérelem visszavonása
             try{
-                const building = gameData.buildings[request.elementid];
-                const planet = gameData.planets[building.planetid];
-                const star = gameData.stars[planet.starid];
+                const building = gameData.getBuildingService().getBuildingById(request.getElementId());
+                const planet = gameData.getPlanetService().getPlanetById(building.getPlanetId());
+                const star = gameData.getStarService().getStarById(planet.getStarId());
                 
-                delete star.data.queue[request.requestid];
-                delete gameData.buildings[building.buildingid];
+                star.getData().getQueueService().deleteRequest(request.getRequestId());
+                gameData.getBuildingService().deleteBuilding(building.getBuildingId());
                 
                 starView.displayStarData(star);
                 planetView.displayPlanetData(planet);
-                buildingListView.refresh(star.starid);
+                buildingListView.refresh(star.getStarId());
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
@@ -39,16 +39,16 @@ function UndoRequest(){
         function undoBuildingUpgradeRequest(request){
             //Épület fejlesztési kérelem visszavonása
             try{
-                const building = gameData.buildings[request.elementid];
-                const planet = gameData.planets[building.planetid];
-                const star = gameData.stars[planet.starid];
+                const building = gameData.getBuildingService().getBuildingById(request.getElementId());
+                const planet = gameData.getPlanetService().getPlanetById(building.getPlanetId());
+                const star = gameData.getStarService().getStarById(planet.getStarId());
                 
-                building.data.upgradestatus = 0;
-                delete star.data.queue[request.requestid];
+                building.getData().upgradestatus = 0;
+                star.getData().getQueueService().deleteRequest(request.getRequestId());
                 
                 starView.displayStarData(star);
                 planetView.displayPlanetData(planet);
-                buildingListView.refresh(star.starid);
+                buildingListView.refresh(star.getStarId());
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }

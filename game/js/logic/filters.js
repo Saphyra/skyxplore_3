@@ -1,59 +1,7 @@
 function Filters(){
-    this.searchElements = function searchElements(params, singleResult){
-        //Megadott paramétereknek megfelelő játékelemek keresése
-        try{
-            singleResult = singleResult == undefined ? true : singleResult;
-            
-            const sources = gameDataSources;
-            const result = [];
-            for(let sindex in sources){
-                const source = sources[sindex];
-                const elements = data.getFromCache("elements", source);
-                for(let eindex in elements){
-                    const element = elements[eindex];
-                    if(isElementValid(element, params)){
-                        result.push(element);
-                    }
-                }
-            }
-            return singleResult ? result.length === 1 ? result[0] : result : result;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
     
-        function isElementValid(element, params){
-            //Adott játékelem megfelel-e a keresési követelményeknek
-            try{
-                let result = true;
-                    for(let key in params){
-                        if(element[key] != params[key]){
-                            result = false;
-                        }
-                    }
-                
-                return result;
-            }catch(err){
-                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-            }
-        }
     
-    this.getBuildableBuildingsOfSlot = function getBuildableBuildingsOfSlot(slot){
-        //Adott slotba építhető épületek
-        try{
-            const elements = this.searchElements({slot: slot, level: 1}, false);
-            const result = [];
-                for(let index in elements){
-                    const element = elements[index];
-                    sresult.push(element);
-                }
-            
-            return result;
-            
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
+    
     
     this.getOwnedStars = function getOwnedStars(){
         //Lakott csillagok

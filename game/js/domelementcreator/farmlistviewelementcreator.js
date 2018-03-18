@@ -12,7 +12,7 @@ function FarmListViewElementCreator(parent){
                     const sliderValue = domElementCreator.createTextElement(slider.value + "%");
                 label.appendChild(sliderValue);
                 
-                    applyChanges.oldValue = star.data.storagestatus[type + "fridgestatus"];
+                    applyChanges.oldValue = star.getData().getStorageStatus()[type + "fridgestatus"];
                     slider.onchange = function(){
                         applyChanges.apply(star, slider, sliderValue, type);
                     }
@@ -43,7 +43,7 @@ function FarmListViewElementCreator(parent){
                     element.min = 0;
                     element.max = 100;
                     element.step = 10;
-                    element.value = star.data.storagestatus[type + "fridgestatus"];
+                    element.value = star.getData().getStorageStatus()[type + "fridgestatus"];
                     element.classList.add("verticalcenter");
                     element.classList.add("marginleft5rem");
                     element.classList.add("marginright5rem");
@@ -58,14 +58,14 @@ function FarmListViewElementCreator(parent){
             const element = domElementCreator.createListItem();
                 element.appendChild(createSliderText("Prioritás"));
                 const label = domElementCreator.createTextLabel();
-                    const slider = domElementCreator.createPrioritySlider(star.data.foodproductionpriority);
+                    const slider = domElementCreator.createPrioritySlider(star.getData().getFoodProductionPriority());
                 label.appendChild(slider);
                     const sliderValue = domElementCreator.createTextElement(slider.value);
                 label.appendChild(sliderValue);
             element.appendChild(label);
             
                 slider.onchange = function(){
-                    star.data.foodproductionpriority = slider.value;
+                    star.getData().setFoodProductionPriority(slider.value);
                     sliderValue.innerHTML = slider.value;
                 }
                 

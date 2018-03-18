@@ -4,22 +4,31 @@ function BuildingUpgrader(parent){
     this.upgradeBuilding = function upgradeBuilding(buildingid, priority){
         //Épület fejlesztése
         try{
-            const building = gameData.buildings[buildingid];
-            const planet = gameData.planets[building.planetid];
-            const star = gameData.stars[planet.starid];
-            const queue = star.data.queue;
+            const building = gameData.getBuildingService().getBuildingById(buildingid);
+            const planet = gameData.getPlanetService().getPlanetById(building.getPlanetId());
+            const star = gameData.getStarService().getStarById(planet.getStarId());
+            const queueService = star.getData().getQueueService();
             
-            const upgradeLevel = building.level + 1;
-            const upgradeBuildingData = filters.searchElements({type: building.type, level: upgradeLevel}, true);
-            building.data.upgradestatus = upgradeBuildingData.constructiontime;
+            const upgradeLevel = building.getLevel() + 1;
+            const upgradeBuildingData = data.searchElements({type: building.getType(), level: upgradeLevel}, true);
+            building.getData().upgradestatus = upgradeBuildingData.constructiontime;
             
             
-            const requestid = generator.generateId("request", Object.keys(queue));
-            building.data.requestid = requestid;
-            const request = new Request(star.starid, requestid, "buildingupgrade", "collectresources", priority, buildingid);
-            queue[requestid] = request;
+            const requestid = generator.generateId("request", queueService.getRequestIds());
+            building.getData().requestid = requestid;
             
-            buildingListView.refresh(star.starid);
+            const requestData = {
+                    starid: star.getStarId(),
+                    requestid: requestid,
+                    type: "buildingupgrade",
+                    status: "collectresources",
+                    priority: priority,
+                    elementid: buildingid
+                }
+            const request = new Request(requestData);
+            queueService.addRequest(request);
+            
+            buildingListView.refresh(star.getStarId());
             planetView.displayPlanetData(planet);
             starView.displayStarData(star);
         }catch(err){

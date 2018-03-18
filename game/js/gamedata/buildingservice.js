@@ -2,12 +2,19 @@ function BuildingService(buildingsData){
     const buildings = convertBuildings(buildingsData);
     
     this.getAllBuildings = function(){return buildings};
+    this.getBuildingById = function(buildingid){return buildings[buildingid]};
+    this.getBuildingIds = function(){return Object.keys(buildings)};
+    this.addBuilding = function(building){buildings[building.getBuildingId()] = building};
+    this.deleteBuilding = function(buildingid){delete buildings[buildingid]};
     this.getBuildingsOfPlanet = getBuildingsOfPlanet;
     this.getBuildingsOfStar = getBuildingsOfStar;
     this.getBuildingsOfTypeOfStar = getBuildingsOfTypeOfStar;
+    this.getBuildableBuildingsOfSlot = getBuildableBuildingsOfSlot;
     this.groupBuildingsByRole = groupBuildingsByRole;
     this.groupBuildingsByType = groupBuildingsByType;
+    this.groupBuildingsBySlot = groupBuildingsBySlot;
     this.orderBuildingsByName = orderBuildingsByName;
+    this.orderBuildingDatasByName = orderBuildingDatasByName;
     
     function getBuildingsOfPlanet(planetid){
         //Egy bolygó épületei
@@ -75,6 +82,15 @@ function BuildingService(buildingsData){
         }
     }
     
+    function getBuildableBuildingsOfSlot(slot){
+        //Egy slotba építhető épületek listája
+        try{
+            return data.searchElements({slot: slot, level: 1}, false);
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
     function groupBuildingsByRole(buildings){
         //Épületek cél szerinti besorolása
         try{
@@ -112,6 +128,26 @@ function BuildingService(buildingsData){
         }
     }
     
+    function groupBuildingsBySlot(buildings){
+        //Épületek slot szerinti csoportosítása
+        try{
+            const result = {};
+            
+            for(let buildingid in buildings){
+                const building = buildings[buildingid];
+                const buildingData = data.getElementData(building.getData().resource);
+                if(!result[buildingData.slot]){
+                    result[buildingData.slot] = {};
+                }
+                result[buildingData.slot][buildingid] = building;
+            }
+            
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
     function orderBuildingsByName(buildings){
         //Név szerint sorba rendezi az épületeket
         try{
@@ -125,6 +161,15 @@ function BuildingService(buildingsData){
                     result[arr[bindex].getBuildingId()] = arr[bindex];
                 }
             return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    function orderBuildingDatasByName(buildingDatas){
+        //Épület adatok sorba rendezése név szerint
+        try{
+            return buildingDatas.sort(function(a, b){a.name.localeCompare(b.name)});
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

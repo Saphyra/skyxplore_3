@@ -2,6 +2,7 @@ function PlanetService(planetsData){
     const planets = convertPlanets(planetsData);
     
     this.getAllPlanets  = function(){return planets};
+    this.getPlanetById = function(planetid){return planets[planetid] || null};
     this.getPlanetsOfStar = function getPlanetsOfStar(starid){
         //Egy csillag bolygói
         try{

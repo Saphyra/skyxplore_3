@@ -4,8 +4,8 @@ function PrioritySliderModificationAction(request, queue){
     this.queue = queue;
     
     this.change = function(newPriority){
-        this.request.priority = newPriority;
-        starView.displayQueue(this.queue);
+        this.request.setPriority(newPriority);
+        starView.displayQueue(this.request.getStarId());
     };
     this.run = function(value){
         undoRequest.undo(request);

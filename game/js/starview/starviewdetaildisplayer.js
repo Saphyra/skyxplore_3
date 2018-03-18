@@ -1,6 +1,4 @@
 function StarViewDetailsDisplayer(){
-    const buildingGrouper = new BuildingGrouper();
-    
     this.displayDetails = function(star){
         //Részletek megjelenítése
         $("#starviewstarname").text(star.getStarName());
@@ -43,7 +41,7 @@ function StarViewDetailsDisplayer(){
             const content = data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
                     + " (" + foodIncome + "/kör)";
             const foodListItem = domElementCreator.createListItem(content);
-                domElementCreator.convertElementToButton(foodListItem, function(){buildingListView.showFarmListView(star.starid)}, true);
+                domElementCreator.convertElementToButton(foodListItem, function(){buildingListView.showFarmListView(star.getStarId())}, true);
             container.appendChild(foodListItem);
             
             //Tárolt anyagtípusok megjelenítése

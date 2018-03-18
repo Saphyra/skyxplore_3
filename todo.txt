@@ -23,10 +23,9 @@ schema
             - Raktárkapacitás növelés
             - Extra slotok
 
-Kereső és szűrő rendszerek ID alapján keres, objektumot adja vissza (folyamatos átalakítás)
-GameData átalakítása
 Implement Defense view
 Implement newround
+    -Refactor to new data system
 Add explaining title to elements
 Building list views
 Deconstructing buildings

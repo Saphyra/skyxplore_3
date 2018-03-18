@@ -4,7 +4,10 @@ function BuildNewBuildingView(){
         try{
             back.switchWindow("#newbuildingviewcontainer");
             //Megjelenítendő épületek listájának összeállítása, és rendezése
-            const buildableBuildings = order.orderBuildingDatasByName(filters.getBuildableBuildingsOfSlot(slot));
+            const buildingService = gameData.getBuildingService();
+            const buildingDatas = buildingService.getBuildableBuildingsOfSlot(slot);
+            const buildableBuildings = buildingService.orderBuildingDatasByName(buildingDatas);
+            
             displayBuildableBuildings(planetid, buildableBuildings);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

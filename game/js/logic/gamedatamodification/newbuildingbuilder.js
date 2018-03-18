@@ -4,17 +4,17 @@ function NewBuildingBuilder(parent){
     this.buildNewBuilding = function buildNewBuilding(planetid, buildingData, priority){
         //Új épület építése
         try{
-            const planet = gameData.planets[planetid];
-            const star = gameData.stars[planet.starid];
+            const planet = gameData.getPlanetService().getPlanetById(planetid);
+            const star = gameData.getStarService().getStarById(planet.getStarId());
             
-            const requestid = generator.generateId("request", Object.keys(star.data.queue));
+            const requestid = generator.generateId("request", star.getData().getQueueService().getRequestIds());
             //Épület létrehozása
             const building = createBuilding(planetid, buildingData, requestid);
-            gameData.buildings[building.buildingid] = building;
+            gameData.getBuildingService().addBuilding(building);
             
             //Kérelem létrehozása
-            const request = new Request(star.starid, requestid, "building", "collectresources", priority, building.buildingid);
-            star.data.queue[requestid] = request;
+            const request = createRequest(star.getStarId(), requestid, priority, building.getBuildingId());
+            star.getData().getQueueService().addRequest(request)
             
             //Ablakok frissítése
             planetView.displayPlanetData(planet);
@@ -24,14 +24,46 @@ function NewBuildingBuilder(parent){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+    
+        function createRequest(starid, requestid, priority, buildingid){
+            //Kérelem létrehozása
+            try{
+                const requestData = {
+                    starid: starid,
+                    requestid: requestid,
+                    type: "building",
+                    status: "collectresources",
+                    priority: priority,
+                    elementid: buildingid
+                }
+                
+                return new Request(requestData);
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
+        }
         
         function createBuilding(planetid, buildingData, requestid){
             //Új épület létrehozása
             try{
-                const buildingid = generator.generateId("building", Object.keys(gameData.buildings));
-                const building = new Building(planetid, buildingid, buildingData, requestid);
-
-                return building;
+                const buildingid = generator.generateId("building", Object.keys(gameData.getBuildingService().getBuildingIds()));
+                const newBuildingData = {
+                    buildingid: buildingid,
+                    planetid: planetid,
+                    type: buildingData.type,
+                    level: buildingData.level,
+                    data: {
+                        status: buildingData.constructiontime,
+                        upgradestatus: 0,
+                        resource: {
+                            source: buildingData.type,
+                            key: buildingData.level,
+                        },
+                        requestid: requestid,
+                    }
+                }
+                
+                return new Building(newBuildingData);
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }

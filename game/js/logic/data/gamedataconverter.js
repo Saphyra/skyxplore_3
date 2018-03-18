@@ -95,7 +95,7 @@ function GameDataConverter(){
                         queue: convertQueue(starData.getQueueService().getQueue()),
                         resources: starData.getResources(),
                         foodproductionpriority: starData.getFoodProductionPriority(),
-                        storagestatus: starData.getStorageStarus(),
+                        storagestatus: starData.getStorageStatus(),
                         citizennum: starData.getCitizenNum()
                     };
                     
@@ -114,6 +114,7 @@ function GameDataConverter(){
                                     starid: request.getStarId(),
                                     requestid: request.getRequestId(),
                                     type: request.getType(),
+                                    status: request.getStatus(),
                                     priority: request.getPriority(),
                                     elementid: request.getElementId(),
                                     data: request.getData()

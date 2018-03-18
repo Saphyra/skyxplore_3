@@ -1,7 +1,9 @@
 function StarViewQueueDisplayer(){
-    this.displayQueue = function displayQueue(queueService){
+    this.displayQueue = function displayQueue(starid){
         //Építési sor megjelenítése
         try{
+            const star = gameData.getStarService().getStarById(starid);
+            const queueService = star.getData().getQueueService();
             const queue = queueService.getQueue();
             const container = document.getElementById("starviewqueue");
                 container.innerHTML = "";
@@ -9,14 +11,13 @@ function StarViewQueueDisplayer(){
             if(!Object.keys(queue).length){
                 container.appendChild(domElementCreator.createListElementTitle("Nincs tétel"));
             }else{
-                orderedQueue = order.orderQueueByPriority(queue);
-                
+                orderedQueue = queueService.orderQueueByPriority(queue);
                 //Építési sor elemeinek megjelenítése
                 for(let requestid in orderedQueue){
                     const request = orderedQueue[requestid];
                     let item;
                     
-                    switch(request.type){
+                    switch(request.getType()){
                         case "building":
                             item = displayBuildingRequest(request, queue);
                         break;
@@ -25,7 +26,7 @@ function StarViewQueueDisplayer(){
                         break;
                         default:
                             item = domElementCreator.createListItem();
-                                const title = domElementCreator.createListElementTitle(request.requestid);
+                                const title = domElementCreator.createListElementTitle(request.getRequestId());
                             item.appendChild(title);
                         break;
                     }
@@ -41,15 +42,16 @@ function StarViewQueueDisplayer(){
         function displayBuildingRequest(request, queue){
             //Épület építési sor megjelenítése
             try{
-                const building = gameData.buildings[request.elementid];
-                const buildingData = data.getElementData(building.data.resource);
-                const planet = gameData.planets[building.planetid];
+                const building = gameData.getBuildingService().getBuildingById(request.getElementId());
+                const buildingData = data.getElementData(building.getData().resource);
+                const planet = gameData.getPlanetService().getPlanetById(building.getPlanetId());
+                
                 const item = domElementCreator.createListItem();
-                    const title = domElementCreator.createListElementTitle("Építés: " + planet.planetname + " - " + buildingData.name + " - Szint: " + buildingData.level);
+                    const title = domElementCreator.createListElementTitle("Építés: " + planet.getPlanetName() + " - " + buildingData.name + " - Szint: " + buildingData.level);
                 item.appendChild(title);
-                    const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.data.status, buildingData.constructiontime);
+                    const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().status, buildingData.constructiontime);
                 item.appendChild(buildStatus);
-                    const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.priority, new PrioritySliderModificationAction(request, queue));
+                    const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.getPriority(), new PrioritySliderModificationAction(request, queue));
                 item.appendChild(cancelButton);
                 return item;
             }catch(err){
@@ -59,16 +61,17 @@ function StarViewQueueDisplayer(){
         
         function displayUpgradeBuildingRequest(request, queue){
             try{
-                const building = gameData.buildings[request.elementid];
-                const buildingData = data.getElementData(building.data.resource);
-                const upgradeBuildingData = filters.searchElements({type: buildingData.type, level: buildingData.level + 1}, true);
-                const planet = gameData.planets[building.planetid];
+                const building = gameData.getBuildingService().getBuildingById(request.getElementId());
+                const buildingData = data.getElementData(building.getData().resource);
+                const upgradeBuildingData = data.searchElements({type: buildingData.type, level: buildingData.level + 1}, true);
+                const planet = gameData.getPlanetService().getPlanetById(building.getPlanetId());
+                
                 const item = domElementCreator.createListItem();
-                    const title = domElementCreator.createListElementTitle("Fejlesztés: " + planet.planetname + " - " + buildingData.name + " - Szint: " + buildingData.level + " => " + (buildingData.level + 1));
+                    const title = domElementCreator.createListElementTitle("Fejlesztés: " + planet.getPlanetName() + " - " + buildingData.name + " - Szint: " + buildingData.level + " => " + upgradeBuildingData.level);
                 item.appendChild(title);
-                    const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.data.upgradestatus, upgradeBuildingData.constructiontime);
+                    const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime);
                 item.appendChild(buildStatus);
-                    const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.priority, new PrioritySliderModificationAction(request, queue));
+                    const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.getPriority(), new PrioritySliderModificationAction(request, queue));
                 item.appendChild(cancelButton);
                 return item;
             }catch(err){
