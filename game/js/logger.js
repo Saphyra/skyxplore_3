@@ -6,16 +6,16 @@ function log(message, level, prefix){
         
         switch(level){
             case "error":
-            
+                //return;
             break;
             case "warn":
-            
+                //return;
             break;
             case "message":
-            
+                //return;
             break;
             case "debug":
-                return;
+                //return;
             break;
             default:
                 log("Unknown log level " + type + " with message " + message, "warn");

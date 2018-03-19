@@ -23,7 +23,11 @@ function BuildingUpgrader(parent){
                     type: "buildingupgrade",
                     status: "collectresources",
                     priority: priority,
-                    elementid: buildingid
+                    elementid: buildingid,
+                    data: {
+                        resourcerequirements: upgradeBuildingData.resource,
+                        storedresources: {}
+                    }
                 }
             const request = new Request(requestData);
             queueService.addRequest(request);

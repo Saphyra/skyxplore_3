@@ -9,6 +9,7 @@ function BuildingService(buildingsData){
     this.getBuildingsOfPlanet = getBuildingsOfPlanet;
     this.getBuildingsOfStar = getBuildingsOfStar;
     this.getBuildingsOfTypeOfStar = getBuildingsOfTypeOfStar;
+    this.getNumberOfBuildingsOfTypeOfStar = getNumberOfBuildingsOfTypeOfStar;
     this.getBuildableBuildingsOfSlot = getBuildableBuildingsOfSlot;
     this.groupBuildingsByRole = groupBuildingsByRole;
     this.groupBuildingsByType = groupBuildingsByType;
@@ -77,6 +78,15 @@ function BuildingService(buildingsData){
                 }
             
             return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
+    function getNumberOfBuildingsOfTypeOfStar(starid, type, includeUnderConstruction){
+        //Egy csillag bolygóin található épületek száma a megadott típusból
+        try{
+            return Object.keys(getBuildingsOfTypeOfStar(starid, type, includeUnderConstruction)).length;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

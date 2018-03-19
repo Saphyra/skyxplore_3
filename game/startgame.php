@@ -81,8 +81,8 @@
                 if(is_dir($dir . $file)){
                     addScripts($dir . $file);
                 }else if(strstr($file, ".js")){
-                    //print "<SCRIPT src='$dir$file'></SCRIPT>";
-                    print "<SCRIPT>" . file_get_contents($dir.$file) . "</SCRIPT>";
+                    print "<SCRIPT src='$dir$file'></SCRIPT>";
+                    //print "<SCRIPT>" . file_get_contents($dir.$file) . "</SCRIPT>";
                 }
             }
         }

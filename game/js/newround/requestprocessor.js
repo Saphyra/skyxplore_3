@@ -1,6 +1,7 @@
 function RequestProcessor(parent){
     const starSteps = parent;
-    this.workOnRequest = function workOnRequest(playerName, request){
+    const resourceProducer = new ResourceProducerService(starSteps);
+    this.workOnRequest = function workOnRequest(playerName, request, requests){
         //Kérelmek teljesítése
         try{
             const star = gameData.getStarService().getStarById(request.getStarId());
@@ -8,8 +9,10 @@ function RequestProcessor(parent){
             
             if(starInfo.availableWorkers){
                 //Ha vannak a csillagon szabad munkások
+                log("Kérelem teljesítése " + star.getStarName() + " csillagon...", "warn");
                 if(isFoodProductionMoreImportant(star, starInfo, request)){
                     //Ha az ételtermelés prioritása nagyobb, mint a kérelemé, és túl kevés a raktározott kaja
+                    log("Kevés az élelem! Munkás átirányítása a farmokra...", "debug");
                     const produceFoodJobData = {
                         starInfo: starInfo,
                         star: star,
@@ -23,8 +26,14 @@ function RequestProcessor(parent){
                     this.workOnRequest(playerName, request);
                 }else{
                     //Ha a kérelem kerül sorra...
-                    
+                    if(request.getStatus() == "collectresources"){
+                        resourceProducer.produceResourcesForRequest(request, star, starInfo);
+                    }
                 }
+                
+                log("Kérelem feldolgozva " + star.getStarName() + " csillagon.", "warn");
+            }else{
+                log("Nincs elég munkás a kérelem teljesítése " + star.getStarName() + " csillagon...", "warn");
             }
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

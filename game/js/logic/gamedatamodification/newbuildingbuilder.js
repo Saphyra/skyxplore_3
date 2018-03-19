@@ -13,7 +13,7 @@ function NewBuildingBuilder(parent){
             gameData.getBuildingService().addBuilding(building);
             
             //Kérelem létrehozása
-            const request = createRequest(star.getStarId(), requestid, priority, building.getBuildingId());
+            const request = createRequest(star.getStarId(), requestid, priority, building.getBuildingId(), buildingData);
             star.getData().getQueueService().addRequest(request)
             
             //Ablakok frissítése
@@ -25,7 +25,7 @@ function NewBuildingBuilder(parent){
         }
     }
     
-        function createRequest(starid, requestid, priority, buildingid){
+        function createRequest(starid, requestid, priority, buildingid, buildingData){
             //Kérelem létrehozása
             try{
                 const requestData = {
@@ -34,7 +34,11 @@ function NewBuildingBuilder(parent){
                     type: "building",
                     status: "collectresources",
                     priority: priority,
-                    elementid: buildingid
+                    elementid: buildingid,
+                    data: {
+                        resourcerequirements: buildingData.resource,
+                        storedresources: {}
+                    }
                 }
                 
                 return new Request(requestData);
