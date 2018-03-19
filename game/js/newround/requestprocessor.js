@@ -9,29 +9,40 @@ function RequestProcessor(parent){
             
             if(starInfo.availableWorkers){
                 //Ha vannak a csillagon szabad munkások
-                log("Kérelem teljesítése " + star.getStarName() + " csillagon...", "warn");
+                log("Kísérlet a kérelem teljesítésére " + star.getStarName() + " csillagon...", "warn");
+                
                 if(isFoodProductionMoreImportant(star, starInfo, request)){
                     //Ha az ételtermelés prioritása nagyobb, mint a kérelemé, és túl kevés a raktározott kaja
                     log("Kevés az élelem! Munkás átirányítása a farmokra...", "debug");
+                    
                     const produceFoodJobData = {
                         starInfo: starInfo,
                         star: star,
                         income: data.getElementData({source: "farm", key: "income"})
                     }
+                    
                     const job = new Job(produceFoodJobData, function(){
                         this.data.starInfo.availableFarmers--;
                         this.data.star.getData().getResources().food += this.data.income;
+                        log(this.data.income + " étel termelve " + this.data.star.getStarName() + " csillagon.", "debug");
                     });
+                    
                     starSteps.work(playerName, job, starInfo);
+                    
+                    log("Kérelem újra feladása " + star.getStarName() + " csillagon.", "warn");
                     this.workOnRequest(playerName, request);
                 }else{
                     //Ha a kérelem kerül sorra...
+                    log("Kérelem teljesítése " + star.getStarName() + " csillagon...", "warn");
+                    
                     if(request.getStatus() == "collectresources"){
                         resourceProducer.produceResourcesForRequest(request, star, starInfo);
                     }
+                    
+                    log("Kérelem feldolgozva " + star.getStarName() + " csillagon.", "warn");
                 }
                 
-                log("Kérelem feldolgozva " + star.getStarName() + " csillagon.", "warn");
+                log("Kérelem feldolgozása befejezve " + star.getStarName() + " csillagon.", "warn");
             }else{
                 log("Nincs elég munkás a kérelem teljesítése " + star.getStarName() + " csillagon...", "warn");
             }

@@ -36,7 +36,7 @@ function StarViewDetailsDisplayer(){
             //Élelmiszer termelés megjelenítése
             const netFoodIncome = counter.countNetFoodIncome(star.getStarId());
             const foodIncome = netFoodIncome >= 0 ? "+ " + netFoodIncome : netFoodIncome;
-            const fridgeCapacity = counter.countStorageCapacity(star.starid, "fridge");
+            const fridgeCapacity = counter.countStorageCapacity(star.getStarId(), "fridge");
             
             const content = data.getElementData({source: "resource", key: "food"}).name + ": " + resources.food + "/" + fridgeCapacity
                     + " (" + foodIncome + "/kör)";
