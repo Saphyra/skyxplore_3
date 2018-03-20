@@ -3,6 +3,7 @@ function ResourceProducerService(parent){
     this.produceResourcesForRequest = produceResourcesForRequest;
     this.getMissingResourcesOfRequest = getMissingResourcesOfRequest;
     this.produceResource = produceResource;
+    this.mineResources = mineResources;
     
     function produceResourcesForRequest(request, star, starInfo){
         //Nyersanyag előállítása a kérelem teljesítéséhez
@@ -229,36 +230,9 @@ function ResourceProducerService(parent){
                         log("Nem áll rendelkezésre minden összetevő " + resource + " előállításához.", "step");
                         return false;
                     }
-                }else if(resource == "resource"){
-                    //Ha nincs szükség összetevőkre
-                    log(resource + " gyártása a gyárak kiszolgálásához...", "step");
-                    if(starInfo.availableWorkers && starInfo.availableMiners){
-                        const jobData = {
-                            starInfo: starInfo,
-                            star: star,
-                            resource: resource,
-                            resourceData: resourceData
-                        };
-                        const job = new Job(jobData, function(){
-                            this.data.starInfo.availableMiners--;
-                            const storedResources = this.data.star.getData().getResources();
-                            const income = data.getElementData({source: "mine", key: "income"});
-                            
-                            if(storedResources[this.data.resourceData.storage] == undefined){
-                                storedResources[this.data.resourceData.storage] = {};
-                            }
-                            if(storedResources[this.data.resourceData.storage][this.data.resource] == undefined){
-                                storedResources[this.data.resourceData.storage][this.data.resource] = 0;
-                            }
-                            
-                            storedResources[this.data.resourceData.storage][this.data.resource] += income;
-                            log(this.data.resource + " elkészült, és a raktárba került. Raktározott mennyiség: " + storedResources[this.data.resourceData.storage][this.data.resource], "step");
-                        });
-                        starSteps.work(star.getOwner(), job, starInfo);
-                    }else{
-                        log("Nincs elegendő munkaerő vagy kapacitás " + resource + " előállításához " + star.getStarName() + " csillagon.", "step");
-                        return false;
-                    }
+                }else if(resourceData.source == "mine"){
+                    //Ha bányászni kell
+                    mineResources(star);
                 }else{
                     log("produceResource - Unknown resource: " + resource, "error");
                 }
@@ -359,4 +333,44 @@ function ResourceProducerService(parent){
                     log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
                 }
             }
+            
+    function mineResources(star){
+        //Nyersanyagok bányászása
+        try{
+            const resource = "resource";
+            log(resource + " gyártása a gyárak kiszolgálásához...", "step");
+            const resourceData = data.getElementData({source: "resource", key: "resource"});
+            const starInfo = data.getFromCache("newroundtemp", star.getStarId());
+            
+            if(starInfo.availableWorkers && starInfo.availableMiners){
+                const jobData = {
+                    starInfo: starInfo,
+                    star: star,
+                    resource: resource,
+                    resourceData: resourceData
+                };
+                const job = new Job(jobData, function(){
+                    this.data.starInfo.availableMiners--;
+                    const storedResources = this.data.star.getData().getResources();
+                    const income = data.getElementData({source: "mine", key: "income"});
+                    
+                    if(storedResources[this.data.resourceData.storage] == undefined){
+                        storedResources[this.data.resourceData.storage] = {};
+                    }
+                    if(storedResources[this.data.resourceData.storage][this.data.resource] == undefined){
+                        storedResources[this.data.resourceData.storage][this.data.resource] = 0;
+                    }
+                    
+                    storedResources[this.data.resourceData.storage][this.data.resource] += income;
+                    log(this.data.resource + " elkészült, és a raktárba került. Raktározott mennyiség: " + storedResources[this.data.resourceData.storage][this.data.resource], "step");
+                });
+                starSteps.work(star.getOwner(), job, starInfo);
+            }else{
+                log("Nincs elegendő munkaerő vagy kapacitás " + resource + " előállításához " + star.getStarName() + " csillagon.", "step");
+                return false;
+            }
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
 }

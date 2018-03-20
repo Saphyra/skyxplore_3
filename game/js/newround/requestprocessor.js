@@ -1,6 +1,6 @@
-function RequestProcessor(parent){
+function RequestProcessor(parent, resProdService){
     const starSteps = parent;
-    const resourceProducerService = new ResourceProducerService(starSteps);
+    const resourceProducerService = resProdService;
     const requestProducerService = new RequestProducerService(starSteps);
     const requestCompleterService = new RequestCompleterService(starSteps);
     

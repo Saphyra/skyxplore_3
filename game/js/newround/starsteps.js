@@ -1,5 +1,6 @@
 function StarSteps(){
-    const requestProcessor = new RequestProcessor(this);
+    const resourceProducerService = new ResourceProducerService(this);
+    const requestProcessor = new RequestProcessor(this, resourceProducerService);
     const worker = new Worker(this);
         this.work = worker.work;
     
@@ -31,6 +32,8 @@ function StarSteps(){
             }
             
             produceFood(ownedStars);
+            mineResources(ownedStars);
+            
             log(data.getFromCache("newroundtemp", null), "complete", "Csillagok kihasználtsága a kör végén: ");
             addMoneyForUneployedCitizens(ownedStars);
         }catch(err){
@@ -113,7 +116,13 @@ function StarSteps(){
                             result.push(requests[requestid]);
                         }
                     }
-                result.sort(function(a, b){return b.getPriority() - a.getPriority()});
+                result.sort(function(a, b){
+                    let result = b.getPriority() - a.getPriority();
+                    if(result === 0){
+                        result = (Math.random() > 0.5) ? 1 : -1;
+                    }
+                    return result;
+                });
                 
                 return result;
             }catch(err){
@@ -151,6 +160,25 @@ function StarSteps(){
                             
                         });
                         worker.work(star.getOwner(), job, starInfo);
+                    }
+                }
+            }catch(err){
+                log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+            }
+        }
+        
+        function mineResources(ownedStars){
+            //Nyersanyag bányászása, ha van szabad munkás, és bánya
+            try{
+                log("", "look");
+                log("Nyersanyag bányászása a csillagokon a raktárak feltöltéséhez...", "look")
+                
+                for(let starid in ownedStars){
+                    const star = ownedStars[starid];
+                    const starInfo = data.getFromCache("newroundtemp", starid);
+                    
+                    while(starInfo.availableWorkers > 0 && starInfo.availableMiners > 0 && counter.countDepotStatusOfStar(starid) < 100){
+                        resourceProducerService.mineResources(star);
                     }
                 }
             }catch(err){

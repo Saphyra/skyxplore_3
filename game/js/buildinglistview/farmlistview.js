@@ -82,8 +82,8 @@ function FarmListView(){
                                 
                                     let buildStatus;
                                     if(request.getStatus() === "collectresources"){
-                                        const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
-                                        const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                                        const requiredResourceNum = counter.countResourceNumOfList(request.getData().resourcerequirements);
+                                        const storedResourceNum = counter.countResourceNumOfList(request.getData().storedresources);
                                         const completed = requiredResourceNum - storedResourceNum;
                                         buildStatus = domElementCreator.createFarmListViewBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
                                     }else{
@@ -135,8 +135,8 @@ function FarmListView(){
                             
                             let buildStatus;
                                 if(request.getStatus() === "collectresources"){
-                                    const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
-                                    const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                                    const requiredResourceNum = counter.countResourceNumOfList(request.getData().resourcerequirements);
+                                    const storedResourceNum = counter.countResourceNumOfList(request.getData().storedresources);
                                     const completed = requiredResourceNum - storedResourceNum;
                                     buildStatus = domElementCreator.createFarmListViewBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
                                 }else{

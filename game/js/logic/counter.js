@@ -188,6 +188,20 @@ function Counter(){
         }
     }
     
+    this.countDepotStatusOfStar = function countDepotStatusOfStar(starid){
+        //Depó telítettségének kiszámolása
+        try{
+            const storedResources = gameData.getStarService().getStarById(starid).getData().getResources().depot;
+            const storedAmount = this.countResourceNumOfList(storedResources);
+            const capacity = this.countStorageCapacity(starid, "depot");
+            
+            const result = storedAmount / capacity * 100;
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
+    
     this.countWorkplacesOfStar = function countWorkplacesOfStar(starid, type){
         //Az adott csillaghoz és épülethez tartozó munkahelyek
         try{
@@ -206,7 +220,7 @@ function Counter(){
         }
     }
     
-    this.getResourceNumOfList = function getResourceNumOfList(resources){
+    this.countResourceNumOfList = function countResourceNumOfList(resources){
         //Nyersanyagok listájábban szereplő nyersanyagok összege
         try{
             let result = 0;
