@@ -87,7 +87,7 @@ function StarViewQueueDisplayer(){
                         const completed = requiredResourceNum - storedResourceNum;
                         buildStatus = domElementCreator.createStarViewQueueBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
                     }else{
-                        const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime);
+                        buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime);
                     }
                 item.appendChild(buildStatus);
                 

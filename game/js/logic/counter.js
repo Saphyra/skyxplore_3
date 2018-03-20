@@ -39,7 +39,7 @@ function Counter(){
         try{
             const star = gameData.getStarService().getStarById(starid);
             const income = this.countFoodIncome(starid);
-            return income - star.getData().getCitizenNum();
+            return income - Math.floor(star.getData().getCitizenNum());
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
@@ -75,6 +75,7 @@ function Counter(){
                 const building = buildings[buildingid];
                 if(building.getType() == type && planetids.indexOf(building.getPlanetId()) > -1 && building.getData().status === 0){
                     const buildingData = data.getElementData(building.getData().resource);
+                    
                     capacity += buildingData.capacity;
                 }
             }
@@ -161,7 +162,7 @@ function Counter(){
                 
                 for(let buildingid in buildings){
                     const building = buildings[buildingid];
-                    if(building.getType() === "factory"){
+                    if(building.getType() === "factory" && building.getData().status === 0){
                         const buildingData = data.getElementData(building.getData().resource);
                         result += productivity * buildingData.workplace;
                     }

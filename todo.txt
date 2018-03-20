@@ -25,9 +25,7 @@ schema
 
 Implement Defense view
 Implement newround
-    - requestProcessor process request...
 Add explaining title to elements
 Building list views
 Deconstructing buildings
-
-Displaying queue shows the amount of resources collected
+Pausable requests...

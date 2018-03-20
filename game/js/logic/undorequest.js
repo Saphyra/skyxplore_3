@@ -2,6 +2,28 @@ function UndoRequest(){
     this.undo = function undo(request){
         //Visszavonja az adott kérelmet
         try{
+            if(request.getData().storedresources){
+                //Ha van a kérelemben eltárolt nyersanyag...
+                const storedResources = request.getData().storedresources;
+                const star = gameData.getStarService().getStarById(request.getStarId());
+                const starStorage = star.getData().getResources();
+                
+                for(let resource in storedResources){
+                    const resourceData = data.getElementData({source: "resource", key: resource});
+                    
+                    if(starStorage[resourceData.storage] == undefined){
+                        starStorage[resourceData.storage] = {};
+                    }
+                    if(starStorage[resourceData.storage][resource] == undefined){
+                        starStorage[resourceData.storage][resource] = 0;
+                    }
+                    
+                    starStorage[resourceData.storage][resource] += storedResources[resource];
+                }
+                
+                log(storedResources, "warn", "Raktárba visszakerült nyersanyagok: ");
+            }
+            
             switch(request.getType()){
                 case "building":
                     undoBuildingRequest(request);
@@ -21,9 +43,9 @@ function UndoRequest(){
         function undoBuildingRequest(request){
             //Épületépítési kérelem visszavonása
             try{
+                const star = gameData.getStarService().getStarById(request.getStarId());
                 const building = gameData.getBuildingService().getBuildingById(request.getElementId());
                 const planet = gameData.getPlanetService().getPlanetById(building.getPlanetId());
-                const star = gameData.getStarService().getStarById(planet.getStarId());
                 
                 star.getData().getQueueService().deleteRequest(request.getRequestId());
                 gameData.getBuildingService().deleteBuilding(building.getBuildingId());
@@ -39,9 +61,9 @@ function UndoRequest(){
         function undoBuildingUpgradeRequest(request){
             //Épület fejlesztési kérelem visszavonása
             try{
+                const star = gameData.getStarService().getStarById(request.getStarId());
                 const building = gameData.getBuildingService().getBuildingById(request.getElementId());
                 const planet = gameData.getPlanetService().getPlanetById(building.getPlanetId());
-                const star = gameData.getStarService().getStarById(planet.getStarId());
                 
                 building.getData().upgradestatus = 0;
                 star.getData().getQueueService().deleteRequest(request.getRequestId());

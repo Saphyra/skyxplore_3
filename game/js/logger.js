@@ -1,5 +1,17 @@
 function log(message, level, prefix){
     //Logolás
+    /*Log szintek:
+        error: Hibák a kódban (amit a catch elkap)
+        warn: Figyelmeztetések (érvénytelen változóérték)
+        message: Üzenetek
+        debug: Részletes információk a futás állapotáról
+        
+        important: Fontos történések a játék történetében
+        complete: Feladat elvégezve
+        look: Figyelemfelhívás
+        step: Alfeladat elvégezve
+        process: Folyamat lépései
+    */
     try{
         level = level || "message";
         prefix = prefix || "";
@@ -17,6 +29,21 @@ function log(message, level, prefix){
             case "debug":
                 //return;
             break;
+            case "important":
+            
+            break;
+            case "complete":
+            
+            break;
+            case "look":
+            
+            break;
+            case "step":
+                return
+            break;
+            case "process":
+                return;
+            break;
             default:
                 log("Unknown log level " + type + " with message " + message, "warn");
                 return;
@@ -31,21 +58,33 @@ function log(message, level, prefix){
         const color = getColor(level);
         
         const container = document.createElement("DIV");
-            container.style.marginBottom = "0.5rem";
-            container.style.color = color;
-            const levelNode = createLevelNode(level);
-        container.appendChild(levelNode);
-        container.appendChild(createTextNode(prefix));
+                container.style.marginBottom = "0.5rem";
+                container.style.color = color;
+                const levelNode = createLevelNode(level);
+            container.appendChild(levelNode);
+            
+        if(message === ""){
+            const line = document.createElement("HR");
+                line.style.borderWidth = "5px";
+                line.style.display = "inline-block";
+                line.style.width = "calc(100% - 15rem)";
+            container.appendChild(line);
+        }else{
+            
+            container.appendChild(createTextNode(prefix));
+            
+            let textNode;
+                if(typeof message == "object" && message != null){
+                    textNode = parseObject(message);
+                }else if(message == null){
+                    textNode = createTextNode("null");
+                }else{
+                    textNode = createTextNode(message);
+                }
+            container.appendChild(textNode);
+        }
         
-        let textNode;
-            if(typeof message == "object" && message != null){
-                textNode = parseObject(message);
-            }else if(message == null){
-                textNode = createTextNode("null");
-            }else{
-                textNode = createTextNode(message);
-            }
-        container.appendChild(textNode);
+        
             
         div.insertBefore(container, div.childNodes[0]);
     }catch(err){
@@ -55,16 +94,21 @@ function log(message, level, prefix){
         function getColor(level){
             let color;
             switch(level){
+                case "step":
                 case "message":
                     color = "white";
                 break;
+                case "process":
                 case "debug":
                     color = "green";
                 break;
                 case "warn":
+                case "look":
                     color = "yellow";
                 break;
+                case "complete":
                 case "error":
+                case "important":
                     color = "red";
                 break;
             }

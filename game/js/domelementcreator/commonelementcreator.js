@@ -140,6 +140,7 @@ function CommonElementCreator(parent){
                 element.classList.add("backgroundnorepeat");
                 element.classList.add("backgroundpositionleftcenter");
                 element.classList.add("centertext");
+                element.classList.add("nowrap");
                 element.classList.add("overflowxauto");
                 
                 const completed = maxStatus - status;

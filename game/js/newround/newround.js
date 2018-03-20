@@ -8,16 +8,16 @@ function NewRound(){
             //Log törlése
             document.getElementById("log").innerHTML = "";
             
-            log("Új kör futtatása indul.", "warn");
+            log("Új kör futtatása indul.", "look");
             data.emptyCache("newroundtemp");
-            log("Gyorsítótár ürítve.", "debug");
+            log("Gyorsítótár ürítve.", "process");
             mi.runEnemyRound();
             
-            log("Körfeldolgozó futtatása...", "warn");
+            log("Körfeldolgozó futtatása...", "process");
             starSteps.runStarSteps();
-            log("Körfeldolgozó futtatása befejeződött.", "warn");
+            log("Körfeldolgozó futtatása befejeződött.", "process");
             
-            log("Gyorsítótár ürítve.", "debug");
+            log("Gyorsítótár ürítve.", "process");
             data.emptyCache("newroundtemp");
             refresh();
         }catch(err){
@@ -27,6 +27,7 @@ function NewRound(){
     
         function refresh(){
             //Ablakok újratöltése
-            log("Ablakok újratöltése...", "debug");
+            log("Ablakok újratöltése...", "process");
+            back.showMap();
         }
 }

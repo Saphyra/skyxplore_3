@@ -5,7 +5,7 @@ function Request(requestData){
     let status = requestData.status;
     let priority = requestData.priority;
     const elementid = requestData.elementid;
-    let data = requestData.data;
+    let data = requestData.data || {};
     
     this.getStarId = function(){return starid};
     this.getRequestId = function(){return requestid};
@@ -16,4 +16,5 @@ function Request(requestData){
     this.getData = function(){return data};
     
     this.setPriority = function(newPriority){priority = newPriority};
+    this.setStatus = function(newStatus){status = newStatus};
 }

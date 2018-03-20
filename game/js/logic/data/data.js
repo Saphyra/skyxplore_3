@@ -55,6 +55,10 @@ function Data(){
                 return null;
             }
             
+            if(key === null){
+                return cache[cacheName];
+            }
+            
             return cache[cacheName][key] || null;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

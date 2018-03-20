@@ -22,7 +22,7 @@
     $house[$level]["level"] = $level;
     $house[$level]["constructiontime"] = 30;
     $house[$level]["maxhr"] = 2;
-    $house[$level]["capacity"] = 15;
+    $house[$level]["capacity"] = 20;
     $house[$level]["resource"]["board"] = 30;
     $house[$level]["resource"]["brick"] = 60;
     $house[$level]["resource"]["metal"] = 10;
@@ -33,7 +33,7 @@
     $house[$level]["level"] = $level;
     $house[$level]["constructiontime"] = 60;
     $house[$level]["maxhr"] = 3;
-    $house[$level]["capacity"] = 20;
+    $house[$level]["capacity"] = 40;
     $house[$level]["resource"]["board"] = 90;
     $house[$level]["resource"]["brick"] = 180;
     $house[$level]["resource"]["metal"] = 30;

@@ -12,7 +12,7 @@ function Player(data){
         if(playerid == "player"){
             animation.displayPlayerMoney(money);
         }
-        log(playerid + " kapott " + change + " pénzt. Vagyona " + money + "-ra növekedett.", "warn");
+        log(playerid + " kapott " + change + " pénzt. Vagyona " + money + "-ra növekedett.", "look");
     }
     
     function spendMoney(change){
@@ -20,6 +20,6 @@ function Player(data){
         if(playerid == "player"){
             animation.displayPlayerMoney(money);
         }
-        log(playerid + " elköltött " + change + " pénzt. Vagyona " + money + "-ra csökkent.", "warn");
+        log(playerid + " elköltött " + change + " pénzt. Vagyona " + money + "-ra csökkent.", "look");
     }
 }

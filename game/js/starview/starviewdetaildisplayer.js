@@ -18,7 +18,7 @@ function StarViewDetailsDisplayer(){
             const populationGrowth = nameConverter.convertFloatNumber(counter.countPopulationGrowth(star.getStarId()), 2);
             const growth = populationGrowth >= 0 ? "+ " + populationGrowth : populationGrowth;
             document.getElementById("starviewcitizens").innerHTML = 
-                "Munkás: " + star.getData().getCitizenNum()
+                "Munkás: " + nameConverter.convertFloatNumber(star.getData().getCitizenNum(), 0)
                 + " (" + growth + "/kör)"
                 + " - Lakóhely: " + houseNum;
         }catch(err){

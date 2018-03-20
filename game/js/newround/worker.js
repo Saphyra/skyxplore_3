@@ -17,19 +17,20 @@ function Worker(parent){
                 }
                 if(player.getMoney() > 0 || !spendMoney){
                     //Ha van elég pénz a munkára
-                    log("Munkavégzés indul...", "debug");
+                    log("Munkavégzés indul...", "process");
                     if(spendMoney){
                         player.spendMoney(1);
                     }
                     result = job.done();
-                    log("Munka teljesítve.", "debug");
+                    log("Munka teljesítve.", "process");
                 }else if(spendMoney){
                     //Ha nincs elég pénz a munkára
                     player.addMoney(2);
-                    log("Munka pénzhiány miatt elhalasztva. A polgártól adó begyűjtve.", "debug");
+                    this.work(playerName, job, starInfo, spendMoney)
+                    log("Munka pénzhiány miatt elhalasztva. A polgártól adó begyűjtve.", "step");
                 }
             }else{
-                log("Nincs elegendő munkás a munka elvégzéséhez.", "debug");
+                log("Nincs elegendő munkás a munka elvégzéséhez.", "step");
             }
             
             return result;

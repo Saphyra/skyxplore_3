@@ -23,7 +23,7 @@
     $fridge[$level]["level"] = $level;
     $fridge[$level]["constructiontime"] = 20;
     $fridge[$level]["maxhr"] = 2;
-    $fridge[$level]["capacity"] = 1500;
+    $fridge[$level]["capacity"] = 2000;
     $fridge[$level]["resource"]["board"] = 45;
     $fridge[$level]["resource"]["brick"] = 45;
     $fridge[$level]["resource"]["metal"] = 30;
@@ -35,7 +35,7 @@
     $fridge[$level]["level"] = $level;
     $fridge[$level]["constructiontime"] = 45;
     $fridge[$level]["maxhr"] = 3;
-    $fridge[$level]["capacity"] = 2000;
+    $fridge[$level]["capacity"] = 4000;
     $fridge[$level]["resource"]["board"] = 135;
     $fridge[$level]["resource"]["brick"] = 135;
     $fridge[$level]["resource"]["metal"] = 90;
