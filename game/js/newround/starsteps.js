@@ -14,6 +14,7 @@ function StarSteps(){
 
             const players = gameData.getPlayerService().getAllPlayers();
             for(let playerName in players){
+                log("", "look");
                 log(playerName + " körének feldolgozása...", "look");
                 const player = players[playerName];
                 
@@ -123,6 +124,7 @@ function StarSteps(){
         function produceFood(ownedStars){
             //Étel termelése azokon a csillagokon, ahol van szabad munkaerő, és szükséges az ételtermelés
             try{
+                log("", "look");
                 log("Étel termelése a csillagokon a raktárak feltöltéséhez...", "look")
                 for(let starid in ownedStars){
                     const star = ownedStars[starid];

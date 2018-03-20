@@ -8,12 +8,12 @@ visibility
     - hidden - Ismeretlen
     
 schema
-    pkey    schemaid    gameid  ownerid shiptype    equipment[]
+    pkey    schemaid    schemaname  ownerid shiptype    equipment[]
     
 Épületek
     Hajógyár
         - Alkatrészek -> Hajók
-        - Szint -> Hajó szintje
+        - Szint -> Felszerelések szintje
     Akadémia
         - Fejlesztések
         - Szint -> Több fejlesztés, magasabb szint
@@ -25,7 +25,9 @@ schema
 
 Implement Defense view
 Implement newround
+ - producing setted resources if available workers
 Add explaining title to elements
 Building list views
+ - mine view
 Deconstructing buildings
 Pausable requests...

@@ -36,7 +36,7 @@ function log(message, level, prefix){
             
             break;
             case "look":
-            
+                return;
             break;
             case "step":
                 return

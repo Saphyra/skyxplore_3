@@ -60,10 +60,12 @@ function RequestProducerService(parent){
             try{
                 const building = gameData.getBuildingService().getBuildingById(request.getElementId());
                 const buildingData = data.getElementData(building.getData().resource);
+                const upgradeBuildingData = data.getElementData({source: buildingData.type, key: buildingData.level + 1});
                 
                 log(buildingData.name + " épület fejlesztése folyamatban... Hátralévő munkálatok száma: " + building.getData().upgradestatus, "process");
                 
-                for(let i = 0; i < buildingData.maxhr; i++){
+                for(let i = 0; i < upgradeBuildingData.maxhr; i++){
+                    
                     if(starInfo.availableWorkers){
                         const jobData = {
                             building: building,
