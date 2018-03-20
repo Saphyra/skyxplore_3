@@ -63,28 +63,44 @@ function PlanetView(){
                             
                             if(building.getData().status !== 0){
                                 //Ha az épület építés alatt
-                                //Építési állapot megjelenítése
-                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.getData().status, buildingData.constructiontime, "Építés");
-                                buildingSlotCover.appendChild(buildStatus);
-                                
-                                //Építés visszavonása
                                 const star = gameData.getStarService().getStarById(planet.getStarId());
                                 const requestid = building.getData().requestid;
                                 const request = star.getData().getQueueService().getRequestById(requestid);
                                 
+                                //Építési állapot megjelenítése
+                                let buildStatus;
+                                if(request.getStatus() === "collectresources"){
+                                    const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
+                                    const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                                    const completed = requiredResourceNum - storedResourceNum;
+                                    buildStatus = domElementCreator.createPlanetSlotBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
+                                }else{
+                                    buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.getData().status, buildingData.constructiontime, "Építés");
+                                }
+                                buildingSlotCover.appendChild(buildStatus);
+                                
+                                //Építés visszavonása
                                 const cancelBuilding = domElementCreator.createPlanetViewActionBuildingButton("Visszavon", function(){undoRequest.undo(request)});
                                 buildingSlotCover.appendChild(cancelBuilding);
                             }else if(building.getData().upgradestatus !== 0){
                                 //Ha az épület fejlesztés alatt áll
-                                const upgradeBuildingData = data.searchElements({type: buildingData.type, level: buildingData.level + 1})
-                                const buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime, "Fejlesztés");
-                                buildingSlotCover.appendChild(buildStatus);
-                                
-                                //Fejlesztés visszavonása
+                                const upgradeBuildingData = data.searchElements({type: buildingData.type, level: buildingData.level + 1});
                                 const star = gameData.getStarService().getStarById(planet.getStarId());
                                 const requestid = building.getData().requestid;
                                 const request = star.getData().getQueueService().getRequestById(requestid);
                                 
+                                let buildStatus;
+                                if(request.getStatus() === "collectresources"){
+                                    const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
+                                    const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                                    const completed = requiredResourceNum - storedResourceNum;
+                                    buildStatus = domElementCreator.createPlanetSlotBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
+                                }else{
+                                    buildStatus = domElementCreator.createPlanetSlotBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime, "Fejlesztés");
+                                }
+                                buildingSlotCover.appendChild(buildStatus);
+                                
+                                //Fejlesztés visszavonása
                                 const cancelBuilding = domElementCreator.createPlanetViewActionBuildingButton("Visszavon", function(){undoRequest.undo(request)});
                                 buildingSlotCover.appendChild(cancelBuilding);
                             }else if(building.getLevel() < 3){

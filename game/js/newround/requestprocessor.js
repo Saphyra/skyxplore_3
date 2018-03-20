@@ -37,6 +37,7 @@ function RequestProcessor(parent){
                     
                     if(request.getStatus() == "collectresources"){
                         resourceProducer.produceResourcesForRequest(request, star, starInfo);
+                        //TODO change status if all resources are ready
                     }
                     
                     log("Kérelem feldolgozva " + star.getStarName() + " csillagon.", "warn");

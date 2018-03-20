@@ -204,4 +204,17 @@ function Counter(){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
+    
+    this.getResourceNumOfList = function getResourceNumOfList(resources){
+        //Nyersanyagok listájábban szereplő nyersanyagok összege
+        try{
+            let result = 0;
+                for(let resource in resources){
+                    result += resources[resource];
+                }
+            return result;
+        }catch(err){
+            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
+        }
+    }
 }

@@ -20,9 +20,12 @@ function ResourceProducerService(parent){
                 
                 if(missingAmount){
                     //Hiányzó összetevők legyártása
-                    log(resource + " gyártása a kérelem teljesítéséhez indul.", "warn");
+                    log(resource + " gyártása a kérelem teljesítéséhez indul. Szükséges mennyiség: " + missingAmount, "warn");
                     for(let i = 0; i < missingAmount; i++){
-                        produceResource(resource, star, starInfo);
+                        if(!produceResource(resource, star, starInfo)){
+                            break;
+                        }
+                        log(resource + " elkészült. Hátralévő mennyiség: " + (missingAmount - i - 1), "warn");
                     }
                     log(resource + " gyártása a kérelem teljesítéséhez befejeződött.", "warn");
                     collectResourceFromStarStorageAndGetMissingAmount(missingResources, resource, storage, requestData, star);
@@ -164,9 +167,19 @@ function ResourceProducerService(parent){
                         
                         if(missingAmount){
                         //Hiányzó összetevők gyártása
+                            if(material == "resource"){
+                                //Resource-ból egy iterációra 25 készül el, ezért csökkenteni kell a mennyiséget.
+                                const income = data.getElementData({source: "mine", key: "income"});
+                                missingAmount = Math.ceil(missingAmount / income);
+                            }
+                        
                             log(material + " előállítása " + star.getStarName() + " csillagon " + resource + " gyártásához. Szükséges mennyiség: " + missingAmount, "message");
                             for(let i = 0; i < missingAmount; i++){
-                                produceResource(material, star, starInfo);
+                                if(!produceResource(material, star, starInfo)){
+                                    break;
+                                }
+                                
+                                log(material + " elkészült. Hátralévő mennyiség: " + (missingAmount - i - 1), "warn");
                             }
                         }
                     }
@@ -210,19 +223,47 @@ function ResourceProducerService(parent){
                             });
                             starSteps.work(star.getOwner(), produceResourceJob, starInfo, false);
                         }else{
-                            log("Nem áll rendelkezésre minden összetevő " + resource + " előállításához.", "warn");
+                            log("Nincs elegendő munkaerő vagy kapacitás " + resource + " előállításához " + star.getStarName() + " csillagon.", "debug");
+                            return false;
                         }
                     }else{
-                        //Ha nincs szükség összetevőkre
-                        const jobData = {};
+                        log("Nem áll rendelkezésre minden összetevő " + resource + " előállításához.", "warn");
+                        return false;
+                    }
+                }else if(resource == "resource"){
+                    //Ha nincs szükség összetevőkre
+                    if(starInfo.availableWorkers && starInfo.availableMiners){
+                        const jobData = {
+                            starInfo: starInfo,
+                            star: star,
+                            resource: resource,
+                            resourceData: resourceData
+                        };
                         const job = new Job(jobData, function(){
-                            log("Resource mined", "debug");
+                            this.data.starInfo.availableMiners--;
+                            const storedResources = this.data.star.getData().getResources();
+                            const income = data.getElementData({source: "mine", key: "income"});
+                            
+                            if(storedResources[this.data.resourceData.storage] == undefined){
+                                storedResources[this.data.resourceData.storage] = {};
+                            }
+                            if(storedResources[this.data.resourceData.storage][this.data.resource] == undefined){
+                                storedResources[this.data.resourceData.storage][this.data.resource] = 0;
+                            }
+                            
+                            storedResources[this.data.resourceData.storage][this.data.resource] += income;
+                            log(this.data.resource + " elkészült, és a raktárba került. Raktározott mennyiség: " + storedResources[this.data.resourceData.storage][this.data.resource], "warn");
                         });
                         starSteps.work(star.getOwner(), job, starInfo);
+                    }else{
+                        log("Nincs elegendő munkaerő vagy kapacitás " + resource + " előállításához " + star.getStarName() + " csillagon.", "debug");
+                        return false;
                     }
                 }else{
-                    log("Nincs elegendő munkaerő vagy kapacitás " + resource + " előállításához " + star.getStarName() + " csillagon.", "debug");
+                    log("produceResource - Unknown resource: " + resource, "error");
                 }
+                
+                return true;
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }
@@ -302,7 +343,14 @@ function ResourceProducerService(parent){
                 try{
                     for(let resource in requiredResources){
                         const resourceData = data.getElementData({source: "resource", key: resource});
-                        if(!storedResources[resourceData.storage] || !storedResources[resourceData.storage][resource] || !!storedResources[resourceData.storage][resource] < requiredResources[resource]){
+                        if(!storedResources[resourceData.storage]){
+                            log("A raktárban nem található " + resource, "debug");
+                            return false;
+                        }else if(!storedResources[resourceData.storage][resource]){
+                            log("A raktárban nem található " + resource, "debug");
+                            return false;
+                        }else if(storedResources[resourceData.storage][resource] < requiredResources[resource]){
+                            log("A raktárban nincs elég " + resource + ". Szükséges mennyiség: " + requiredResources[resource] + ". Elérhető mennyiség: " + storedResources[resourceData.storage][resource], "debug");
                             return false;
                         }
                     }

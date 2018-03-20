@@ -49,8 +49,18 @@ function StarViewQueueDisplayer(){
                 const item = domElementCreator.createListItem();
                     const title = domElementCreator.createListElementTitle("Építés: " + planet.getPlanetName() + " - " + buildingData.name + " - Szint: " + buildingData.level);
                 item.appendChild(title);
-                    const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().status, buildingData.constructiontime);
+                
+                    let buildStatus;
+                    if(request.getStatus() === "collectresources"){
+                        const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
+                        const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                        const completed = requiredResourceNum - storedResourceNum;
+                        buildStatus = domElementCreator.createStarViewQueueBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
+                    }else{
+                        buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().status, buildingData.constructiontime);
+                    }
                 item.appendChild(buildStatus);
+                
                     const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.getPriority(), new PrioritySliderModificationAction(request, queue));
                 item.appendChild(cancelButton);
                 return item;
@@ -69,8 +79,18 @@ function StarViewQueueDisplayer(){
                 const item = domElementCreator.createListItem();
                     const title = domElementCreator.createListElementTitle("Fejlesztés: " + planet.getPlanetName() + " - " + buildingData.name + " - Szint: " + buildingData.level + " => " + upgradeBuildingData.level);
                 item.appendChild(title);
-                    const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime);
+                
+                    let buildStatus;
+                    if(request.getStatus() === "collectresources"){
+                        const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
+                        const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                        const completed = requiredResourceNum - storedResourceNum;
+                        buildStatus = domElementCreator.createStarViewQueueBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
+                    }else{
+                        const buildStatus = domElementCreator.createStarViewQueueBuildStatus(building.getData().upgradestatus, upgradeBuildingData.constructiontime);
+                    }
                 item.appendChild(buildStatus);
+                
                     const cancelButton = domElementCreator.createPrioritySliderButton("Visszavon", request.getPriority(), new PrioritySliderModificationAction(request, queue));
                 item.appendChild(cancelButton);
                 return item;

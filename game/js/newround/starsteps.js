@@ -129,7 +129,7 @@ function StarSteps(){
                     const maxFridgeStatus = star.getData().getStorageStatus().maxfridgestatus;
                     
                     log("Étel termelése " + star.getStarName() + " csillagon a raktárak feltöltéséhez. (Aktuális telítettség: "
-                        + counter.countFridgeStatusOfStar(starid) + " - Cél telítettség: " + maxFridgeStatus + ")", "warn");
+                        + nameConverter.convertFloatNumber(counter.countFridgeStatusOfStar(starid), 0) + " - Cél telítettség: " + maxFridgeStatus + ")", "warn");
                     
                     while(starInfo.availableFarmers > 0 && counter.countFridgeStatusOfStar(starid) < maxFridgeStatus){
                         const produceFoodJobData = {
@@ -154,6 +154,7 @@ function StarSteps(){
             //A körben nem dolgozó munkások után pénzegyenleg növelése
             try{
                 log("Adó fizetése a nem dolgozó polgárok után...", "warn");
+                const allPaid = {};
                 for(let starid in ownedStars){
                     const star = ownedStars[starid];
                     const starInfo = data.getFromCache("newroundtemp", starid);
@@ -161,8 +162,15 @@ function StarSteps(){
                     
                     log(star.getOwner() + " " + income + " pénzt kapott " + star.getStarName() + " csillag lakosai után.", "debug");
                     
+                    if(allPaid[star.getOwner()] === undefined){
+                        allPaid[star.getOwner()] = 0;
+                    }
+                    allPaid[star.getOwner()] += income;
+                    
                     gameData.getPlayerService().getPlayer(star.getOwner()).addMoney(income);
                 }
+                
+                log(allPaid, "warn", "A játékosok a következő mennyiségű pénzt kapták a nem dolgozó polgárok után: ");
             }catch(err){
                 log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
             }

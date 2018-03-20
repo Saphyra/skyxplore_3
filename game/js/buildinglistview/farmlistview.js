@@ -77,12 +77,20 @@ function FarmListView(){
                             if(farm.getData().upgradestatus !== 0){
                                 //Ha az épület fejlesztés alatt áll
                                 const upgradeFarmData = data.searchElements({type: "farm", level: farmData.level + 1});
-                                const buildStatus = domElementCreator.createFarmListViewBuildStatus(farm.getData().upgradestatus, upgradeFarmData.constructiontime, "Fejlesztés");
+                                const queueService = star.getData().getQueueService();
+                                const request = queueService.getRequestById(farm.getData().requestid);
+                                
+                                    let buildStatus;
+                                    if(request.getStatus() === "collectresources"){
+                                        const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
+                                        const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                                        const completed = requiredResourceNum - storedResourceNum;
+                                        buildStatus = domElementCreator.createFarmListViewBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
+                                    }else{
+                                        buildStatus = domElementCreator.createFarmListViewBuildStatus(farm.getData().upgradestatus, upgradeFarmData.constructiontime, "Fejlesztés");
+                                    }
                                 container.appendChild(buildStatus);
                                 
-                                const queueService = star.getData().getQueueService();
-                                //const request = filters.getRequestOfBuilding(farm.buildingid, queue);
-                                const request = queueService.getRequestById(farm.getData().requestid);
                                 const prioritySlider = domElementCreator.createPrioritySliderButton("Visszavon", request.getPriority(), new PrioritySliderModificationAction(request, queueService.getQueue()));
                                 container.appendChild(prioritySlider);
                             }else if(farmData.level < 3){
@@ -122,11 +130,20 @@ function FarmListView(){
                             container.appendChild(detailsContainer);
                         }else{
                             //Ha az épület építés alatt
-                            const buildStatus = domElementCreator.createFarmListViewBuildStatus(farm.getData().status, farmData.constructiontime, "Építés");
-                            container.appendChild(buildStatus);
-                            
                             const queueService = star.getData().getQueueService();
                             const request = queueService.getRequestById(farm.getData().requestid);
+                            
+                            let buildStatus;
+                                if(request.getStatus() === "collectresources"){
+                                    const requiredResourceNum = counter.getResourceNumOfList(request.getData().resourcerequirements);
+                                    const storedResourceNum = counter.getResourceNumOfList(request.getData().storedresources);
+                                    const completed = requiredResourceNum - storedResourceNum;
+                                    buildStatus = domElementCreator.createFarmListViewBuildStatus(completed, requiredResourceNum, "Nyersanyaggyűjtés");
+                                }else{
+                                    buildStatus = domElementCreator.createFarmListViewBuildStatus(farm.getData().status, farmData.constructiontime, "Építés");
+                                }
+                            container.appendChild(buildStatus);
+                            
                             const prioritySlider = domElementCreator.createPrioritySliderButton("Visszavon", request.getPriority(), new PrioritySliderModificationAction(request, queueService.getQueue()));
                             container.appendChild(prioritySlider);
                         }

@@ -89,10 +89,10 @@ function StarViewElementCreator(parent){
         }
     }
     
-    this.createStarViewQueueBuildStatus = function createStarViewQueueBuildStatus(status, maxStatus){
+    this.createStarViewQueueBuildStatus = function createStarViewQueueBuildStatus(status, maxStatus, type){
         //Építési sor épület státusz létrehozása
         try{
-            const element = parent.createBuildStatus(status, maxStatus);
+            const element = parent.createBuildStatus(status, maxStatus, type);
                 element.classList.add("border2px");
                 element.classList.add("borderinset");
                 element.classList.add("bordercolor150");

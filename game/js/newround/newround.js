@@ -5,6 +5,9 @@ function NewRound(){
     this.newRound = function newRound(){
         //Új kör futtatása
         try{
+            //Log törlése
+            document.getElementById("log").innerHTML = "";
+            
             log("Új kör futtatása indul.", "warn");
             data.emptyCache("newroundtemp");
             log("Gyorsítótár ürítve.", "debug");
