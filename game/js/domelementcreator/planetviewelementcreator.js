@@ -5,8 +5,8 @@ function PlanetViewElementCreator(parent){
         //Slotlista tároló létrehozása
         try{
             const element = document.createElement("DIV");
-                element.classList.add("border3px");
                 element.classList.add("borderridge");
+                element.classList.add("border3px");
                 element.classList.add("bordercolor150");
                 element.classList.add("margintop5rem");
             return element;
@@ -20,6 +20,7 @@ function PlanetViewElementCreator(parent){
         try{
             name = name || "";
             const element = document.createElement("DIV");
+                element.classList.add("backgroundblack5");
                 element.classList.add("border1px");
                 element.classList.add("borderbottomridge");
                 element.classList.add("bordercolor150");
@@ -41,8 +42,8 @@ function PlanetViewElementCreator(parent){
                 element.classList.add("borderinset");
                 element.classList.add("bordercolor150");
                 element.classList.add("inlineblock");
-                element.classList.add("width75rem");
-                element.classList.add("height75rem");
+                element.classList.add("width120rem");
+                element.classList.add("height100rem");
                 element.classList.add("margin5rem");
                 element.classList.add("margintop0");
                 element.classList.add("relative");

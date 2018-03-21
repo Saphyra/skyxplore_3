@@ -31,3 +31,6 @@ Building list views
  - mine view
 Deconstructing buildings
 Pausable requests...
+Requests new gameData field instead of star field
+
+TÖbbszörös felépítés
