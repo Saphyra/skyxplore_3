@@ -7,7 +7,7 @@ function Counter(){
             const food = star.getData().getResources().food;
             const citizennum = star.getData().getCitizenNum();
             
-            return (netIncome + food / 200) / (citizennum + 1);
+            return (netIncome + food / 20) / (citizennum + 1);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

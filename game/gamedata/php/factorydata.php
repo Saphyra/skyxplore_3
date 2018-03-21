@@ -24,7 +24,7 @@
     $factory[$level]["level"] = $level;
     $factory[$level]["constructiontime"] = 40;
     $factory[$level]["maxhr"] = 2;
-    $factory[$level]["workplace"] = 4;
+    $factory[$level]["workplace"] = 3;
     $factory[$level]["resource"]["board"] = 30;
     $factory[$level]["resource"]["brick"] = 90;
     $factory[$level]["resource"]["metal"] = 150;
@@ -36,7 +36,7 @@
     $factory[$level]["level"] = $level;
     $factory[$level]["constructiontime"] = 75;
     $factory[$level]["maxhr"] = 3;
-    $factory[$level]["workplace"] = 8;
+    $factory[$level]["workplace"] = 4;
     $factory[$level]["resource"]["board"] = 90;
     $factory[$level]["resource"]["brick"] = 270;
     $factory[$level]["resource"]["metal"] = 350;

@@ -13,7 +13,6 @@ function GameDataConverter(){
             result.defenses = convertDefense(data);
             result.fleets = convertFleets(data);
             result.ships = convertShips(data);
-            
             return result;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

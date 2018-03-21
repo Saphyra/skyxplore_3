@@ -1,6 +1,6 @@
 <?php
     $mine["typename"] = "Bánya";
-    $mine["income"] = 25;
+    $mine["income"] = 15;
     $defaultMine["type"] = "mine";
     $defaultMine["name"] = "Bánya";
     $defaultMine["slot"] = "minefield";
@@ -24,7 +24,7 @@
     $mine[$level]["level"] = $level;
     $mine[$level]["constructiontime"] = 50;
     $mine[$level]["maxhr"] = 2;
-    $mine[$level]["workplace"] = 4;
+    $mine[$level]["workplace"] = 3;
     $mine[$level]["resource"]["board"] = 60;
     $mine[$level]["resource"]["brick"] = 60;
     $mine[$level]["resource"]["metal"] = 150;
@@ -36,7 +36,7 @@
     $mine[$level]["level"] = $level;
     $mine[$level]["constructiontime"] = 105;
     $mine[$level]["maxhr"] = 3;
-    $mine[$level]["workplace"] = 8;
+    $mine[$level]["workplace"] = 4;
     $mine[$level]["resource"]["board"] = 180;
     $mine[$level]["resource"]["brick"] = 180;
     $mine[$level]["resource"]["metal"] = 450;

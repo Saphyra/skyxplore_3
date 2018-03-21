@@ -23,7 +23,7 @@
     $depot[$level]["level"] = $level;
     $depot[$level]["constructiontime"] = 20;
     $depot[$level]["maxhr"] = 2;
-    $depot[$level]["capacity"] = 2000;
+    $depot[$level]["capacity"] = 1500;
     $depot[$level]["resource"]["board"] = 45;
     $depot[$level]["resource"]["brick"] = 75;
     $depot[$level]["resource"]["metal"] = 45;
@@ -35,7 +35,7 @@
     $depot[$level]["level"] = $level;
     $depot[$level]["constructiontime"] = 60;
     $depot[$level]["maxhr"] = 3;
-    $depot[$level]["capacity"] = 4000;
+    $depot[$level]["capacity"] = 2000;
     $depot[$level]["resource"]["board"] = 135;
     $depot[$level]["resource"]["brick"] = 225;
     $depot[$level]["resource"]["metal"] = 135;

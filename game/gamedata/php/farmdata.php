@@ -1,6 +1,6 @@
 <?php
     $farm["typename"] = "Farm";
-    $farm["income"] = 20;
+    $farm["income"] = 10;
     $defaultFarm["type"] = "farm";
     $defaultFarm["name"] = "Farm";
     $defaultFarm["slot"] = "food";
@@ -36,7 +36,7 @@
     $farm[$level]["level"] = $level;
     $farm[$level]["constructiontime"] = 75;
     $farm[$level]["maxhr"] = 3;
-    $farm[$level]["workplace"] = 4;
+    $farm[$level]["workplace"] = 3;
     $farm[$level]["resource"]["board"] = 180;
     $farm[$level]["resource"]["brick"] = 360;
     $farm[$level]["resource"]["metal"] = 90;

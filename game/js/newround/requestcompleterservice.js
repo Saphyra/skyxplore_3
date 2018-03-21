@@ -27,6 +27,7 @@ function RequestCompleterService(parent){
                 const building = gameData.getBuildingService().getBuildingById(request.getElementId());
                 const buildingData = data.getElementData(building.getData().resource);
                 
+                building.getData().requestid = null;
                 star.getData().getQueueService().deleteRequest(request.getRequestId());
                 log(buildingData.name + " épület a " + star.getStarName() + " csillagon felépült.", "complete");
                 
@@ -42,6 +43,7 @@ function RequestCompleterService(parent){
                 const building = gameData.getBuildingService().getBuildingById(request.getElementId());
                 const upgradeBuildingData = data.getElementData({source: building.getType(), key: building.getLevel() + 1});
                 
+                building.getData().requestid = null;
                 building.setLevel(upgradeBuildingData.level);
                 building.getData().resource = {source: upgradeBuildingData.type, key: upgradeBuildingData.key};
                 
