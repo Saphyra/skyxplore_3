@@ -14,6 +14,7 @@ schema
         - Szint -> Felszerelések szintje
     Akadémia
         - Fejlesztések
+            - Magasabb income
         - Szint -> Több fejlesztés, magasabb szint
         - Fejlesztések:
             - Védelmi épületek erősítése
@@ -24,11 +25,32 @@ schema
 Implement Defense view
 Implement newround
  - producing setted resources if available workers
+ - Statistics
+    - Produced / used resources
+    - Income
 Add explaining title to elements
 Building list views
  - mine view
+ - Filters
+    - Level
+    - Status
+        - Building...
+        - Upgrading...
+        - Upgradable
+        - Maxed
+ - Order by
+    - Priority
+    - Level
+    - Status
 Deconstructing buildings
 Pausable requests...
 Requests new gameData field instead of star field
 
-TÖbbszörös felépítés
+Notification system
+    - Request ready
+    - Storage status reached its limit
+    
+Display queue size of star
+Show storage status bar
+
+Multiple building / upgrade request
