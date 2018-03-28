@@ -1,5 +1,3 @@
-Cookie login / remember me
-
 visibility
     - owned = Saját birtkban (Zöld)
     - enemy = Ellenségé (Piros)

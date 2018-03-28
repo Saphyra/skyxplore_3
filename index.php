@@ -1,3 +1,10 @@
+<?php
+    if(isset($_COOKIE["logindata"])){
+        header("location:login/php/loginwithcookie.php");
+        exit;
+    }
+?>
+
 <HTML>
 <HEAD>
     <TITLE>SkyXplore</TITLE>
@@ -33,6 +40,7 @@
             <FORM method="POST" action="login/php/login.php" id="login" onsubmit="validateLoginData(event)">
                 <LABEL class='block fontsize15rem marginbottom025rem righttext'>Felhasználónév: <INPUT class='fontsize0875rem' type="text" name="loginusername" placeholder="Felhasználónév" required id="loginusername"></LABEL>
                 <LABEL class='block fontsize15rem marginbottom025rem righttext'>Jelszó: <INPUT class='fontsize0875rem' type="password" name="loginpassword" placeholder="Jelszó" required id="loginpassword"></LABEL>
+                <LABEL class='block fontsize15rem marginbottom025rem'><INPUT type='checkbox' name='stayloggedin' value='1'>Bejelentkezve szeretnék maradni.</LABEL><BR>
                 <BUTTON class='marginbottom025rem'>Bejelentkezés</BUTTON>
             </FORM>
             <FORM method="GET" action="login/forgotten.php">
