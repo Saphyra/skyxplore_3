@@ -200,6 +200,7 @@
         private function createStarData(){
             $starData = [];
             
+            $starData["citizennum"] = 0;
             $starData["queue"] = new stdClass();
             
             $starData["resources"] = [];
@@ -207,12 +208,18 @@
             $starData["resources"]["depot"] = [];
             $starData["resources"]["storage"] = [];
             
-            $starData["foodproductionpriority"] = 6;
-            $starData["storagestatus"] = [];
-            $starData["storagestatus"]["minfridgestatus"] = 70;
-            $starData["storagestatus"]["maxfridgestatus"] = 90;
             
-            $starData["citizennum"] = 0;
+            $starData["storagestatus"] = [];
+            
+            $starData["storagestatus"]["food"] = [];
+            $starData["storagestatus"]["food"]["priority"] = 6;
+            $starData["storagestatus"]["food"]["min"] = 70;
+            $starData["storagestatus"]["food"]["max"] = 90;
+            
+            $starData["storagestatus"]["resource"] = [];
+            $starData["storagestatus"]["resource"]["priority"] = 4;
+            $starData["storagestatus"]["resource"]["min"] = 0;
+            $starData["storagestatus"]["resource"]["max"] = 50;
             
             return $starData;
         }

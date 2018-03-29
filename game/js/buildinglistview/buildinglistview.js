@@ -1,14 +1,25 @@
 function BuildingListView(){
     //Épületek lista nézetének megjelenítése
-    const farmListView = new FarmListView();
+    const sliderDisplayer = new SliderDisplayer(this);
+        this.displaySliders = sliderDisplayer.displaySliders;
+        
+    const buildingDisplayer = new BuildingDisplayer(this);
+        this.displayBuildings = buildingDisplayer.displayBuildings;
+    
+    //Nézetek
+    const farmListView = new FarmListView(this);
         this.showFarmListView = farmListView.showView;
-        this.displayFarmListData = farmListView.displayFarmListData;
+        
+    const mineListView = new MineListView(this);
         
     this.showView = function showView(type, starid){
         try{
             switch(type){
                 case "farm":
-                    this.showFarmListView(starid);
+                    farmListView.showView(starid);
+                break;
+                case "mine":
+                    mineListView.showView(starid);
                 break;
                 default:
                     log("BuildingListView.shovView: Unknown building type: " + type, "error");
@@ -22,7 +33,8 @@ function BuildingListView(){
     this.refresh = function refresh(starid){
         //Lista nézetek újratöltése
         try{
-            this.displayFarmListData(starid);
+            farmListView.displayFarmListData(starid);
+            //mineListView.displayMineListData(starid);
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }

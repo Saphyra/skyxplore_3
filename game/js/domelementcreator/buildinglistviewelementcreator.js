@@ -1,20 +1,19 @@
-function FarmListViewElementCreator(parent){
-    const domElementCreator = parent;
+function BuildingListViewElementCreator(parent){
+    const domElelementCreator = parent;
+    this.createBuildingListViewSliderText = createSliderText;
     
-    this.createFarmListViewFoodStatusSlider = function createFarmListViewFoodStatusSlider(star, type, applyChanges){
+    this.createBuildingListViewResourceStatusSlider = function createBuildingListViewResourceStatusSlider(data, applyChanges){
         try{
             const container = domElementCreator.createListItem();
-                container.appendChild(createSliderText(type == "min" ? "Minimum hűtőház telítettség" : "Maximum hűtőház telítettség"));
+                container.appendChild(createSliderText(data.label));
                 
                 const label = domElementCreator.createTextLabel();
-                    const slider = createFoodStatusSlider(star, type);
+                    const slider = createResourceStatusSlider(data.initialValue);
                 label.appendChild(slider);
                     const sliderValue = domElementCreator.createTextElement(slider.value + "%");
                 label.appendChild(sliderValue);
-                
-                    applyChanges.oldValue = star.getData().getStorageStatus()[type + "fridgestatus"];
                     slider.onchange = function(){
-                        applyChanges.apply(star, slider, sliderValue, type);
+                        applyChanges.apply(slider, sliderValue, data.type);
                     }
                 
             container.appendChild(label);
@@ -36,14 +35,14 @@ function FarmListViewElementCreator(parent){
             }
         }
         
-        function createFoodStatusSlider(star, type){
+        function createResourceStatusSlider(initialValue){
             try{
                 const element = document.createElement("INPUT");
                     element.type = "range";
                     element.min = 0;
                     element.max = 100;
                     element.step = 10;
-                    element.value = star.getData().getStorageStatus()[type + "fridgestatus"];
+                    element.value = initialValue;
                     element.classList.add("verticalcenter");
                     element.classList.add("marginleft5rem");
                     element.classList.add("marginright5rem");
@@ -53,19 +52,19 @@ function FarmListViewElementCreator(parent){
             }
         }
         
-    this.createFarmListViewPrioritySlider = function createFarmListViewPrioritySlider(star){
+    this.createBuildingListViewPrioritySlider = function createBuildingListViewPrioritySlider(text, storageStatus){
         try{
             const element = domElementCreator.createListItem();
-                element.appendChild(createSliderText("Prioritás"));
+                element.appendChild(domElementCreator.createBuildingListViewSliderText(text));
                 const label = domElementCreator.createTextLabel();
-                    const slider = domElementCreator.createPrioritySlider(star.getData().getFoodProductionPriority());
+                    const slider = domElementCreator.createPrioritySlider(storageStatus.priority);
                 label.appendChild(slider);
                     const sliderValue = domElementCreator.createTextElement(slider.value);
                 label.appendChild(sliderValue);
             element.appendChild(label);
             
                 slider.onchange = function(){
-                    star.getData().setFoodProductionPriority(slider.value);
+                    storageStatus.priority = Number(slider.value);
                     sliderValue.innerHTML = slider.value;
                 }
                 
@@ -75,7 +74,7 @@ function FarmListViewElementCreator(parent){
         }
     }
     
-    this.createFarmListViewBuildStatus = function createFarmListViewBuildStatus(status, maxStatus, type){
+    this.createBuildingListViewBuildStatus = function createBuildingListViewBuildStatus(status, maxStatus, type){
         try{
             const element = domElementCreator.createBuildStatus(status, maxStatus, type);
                 domElementCreator.removeClassesContains(element, "fontsize");
@@ -88,28 +87,6 @@ function FarmListViewElementCreator(parent){
                 element.classList.add("margin5rem");
                 element.classList.add("padding025rem");
                 
-            return element;
-        }catch(err){
-            log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
-        }
-    }
-    
-    this.createFarmListViewUpgradeButton = function createFarmListViewUpgradeButton(text, action){
-        try{
-            const element = document.createElement("DIV");
-                element.classList.add("centertext");
-                element.classList.add("fontsize0125rem");
-                element.classList.add("marginauto");
-                element.classList.add("marginbottom0125rem");
-                element.classList.add("margintop0125rem");
-                element.classList.add("maxwidth200rem");
-                element.classList.add("minwidth100rem");
-                element.classList.add("padding0125rem");
-                element.classList.add("width30percent");
-            
-                this.convertElementToButton(element, action, true);
-            
-                element.innerHTML = text;
             return element;
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");

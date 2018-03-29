@@ -80,7 +80,7 @@ function RequestProcessor(parent, resProdService){
             */
             try{
                 const availableFarmers = (starInfo.availableFarmers > 0);
-                const priority = (star.getData().getFoodProductionPriority() > request.getPriority());
+                const priority = (star.getData().getStorageStatus.food.priority > request.getPriority());
                 
                 if(availableFarmers && priority){
                     const fridgeStatus = counter.countFridgeStatusOfStar(star.getStarId());

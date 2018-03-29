@@ -93,7 +93,6 @@ function GameDataConverter(){
                     const result = {
                         queue: convertQueue(starData.getQueueService().getQueue()),
                         resources: starData.getResources(),
-                        foodproductionpriority: starData.getFoodProductionPriority(),
                         storagestatus: starData.getStorageStatus(),
                         citizennum: starData.getCitizenNum()
                     };

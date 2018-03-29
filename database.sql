@@ -52,9 +52,6 @@ CREATE TABLE `users` (
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`pkey`, `id`, `username`, `password`, `email`, `requestdata`) VALUES
-(1, 'user9035536966', 'a', 'a', 'a@a.aa', '[]');
-
 --
 -- Indexek a kiírt táblákhoz
 --

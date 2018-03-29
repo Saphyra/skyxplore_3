@@ -24,6 +24,7 @@ schema
 
 Implement Defense view
 Implement newround
+ - Check all production priority is higher than request priority
  - producing setted resources if available workers
  - Statistics
     - Produced / used resources
@@ -45,6 +46,7 @@ Building list views
 Deconstructing buildings
 Pausable requests...
 Requests new gameData field instead of star field
+BuildingEntity contains starid
 
 Notification system
     - Request ready

@@ -20,12 +20,6 @@ function DOMElementCreator(){
         this.createPrioritySliderButton = commonElementCreator.createPrioritySliderButton;
         this.createListElementLeftText = commonElementCreator.createListElementLeftText;
         
-    const farmListViewElementCreator = new FarmListViewElementCreator(this);
-        this.createFarmListViewFoodStatusSlider = farmListViewElementCreator.createFarmListViewFoodStatusSlider;
-        this.createFarmListViewPrioritySlider = farmListViewElementCreator.createFarmListViewPrioritySlider;
-        this.createFarmListViewBuildStatus = farmListViewElementCreator.createFarmListViewBuildStatus;
-        this.createFarmListViewUpgradeButton = farmListViewElementCreator.createFarmListViewUpgradeButton;
-        
     //Új épület létrehozása oldal
     const newBuildingViewElementCreator = new NewBuildingViewElementCreator(this);
         this.createNewBuildingListItem = newBuildingViewElementCreator.createNewBuildingListItem;
@@ -70,6 +64,13 @@ function DOMElementCreator(){
         this.createStarViewPlanetName = starViewElementCreator.createStarViewPlanetName;
         this.createStarViewPlanetDescription = starViewElementCreator.createStarViewPlanetDescription;
         this.createStarViewQueueBuildStatus = starViewElementCreator.createStarViewQueueBuildStatus;
+        
+    //Épület lista nézetek
+    const buildingListViewElementCreator = new BuildingListViewElementCreator(this);
+        this.createBuildingListViewResourceStatusSlider = buildingListViewElementCreator.createBuildingListViewResourceStatusSlider;
+        this.createBuildingListViewSliderText = buildingListViewElementCreator.createBuildingListViewSliderText;
+        this.createBuildingListViewPrioritySlider = buildingListViewElementCreator.createBuildingListViewPrioritySlider;
+        this.createBuildingListViewBuildStatus = buildingListViewElementCreator.createBuildingListViewBuildStatus;
     
     //Elem típusához tartozó háttér osztálynevének kiválasztása
     function getBackgroundByType(type){

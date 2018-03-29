@@ -1,36 +1,35 @@
-function FarmListView(parent){
-    //Farmok listanézetének megjelenítése
+function MineListView(parent){
+    //Bányák listanézetének megjelenítése
     const buildingListView = parent;
     
-    this.displayFarmListData = displayFarmListData;
+    this.displayMineListData = displayMineListData;
     
     this.showView = function showView(starid){
         //Ablak megjelenítése
         try{
-            displayFarmListData(starid);
-            back.switchWindow("#farmlistviewcontainer");
+            displayMineListData(starid);
+            back.switchWindow("#minelistviewcontainer");
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
-    function displayFarmListData(starid){
+    function displayMineListData(starid){
         //Adatok megjelenítése
         try{
             buildingListView.displaySliders(getSliderData(starid));
-            buildingListView.displayBuildings(getFarmData(starid));
+            buildingListView.displayBuildings(getMineData(starid));
         }catch(err){
             log(arguments.callee.name + " - " + err.name + ": " + err.message, "error");
         }
     }
     
         function getSliderData(starid){
-            //Sliderek megjelenítéséhez szükséges adatok
             try{
                 const sliderData = {
-                    container: document.getElementById("farmlistviewslidercontainer"),
+                    container: document.getElementById("minelistviewslidercontainer"),
                     starid: starid,
-                    displayableResources: ["food"],
+                    displayableResources: ["resource"],
                 };
                 
                 return sliderData;
@@ -39,13 +38,13 @@ function FarmListView(parent){
             }
         }
         
-        function getFarmData(starid){
-            //Épület lista megjelenítése
+        function getMineData(starid){
+        //Épület lista megjelenítése
             try{
                 const star = gameData.getStarService().getStarById(starid);
                 const buildingData = {
-                    buildings: gameData.getBuildingService().getBuildingsOfTypeOfStar(star.getStarId(), "farm", true),
-                    container: document.getElementById("farmlistviewbuildinglistcontainer")
+                    buildings: gameData.getBuildingService().getBuildingsOfTypeOfStar(star.getStarId(), "mine", true),
+                    container: document.getElementById("minelistviewbuildinglistcontainer")
                 }
                 
                 return buildingData;

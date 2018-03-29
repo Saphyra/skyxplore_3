@@ -78,14 +78,14 @@ function CommonElementCreator(parent){
             content = content || "";
             const element = this.createListItemUnhovered(content);
                 $(element).hover(
-                        function(){
-                            domElementCreator.removeClassesContains(element, "bordercolor");
-                            element.classList.add("bordercolor255");
-                        },
-                        function(){
-                            domElementCreator.removeClassesContains(element, "bordercolor");
-                            element.classList.add("bordercolor150");
-                        }
+                    function(){
+                        domElementCreator.removeClassesContains(element, "bordercolor");
+                        element.classList.add("bordercolor255");
+                    },
+                    function(){
+                        domElementCreator.removeClassesContains(element, "bordercolor");
+                        element.classList.add("bordercolor150");
+                    }
                 );
             
             return element;
