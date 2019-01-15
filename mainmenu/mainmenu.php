@@ -46,7 +46,7 @@
 
     <SECTION class='absolute0 backgroundblack8 border5px bordercolor100 borderinset overflowauto'>
         <HEADER>
-            <SPAN class='headeritem'
+            <SPAN class='headeritem'>
                 <EM>ID:</EM>
                 <?php print $_SESSION["user"]["id"]; ?>
             </SPAN>
